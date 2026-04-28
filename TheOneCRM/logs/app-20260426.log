@@ -1,0 +1,167 @@
+2026-04-26 12:08:10.864 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 12:08:13.635 +03:00 [INF] Executed DbCommand (105ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-26 12:08:13.763 +03:00 [INF] Executed DbCommand (95ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-26 12:08:13.840 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-26 12:08:13.911 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-26 12:08:14.003 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-04-26 12:08:14.065 +03:00 [INF] No migrations were applied. The database is already up to date.
+2026-04-26 12:08:14.116 +03:00 [INF] User profile is available. Using 'C:\Users\TheOne\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-26 12:08:14.662 +03:00 [INF] Executed DbCommand (172ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 12:08:14.790 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 12:08:14.859 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 12:08:14.930 +03:00 [INF] Executed DbCommand (64ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 12:08:15.004 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 12:08:15.096 +03:00 [INF] Executed DbCommand (75ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-26 12:08:15.334 +03:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2026-04-26 12:08:15.633 +03:00 [INF] Now listening on: http://localhost:5210
+2026-04-26 12:08:15.767 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-26 12:08:15.795 +03:00 [INF] Hosting environment: Development
+2026-04-26 12:08:15.797 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-04-26 12:08:17.068 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger - null null
+2026-04-26 12:08:17.348 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger - 301 null null 299.7008ms
+2026-04-26 12:08:17.357 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-04-26 12:08:17.470 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 113.0041ms
+2026-04-26 12:08:17.483 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/swagger-ui-bundle.js - null null
+2026-04-26 12:08:17.483 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/swagger-ui-standalone-preset.js - null null
+2026-04-26 12:08:17.485 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-26 12:08:17.489 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/swagger-ui.css - null null
+2026-04-26 12:08:17.513 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 28.1095ms
+2026-04-26 12:08:17.529 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-04-26 12:08:17.550 +03:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2026-04-26 12:08:17.550 +03:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2026-04-26 12:08:17.587 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/swagger-ui.css - 200 152034 text/css 98.3864ms
+2026-04-26 12:08:17.612 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/swagger-ui-standalone-preset.js - 200 230280 text/javascript 129.1763ms
+2026-04-26 12:08:17.641 +03:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2026-04-26 12:08:17.672 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/swagger-ui-bundle.js - 200 1456926 text/javascript 192.5179ms
+2026-04-26 12:08:17.698 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 168.4491ms
+2026-04-26 12:08:17.884 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-04-26 12:08:17.903 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 19.0414ms
+2026-04-26 12:08:17.935 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/favicon-32x32.png - null null
+2026-04-26 12:08:17.949 +03:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2026-04-26 12:08:17.953 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/favicon-32x32.png - 200 628 image/png 17.9665ms
+2026-04-26 13:45:05.718 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:05.792 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:17.267 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:17.307 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:17.526 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:17.526 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:37.826 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:37.871 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 13:45:39.190 +03:00 [INF] Executed DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-26 13:45:39.281 +03:00 [INF] Executed DbCommand (79ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-26 13:45:39.348 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-26 13:45:39.414 +03:00 [INF] Executed DbCommand (65ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-26 13:45:39.504 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-04-26 13:45:39.540 +03:00 [INF] Applying migration '20260426104520_addedEntityCompaign'.
+2026-04-26 13:45:39.797 +03:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [customers] ADD [campaignsId] int NOT NULL DEFAULT 0;
+2026-04-26 13:45:39.870 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [customers] ADD [compaignId] int NOT NULL DEFAULT 0;
+2026-04-26 13:45:39.955 +03:00 [INF] Executed DbCommand (85ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [campaigns] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Source] int NOT NULL,
+    [Budget] decimal(18,2) NOT NULL,
+    [StartDate] datetime2 NOT NULL,
+    [EndDate] datetime2 NOT NULL,
+    [AppUserId] nvarchar(450) NOT NULL,
+    [CreatedAt] datetime2 NOT NULL,
+    [UpdatedAt] datetime2 NULL,
+    CONSTRAINT [PK_campaigns] PRIMARY KEY ([Id]),
+    CONSTRAINT [FK_campaigns_AspNetUsers_AppUserId] FOREIGN KEY ([AppUserId]) REFERENCES [AspNetUsers] ([Id]) ON DELETE CASCADE
+);
+2026-04-26 13:45:40.021 +03:00 [INF] Executed DbCommand (66ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_customers_campaignsId] ON [customers] ([campaignsId]);
+2026-04-26 13:45:40.091 +03:00 [INF] Executed DbCommand (70ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX [IX_campaigns_AppUserId] ON [campaigns] ([AppUserId]);
+2026-04-26 13:45:40.166 +03:00 [INF] Executed DbCommand (74ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE [customers] ADD CONSTRAINT [FK_customers_campaigns_campaignsId] FOREIGN KEY ([campaignsId]) REFERENCES [campaigns] ([Id]) ON DELETE CASCADE;
+2026-04-26 13:45:40.233 +03:00 [INF] Executed DbCommand (67ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+VALUES (N'20260426104520_addedEntityCompaign', N'8.0.0');
+2026-04-26 17:23:40.365 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 17:23:40.459 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-26 17:23:42.313 +03:00 [INF] Executed DbCommand (117ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-26 17:23:42.448 +03:00 [INF] Executed DbCommand (110ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-26 17:23:42.541 +03:00 [INF] Executed DbCommand (83ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-04-26 17:23:42.617 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-04-26 17:23:42.717 +03:00 [INF] Executed DbCommand (77ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-04-26 17:23:42.750 +03:00 [INF] No migrations were applied. The database is already up to date.
+2026-04-26 17:23:42.820 +03:00 [INF] User profile is available. Using 'C:\Users\TheOne\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-04-26 17:23:43.412 +03:00 [INF] Executed DbCommand (124ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 17:23:43.564 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 17:23:43.642 +03:00 [INF] Executed DbCommand (71ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 17:23:43.723 +03:00 [INF] Executed DbCommand (70ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 17:23:43.800 +03:00 [INF] Executed DbCommand (70ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-04-26 17:23:43.922 +03:00 [INF] Executed DbCommand (81ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-04-26 17:23:44.273 +03:00 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2026-04-26 17:23:44.641 +03:00 [INF] Now listening on: http://localhost:5210
+2026-04-26 17:23:44.843 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-04-26 17:23:44.852 +03:00 [INF] Hosting environment: Development
+2026-04-26 17:23:44.854 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-04-26 17:23:45.808 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-04-26 17:23:46.234 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 468.9991ms
+2026-04-26 17:23:46.249 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-04-26 17:23:46.280 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-04-26 17:23:46.292 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 14931 application/javascript; charset=utf-8 9.4772ms
+2026-04-26 17:23:46.343 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.8408ms
+2026-04-26 17:23:46.570 +03:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-04-26 17:23:46.627 +03:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 56.9596ms

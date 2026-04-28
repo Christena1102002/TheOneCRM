@@ -1,0 +1,17 @@
+E:\TheOneCRM\TheOneCRM.Application\bin\Debug\net8.0\TheOneCRM.Application.deps.json
+E:\TheOneCRM\TheOneCRM.Application\bin\Debug\net8.0\TheOneCRM.Application.dll
+E:\TheOneCRM\TheOneCRM.Application\bin\Debug\net8.0\TheOneCRM.Application.pdb
+E:\TheOneCRM\TheOneCRM.Application\bin\Debug\net8.0\TheOneCRM.Domain.dll
+E:\TheOneCRM\TheOneCRM.Application\bin\Debug\net8.0\TheOneCRM.Domain.pdb
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCRM.Application.csproj.AssemblyReference.cache
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCRM.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCRM.Application.AssemblyInfoInputs.cache
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCRM.Application.AssemblyInfo.cs
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCRM.Application.csproj.CoreCompileInputs.cache
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCR.95E4AA6C.Up2Date
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCRM.Application.dll
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\refint\TheOneCRM.Application.dll
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\TheOneCRM.Application.pdb
+E:\TheOneCRM\TheOneCRM.Application\obj\Debug\net8.0\ref\TheOneCRM.Application.dll
+E:\TheOneCRM\TheOneCRM.Application\bin\Debug\net8.0\TheOneCRM.Infrastructure.dll
+E:\TheOneCRM\TheOneCRM.Application\bin\Debug\net8.0\TheOneCRM.Infrastructure.pdb

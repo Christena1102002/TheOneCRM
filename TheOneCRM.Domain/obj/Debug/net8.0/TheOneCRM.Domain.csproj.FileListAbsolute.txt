@@ -1,0 +1,12 @@
+E:\TheOneCRM\TheOneCRM.Domain\bin\Debug\net8.0\TheOneCRM.Domain.deps.json
+E:\TheOneCRM\TheOneCRM.Domain\bin\Debug\net8.0\TheOneCRM.Domain.dll
+E:\TheOneCRM\TheOneCRM.Domain\bin\Debug\net8.0\TheOneCRM.Domain.pdb
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\TheOneCRM.Domain.csproj.AssemblyReference.cache
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\TheOneCRM.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\TheOneCRM.Domain.AssemblyInfoInputs.cache
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\TheOneCRM.Domain.AssemblyInfo.cs
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\TheOneCRM.Domain.csproj.CoreCompileInputs.cache
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\TheOneCRM.Domain.dll
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\refint\TheOneCRM.Domain.dll
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\TheOneCRM.Domain.pdb
+E:\TheOneCRM\TheOneCRM.Domain\obj\Debug\net8.0\ref\TheOneCRM.Domain.dll

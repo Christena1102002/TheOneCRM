@@ -1,0 +1,565 @@
+2026-03-29 14:30:51.793 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 14:37:16.215 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 14:37:19.728 -07:00 [ERR] An exception occurred while iterating over the results of a query for context type 'TheOneCRM.Infrastructure.Data.AppDbContext'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+2026-03-29 14:37:19.959 -07:00 [ERR] ❌ Error while migrating or seeding the database
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.RoleManager`1.RoleExistsAsync(String roleName)
+   at TheOneCRM.API.Helper.DataSeader.SeedAsync() in E:\TheOneCRM\TheOneCRM\Helper\DataSeader.cs:line 31
+   at TheOneCRM.Program.Main(String[] args) in E:\TheOneCRM\TheOneCRM\Program.cs:line 86
+2026-03-29 14:37:20.053 -07:00 [ERR] An exception occurred in the database while saving changes for context type 'TheOneCRM.Infrastructure.Data.AppDbContext'.
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+System.InvalidOperationException: A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.ConcurrencyDetector.EnterCriticalSection()
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(IList`1 entriesToSave, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.SaveChangesAsync(StateManager stateManager, Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+2026-03-29 14:39:29.869 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 14:39:35.396 -07:00 [INF] Now listening on: http://localhost:5210
+2026-03-29 14:39:35.557 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-29 14:39:35.560 -07:00 [INF] Hosting environment: Development
+2026-03-29 14:39:35.561 -07:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-03-29 14:54:34.796 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 14:54:36.937 -07:00 [INF] Executed DbCommand (94ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 14:54:37.035 -07:00 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 14:54:37.044 -07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 14:54:37.049 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 14:54:37.083 -07:00 [INF] Executed DbCommand (8ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-29 14:54:37.134 -07:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-29 14:54:37.433 -07:00 [INF] User profile is available. Using 'C:\Users\virus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-29 14:54:38.179 -07:00 [INF] Executed DbCommand (56ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 14:54:38.355 -07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 14:54:38.367 -07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 14:54:38.380 -07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 14:54:38.396 -07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 14:54:38.586 -07:00 [INF] Executed DbCommand (152ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 14:54:39.957 -07:00 [INF] Now listening on: http://localhost:5210
+2026-03-29 14:54:40.200 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-29 14:54:40.219 -07:00 [INF] Hosting environment: Development
+2026-03-29 14:54:40.226 -07:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-03-29 14:54:43.688 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-03-29 14:54:45.217 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 1551.1654ms
+2026-03-29 14:54:45.328 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-03-29 14:54:45.383 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-29 14:54:45.407 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 21.4147ms
+2026-03-29 14:54:45.776 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 448.4849ms
+2026-03-29 14:54:45.913 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-03-29 14:54:46.048 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 136.8366ms
+2026-03-29 15:29:24.590 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 15:29:26.169 -07:00 [INF] Executed DbCommand (86ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 15:29:26.269 -07:00 [INF] Executed DbCommand (73ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 15:29:26.282 -07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 15:29:26.323 -07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 15:29:26.369 -07:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-29 15:29:26.425 -07:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-29 15:29:26.488 -07:00 [INF] User profile is available. Using 'C:\Users\virus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-29 15:29:27.380 -07:00 [INF] Executed DbCommand (323ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:29:27.564 -07:00 [INF] Executed DbCommand (13ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:29:27.587 -07:00 [INF] Executed DbCommand (11ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:29:27.609 -07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:29:27.623 -07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:29:27.867 -07:00 [INF] Executed DbCommand (201ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 15:29:28.740 -07:00 [INF] Now listening on: http://localhost:5210
+2026-03-29 15:29:28.885 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-29 15:29:28.889 -07:00 [INF] Hosting environment: Development
+2026-03-29 15:29:28.890 -07:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-03-29 15:29:31.336 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-03-29 15:29:32.185 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 972.3025ms
+2026-03-29 15:29:32.262 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-29 15:29:32.287 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-03-29 15:29:32.321 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 59.6618ms
+2026-03-29 15:29:32.548 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 260.5445ms
+2026-03-29 15:29:32.657 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-03-29 15:29:32.756 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 99.4514ms
+2026-03-29 15:30:24.973 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/Auth/Login - application/json 61
+2026-03-29 15:30:24.997 -07:00 [WRN] Failed to determine the https port for redirect.
+2026-03-29 15:30:28.384 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 15:30:28.424 -07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(TheOneCRM.Application.DTOs.Auth.LoginDto) on controller TheOneCRM.API.Controllers.Auth.AuthController (TheOneCRM.API).
+2026-03-29 15:36:21.012 -07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 15:36:37.766 -07:00 [INF] Executed DbCommand (1,071ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 15:37:07.962 -07:00 [INF] Executed DbCommand (36ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 15:37:13.335 -07:00 [INF] Executing OkObjectResult, writing value of type 'TheOneCRM.Application.DTOs.Auth.AuthResultDto'.
+2026-03-29 15:37:13.435 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API) in 404997.8527ms
+2026-03-29 15:37:13.439 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 15:37:13.443 -07:00 [WRN] Cannot modify response for StatusCode 200: Response has already started.
+2026-03-29 15:37:13.476 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/Auth/Login - 200 null application/json; charset=utf-8 408502.2429ms
+2026-03-29 15:47:43.728 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 15:47:45.826 -07:00 [INF] Executed DbCommand (106ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 15:47:46.085 -07:00 [INF] Executed DbCommand (231ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 15:47:46.107 -07:00 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 15:47:46.117 -07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 15:47:46.168 -07:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-29 15:47:46.232 -07:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-29 15:47:46.436 -07:00 [INF] User profile is available. Using 'C:\Users\virus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-29 15:47:47.636 -07:00 [INF] Executed DbCommand (329ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:47:47.736 -07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:47:47.745 -07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:47:47.755 -07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:47:47.768 -07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 15:47:47.845 -07:00 [INF] Executed DbCommand (19ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 15:47:49.932 -07:00 [INF] Now listening on: http://localhost:5210
+2026-03-29 15:47:50.085 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-29 15:47:50.093 -07:00 [INF] Hosting environment: Development
+2026-03-29 15:47:50.095 -07:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-03-29 15:47:52.039 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-03-29 15:47:53.820 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 1798.5692ms
+2026-03-29 15:47:53.958 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-03-29 15:47:54.159 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-29 15:47:54.169 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 9.4863ms
+2026-03-29 15:47:54.313 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 358.0157ms
+2026-03-29 15:48:00.177 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-03-29 15:48:00.278 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 100.7706ms
+2026-03-29 15:48:40.544 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/Auth/Login - application/json 61
+2026-03-29 15:48:40.614 -07:00 [WRN] Failed to determine the https port for redirect.
+2026-03-29 15:48:41.028 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 15:48:41.081 -07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(TheOneCRM.Application.DTOs.Auth.LoginDto) on controller TheOneCRM.API.Controllers.Auth.AuthController (TheOneCRM.API).
+2026-03-29 15:48:55.405 -07:00 [INF] Executed DbCommand (253ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 15:49:19.331 -07:00 [INF] Executed DbCommand (38ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 15:49:34.526 -07:00 [INF] Executed DbCommand (42ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 15:49:46.104 -07:00 [INF] Executing OkObjectResult, writing value of type 'TheOneCRM.API.Error.ApiResponse'.
+2026-03-29 15:49:46.198 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API) in 65103.0867ms
+2026-03-29 15:49:46.202 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 15:49:46.206 -07:00 [WRN] Cannot modify response for StatusCode 200: Response has already started.
+2026-03-29 15:49:46.248 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/Auth/Login - 200 null application/json; charset=utf-8 65704.3901ms
+2026-03-29 16:27:45.176 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 16:27:46.586 -07:00 [INF] Executed DbCommand (62ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 16:27:46.670 -07:00 [INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 16:27:46.679 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 16:27:46.683 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 16:27:46.718 -07:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-29 16:27:46.766 -07:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-29 16:27:46.824 -07:00 [INF] User profile is available. Using 'C:\Users\virus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-29 16:27:47.627 -07:00 [INF] Executed DbCommand (54ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:27:47.725 -07:00 [INF] Executed DbCommand (16ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:27:47.737 -07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:27:47.746 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:27:47.758 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:27:47.790 -07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:27:48.729 -07:00 [INF] Now listening on: http://localhost:5210
+2026-03-29 16:27:49.552 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-29 16:27:49.760 -07:00 [INF] Hosting environment: Development
+2026-03-29 16:27:49.783 -07:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-03-29 16:27:50.486 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-03-29 16:27:51.341 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 872.664ms
+2026-03-29 16:27:51.463 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-03-29 16:27:51.745 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-29 16:27:51.772 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 18.2171ms
+2026-03-29 16:27:51.976 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 513.5409ms
+2026-03-29 16:27:52.163 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-03-29 16:27:52.539 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 376.5382ms
+2026-03-29 16:29:30.236 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - application/json 178
+2026-03-29 16:29:30.359 -07:00 [WRN] Failed to determine the https port for redirect.
+2026-03-29 16:29:30.960 -07:00 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (Admin)
+2026-03-29 16:29:30.975 -07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2026-03-29 16:29:30.980 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - 401 null application/json 745.2466ms
+2026-03-29 16:31:00.720 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/Auth/Login - application/json 61
+2026-03-29 16:31:00.820 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:31:00.880 -07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(TheOneCRM.Application.DTOs.Auth.LoginDto) on controller TheOneCRM.API.Controllers.Auth.AuthController (TheOneCRM.API).
+2026-03-29 16:31:07.414 -07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:31:07.697 -07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 16:31:07.767 -07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 16:31:07.782 -07:00 [INF] Executing OkObjectResult, writing value of type 'TheOneCRM.Application.DTOs.Auth.AuthResultDto'.
+2026-03-29 16:31:07.798 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API) in 6903.0337ms
+2026-03-29 16:31:07.800 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:31:07.802 -07:00 [WRN] Cannot modify response for StatusCode 200: Response has already started.
+2026-03-29 16:31:07.809 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/Auth/Login - 200 null application/json; charset=utf-8 7089.1301ms
+2026-03-29 16:33:23.929 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - application/json 178
+2026-03-29 16:33:24.111 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API)'
+2026-03-29 16:33:24.156 -07:00 [INF] Route matched with {action = "Register", controller = "AddUserByAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(TheOneCRM.Application.DTOs.Auth.RegisterDto) on controller TheOneCRM.API.Controllers.Auth.AddUserByAdminController (TheOneCRM.API).
+2026-03-29 16:33:24.168 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API) in 4.4039ms
+2026-03-29 16:33:24.173 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API)'
+2026-03-29 16:33:24.313 -07:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: Unable to resolve service for type 'TheOneCRM.Application.Services.Auth.AuthService' while attempting to activate 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method247(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 26
+2026-03-29 16:33:24.331 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - 500 null application/json 402.2322ms
+2026-03-29 16:33:54.256 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 16:33:55.199 -07:00 [INF] Executed DbCommand (40ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 16:33:55.270 -07:00 [INF] Executed DbCommand (43ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 16:33:55.285 -07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 16:33:55.295 -07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 16:33:55.349 -07:00 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-29 16:33:55.384 -07:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-29 16:33:55.426 -07:00 [INF] User profile is available. Using 'C:\Users\virus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-29 16:33:55.946 -07:00 [INF] Executed DbCommand (51ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:33:56.034 -07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:33:56.050 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:33:56.055 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:33:56.098 -07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:33:56.126 -07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:33:56.829 -07:00 [INF] Now listening on: http://localhost:5210
+2026-03-29 16:33:57.264 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-29 16:33:58.177 -07:00 [INF] Hosting environment: Development
+2026-03-29 16:33:58.179 -07:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-03-29 16:33:58.212 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-03-29 16:33:58.939 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 765.4845ms
+2026-03-29 16:33:59.076 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-03-29 16:33:59.112 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-29 16:33:59.237 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 124.9006ms
+2026-03-29 16:33:59.288 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 213.629ms
+2026-03-29 16:33:59.401 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-03-29 16:33:59.454 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 55.6548ms
+2026-03-29 16:35:29.782 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/Auth/Login - application/json 60
+2026-03-29 16:35:29.880 -07:00 [WRN] Failed to determine the https port for redirect.
+2026-03-29 16:35:30.120 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:35:30.174 -07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(TheOneCRM.Application.DTOs.Auth.LoginDto) on controller TheOneCRM.API.Controllers.Auth.AuthController (TheOneCRM.API).
+2026-03-29 16:35:36.920 -07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:35:36.950 -07:00 [INF] Executing OkObjectResult, writing value of type 'TheOneCRM.Application.DTOs.Auth.AuthResultDto'.
+2026-03-29 16:35:36.965 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API) in 6781.1688ms
+2026-03-29 16:35:36.968 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:35:36.974 -07:00 [WRN] Cannot modify response for StatusCode 200: Response has already started.
+2026-03-29 16:35:36.989 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/Auth/Login - 200 null application/json; charset=utf-8 7207.3883ms
+2026-03-29 16:35:47.038 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/Auth/Login - application/json 61
+2026-03-29 16:35:47.053 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:35:47.062 -07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(TheOneCRM.Application.DTOs.Auth.LoginDto) on controller TheOneCRM.API.Controllers.Auth.AuthController (TheOneCRM.API).
+2026-03-29 16:35:50.270 -07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:35:50.567 -07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 16:35:50.630 -07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 16:35:50.638 -07:00 [INF] Executing OkObjectResult, writing value of type 'TheOneCRM.Application.DTOs.Auth.AuthResultDto'.
+2026-03-29 16:35:50.644 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API) in 3575.6437ms
+2026-03-29 16:35:50.647 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:35:50.649 -07:00 [WRN] Cannot modify response for StatusCode 200: Response has already started.
+2026-03-29 16:35:50.653 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/Auth/Login - 200 null application/json; charset=utf-8 3615.878ms
+2026-03-29 16:39:30.364 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - application/json 177
+2026-03-29 16:39:30.508 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API)'
+2026-03-29 16:39:30.520 -07:00 [INF] Route matched with {action = "Register", controller = "AddUserByAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(TheOneCRM.Application.DTOs.Auth.RegisterDto) on controller TheOneCRM.API.Controllers.Auth.AddUserByAdminController (TheOneCRM.API).
+2026-03-29 16:39:30.529 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API) in 4.18ms
+2026-03-29 16:39:30.539 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API)'
+2026-03-29 16:39:30.678 -07:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: Unable to resolve service for type 'TheOneCRM.Application.Services.Auth.AuthService' while attempting to activate 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method247(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|7_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 26
+2026-03-29 16:39:30.697 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - 500 null application/json 349.998ms
+2026-03-29 16:43:16.435 -07:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-03-29 16:43:17.676 -07:00 [INF] Executed DbCommand (41ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 16:43:17.749 -07:00 [INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 16:43:17.764 -07:00 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2026-03-29 16:43:17.771 -07:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2026-03-29 16:43:17.803 -07:00 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2026-03-29 16:43:17.838 -07:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-29 16:43:17.889 -07:00 [INF] User profile is available. Using 'C:\Users\virus\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2026-03-29 16:43:18.397 -07:00 [INF] Executed DbCommand (52ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:43:18.487 -07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:43:18.493 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:43:18.498 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:43:18.508 -07:00 [INF] Executed DbCommand (1ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedName_0
+2026-03-29 16:43:18.537 -07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:43:19.109 -07:00 [INF] Now listening on: http://localhost:5210
+2026-03-29 16:43:19.212 -07:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-29 16:43:19.214 -07:00 [INF] Hosting environment: Development
+2026-03-29 16:43:19.215 -07:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-03-29 16:43:21.300 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/index.html - null null
+2026-03-29 16:43:23.001 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/index.html - 200 null text/html;charset=utf-8 1719.6131ms
+2026-03-29 16:43:23.173 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_vs/browserLink - null null
+2026-03-29 16:43:23.454 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - null null
+2026-03-29 16:43:23.529 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_framework/aspnetcore-browser-refresh.js - 200 16511 application/javascript; charset=utf-8 74.8928ms
+2026-03-29 16:43:23.646 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/_vs/browserLink - 200 null text/javascript; charset=UTF-8 473.0676ms
+2026-03-29 16:43:26.011 -07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - null null
+2026-03-29 16:43:26.034 -07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5210/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 22.9871ms
+2026-03-29 16:43:50.186 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/Auth/Login - application/json 63
+2026-03-29 16:43:50.230 -07:00 [WRN] Failed to determine the https port for redirect.
+2026-03-29 16:43:50.445 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:43:50.483 -07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(TheOneCRM.Application.DTOs.Auth.LoginDto) on controller TheOneCRM.API.Controllers.Auth.AuthController (TheOneCRM.API).
+2026-03-29 16:43:59.522 -07:00 [INF] Executed DbCommand (30ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:44:02.465 -07:00 [INF] Executed DbCommand (12ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 16:44:05.745 -07:00 [INF] Executed DbCommand (44ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 16:44:10.560 -07:00 [INF] Executing OkObjectResult, writing value of type 'TheOneCRM.Application.DTOs.Auth.AuthResultDto'.
+2026-03-29 16:44:10.657 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API) in 20161.6561ms
+2026-03-29 16:44:10.660 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AuthController.Login (TheOneCRM.API)'
+2026-03-29 16:44:10.664 -07:00 [WRN] Cannot modify response for StatusCode 200: Response has already started.
+2026-03-29 16:44:10.673 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/Auth/Login - 200 null application/json; charset=utf-8 20487.0604ms
+2026-03-29 16:45:09.495 -07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - application/json 170
+2026-03-29 16:45:09.710 -07:00 [INF] Executing endpoint 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API)'
+2026-03-29 16:45:09.753 -07:00 [INF] Route matched with {action = "Register", controller = "AddUserByAdmin"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Register(TheOneCRM.Application.DTOs.Auth.RegisterDto) on controller TheOneCRM.API.Controllers.Auth.AddUserByAdminController (TheOneCRM.API).
+2026-03-29 16:45:10.107 -07:00 [INF] Executed DbCommand (14ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2026-03-29 16:45:10.365 -07:00 [INF] Executed DbCommand (10ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-03-29 16:45:10.973 -07:00 [INF] Executed DbCommand (101ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (DbType = Int32), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (Size = 256), @p5='?' (DbType = Boolean), @p6='?' (Size = 4000), @p7='?' (DbType = Boolean), @p8='?' (DbType = Boolean), @p9='?' (DbType = DateTimeOffset), @p10='?' (Size = 256), @p11='?' (Size = 256), @p12='?' (Size = 4000), @p13='?' (Size = 4000), @p14='?' (DbType = Boolean), @p15='?' (Size = 4000), @p16='?' (DbType = Boolean), @p17='?' (Size = 256), @p18='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AspNetUsers] ([Id], [AccessFailedCount], [ConcurrencyStamp], [CreatedAt], [Email], [EmailConfirmed], [FullName], [IsActive], [LockoutEnabled], [LockoutEnd], [NormalizedEmail], [NormalizedUserName], [PasswordHash], [PhoneNumber], [PhoneNumberConfirmed], [SecurityStamp], [TwoFactorEnabled], [UserName], [imageUrl])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10, @p11, @p12, @p13, @p14, @p15, @p16, @p17, @p18);
+2026-03-29 16:45:11.040 -07:00 [INF] Executed DbCommand (23ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2026-03-29 16:45:11.168 -07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (Size = 450), @__p_1='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[UserId], [a].[RoleId]
+FROM [AspNetUserRoles] AS [a]
+WHERE [a].[UserId] = @__p_0 AND [a].[RoleId] = @__p_1
+2026-03-29 16:45:11.186 -07:00 [INF] Executed DbCommand (9ms) [Parameters=[@__normalizedRoleName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[ConcurrencyStamp], [a].[Name], [a].[NormalizedName]
+FROM [AspNetRoles] AS [a]
+WHERE [a].[NormalizedName] = @__normalizedRoleName_0
+2026-03-29 16:45:11.225 -07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2026-03-29 16:45:11.342 -07:00 [INF] Executed DbCommand (35ms) [Parameters=[@p0='?' (Size = 450), @p1='?' (Size = 450), @p20='?' (Size = 450), @p2='?' (DbType = Int32), @p3='?' (Size = 4000), @p21='?' (Size = 4000), @p4='?' (DbType = DateTime2), @p5='?' (Size = 256), @p6='?' (DbType = Boolean), @p7='?' (Size = 4000), @p8='?' (DbType = Boolean), @p9='?' (DbType = Boolean), @p10='?' (DbType = DateTimeOffset), @p11='?' (Size = 256), @p12='?' (Size = 256), @p13='?' (Size = 4000), @p14='?' (Size = 4000), @p15='?' (DbType = Boolean), @p16='?' (Size = 4000), @p17='?' (DbType = Boolean), @p18='?' (Size = 256), @p19='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+INSERT INTO [AspNetUserRoles] ([RoleId], [UserId])
+VALUES (@p0, @p1);
+UPDATE [AspNetUsers] SET [AccessFailedCount] = @p2, [ConcurrencyStamp] = @p3, [CreatedAt] = @p4, [Email] = @p5, [EmailConfirmed] = @p6, [FullName] = @p7, [IsActive] = @p8, [LockoutEnabled] = @p9, [LockoutEnd] = @p10, [NormalizedEmail] = @p11, [NormalizedUserName] = @p12, [PasswordHash] = @p13, [PhoneNumber] = @p14, [PhoneNumberConfirmed] = @p15, [SecurityStamp] = @p16, [TwoFactorEnabled] = @p17, [UserName] = @p18, [imageUrl] = @p19
+OUTPUT 1
+WHERE [Id] = @p20 AND [ConcurrencyStamp] = @p21;
+2026-03-29 16:45:11.375 -07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 450)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a0].[Name]
+FROM [AspNetUserRoles] AS [a]
+INNER JOIN [AspNetRoles] AS [a0] ON [a].[RoleId] = [a0].[Id]
+WHERE [a].[UserId] = @__userId_0
+2026-03-29 16:45:11.383 -07:00 [INF] Executing OkObjectResult, writing value of type 'TheOneCRM.API.Error.ApiResponse'.
+2026-03-29 16:45:11.392 -07:00 [INF] Executed action TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API) in 1631.2721ms
+2026-03-29 16:45:11.395 -07:00 [INF] Executed endpoint 'TheOneCRM.API.Controllers.Auth.AddUserByAdminController.Register (TheOneCRM.API)'
+2026-03-29 16:45:11.397 -07:00 [WRN] Cannot modify response for StatusCode 200: Response has already started.
+2026-03-29 16:45:11.401 -07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5210/api/AddUserByAdmin/Add Application User - 200 null application/json; charset=utf-8 1924.5879ms

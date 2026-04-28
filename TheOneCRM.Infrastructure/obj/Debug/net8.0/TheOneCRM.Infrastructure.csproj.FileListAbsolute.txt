@@ -1,0 +1,17 @@
+E:\TheOneCRM\TheOneCRM.Infrastructure\bin\Debug\net8.0\TheOneCRM.Infrastructure.deps.json
+E:\TheOneCRM\TheOneCRM.Infrastructure\bin\Debug\net8.0\TheOneCRM.Infrastructure.runtimeconfig.json
+E:\TheOneCRM\TheOneCRM.Infrastructure\bin\Debug\net8.0\TheOneCRM.Infrastructure.dll
+E:\TheOneCRM\TheOneCRM.Infrastructure\bin\Debug\net8.0\TheOneCRM.Infrastructure.pdb
+E:\TheOneCRM\TheOneCRM.Infrastructure\bin\Debug\net8.0\TheOneCRM.Domain.dll
+E:\TheOneCRM\TheOneCRM.Infrastructure\bin\Debug\net8.0\TheOneCRM.Domain.pdb
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.csproj.AssemblyReference.cache
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.AssemblyInfoInputs.cache
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.AssemblyInfo.cs
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.csproj.CoreCompileInputs.cache
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCR.8CC1D59F.Up2Date
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.dll
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\refint\TheOneCRM.Infrastructure.dll
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.pdb
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.genruntimeconfig.cache
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\ref\TheOneCRM.Infrastructure.dll
