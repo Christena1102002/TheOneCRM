@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
+    "Method": "Create",
+    "RelativePath": "api/Customers",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.CreateCustomerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -14,7 +14,7 @@ namespace TheOneCRM.Domain.Models.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public StatusOfTickets Status { get; set; }
-        public int priority { get; set; }
+        public PriorityStatus priority { get; set; }
 
         public string? CreatedById { get; set; }
 

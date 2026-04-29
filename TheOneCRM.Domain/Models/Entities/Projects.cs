@@ -18,7 +18,7 @@ namespace TheOneCRM.Domain.Models.Entities
         public DateTime End {  get; set; }
         public int customerId { get; set; }
         [ForeignKey("customerId")]
-        public Customers? customers { get; set; }
+        public Customer? customers { get; set; }
 
         public string? CreatedById { get; set; }
 

@@ -17,6 +17,7 @@ namespace TheOneCRM.Infrastructure.Migrations
                 nullable: true);
         }
 
+
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {

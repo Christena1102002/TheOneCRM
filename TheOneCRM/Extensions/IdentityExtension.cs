@@ -32,10 +32,10 @@ namespace TheOneCRM.API.Extensions
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer =Configuration["JwtSettings:Issuer"],
-                    ValidAudience = Configuration["JwtSettings:Audience"],
+                    ValidIssuer = Configuration["JWT:ValidIssuer"],
+                    ValidAudience = Configuration["JWT:ValidAudience"],
                     IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(Configuration["JwtSettings:Secret"]))
+                                Encoding.UTF8.GetBytes(Configuration["JWT:Key"]!)),
                 };
             });
 

@@ -15,3 +15,4 @@ E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\refint\TheOneCRM.Infrastr
 E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.pdb
 E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.genruntimeconfig.cache
 E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\ref\TheOneCRM.Infrastructure.dll
+E:\TheOneCRM\TheOneCRM.Infrastructure\obj\Debug\net8.0\TheOneCRM.Infrastructure.sourcelink.json

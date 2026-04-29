@@ -14,6 +14,10 @@ namespace TheOneCRM.Infrastructure.Migrations
         private readonly AppDbContext _context;
         private IDbContextTransaction _transaction;
         private Dictionary<string, Object> _repositories;
+        public UnitOfWork(AppDbContext context)
+        {
+            _context = context ;
+        }
         public IGenericRepository<TEntity> Repository<TEntity>() where TEntity : class
         {
             _repositories ??= new Dictionary<string, object>();

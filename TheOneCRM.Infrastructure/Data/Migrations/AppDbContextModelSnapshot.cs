@@ -324,7 +324,7 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.ToTable("chatMessagesChannels");
                 });
 
-            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Customers", b =>
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -334,6 +334,10 @@ namespace TheOneCRM.Infrastructure.Migrations
 
                     b.Property<string>("AssignedToId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CampanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -348,8 +352,9 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActiveCustomer")
-                        .HasColumnType("bit");
+                    b.Property<string>("Notes")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
@@ -360,10 +365,7 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("campaignsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("compaignId")
+                    b.Property<int?>("compaignId")
                         .HasColumnType("int");
 
                     b.Property<int>("status")
@@ -375,9 +377,24 @@ namespace TheOneCRM.Infrastructure.Migrations
 
                     b.HasIndex("CreatedById");
 
-                    b.HasIndex("campaignsId");
+                    b.HasIndex("compaignId");
 
                     b.ToTable("customers");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerServices", b =>
+                {
+                    b.Property<int>("customerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("customerId", "ServiceId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("customerServices");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Deal", b =>
@@ -397,6 +414,10 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Property<string>("CreatedById")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CustomerStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("PipelineStagesId")
                         .HasColumnType("int");
 
@@ -411,9 +432,6 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int?>("customerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("statusOfDeal")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -582,6 +600,33 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.ToTable("RefreshTokens");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Service", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("NameAr")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NameEn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Services");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.SupportTickets", b =>
                 {
                     b.Property<int>("Id")
@@ -745,33 +790,53 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "appUser")
                         .WithMany()
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("appUser");
                 });
 
-            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Customers", b =>
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Customer", b =>
                 {
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "AssignedTo")
                         .WithMany()
-                        .HasForeignKey("AssignedToId");
+                        .HasForeignKey("AssignedToId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById");
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("TheOneCRM.Domain.Models.Entities.Campaigns", "campaigns")
-                        .WithMany()
-                        .HasForeignKey("campaignsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Customers")
+                        .HasForeignKey("compaignId")
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("AssignedTo");
 
                     b.Navigation("CreatedBy");
 
                     b.Navigation("campaigns");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerServices", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Service", "Service")
+                        .WithMany("customerServices")
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "customers")
+                        .WithMany("customerServices")
+                        .HasForeignKey("customerId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Service");
+
+                    b.Navigation("customers");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Deal", b =>
@@ -788,7 +853,7 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .WithMany("Deals")
                         .HasForeignKey("PipelineStagesId");
 
-                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customers", "customer")
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "customer")
                         .WithMany()
                         .HasForeignKey("customerId");
 
@@ -809,7 +874,7 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .WithMany()
                         .HasForeignKey("CreatedById");
 
-                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customers", "customers")
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "customers")
                         .WithMany()
                         .HasForeignKey("customerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -860,9 +925,24 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Campaigns", b =>
+                {
+                    b.Navigation("Customers");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Customer", b =>
+                {
+                    b.Navigation("customerServices");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PipelineStages", b =>
                 {
                     b.Navigation("Deals");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Service", b =>
+                {
+                    b.Navigation("customerServices");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,5 +16,6 @@ namespace TheOneCRM.Domain.Models.Entities
         public DateTime EndDate { get; set; }
         public string AppUserId {  get; set; }
         public AppUser appUser { get; set; }
+        public ICollection<Customer> Customers { get; set; } = new List<Customer>();
     }
 }

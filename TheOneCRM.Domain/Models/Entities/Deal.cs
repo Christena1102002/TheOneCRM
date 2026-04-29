@@ -12,12 +12,12 @@ namespace TheOneCRM.Domain.Models.Entities
     {
         public string Title { get; set; } 
         public decimal Value { get; set; } 
-       
-        public StatusOfDeal statusOfDeal { get; set; }
+        public string CustomerStatus {  get; set; }
+        //public StatusOfDeal statusOfDeal { get; set; }
         public int? customerId { get; set; }
 
         [ForeignKey("customerId")]
-        public Customers? customer { get; set; }
+        public Customer? customer { get; set; }
         //public int StageId { get; set; }
         //public PipelineStages Stage { get; set; }
 

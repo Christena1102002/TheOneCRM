@@ -8,9 +8,12 @@ namespace TheOneCRM.Domain.Models.Enums
 {
     public enum StatusOfCustomers
     {
-        New,  //جديد
-        Contacted, //تم التواصل معاه
-        Qualified, //موهل يكون عميل فعلي
-        Lost  // مش مهتم
+        none,
+        Negotiating,   // جاري التفاوض
+        Buyer,
+        NotBuyer
+        //Contacted, //تم التواصل معاه
+        //Qualified, //موهل يكون عميل فعلي
+        //Lost  // مش مهتم
     }
 }
