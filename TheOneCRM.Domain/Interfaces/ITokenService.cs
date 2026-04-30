@@ -10,8 +10,8 @@ namespace TheOneCRM.Domain.Interfaces
     public interface ITokenService
     {
         //Task<string> GenerateToken(AppUser user);
-        Task<(string accessToken, string refreshTokenPlain)> CreateTokenAsync(AppUser appUser, string ipAddress, bool rememberMe = false);
-        Task<(string newAccessToken, string newRefreshTokenPlain)> RefreshTokenAsync(string refreshTokenPlain, string ipAddress);
+        Task<(string accessToken, string refreshTokenPlain)> CreateTokenAsync(AppUser appUser, bool rememberMe = false);
+        Task<(string newAccessToken, string newRefreshTokenPlain)> RefreshTokenAsync(string refreshTokenPlain);
 
     }
 }

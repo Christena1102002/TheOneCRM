@@ -159,3 +159,11 @@ E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\refint\TheOneCRM.API.dll
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\TheOneCRM.API.pdb
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\TheOneCRM.API.genruntimeconfig.cache
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\ref\TheOneCRM.API.dll
+E:\TheOneCRM\TheOneCRM\bin\Release\net8.0\TheOneCRM.API.staticwebassets.runtime.json
+E:\TheOneCRM\TheOneCRM\bin\Release\net8.0\Microsoft.Extensions.Configuration.dll
+E:\TheOneCRM\TheOneCRM\bin\Release\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\TheOneCRM\TheOneCRM\bin\Release\net8.0\Microsoft.Extensions.Configuration.Binder.dll
+E:\TheOneCRM\TheOneCRM\bin\Release\net8.0\Microsoft.Extensions.ObjectPool.dll
+E:\TheOneCRM\TheOneCRM\bin\Release\net8.0\Microsoft.Extensions.Options.dll
+E:\TheOneCRM\TheOneCRM\bin\Release\net8.0\Microsoft.Extensions.Primitives.dll
+E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\TheOneCRM.API.sourcelink.json

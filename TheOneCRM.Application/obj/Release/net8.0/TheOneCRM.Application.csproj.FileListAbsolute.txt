@@ -15,3 +15,4 @@ E:\TheOneCRM\TheOneCRM.Application\obj\Release\net8.0\TheOneCRM.Application.dll
 E:\TheOneCRM\TheOneCRM.Application\obj\Release\net8.0\refint\TheOneCRM.Application.dll
 E:\TheOneCRM\TheOneCRM.Application\obj\Release\net8.0\TheOneCRM.Application.pdb
 E:\TheOneCRM\TheOneCRM.Application\obj\Release\net8.0\ref\TheOneCRM.Application.dll
+E:\TheOneCRM\TheOneCRM.Application\obj\Release\net8.0\TheOneCRM.Application.sourcelink.json

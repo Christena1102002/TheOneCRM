@@ -16,5 +16,9 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public int? CampaignId { get; set; }
 
         public List<int>? ServiceIds { get; set; } = new();
+
+      
+        public bool AssignToSalesTeam { get; set; } = false;
+        public string? SalesPersonId { get; set; }
     }
 }

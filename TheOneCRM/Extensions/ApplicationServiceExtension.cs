@@ -1,8 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TheOneCRM.Application.Interfaces;
+using TheOneCRM.Application.Interfaces.ICampaign;
 using TheOneCRM.Application.Interfaces.ICustomers;
 using TheOneCRM.Application.Mapping;
+using TheOneCRM.Application.Services;
+using TheOneCRM.Application.Services.Auth;
 using TheOneCRM.Application.Services.Customers;
+using TheOneCRM.Application.Services.Token;
+
 
 //using TheOneCRM.Application.Services.Auth;
 using TheOneCRM.Domain.Interfaces;
@@ -16,14 +21,14 @@ namespace TheOneCRM.API.Extensions
         public static IServiceCollection AddApplicationService(this IServiceCollection Services)
         {
             Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            //Services.AddScoped<IAuthService, AuthService>();
-            
-                Services.AddScoped<ICustomerService, CustomerService>();
+            Services.AddScoped<IAuthService, AuthService>();
+            Services.AddScoped<ITokenService, TokenService>();
+            Services.AddScoped<ICustomerService, CustomerService>();
             Services.AddScoped<IUnitOfWork, UnitOfWork>();
           Services.AddAutoMapper(typeof(MappingProfile));
-         
-           
-         
+            Services.AddScoped<ICampaignService, CampaignService>();
+
+
 
 
             return Services;

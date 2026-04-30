@@ -10,3 +10,4 @@ E:\TheOneCRM\TheOneCRM.Domain\obj\Release\net8.0\TheOneCRM.Domain.dll
 E:\TheOneCRM\TheOneCRM.Domain\obj\Release\net8.0\refint\TheOneCRM.Domain.dll
 E:\TheOneCRM\TheOneCRM.Domain\obj\Release\net8.0\TheOneCRM.Domain.pdb
 E:\TheOneCRM\TheOneCRM.Domain\obj\Release\net8.0\ref\TheOneCRM.Domain.dll
+E:\TheOneCRM\TheOneCRM.Domain\obj\Release\net8.0\TheOneCRM.Domain.sourcelink.json

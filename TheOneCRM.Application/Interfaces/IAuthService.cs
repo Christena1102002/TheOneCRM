@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.DTOs.Auth;
+using TheOneCRM.Domain.Models.DTOs.Auth;
 
 namespace TheOneCRM.Application.Interfaces
 {
@@ -13,6 +14,8 @@ namespace TheOneCRM.Application.Interfaces
         Task<AuthResultDto> RegisterAsync(RegisterDto dto);
         Task<AuthResultDto?> LoginAsync(LoginDto dto);
         Task<GenericResult<List<UsersDto>>> GetAllUsers();
-
+        Task<GenericResult<UsersDto>> GetUsersByID(string userID);
+        Task<GenericResult<UsersDto>> UpdateUser(string userId, UpdateUserDto dto);
+        Task<Result> DeleteUser(string userId);
     }
 }

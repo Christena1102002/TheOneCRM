@@ -16,7 +16,13 @@ E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCo
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Configuration.dll
+E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Configuration.Binder.dll
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyModel.dll
+E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.ObjectPool.dll
+E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Options.dll
+E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Primitives.dll
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.dll
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.Extensions.Msal.dll
 E:\TheOneCRM\TheOneCRM\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Abstractions.dll

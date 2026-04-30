@@ -1,16 +1,23 @@
 ﻿using System.Diagnostics;
 using System.Text.Json;
-using TheOneCRM.Application.DTOs;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Serilog.Context;
+using TheOneCRM.API.Error;
+using TheOneCRM.Application.DTOs;
 namespace TheOneCRM.API.Middlewares
 {
-    public  class ExceptionMiddleware
+    public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly IWebHostEnvironment _env;
         private readonly ILogger<ExceptionMiddleware> _logger;
 
-        public ExceptionMiddleware(RequestDelegate next, IWebHostEnvironment env, ILogger<ExceptionMiddleware> logger)
+        public ExceptionMiddleware(
+            RequestDelegate next,
+            IWebHostEnvironment env,
+            ILogger<ExceptionMiddleware> logger)
         {
             _next = next;
             _env = env;
@@ -19,62 +26,113 @@ namespace TheOneCRM.API.Middlewares
 
         public async Task InvokeAsync(HttpContext context)
         {
-            var StopWatch = Stopwatch.StartNew();
+            var stopwatch = Stopwatch.StartNew();
 
             try
             {
                 await _next(context);
-                if (!context.Response.HasStarted)
-                {
-                    if (context.Response.StatusCode == 403)
-                    {
-                        context.Response.ContentType = "application/json";
-                        await context.Response.WriteAsync("{\"Message\": \"Access Denied: You do not have the required permissions to access this resource.\"}");
-                    }
-                    else if (context.Response.StatusCode == 401)
-                    {
-                        context.Response.ContentType = "application/json";
-                        await context.Response.WriteAsync("{\"Message\": \"Unauthorized: Please log in to access this resource.\"}");
-                    }
-                }
-                else
-                {
-                    _logger.LogWarning("Cannot modify response for StatusCode {StatusCode}: Response has already started.", context.Response.StatusCode);
-                }
             }
             catch (Exception ex)
             {
+                stopwatch.Stop();
+
+                if (context.Response.HasStarted)
                 {
-                    // التحقق مما إذا كانت الاستجابة قد بدأت قبل تعديل الرؤوس
-                    if (!context.Response.HasStarted)
-                    {
-                        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                        context.Response.ContentType = "application/json";
-                        var response = _env.IsDevelopment()
-                            ? new ErrorResponse { Message = "Internal Server Error", Details = ex.ToString() }
-                            : new ErrorResponse { Message = "An unexpected error occurred. Please try again later.", Details = null };
-
-                        await context.Response.WriteAsync(JsonSerializer.Serialize(response));
-                    }
-                    else
-                    {
-                        _logger.LogWarning("Cannot handle exception: Response has already started.");
-                    }
-
-                    LogError(context, ex, StopWatch.Elapsed.TotalMilliseconds);
+                    _logger.LogWarning("Cannot handle exception because the response has already started.");
+                    LogError(context, ex, stopwatch.Elapsed.TotalMilliseconds);
+                    throw;
                 }
+
+                await HandleExceptionAsync(context, ex, stopwatch.Elapsed.TotalMilliseconds);
             }
             finally
             {
-                StopWatch.Stop(); // إيقاف قياس الوقت
+                stopwatch.Stop();
             }
         }
-         private void LogError(HttpContext context, Exception ex, double elapsedMilliseconds)
-         {
-            using (LogContext.PushProperty("RequestPath", context.Request.Path))
+
+        private async Task HandleExceptionAsync(HttpContext context, Exception ex, double elapsedMilliseconds)
+        {
+            var (statusCode, message) = ex switch
+            {
+                UnauthorizedAccessException => (
+                    StatusCodes.Status401Unauthorized,
+                    "Unauthorized access."
+                ),
+
+                SecurityTokenException => (
+                    StatusCodes.Status401Unauthorized,
+                    "Invalid or expired token."
+                ),
+
+                BadHttpRequestException => (
+                    StatusCodes.Status400BadRequest,
+                    ex.Message
+                ),
+
+                InvalidOperationException => (
+                    StatusCodes.Status400BadRequest,
+                    ex.Message
+                ),
+
+                KeyNotFoundException => (
+                    StatusCodes.Status404NotFound,
+                    ex.Message
+                ),
+
+                DbUpdateConcurrencyException => (
+                    StatusCodes.Status409Conflict,
+                    "The resource was modified by another process. Please refresh and try again."
+                ),
+
+                DbUpdateException dbUpdateEx => MapDbUpdateException(dbUpdateEx),
+
+                _ => (
+                    StatusCodes.Status500InternalServerError,
+                    "An unexpected error occurred. Please try again later."
+                )
+            };
+
+            var details = GetDetailedMessage(ex);
+
+            context.Response.StatusCode = statusCode;
+            context.Response.ContentType = "application/json";
+
+            ApiErrorResponse response;
+
+            if (statusCode == StatusCodes.Status500InternalServerError)
+            {
+                response = _env.IsDevelopment()
+                    ? new ApiErrorResponse(statusCode, message, details)
+                    : new ApiErrorResponse(statusCode, message);
+            }
+            else
+            {
+                response = new ApiErrorResponse(statusCode, message, details);
+            }
+
+            await WriteJsonResponse(context, response);
+
+            LogError(context, ex, elapsedMilliseconds);
+        }
+
+        private async Task WriteJsonResponse(HttpContext context, ApiErrorResponse response)
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull
+            };
+
+            await context.Response.WriteAsync(JsonSerializer.Serialize(response, options));
+        }
+
+        private void LogError(HttpContext context, Exception ex, double elapsedMilliseconds)
+        {
+            using (LogContext.PushProperty("RequestPath", context.Request.Path.ToString()))
             using (LogContext.PushProperty("RequestMethod", context.Request.Method))
             using (LogContext.PushProperty("StatusCode", context.Response.StatusCode))
-            using (LogContext.PushProperty("Elapsed", elapsedMilliseconds))
+            using (LogContext.PushProperty("ElapsedMilliseconds", elapsedMilliseconds))
             using (LogContext.PushProperty("User", context.User?.Identity?.Name ?? "Anonymous"))
             using (LogContext.PushProperty("TraceId", context.TraceIdentifier))
             using (LogContext.PushProperty("SpanId", Activity.Current?.SpanId.ToString() ?? "N/A"))
@@ -82,7 +140,50 @@ namespace TheOneCRM.API.Middlewares
                 _logger.LogError(ex, "An error occurred while processing the request.");
             }
         }
-       }
+
+        private static (int statusCode, string message) MapDbUpdateException(DbUpdateException ex)
+        {
+            if (ex.InnerException is SqlException sqlException)
+            {
+                return sqlException.Number switch
+                {
+                    547 => (
+                        StatusCodes.Status409Conflict,
+                        "Operation failed بسبب ارتباط البيانات (Foreign Key constraint)."
+                    ),
+                    2601 or 2627 => (
+                        StatusCodes.Status409Conflict,
+                        "Operation failed بسبب تكرار قيمة يجب أن تكون فريدة (Unique constraint)."
+                    ),
+                    _ => (
+                        StatusCodes.Status400BadRequest,
+                        "Database update failed. Please check the submitted data."
+                    )
+                };
+            }
+
+            return (
+                StatusCodes.Status400BadRequest,
+                "Database update failed. Please check the submitted data."
+            );
+        }
+
+        private static string GetDetailedMessage(Exception ex)
+        {
+            var messages = new List<string>();
+            Exception? current = ex;
+
+            while (current != null)
+            {
+                if (!string.IsNullOrWhiteSpace(current.Message))
+                    messages.Add(current.Message);
+
+                current = current.InnerException;
+            }
+
+            return string.Join(" | ", messages.Distinct());
+        }
     }
+}
 
 

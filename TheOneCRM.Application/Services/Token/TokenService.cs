@@ -28,11 +28,11 @@ namespace TheOneCRM.Application.Services.Token
             _configuration = configuration;
             _db = db;
         }
-        public async Task<(string accessToken, string refreshTokenPlain)> CreateTokenAsync(AppUser appUser, string ipAddress, bool rememberMe = false)
+        public async Task<(string accessToken, string refreshTokenPlain)> CreateTokenAsync(AppUser appUser, bool rememberMe = false)
         {
             var claims = await BuildClaimsForAppUserAsync(appUser);
             var accessToken = GenerateJwtToken(claims);
-            var (plainRefreshToken, refreshTokenEntity) = GenerateRefreshTokenEntity(ownerId: appUser.Id.ToString(),ipAddress: ipAddress,rememberMe: rememberMe);
+            var (plainRefreshToken, refreshTokenEntity) = GenerateRefreshTokenEntity(ownerId: appUser.Id.ToString(),rememberMe: rememberMe);
 
             await _db.RefreshTokens.AddAsync(refreshTokenEntity);
             await _db.SaveChangesAsync();
@@ -40,7 +40,7 @@ namespace TheOneCRM.Application.Services.Token
             return (accessToken, plainRefreshToken);
         }
 
-        public async Task<(string newAccessToken, string newRefreshTokenPlain)> RefreshTokenAsync(string refreshTokenPlain, string ipAddress)
+        public async Task<(string newAccessToken, string newRefreshTokenPlain)> RefreshTokenAsync(string refreshTokenPlain)
         {
             var normalizedToken = NormalizeToken(refreshTokenPlain);
             if (string.IsNullOrWhiteSpace(normalizedToken))
@@ -63,7 +63,6 @@ namespace TheOneCRM.Application.Services.Token
 
             var (newPlainToken, newEntity) = GenerateRefreshTokenEntity(
                 ownerId: existing.OwnerId,
-                ipAddress: ipAddress,
                 rememberMe: existing.IsRememberMe);
 
             existing.IsRevoked = true;
@@ -131,7 +130,6 @@ namespace TheOneCRM.Application.Services.Token
 
         private (string plainToken, RefreshToken entity) GenerateRefreshTokenEntity(
           string ownerId,
-          string ipAddress,
           bool rememberMe)
         {
             var bytes = new byte[64];
@@ -154,7 +152,7 @@ namespace TheOneCRM.Application.Services.Token
                 OwnerId = ownerId,
                 CreatedAt = DateTime.UtcNow,
                 ExpiresAt = DateTime.UtcNow.AddDays(days),
-                RemoteIpAddress = ipAddress,
+                //RemoteIpAddress = ipAddress,
                 IsRememberMe = rememberMe
             };
 
