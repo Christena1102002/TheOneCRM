@@ -40,7 +40,7 @@ namespace TheOneCRM.Application.Services.Token
             return (accessToken, plainRefreshToken);
         }
 
-        public async Task<(string newAccessToken, string newRefreshTokenPlain)> RefreshTokenAsync(string refreshTokenPlain)
+        public async Task<(string newAccessToken, string newRefreshTokenPlain, AppUser user)> RefreshTokenAsync(string refreshTokenPlain)
         {
             var normalizedToken = NormalizeToken(refreshTokenPlain);
             if (string.IsNullOrWhiteSpace(normalizedToken))
@@ -72,13 +72,17 @@ namespace TheOneCRM.Application.Services.Token
 
             _db.RefreshTokens.Update(existing);
             await _db.RefreshTokens.AddAsync(newEntity);
+            //  جيب الـ user
+            var user = await _userManager.FindByIdAsync(existing.OwnerId);
+            if (user == null)
+                throw new SecurityTokenException("Invalid token owner");
 
             var claims = await BuildClaimsFromRefreshTokenOwnerAsync(existing);
             var newAccessToken = GenerateJwtToken(claims);
 
             await _db.SaveChangesAsync();
 
-            return (newAccessToken, newPlainToken);
+            return (newAccessToken, newPlainToken,user);
         }
          private async Task<List<Claim>> BuildClaimsFromRefreshTokenOwnerAsync(RefreshToken token)
          { 

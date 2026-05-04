@@ -29,6 +29,7 @@ namespace TheOneCRM.Domain.Models.Entities
         //public DateTime? CompromisedAt { get; set; }
 
         //public string? CompromisedReason { get; set; }
+
         public bool IsExpired => DateTime.UtcNow >= ExpiresAt;
 
         public bool IsActive =>

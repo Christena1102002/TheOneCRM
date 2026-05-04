@@ -11,7 +11,7 @@ namespace TheOneCRM.Domain.Interfaces
     {
         //Task<string> GenerateToken(AppUser user);
         Task<(string accessToken, string refreshTokenPlain)> CreateTokenAsync(AppUser appUser, bool rememberMe = false);
-        Task<(string newAccessToken, string newRefreshTokenPlain)> RefreshTokenAsync(string refreshTokenPlain);
+        Task<(string newAccessToken, string newRefreshTokenPlain, AppUser user)> RefreshTokenAsync(string refreshTokenPlain);
 
     }
 }

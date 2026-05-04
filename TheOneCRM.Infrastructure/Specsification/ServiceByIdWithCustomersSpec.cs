@@ -8,10 +8,12 @@ using TheOneCRM.Domain.Specifications;
 
 namespace TheOneCRM.Infrastructure.Specsification
 {
-    public class CampaignByIdSpec : BaseSpecification<Campaigns>
+    public class ServiceByIdWithCustomersSpec : BaseSpecification<Service>
     {
-        public CampaignByIdSpec(int id) : base(x => x.Id == id)
+        public ServiceByIdWithCustomersSpec(int id)
+            : base(s => s.Id == id)
         {
+            AddInclude(s => s.customerServices);
         }
     }
 }

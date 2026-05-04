@@ -264,6 +264,34 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CampaignCountry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CampaignId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CampaignId");
+
+                    b.ToTable("CampaignCountry");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Campaigns", b =>
                 {
                     b.Property<int>("Id")
@@ -279,6 +307,9 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Property<decimal>("Budget")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int>("ChannelSourceId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
@@ -288,9 +319,6 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Source")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -302,7 +330,32 @@ namespace TheOneCRM.Infrastructure.Migrations
 
                     b.HasIndex("AppUserId");
 
+                    b.HasIndex("ChannelSourceId");
+
                     b.ToTable("campaigns");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.ChannelSource", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("channelSources");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.ChatMessagesChannels", b =>
@@ -785,6 +838,17 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CampaignCountry", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Campaigns", "Campaign")
+                        .WithMany("Countries")
+                        .HasForeignKey("CampaignId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Campaign");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Campaigns", b =>
                 {
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "appUser")
@@ -792,6 +856,14 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .HasForeignKey("AppUserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.ChannelSource", "ChannelSource")
+                        .WithMany()
+                        .HasForeignKey("ChannelSourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ChannelSource");
 
                     b.Navigation("appUser");
                 });
@@ -927,6 +999,8 @@ namespace TheOneCRM.Infrastructure.Migrations
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Campaigns", b =>
                 {
+                    b.Navigation("Countries");
+
                     b.Navigation("Customers");
                 });
 

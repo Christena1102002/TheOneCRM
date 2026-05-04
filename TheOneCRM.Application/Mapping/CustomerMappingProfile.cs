@@ -29,7 +29,9 @@ namespace TheOneCRM.Application.Mapping
      .ForMember(d => d.SalesPersonName,
          o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.UserName : null))
      .ForMember(d => d.Services,
-         o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()));
+         o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
+      .ForMember(dest => dest.Source,
+                opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name)); ;
 
 
 

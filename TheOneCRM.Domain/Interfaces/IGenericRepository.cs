@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using Microsoft.Extensions.Configuration;
 using TheOneCRM.Domain.Specifications;
 
 namespace TheOneCRM.Domain.Interfaces
@@ -34,6 +35,8 @@ namespace TheOneCRM.Domain.Interfaces
         Task<bool> AnyAsync(Expression<Func<T, bool>> predicate);
 
         Task<int> ExecuteDeleteAsync(Expression<Func<T, bool>> predicate, CancellationToken ct = default);
-
+        Task<IReadOnlyList<TResult>> ListWithSelectAsync<TResult>(
+      ISpecification<T> spec,
+      Expression<Func<T, TResult>> selector);
     }
 }

@@ -23,22 +23,16 @@ namespace TheOneCRM.API.Controllers.Auth
         public async Task<IActionResult> Login([FromBody] LoginDto dto)
         {
             var res = await _auth.LoginAsync(dto);
-            if (!res.IsSuccess)
-            {
-
-                if (res.Message.Contains("Invalid") || res.Message.Contains("incorrect"))
-                    return Unauthorized(new ApiResponse(401, res.Message));
-
-
-                if (res.Message.Contains("locked"))
-                    return StatusCode(403, new ApiResponse(403, res.Message));
-
-                return BadRequest(new ApiResponse(400, res.Message));
-            }
-
             return Ok(new ApiResponse(200, res.Message, res));
         }
-
+        [HttpPost("refresh-token")]
+        [AllowAnonymous]
+        [SwaggerOperation(Summary = "Refresh Access Token")]
+        public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenRequestDto dto)
+        {
+            var res = await _auth.RefreshTokenAsync(dto.RefreshToken);
+            return Ok(new ApiResponse(200, res.Message, res));
+        }
         [Authorize(Roles = "Admin")]
         [HttpPost("AddApplicationUser")]
         [SwaggerOperation(Summary = "Create Accounts by Admin")]

@@ -14,5 +14,9 @@ namespace TheOneCRM.Infrastructure.Specsification
        : base(s => ids.Contains(s.Id))
         {
         }
+        public ServicesByIdsSpec(int id)
+          : base(s => s.Id == id)
+        {
+        }
     }
 }

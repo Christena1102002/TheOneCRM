@@ -14,6 +14,11 @@ namespace TheOneCRM.Application.Mapping
         public CampaignMapping()
         {
             CreateMap<Campaigns, CampaignDropdownDto>();
+            CreateMap<Campaigns, CampaignResponseDto>()
+              .ForMember(dest => dest.SourceName,
+                  opt => opt.MapFrom(src => src.ChannelSource.Name));
+            CreateMap<CreateCampaignDto, Campaigns>()
+                .ForMember(dest => dest.ChannelSourceId, opt => opt.MapFrom(src => src.ChannelSourceId));
         }
     }
        

@@ -10,7 +10,7 @@ namespace TheOneCRM.Application.DTOs.Auth
     {
         public bool IsSuccess { get; set; }
         public string? Message { get; set; }
-        public string Token { get; set; }
+        public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
         public string Role { get; set; }
         public string UserId { get; set; }

@@ -14,6 +14,7 @@ using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Domain.Models.Enums;
 using TheOneCRM.Infrastructure.Specsification;
+using TheOneCRM.Infrastructure.Specsification.CampaignsSpec;
 using TheOneCRM.Infrastructure.Specsification.Customerspec;
 using static TheOneCRM.Infrastructure.Specsification.CustomersWithFilterSpec;
 
@@ -91,23 +92,6 @@ namespace TheOneCRM.Application.Services.Customers
            
         }
 
-        //public async Task<Pagination<CustomerListItemDto>> GetCustomersAsync(CustomerFilterParams filter)
-        //{
-        //var spec = new CustomersWithFilterSpec(filter);
-        //var countSpec = new CustomersFilterCountSpec(filter);
-
-        //var customers = await _unitOfWork.Repository<Customer>().ListAsync(spec);
-        //var totalCount = await _unitOfWork.Repository<Customer>().CountAsync(countSpec);
-
-        //var data = _mapper.Map<IReadOnlyList<CustomerListItemDto>>(customers);
-
-        //return new Pagination<CustomerListItemDto>(
-        //    filter.PageIndex,
-        //    filter.PageSize,
-        //    totalCount,
-        //    data
-        //    //);
-        //}
         public async Task<IReadOnlyList<CustomerListItemDto>> SearchCustomersAsync(string? searchTerm)
         {
             // ?? "" معناها لو searchTerm = null خليه string فاضي
@@ -144,19 +128,18 @@ namespace TheOneCRM.Application.Services.Customers
         public async Task<Pagination<CustomerListItemDto>> GetAllCustomersAsync(
     CustomerPaginationParams paginationParams)
         {
-            // 1) Spec للبيانات
+
             var spec = new CustomersWithPaginationSpec(paginationParams);
 
-            // 2) Spec للعدد الإجمالي
-            var countSpec = new CustomersCountSpec();
 
-            // 3) جيب العملاء
+            var countSpec = new CustomersCountSpec(paginationParams);
+            //var countSpec = new CustomersCountSpec();
+
+
             var customers = await _unitOfWork.Repository<Customer>().ListAsync(spec);
 
-            // 4) جيب العدد الإجمالي
             var totalCount = await _unitOfWork.Repository<Customer>().CountAsync(countSpec);
 
-            // 5) Map للـ DTO
             var data = _mapper.Map<IReadOnlyList<CustomerListItemDto>>(customers);
 
             // 6) رجّع Pagination

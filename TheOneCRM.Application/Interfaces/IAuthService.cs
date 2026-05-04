@@ -16,6 +16,7 @@ namespace TheOneCRM.Application.Interfaces
         Task<GenericResult<List<UsersDto>>> GetAllUsers();
         Task<GenericResult<UsersDto>> GetUsersByID(string userID);
         Task<GenericResult<UsersDto>> UpdateUser(string userId, UpdateUserDto dto);
+        Task<AuthResultDto> RefreshTokenAsync(string refreshToken);
         Task<Result> DeleteUser(string userId);
     }
 }

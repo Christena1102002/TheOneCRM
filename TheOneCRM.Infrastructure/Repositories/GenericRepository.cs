@@ -4,7 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Domain.Specifications;
 using TheOneCRM.Infrastructure.Data;
@@ -16,7 +18,6 @@ namespace TheOneCRM.Infrastructure.Migrations
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         protected readonly AppDbContext _context;
-        //protected readonly DbSet<T> _dbSet;
         private readonly DbSet<T> _dbSet;
         public GenericRepository(AppDbContext context)
         {
@@ -88,6 +89,16 @@ namespace TheOneCRM.Infrastructure.Migrations
                 .Where(predicate)
                 .ExecuteDeleteAsync(ct);
         }
+        public async Task<IReadOnlyList<TResult>> ListWithSelectAsync<TResult>(
+    ISpecification<T> spec,
+    Expression<Func<T, TResult>> selector)
+        {
+            var query = SpecificationEvaluator<T>.GetQuery(_dbSet.AsQueryable(), spec);
 
+            return await query
+                .Select(selector)
+                .ToListAsync();
+        }
     }
 }
+

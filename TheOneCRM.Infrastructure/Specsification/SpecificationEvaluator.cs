@@ -21,6 +21,8 @@ namespace TheOneCRM.Infrastructure.Specsification
 
             query = spec.IncludeStrings.Aggregate(query, (current, include) => current.Include(include));
 
+            
+            
             IOrderedQueryable<T>? orderedQuery = null;
 
             if (spec.OrderBy is not null)

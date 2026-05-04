@@ -34,24 +34,19 @@ namespace TheOneCRM.Application.Services.Auth
         {
             var User = await _userManager.FindByEmailAsync(dto.Email);
             if (User == null)
-            {
-                return new AuthResultDto
-                {
-                    IsSuccess = false,
-                    Message = "In valid email or password"
-                };
-            }
+                throw new UnauthorizedAccessException("Invalid email or password");
 
-            var ok = await _userManager.CheckPasswordAsync(User, dto.Password);
-            if (!ok)
-            {
-                return new AuthResultDto
-                {
-                    IsSuccess = false,
-                    Message = "Invalid email or password"
-                };
-            }
+            if (await _userManager.IsLockedOutAsync(User))
+                throw new InvalidOperationException("Account is locked. Please try again later.");
 
+
+            var isPasswordValid = await _userManager.CheckPasswordAsync(User, dto.Password);
+            if (!isPasswordValid)
+            {
+                await _userManager.AccessFailedAsync(User); // عشان الـ lockout counter
+                throw new UnauthorizedAccessException("Invalid email or password");
+            }
+            await _userManager.ResetAccessFailedCountAsync(User);
             var (accessToken, refreshToken) = await _tokenService.CreateTokenAsync(User);
             var roles = await _userManager.GetRolesAsync(User);
             var role = roles.FirstOrDefault();
@@ -59,7 +54,7 @@ namespace TheOneCRM.Application.Services.Auth
             {
                 IsSuccess = true,
                 Message = "Login Successfully",
-                Token = accessToken,
+                AccessToken = accessToken,
                 RefreshToken = refreshToken,
                 Role = role,
                 UserId = User.Id,
@@ -109,7 +104,7 @@ namespace TheOneCRM.Application.Services.Auth
                 UserId = user.Id,
                 Email = user.Email,
                 Role = role,
-                Token=accessToken,
+                AccessToken=accessToken,
                 RefreshToken=refreshToken,
                 //Message = "Account create Successfuly"
             };
@@ -186,6 +181,25 @@ namespace TheOneCRM.Application.Services.Auth
                 return Result.Failure("Failed to delete user");
             await _unitOfWork.SaveChangesAsync();
             return Result.Success("Delete this User Successfuly");
+        }
+        public async Task<AuthResultDto> RefreshTokenAsync(string refreshToken)
+        {
+            if (string.IsNullOrWhiteSpace(refreshToken))
+                throw new InvalidOperationException("Refresh token is required");
+
+            var (newAccessToken, newRefreshTokenPlain,user) = await _tokenService
+                .RefreshTokenAsync(refreshToken);
+            var roles = await _userManager.GetRolesAsync(user);
+            return new AuthResultDto
+            {
+                IsSuccess = true,
+                Message = "Token refreshed successfully",
+                AccessToken = newAccessToken,
+                RefreshToken = newRefreshTokenPlain,
+                Role=roles.FirstOrDefault(),
+                UserId=user.Id.ToString(),
+                Email=user.Email
+            };
         }
     }
 }

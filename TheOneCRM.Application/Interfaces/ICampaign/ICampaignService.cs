@@ -10,5 +10,6 @@ namespace TheOneCRM.Application.Interfaces.ICampaign
     public interface ICampaignService
     {
         Task<IReadOnlyList<CampaignDropdownDto>> GetCampaignsForDropdownAsync();
+        Task<CampaignResponseDto> CreateCampaignAsync(CreateCampaignDto dto, string userId);
     }
 }
