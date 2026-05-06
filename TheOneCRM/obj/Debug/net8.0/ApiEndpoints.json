@@ -252,6 +252,16 @@
   },
   {
     "ContainingType": "TheOneCRM.API.Controllers.CampaignsController",
+    "Method": "GetCountries",
+    "RelativePath": "api/Campaigns/dropdownCountries",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CampaignsController",
     "Method": "GetAllCampaigns",
     "RelativePath": "api/Campaigns/GetAllCampaigns",
     "HttpMethod": "GET",

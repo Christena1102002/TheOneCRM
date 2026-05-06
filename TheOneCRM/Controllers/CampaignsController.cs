@@ -78,5 +78,13 @@ namespace TheOneCRM.API.Controllers
 
             return Ok(new ApiResponse(200, "Dashboard retrieved", result));
         }
+        [HttpGet("dropdownCountries")]
+        public IActionResult GetCountries()
+        {
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/data/countries.json");
+            var json = System.IO.File.ReadAllText(path);
+
+            return Content(json, "application/json");
+        }
     }
 }

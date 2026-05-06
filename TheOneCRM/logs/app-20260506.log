@@ -403,3 +403,39 @@ System.Collections.Generic.KeyNotFoundException: Services not found: 2
 2026-05-06 17:16:07.743 +03:00 [INF] Application started. Press Ctrl+C to shut down.
 2026-05-06 17:16:07.746 +03:00 [INF] Hosting environment: Development
 2026-05-06 17:16:07.748 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 17:29:19.266 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:29:19.371 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:29:19.378 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:29:22.406 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 17:29:22.855 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 17:29:23.388 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 17:29:23.471 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 17:29:23.477 +03:00 [INF] Hosting environment: Development
+2026-05-06 17:29:23.480 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 17:46:47.991 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:46:48.047 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:46:48.052 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:46:50.816 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 17:46:51.261 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 17:46:51.787 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 17:46:51.859 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 17:46:51.861 +03:00 [INF] Hosting environment: Development
+2026-05-06 17:46:51.863 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 17:46:53.014 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Conflicting method/path combination "GET api/Campaigns/dropdown" for actions - TheOneCRM.API.Controllers.CampaignsController.GetForDropdown (TheOneCRM.API),TheOneCRM.API.Controllers.CampaignsController.GetCountries (TheOneCRM.API). Actions require a unique method/path combination for Swagger/OpenAPI 3.0. Use ConflictingActionsResolver as a workaround
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-06 17:47:20.676 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:47:20.738 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:47:20.746 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:47:23.513 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 17:47:23.961 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 17:47:24.434 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 17:47:24.513 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 17:47:24.517 +03:00 [INF] Hosting environment: Development
+2026-05-06 17:47:24.519 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 17:47:32.844 +03:00 [WRN] Failed to determine the https port for redirect.

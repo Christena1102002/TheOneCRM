@@ -468,6 +468,18 @@
         }
       }
     },
+    "/api/Campaigns/dropdownCountries": {
+      "get": {
+        "tags": [
+          "Campaigns"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ChannelSources": {
       "post": {
         "tags": [
