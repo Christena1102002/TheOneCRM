@@ -13,10 +13,12 @@ namespace TheOneCRM.Application.Interfaces
     {
         Task<AuthResultDto> RegisterAsync(RegisterDto dto);
         Task<AuthResultDto?> LoginAsync(LoginDto dto);
-        Task<GenericResult<List<UsersDto>>> GetAllUsers();
-        Task<GenericResult<UsersDto>> GetUsersByID(string userID);
-        Task<GenericResult<UsersDto>> UpdateUser(string userId, UpdateUserDto dto);
+        Task<List<UsersDto>> GetAllUsers();
+        Task<UsersDto> GetUsersByID(string userID);
+        Task<UsersDto> UpdateUser(string userId, UpdateUserDto dto);
         Task<AuthResultDto> RefreshTokenAsync(string refreshToken);
-        Task<Result> DeleteUser(string userId);
+        Task DeleteUser(string userId);
+        Task LogoutAsync(LogoutRequestDto request, string userId);
+        Task<List<UsersDto>> GetUsersByRoleAsync(string roleName);
     }
 }

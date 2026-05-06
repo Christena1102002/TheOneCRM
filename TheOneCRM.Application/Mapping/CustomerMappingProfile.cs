@@ -37,7 +37,6 @@ namespace TheOneCRM.Application.Mapping
 
             CreateMap<UpdateCustomerDto, Customer>()
         .ForMember(d => d.Id, o => o.Ignore())
-        .ForMember(d => d.customerServices, o => o.Ignore())
         .ForMember(d => d.campaigns, o => o.Ignore())
         .ForMember(d => d.AssignedTo, o => o.Ignore())
         .ForMember(d => d.AssignedToId, o => o.Ignore())

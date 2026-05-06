@@ -1,7 +1,13 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "My API",
+    "title": "CRM API",
+    "description": "This is API for The One CRM",
+    "contact": {
+      "name": "Christen Ayman ",
+      "url": "https://www.linkedin.com/in/christena-ayman-18b749306",
+      "email": "christenaayman631@gmail.com"
+    },
     "version": "v1"
   },
   "paths": {
@@ -10,7 +16,6 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Login To Your Account",
         "requestBody": {
           "content": {
             "application/json": {
@@ -42,7 +47,6 @@
         "tags": [
           "Auth"
         ],
-        "summary": "Refresh Access Token",
         "requestBody": {
           "content": {
             "application/json": {
@@ -69,12 +73,42 @@
         }
       }
     },
+    "/api/Auth/logout": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogoutRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Auth/AddApplicationUser": {
       "post": {
         "tags": [
           "Auth"
         ],
-        "summary": "Create Accounts by Admin",
         "requestBody": {
           "content": {
             "application/json": {
@@ -106,7 +140,6 @@
         "tags": [
           "Auth"
         ],
-        "summary": "GetAllUsersbyAdmin",
         "responses": {
           "200": {
             "description": "OK"
@@ -119,7 +152,6 @@
         "tags": [
           "Auth"
         ],
-        "summary": " GetUserbyId(Admin)",
         "parameters": [
           {
             "name": "userid",
@@ -141,7 +173,6 @@
         "tags": [
           "Auth"
         ],
-        "summary": " UpdateUserbyId(Admin)",
         "parameters": [
           {
             "name": "id",
@@ -183,7 +214,6 @@
         "tags": [
           "Auth"
         ],
-        "summary": "DeleteUserbyId(Admin)",
         "parameters": [
           {
             "name": "id",
@@ -201,12 +231,71 @@
         }
       }
     },
+    "/api/Auth/admins": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/developers": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/sales": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/marketing": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Auth/support": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Campaigns/dropdown": {
       "get": {
         "tags": [
           "Campaigns"
         ],
-        "summary": "GET:campaigns/dropdown in marketing",
         "responses": {
           "200": {
             "description": "OK"
@@ -238,6 +327,140 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Campaigns/GetAllCampaigns": {
+      "get": {
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "name": "PageIndex",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "ChannelSourceId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Status",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Campaigns/{id}/getCampaignById": {
+      "get": {
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Campaigns/{id}/deleteCampaign": {
+      "delete": {
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Campaigns/{id}/toggle-status": {
+      "patch": {
+        "tags": [
+          "Campaigns"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Campaigns/Statistics-Dashboard": {
+      "get": {
+        "tags": [
+          "Campaigns"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -403,7 +626,7 @@
         }
       }
     },
-    "/api/Customers/updateCustomer{id}": {
+    "/api/Customers/updateCustomer/{id}": {
       "put": {
         "tags": [
           "Customers"
@@ -725,6 +948,14 @@
             "type": "string",
             "format": "date-time"
           },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
           "gender": {
             "$ref": "#/components/schemas/Gender"
           },
@@ -844,6 +1075,16 @@
         },
         "additionalProperties": false
       },
+      "LogoutRequestDto": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "RefreshTokenRequestDto": {
         "type": "object",
         "properties": {
@@ -884,17 +1125,6 @@
         },
         "additionalProperties": false
       },
-      "StatusOfCustomers": {
-        "enum": [
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
       "UpdateCustomerDto": {
         "type": "object",
         "properties": {
@@ -917,9 +1147,6 @@
           "notes": {
             "type": "string",
             "nullable": true
-          },
-          "source": {
-            "$ref": "#/components/schemas/StatusOfCustomers"
           },
           "campaignId": {
             "type": "integer",
@@ -965,6 +1192,14 @@
           "fullName": {
             "type": "string",
             "nullable": true
+          },
+          "role": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -973,7 +1208,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "http",
-        "description": "Enter the token in this format: 'Bearer {token}'",
+        "description": "Enter JWT Token like this: Bearer {your token}",
         "scheme": "bearer",
         "bearerFormat": "JWT"
       }

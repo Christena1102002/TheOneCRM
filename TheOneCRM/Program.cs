@@ -1,4 +1,7 @@
 ﻿
+//using Swashbuckle.AspNetCore.Swagger;
+using System.Text;
+using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -9,13 +12,13 @@ using Microsoft.OpenApi.Models;
 using Serilog;
 using Serilog.Events;
 using Swashbuckle.AspNetCore.Annotations;
-//using Swashbuckle.AspNetCore.Swagger;
-using System.Text;
 using TheOneCRM.API.Extensions;
 using TheOneCRM.API.Helper;
 using TheOneCRM.API.Middlewares;
 using TheOneCRM.Application.Interfaces;
 using TheOneCRM.Application.Mapping;
+using TheOneCRM.Application.Services.Auth;
+
 //using TheOneCRM.Application.Services.Auth;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Infrastructure.Data;
@@ -105,12 +108,23 @@ namespace TheOneCRM
 
          
             app.UseSwagger();
+            app.UseCors("CorsPolicy");
             app.UseSwaggerUI();
             app.UseHttpsRedirection();
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseHangfireDashboard();
+            app.Lifetime.ApplicationStarted.Register(() =>
+            {
+                using var scope = app.Services.CreateScope();
+                var recurringJobManager = scope.ServiceProvider.GetRequiredService<IRecurringJobManager>();
 
+                recurringJobManager.AddOrUpdate<RefreshTokenCleanupJob>(
+                    "refresh-token-cleanup",
+                    job => job.ExecuteAsync(),
+                    builder.Configuration.GetValue<string>("RefreshTokenCleanup:CronExpression") ?? Cron.Daily());
+            });
             app.MapControllers();
 
             app.Run();

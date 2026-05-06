@@ -19,7 +19,36 @@ namespace TheOneCRM.Application.Mapping
                   opt => opt.MapFrom(src => src.ChannelSource.Name));
             CreateMap<CreateCampaignDto, Campaigns>()
                 .ForMember(dest => dest.ChannelSourceId, opt => opt.MapFrom(src => src.ChannelSourceId));
+
+            CreateMap<Campaigns, CampaignListItemDto>()
+        //.ForMember(d => d.Status, o => o.MapFrom(s => s.Status.ToString()))
+        .ForMember(d => d.ChannelSource, o => o.MapFrom(s => s.ChannelSource.Name)) // عدّل حسب اسم البروبرتي عندك
+        .ForMember(d => d.DurationDays, o => o.MapFrom(s => s.DurationDays))
+        .ForMember(d => d.Countries, o => o.MapFrom(s => s.Countries.Select(cc => cc.name)))
+        .ForMember(d => d.Gender, o => o.MapFrom(s => s.Gender.ToString()));
+
+            CreateMap<Campaigns, CampaignDetailsDto>()
+                .ForMember(d=>d.Gender,o=>o.MapFrom(s => s.Gender.ToString()))
+                    .ForMember(dest => dest.ChannelSource,
+        opt => opt.MapFrom(src => src.ChannelSource.Name))
+    .ForMember(dest => dest.appUserName,
+        opt => opt.MapFrom(src => src.appUser.UserName))
+    .ForMember(dest => dest.Status,
+        opt => opt.MapFrom(src => src.Status.ToString()))
+
+      .ForMember(d => d.DailyBudget, o => o.Ignore())
+    .ForMember(d => d.Spent, o => o.Ignore())
+    .ForMember(d => d.Remaining, o => o.Ignore())
+    .ForMember(d => d.SpentPercentage, o => o.Ignore())
+    .ForMember(d => d.DaysElapsed, o => o.Ignore())
+    .ForMember(d => d.DaysRemaining, o => o.Ignore());
+
+            CreateMap<Campaigns, CampaignDetailsDto>()
+                .ForMember(dest => dest.ChannelSource,
+        opt => opt.MapFrom(src => src.ChannelSource.Name));
+            CreateMap<Campaigns, CampaignDashboardDto>();
         }
+
     }
        
 }

@@ -1,0 +1,755 @@
+2026-05-05 10:52:39.915 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 10:52:39.976 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 10:52:39.981 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 10:52:45.035 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 10:52:45.112 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 10:52:45.126 +03:00 [INF] Hosting environment: Development
+2026-05-05 10:52:45.128 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 11:00:20.779 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 11:00:33.239 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 11:00:33.243 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 11:03:58.782 +03:00 [ERR] An error occurred while processing the request.
+System.UnauthorizedAccessException: Invalid email or password
+   at TheOneCRM.Application.Services.Auth.AuthService.LoginAsync(LoginDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Auth\AuthService.cs:line 38
+   at TheOneCRM.API.Controllers.Auth.AuthController.Login(LoginDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\Auth\AuthController.cs:line 25
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 11:35:40.282 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: Email already in use
+   at TheOneCRM.Application.Services.Auth.AuthService.RegisterAsync(RegisterDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Auth\AuthService.cs:line 71
+   at TheOneCRM.API.Controllers.Auth.AuthController.Register(RegisterDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\Auth\AuthController.cs:line 41
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 11:35:51.213 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: Email already in use
+   at TheOneCRM.Application.Services.Auth.AuthService.RegisterAsync(RegisterDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Auth\AuthService.cs:line 71
+   at TheOneCRM.API.Controllers.Auth.AuthController.Register(RegisterDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\Auth\AuthController.cs:line 41
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 11:37:40.206 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 11:37:40.210 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:04:31.689 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: The LINQ expression 'DbSet<Campaigns>()
+    .Where(c => False || c.ChannelSourceId == __p_ChannelSourceId_Value_0 && False || c.Status.ToString() == __p_Status_1 && True)' could not be translated. Additional information: Translation of method 'object.ToString' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at TheOneCRM.Infrastructure.Migrations.GenericRepository`1.ListAsync(ISpecification`1 spec) in E:\TheOneCRM\TheOneCRM.Infrastructure\Repositories\GenericRepository.cs:line 67
+   at TheOneCRM.Application.Services.CampaignService.GetAllCampaignsAsync(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 92
+   at TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns(CampaignPaginationParams paginationParams)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context)
+2026-05-05 12:13:39.360 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:13:39.434 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:13:39.438 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:13:46.907 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 12:13:46.986 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 12:13:46.989 +03:00 [INF] Hosting environment: Development
+2026-05-05 12:13:46.990 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 12:14:21.819 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 12:14:26.306 +03:00 [ERR] An error occurred while processing the request.
+System.UnauthorizedAccessException: Invalid email or password
+   at TheOneCRM.Application.Services.Auth.AuthService.LoginAsync(LoginDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Auth\AuthService.cs:line 38
+   at TheOneCRM.API.Controllers.Auth.AuthController.Login(LoginDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\Auth\AuthController.cs:line 25
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 12:15:53.749 +03:00 [ERR] An error occurred while processing the request.
+System.UnauthorizedAccessException: Invalid email or password
+   at TheOneCRM.Application.Services.Auth.AuthService.LoginAsync(LoginDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Auth\AuthService.cs:line 48
+   at TheOneCRM.API.Controllers.Auth.AuthController.Login(LoginDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\Auth\AuthController.cs:line 25
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 12:16:14.966 +03:00 [ERR] An error occurred while processing the request.
+System.UnauthorizedAccessException: Invalid email or password
+   at TheOneCRM.Application.Services.Auth.AuthService.LoginAsync(LoginDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Auth\AuthService.cs:line 48
+   at TheOneCRM.API.Controllers.Auth.AuthController.Login(LoginDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\Auth\AuthController.cs:line 25
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 12:21:10.817 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: The LINQ expression 'DbSet<Campaigns>()
+    .Where(c => False || c.ChannelSourceId == __p_ChannelSourceId_Value_0 && False || c.Status.ToString() == __p_Status_1 && True)' could not be translated. Additional information: Translation of method 'object.ToString' failed. If this method can be mapped to your custom function, see https://go.microsoft.com/fwlink/?linkid=2132413 for more information. Either rewrite the query in a form that can be translated, or switch to client evaluation explicitly by inserting a call to 'AsEnumerable', 'AsAsyncEnumerable', 'ToList', or 'ToListAsync'. See https://go.microsoft.com/fwlink/?linkid=2101038 for more information.
+   at Microsoft.EntityFrameworkCore.Query.QueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.RelationalQueryableMethodTranslatingExpressionVisitor.Translate(Expression expression)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at TheOneCRM.Infrastructure.Migrations.GenericRepository`1.ListAsync(ISpecification`1 spec) in E:\TheOneCRM\TheOneCRM.Infrastructure\Repositories\GenericRepository.cs:line 67
+   at TheOneCRM.Application.Services.CampaignService.GetAllCampaignsAsync(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 92
+   at TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 12:21:45.070 +03:00 [ERR] An error occurred while processing the request.
+System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at TheOneCRM.Infrastructure.Specsification.CampaignsSpec.CampaignPaginationParams.get_Status()
+   at Microsoft.Extensions.Internal.PropertyHelper.CallNullSafePropertyGetter[TDeclaringType,TValue](Func`2 getter, Object target)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationEntry.get_Model()
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitChildren(IValidationStrategy strategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitComplexType(IValidationStrategy defaultStrategy)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.VisitImplementation(ModelMetadata& metadata, String& key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Validation.ValidationVisitor.Visit(ModelMetadata metadata, String key, Object model)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ObjectModelValidator.Validate(ActionContext actionContext, ValidationStateDictionary validationState, String prefix, Object model, ModelMetadata metadata, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.EnforceBindRequiredAndValidate(ObjectModelValidator baseObjectValidator, ActionContext actionContext, ParameterDescriptor parameter, ModelMetadata metadata, ModelBindingContext modelBindingContext, ModelBindingResult modelBindingResult, Object container)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 12:27:26.008 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:27:26.083 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:27:26.087 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:27:29.330 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 12:27:29.432 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 12:27:29.488 +03:00 [INF] Hosting environment: Development
+2026-05-05 12:27:29.492 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 12:30:00.967 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 12:30:30.284 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:30:30.287 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:33:36.451 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:33:36.453 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:34:06.655 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:34:06.658 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:34:19.760 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:34:19.763 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:50:35.215 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Invalid Channel Source
+   at TheOneCRM.Application.Services.CampaignService.CreateCampaignAsync(CreateCampaignDto dto, String userId) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 54
+   at TheOneCRM.API.Controllers.CampaignsController.CreateCampaign(CreateCampaignDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 42
+   at lambda_method626(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 12:55:02.697 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:02.742 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:02.743 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:03.071 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:03.071 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:03.072 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:38.566 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:38.610 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:55:38.610 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:57:18.176 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:57:18.240 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:57:18.248 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 12:57:21.409 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 12:57:21.487 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 12:57:21.490 +03:00 [INF] Hosting environment: Development
+2026-05-05 12:57:21.492 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 12:57:53.450 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 12:58:59.767 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:58:59.770 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 12:59:02.159 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.Entities.Campaigns, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Type Map configuration:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Destination Member:
+DurationInDays
+
+ ---> System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto.set_DurationInDays(Int32 value)
+   at lambda_method392(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method392(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method392(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetAllCampaignsAsync(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 95
+   at TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 12:59:34.864 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.Entities.Campaigns, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Type Map configuration:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Destination Member:
+DurationInDays
+
+ ---> System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto.set_DurationInDays(Int32 value)
+   at lambda_method392(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method392(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method392(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetAllCampaignsAsync(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 95
+   at TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 13:01:36.343 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:01:36.403 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:01:36.407 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:01:39.515 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 13:01:39.618 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 13:01:39.621 +03:00 [INF] Hosting environment: Development
+2026-05-05 13:01:39.631 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 13:02:09.043 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 13:02:32.022 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 13:02:32.026 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 13:05:47.600 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:05:47.672 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:05:47.676 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:05:50.888 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 13:05:50.963 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 13:05:50.967 +03:00 [INF] Hosting environment: Development
+2026-05-05 13:05:50.974 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 13:06:30.568 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 13:06:55.948 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 13:06:55.953 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 13:32:34.099 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.Entities.Campaigns, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Type Map configuration:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Destination Member:
+Gender
+
+ ---> System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto.set_Gender(Gender value)
+   at lambda_method594(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method594(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method594(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetAllCampaignsAsync(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 95
+   at TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 13:36:35.318 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+List`1 -> IReadOnlyList`1
+System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.Entities.Campaigns, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> System.Collections.Generic.IReadOnlyList`1[[TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+ ---> AutoMapper.AutoMapperMappingException: Error mapping types.
+
+Mapping types:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Type Map configuration:
+Campaigns -> CampaignListItemDto
+TheOneCRM.Domain.Models.Entities.Campaigns -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto
+
+Destination Member:
+Gender
+
+ ---> System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignListItemDto.set_Gender(Gender value)
+   at lambda_method594(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method594(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   --- End of inner exception stack trace ---
+   at lambda_method594(Closure, Object, IReadOnlyList`1, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetAllCampaignsAsync(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 95
+   at TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 49
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 13:37:07.501 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:37:07.556 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:37:07.563 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 13:37:10.534 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 13:37:10.602 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 13:37:10.604 +03:00 [INF] Hosting environment: Development
+2026-05-05 13:37:10.607 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 13:38:17.100 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 13:38:58.240 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 13:38:58.245 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 13:40:21.918 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Customer with id 1 not found
+   at TheOneCRM.Application.Services.Customers.CustomerService.GetCustomerByIdAsync(Int32 id) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 267
+   at TheOneCRM.API.Controllers.CustomersController.GetById(Int32 id) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 84
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 13:40:28.590 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Customer with id 2 not found
+   at TheOneCRM.Application.Services.Customers.CustomerService.GetCustomerByIdAsync(Int32 id) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 267
+   at TheOneCRM.API.Controllers.CustomersController.GetById(Int32 id) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 84
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 13:57:46.112 +03:00 [ERR] An error occurred while processing the request.
+System.UnauthorizedAccessException: Only Marketing and Admin users can create campaigns
+   at TheOneCRM.Application.Services.CampaignService.CreateCampaignAsync(CreateCampaignDto dto, String userId)
+   at TheOneCRM.API.Controllers.CampaignsController.CreateCampaign(CreateCampaignDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 42
+   at lambda_method628(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 14:21:52.890 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 14:21:52.977 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 14:21:52.980 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 14:21:56.196 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 14:21:56.281 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 14:21:56.313 +03:00 [INF] Hosting environment: Development
+2026-05-05 14:21:56.343 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 14:23:52.359 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 14:24:28.233 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 14:24:28.239 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 15:10:43.333 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:10:43.394 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:10:43.398 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:10:46.713 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 15:10:46.799 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 15:10:46.803 +03:00 [INF] Hosting environment: Development
+2026-05-05 15:10:46.805 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 15:12:02.328 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:12:02.387 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:12:02.393 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:12:05.504 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 15:12:05.586 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 15:12:05.588 +03:00 [INF] Hosting environment: Development
+2026-05-05 15:12:05.590 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 15:37:03.170 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:37:03.247 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:37:03.253 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:37:06.384 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 15:37:06.462 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 15:37:06.464 +03:00 [INF] Hosting environment: Development
+2026-05-05 15:37:06.467 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 15:38:43.292 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 15:45:18.884 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:45:18.951 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:45:18.958 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:45:22.007 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 15:45:22.087 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 15:45:22.092 +03:00 [INF] Hosting environment: Development
+2026-05-05 15:45:22.094 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 15:45:31.678 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 15:48:49.837 +03:00 [ERR] An error occurred while processing the request.
+System.UnauthorizedAccessException: Only Marketing and Admin users can create campaigns
+   at TheOneCRM.Application.Services.CampaignService.CreateCampaignAsync(CreateCampaignDto dto, String userId) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 50
+   at TheOneCRM.API.Controllers.CampaignsController.CreateCampaign(CreateCampaignDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 42
+   at lambda_method610(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 15:51:33.624 +03:00 [ERR] An error occurred while processing the request.
+System.UnauthorizedAccessException: Only Marketing and Admin users can create campaigns
+   at TheOneCRM.Application.Services.CampaignService.CreateCampaignAsync(CreateCampaignDto dto, String userId)
+   at TheOneCRM.API.Controllers.CampaignsController.CreateCampaign(CreateCampaignDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 42
+   at lambda_method610(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 15:54:30.898 +03:00 [ERR] An error occurred while processing the request.
+System.TypeLoadException: Could not load type 'Invalid_Token.0x02000041' from assembly 'TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Signature.GetSignature(Void* pCorSig, Int32 cCorSig, RuntimeFieldHandleInternal fieldHandle, IRuntimeMethodInfo methodHandle, RuntimeType declaringType)
+   at System.Reflection.RuntimeMethodInfo.<get_Signature>g__LazyCreateSignature|25_0()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParametersNoCopy()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParameters()
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.AddMembersDeclaredBySuperType(JsonTypeInfo typeInfo, Type currentType, Boolean constructorHasSetsRequiredMembersAttribute, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.PopulateProperties(JsonTypeInfo typeInfo)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.CreateTypeInfoCore(Type type, JsonConverter converter, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.GetTypeInfo(Type type, JsonSerializerOptions options)
+   at System.Text.Json.JsonSerializerOptions.CachingContext.CreateCacheEntry(Type type, CachingContext context)
+--- End of stack trace from previous location ---
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.WriteStackFrame.InitializePolymorphicReEntry(Type runtimeType, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.JsonConverter.ResolvePolymorphicConverter(Object value, JsonTypeInfo jsonTypeInfo, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 15:57:45.736 +03:00 [ERR] An error occurred while processing the request.
+System.TypeLoadException: Could not load type 'Invalid_Token.0x02000041' from assembly 'TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'.
+   at System.Signature.GetSignature(Void* pCorSig, Int32 cCorSig, RuntimeFieldHandleInternal fieldHandle, IRuntimeMethodInfo methodHandle, RuntimeType declaringType)
+   at System.Reflection.RuntimeMethodInfo.<get_Signature>g__LazyCreateSignature|25_0()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParametersNoCopy()
+   at System.Reflection.RuntimePropertyInfo.GetIndexParameters()
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.AddMembersDeclaredBySuperType(JsonTypeInfo typeInfo, Type currentType, Boolean constructorHasSetsRequiredMembersAttribute, PropertyHierarchyResolutionState& state)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.PopulateProperties(JsonTypeInfo typeInfo)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.CreateTypeInfoCore(Type type, JsonConverter converter, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.Metadata.DefaultJsonTypeInfoResolver.GetTypeInfo(Type type, JsonSerializerOptions options)
+   at System.Text.Json.JsonSerializerOptions.CachingContext.CreateCacheEntry(Type type, CachingContext context)
+--- End of stack trace from previous location ---
+   at System.Text.Json.JsonSerializerOptions.GetTypeInfoInternal(Type type, Boolean ensureConfigured, Nullable`1 ensureNotNull, Boolean resolveIfMutable, Boolean fallBackToNearestAncestorType)
+   at System.Text.Json.WriteStackFrame.InitializePolymorphicReEntry(Type runtimeType, JsonSerializerOptions options)
+   at System.Text.Json.Serialization.JsonConverter.ResolvePolymorphicConverter(Object value, JsonTypeInfo jsonTypeInfo, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.GetMemberAndWriteJson(Object obj, WriteStack& state, Utf8JsonWriter writer)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryWrite(Utf8JsonWriter writer, T value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.TryWrite(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.JsonConverter`1.WriteCore(Utf8JsonWriter writer, T& value, JsonSerializerOptions options, WriteStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.SerializeAsync(Stream utf8Json, T rootValue, CancellationToken cancellationToken, Object rootValueBoxed)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonOutputFormatter.WriteResponseBodyAsync(OutputFormatterWriteContext context, Encoding selectedEncoding)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 15:58:07.730 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:58:07.804 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:58:07.811 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 15:58:10.823 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 15:58:10.892 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 15:58:10.895 +03:00 [INF] Hosting environment: Development
+2026-05-05 15:58:10.897 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 15:59:02.938 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 16:04:04.432 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 16:04:04.495 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 16:04:04.499 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 16:04:07.538 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 16:04:07.665 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 16:04:07.668 +03:00 [INF] Hosting environment: Development
+2026-05-05 16:04:07.670 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 16:04:24.496 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 16:04:45.478 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 16:04:45.483 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 16:05:02.635 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 16:05:02.638 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 16:54:47.352 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 16:54:47.442 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 16:54:47.448 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 16:54:52.818 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 16:54:52.922 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 16:54:52.937 +03:00 [INF] Hosting environment: Development
+2026-05-05 16:54:52.945 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 16:55:05.771 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 16:55:08.788 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 16:55:08.801 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-05 17:08:05.824 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:08:05.894 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:08:05.897 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:08:09.053 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 17:08:09.140 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 17:08:09.144 +03:00 [INF] Hosting environment: Development
+2026-05-05 17:08:09.147 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 17:22:14.754 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:22:14.820 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:22:14.827 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:22:18.068 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 17:22:18.143 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 17:22:18.145 +03:00 [INF] Hosting environment: Development
+2026-05-05 17:22:18.158 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 17:22:28.718 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 17:22:31.774 +03:00 [WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+2026-05-05 17:22:32.386 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Campaigns -> List`1
+TheOneCRM.Domain.Models.Entities.Campaigns -> System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignDetailsDto, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+   at lambda_method376(Closure, Object, List`1, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetCampaignsDashboardAsync() in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 155
+   at TheOneCRM.API.Controllers.CampaignsController.GetDashboard() in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 77
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 17:44:01.448 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:44:01.516 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:44:01.523 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:44:04.852 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 17:44:04.938 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 17:44:04.959 +03:00 [INF] Hosting environment: Development
+2026-05-05 17:44:04.961 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 17:44:18.599 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 17:44:53.047 +03:00 [WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+2026-05-05 17:46:19.743 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:46:19.813 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:46:19.820 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:46:22.944 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 17:46:23.027 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 17:46:23.049 +03:00 [INF] Hosting environment: Development
+2026-05-05 17:46:23.055 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 17:47:03.924 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 17:47:05.879 +03:00 [WRN] The query uses the 'First'/'FirstOrDefault' operator without 'OrderBy' and filter operators. This may lead to unpredictable results.
+2026-05-05 17:47:06.436 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+Campaigns -> List`1
+TheOneCRM.Domain.Models.Entities.Campaigns -> System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignDetailsDto, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+   at lambda_method376(Closure, Object, List`1, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetCampaignsDashboardAsync() in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 155
+   at TheOneCRM.API.Controllers.CampaignsController.GetDashboard() in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 77
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-05 17:49:41.982 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:49:42.041 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:49:42.049 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 17:49:45.361 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 17:49:45.482 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 17:49:45.539 +03:00 [INF] Hosting environment: Development
+2026-05-05 17:49:45.548 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-05 17:49:59.226 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-05 18:02:22.717 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 18:02:22.785 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 18:02:22.791 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-05 18:02:25.967 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-05 18:02:26.098 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-05 18:02:26.159 +03:00 [INF] Hosting environment: Development
+2026-05-05 18:02:26.161 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM

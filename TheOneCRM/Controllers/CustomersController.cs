@@ -39,6 +39,7 @@ namespace TheOneCRM.API.Controllers
         }
         // GET: api/customers?pageIndex=1&pageSize=10
         [HttpGet("getLeadCustomer")]
+
         public async Task<IActionResult> GetAll([FromQuery] CustomerPaginationParams paginationParams)
         {
             var result = await _customerService.GetAllCustomersAsync(paginationParams);
@@ -53,7 +54,7 @@ namespace TheOneCRM.API.Controllers
                  new ApiResponse(200, "get customer statuses successfully", result));
         }
         // PUT: api/customers/5
-        [HttpPut("updateCustomer{id}")]
+        [HttpPut("updateCustomer/{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateCustomerDto dto)
         {
             var result = await _customerService.UpdateCustomerAsync(id, dto);

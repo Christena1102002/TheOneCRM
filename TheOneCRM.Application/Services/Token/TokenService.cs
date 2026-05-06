@@ -173,5 +173,13 @@ namespace TheOneCRM.Application.Services.Token
             var hash = SHA256.HashData(bytes);
             return Convert.ToBase64String(hash);
         }
+        public string HashRefreshToken(string plainToken)
+        {
+            var normalized = NormalizeToken(plainToken);
+            if (string.IsNullOrWhiteSpace(normalized))
+                throw new InvalidOperationException("Token cannot be empty.");
+
+            return ComputeSha256Hash(normalized);
+        }
     }
 }

@@ -187,14 +187,19 @@ namespace TheOneCRM.Application.Services.Customers
                     throw new KeyNotFoundException(
                         $"Services not found: {string.Join(", ", missing)}");
 
-                // امسحي الخدمات القديمة
-                customer.customerServices.Clear();
+                // احذف العلاقات القديمة فعليًا من الـ DbContext
+                _unitOfWork.Repository<CustomerServices>()
+                    .RemoveRange(customer.customerServices);
 
-                // ضيفي الجديدة
-                foreach (var sid in validIds)
-                {
-                    customer.customerServices.Add(new CustomerServices { ServiceId = sid });
-                }
+                // أعد إنشاء العلاقات الجديدة
+                customer.customerServices = validIds
+                    .Select(sid => new CustomerServices
+                    {
+                        customerId = customer.Id,
+                        ServiceId = sid
+                    })
+                    .ToList();
+
             }
 
             // 5) احفظ

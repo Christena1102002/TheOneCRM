@@ -1,0 +1,405 @@
+2026-05-06 11:28:40.944 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:28:41.011 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:28:41.017 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:28:46.430 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 11:28:46.518 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 11:28:46.534 +03:00 [INF] Hosting environment: Development
+2026-05-06 11:28:46.538 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 11:29:01.082 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 11:29:06.839 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 11:29:06.842 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 11:29:20.711 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CampaignDetailsDto
+System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.Entities.Campaigns, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignDetailsDto
+   at lambda_method411(Closure, Object, CampaignDetailsDto, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetCampaignByIdAsync(Int32 id) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 188
+   at TheOneCRM.API.Controllers.CampaignsController.GetById(Int32 id) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 56
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 11:32:55.766 +03:00 [ERR] An error occurred while processing the request.
+AutoMapper.AutoMapperMappingException: Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> CampaignDetailsDto
+System.Collections.Generic.List`1[[TheOneCRM.Domain.Models.Entities.Campaigns, TheOneCRM.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> TheOneCRM.Domain.Models.DTOs.CampaignDto.CampaignDetailsDto
+   at lambda_method411(Closure, Object, CampaignDetailsDto, ResolutionContext)
+   at TheOneCRM.Application.Services.CampaignService.GetCampaignByIdAsync(Int32 id)
+   at TheOneCRM.API.Controllers.CampaignsController.GetById(Int32 id) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 56
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 11:41:12.949 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:41:13.012 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:41:13.017 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:41:16.184 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 11:41:16.315 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 11:41:16.321 +03:00 [INF] Hosting environment: Development
+2026-05-06 11:41:16.324 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 11:55:19.259 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:55:19.310 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:55:19.310 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:55:19.660 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:55:19.661 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:55:19.661 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:56:39.805 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:56:39.847 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:56:39.847 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:58:05.808 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:58:05.863 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:58:05.868 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 11:58:09.294 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 11:58:09.373 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 11:58:09.375 +03:00 [INF] Hosting environment: Development
+2026-05-06 11:58:09.379 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 11:58:39.329 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 12:11:04.468 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:11:04.532 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:11:04.539 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:11:08.026 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 12:11:08.142 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 12:11:08.147 +03:00 [INF] Hosting environment: Development
+2026-05-06 12:11:08.151 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 12:11:22.414 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 12:12:52.198 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:12:52.254 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:12:52.257 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:12:55.362 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 12:12:55.429 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 12:12:55.434 +03:00 [INF] Hosting environment: Development
+2026-05-06 12:12:55.436 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 12:13:14.055 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 12:38:57.277 +03:00 [ERR] An error occurred while processing the request.
+System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at TheOneCRM.Application.Services.Auth.AuthService..ctor(IUnitOfWork unitOfWork, ITokenService tokenService, UserManager`1 userManager, <GetServiceByIdAsync>d__4 mapper)
+   at ResolveService(ILEmitResolverBuilderRuntimeContext, ServiceProviderEngineScope)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)
+   at lambda_method511(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 12:39:33.621 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:39:33.684 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:39:33.691 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:39:36.652 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 12:39:36.728 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 12:39:36.733 +03:00 [INF] Hosting environment: Development
+2026-05-06 12:39:36.735 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 12:39:41.382 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 12:53:53.428 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:53:53.501 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:53:53.504 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:53:56.849 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 12:53:56.920 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 12:53:56.922 +03:00 [INF] Hosting environment: Development
+2026-05-06 12:53:56.924 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 12:54:52.366 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 12:58:38.165 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:58:38.225 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:58:38.233 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 12:58:41.283 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 12:58:41.362 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 12:58:41.365 +03:00 [INF] Hosting environment: Development
+2026-05-06 12:58:41.367 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 12:59:03.425 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 13:02:41.111 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 13:02:41.170 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 13:02:41.174 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 13:02:44.447 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 13:02:44.517 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 13:02:44.520 +03:00 [INF] Hosting environment: Development
+2026-05-06 13:02:44.522 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 13:49:27.076 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 13:49:27.165 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 13:49:27.169 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 13:49:32.255 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 13:49:33.002 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 13:49:33.280 +03:00 [INF] Hosting environment: Development
+2026-05-06 13:49:33.488 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 13:50:09.414 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:12:27.639 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:12:27.713 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:12:27.720 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:12:31.571 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:12:32.361 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:12:32.952 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:12:33.043 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:12:33.049 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:12:33.051 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:15:43.039 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:18:04.987 +03:00 [ERR] An error occurred while processing the request.
+System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at TheOneCRM.Domain.Models.DTOs.CampaignDto.CreateCampaignDto.set_status(Int32 value)
+   at System.Text.Json.Serialization.Metadata.JsonPropertyInfo`1.ReadJsonAndSetMember(Object obj, ReadStack& state, Utf8JsonReader& reader)
+   at System.Text.Json.Serialization.Converters.ObjectDefaultConverter`1.OnTryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value)
+   at System.Text.Json.Serialization.JsonConverter`1.TryRead(Utf8JsonReader& reader, Type typeToConvert, JsonSerializerOptions options, ReadStack& state, T& value, Boolean& isPopulatedValue)
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader& reader, JsonSerializerOptions options, ReadStack& state)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.ContinueDeserialize(ReadBufferState& bufferState, JsonReaderState& jsonReaderState, ReadStack& readStack)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.DeserializeAsync(Stream utf8Json, CancellationToken cancellationToken)
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.DeserializeAsObjectAsync(Stream utf8Json, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.Formatters.SystemTextJsonInputFormatter.ReadRequestBodyAsync(InputFormatterContext context, Encoding encoding)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinder.BindModelAsync(ModelBindingContext bindingContext)
+   at Microsoft.AspNetCore.Mvc.ModelBinding.ParameterBinder.BindModelAsync(ActionContext actionContext, IModelBinder modelBinder, IValueProvider valueProvider, ParameterDescriptor parameter, ModelMetadata metadata, Object value, Object container)
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerBinderDelegateProvider.<>c__DisplayClass0_0.<<CreateBinderDelegate>g__Bind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 15:18:19.972 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:18:20.188 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:18:20.192 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:18:23.675 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:18:24.158 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:18:24.943 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:18:25.106 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:18:25.109 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:18:25.111 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:22:38.899 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:22:38.962 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:22:38.969 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:22:41.816 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:22:42.240 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:22:42.750 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:22:42.826 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:22:42.828 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:22:42.830 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:24:28.848 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:24:33.942 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 15:24:33.946 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 15:27:42.460 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:27:42.523 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:27:42.529 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:27:45.442 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:27:45.863 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:27:46.370 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:27:46.457 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:27:46.469 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:27:46.470 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:28:21.205 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:29:11.917 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:29:11.986 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:29:11.993 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:29:14.927 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:29:15.197 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:29:15.704 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:29:15.807 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:29:15.859 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:29:15.861 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:29:30.723 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:29:33.387 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 15:29:33.392 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 15:37:11.544 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:37:11.606 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:37:11.614 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:37:14.898 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:37:15.333 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:37:16.041 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:37:16.256 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:37:16.259 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:37:16.262 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:39:08.765 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:39:10.143 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Customer with id 1 not found
+   at TheOneCRM.Application.Services.Customers.CustomerService.UpdateCustomerAsync(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 160
+   at TheOneCRM.API.Controllers.CustomersController.Update(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 60
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 15:41:33.922 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:41:33.981 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:41:33.987 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:41:36.727 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:41:37.220 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:41:37.733 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:41:37.822 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:41:37.895 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:41:37.919 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:42:40.063 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:42:41.167 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Customer with id 3 not found
+   at TheOneCRM.Application.Services.Customers.CustomerService.UpdateCustomerAsync(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 160
+   at TheOneCRM.API.Controllers.CustomersController.Update(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 60
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 15:42:58.836 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Services not found: 0
+   at TheOneCRM.Application.Services.Customers.CustomerService.UpdateCustomerAsync(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 187
+   at TheOneCRM.API.Controllers.CustomersController.Update(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 60
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 15:43:02.815 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Services not found: 0
+   at TheOneCRM.Application.Services.Customers.CustomerService.UpdateCustomerAsync(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 187
+   at TheOneCRM.API.Controllers.CustomersController.Update(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 60
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 15:46:31.835 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:46:31.895 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:46:31.902 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:46:34.668 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:46:35.232 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:46:35.753 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:46:35.835 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:46:35.847 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:46:35.849 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:53:09.165 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:53:09.225 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:53:09.228 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 15:53:12.175 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 15:53:12.674 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 15:53:13.362 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 15:53:13.460 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 15:53:13.463 +03:00 [INF] Hosting environment: Development
+2026-05-06 15:53:13.465 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 15:54:30.317 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 15:54:33.023 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 15:54:33.026 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-06 15:55:27.597 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Customer with id 4 not found
+   at TheOneCRM.Application.Services.Customers.CustomerService.GetCustomerByIdAsync(Int32 id) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 267
+   at TheOneCRM.API.Controllers.CustomersController.GetById(Int32 id) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 84
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 15:57:04.708 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: The property 'CustomerServices.customerId' is part of a key and so cannot be modified or marked as modified. To change the principal of an existing entity with an identifying foreign key, first delete the dependent and invoke 'SaveChanges', and then associate the dependent with the new principal.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.ConditionallyNullForeignKeyProperties(InternalEntityEntry dependentEntry, InternalEntityEntry principalEntry, IForeignKey foreignKey)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.NavigationFixer.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.InternalEntityEntryNotifier.NavigationCollectionChanged(InternalEntityEntry entry, INavigationBase navigationBase, IEnumerable`1 added, IEnumerable`1 removed)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectNavigationChange(InternalEntityEntry entry, INavigationBase navigationBase)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.LocalDetectChanges(InternalEntityEntry entry)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.ChangeDetector.DetectChanges(IStateManager stateManager)
+   at Microsoft.EntityFrameworkCore.ChangeTracking.ChangeTracker.DetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.TryDetectChanges()
+   at Microsoft.EntityFrameworkCore.DbContext.SaveChangesAsync(Boolean acceptAllChangesOnSuccess, CancellationToken cancellationToken)
+   at TheOneCRM.Infrastructure.Migrations.UnitOfWork.SaveChangesAsync() in E:\TheOneCRM\TheOneCRM.Infrastructure\Repositories\UnitOfWork.cs:line 57
+   at TheOneCRM.Application.Services.Customers.CustomerService.UpdateCustomerAsync(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 202
+   at TheOneCRM.API.Controllers.CustomersController.Update(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 60
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 16:04:50.506 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 16:04:50.580 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 16:04:50.584 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 16:04:53.395 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 16:04:53.824 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 16:04:54.353 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 16:04:54.428 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 16:04:54.431 +03:00 [INF] Hosting environment: Development
+2026-05-06 16:04:54.433 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-06 16:05:28.920 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-06 16:06:08.386 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Services not found: 2
+   at TheOneCRM.Application.Services.Customers.CustomerService.UpdateCustomerAsync(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 187
+   at TheOneCRM.API.Controllers.CustomersController.Update(Int32 id, UpdateCustomerDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 60
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-06 17:16:03.670 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:16:03.746 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:16:03.749 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-06 17:16:06.665 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-06 17:16:07.168 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-06 17:16:07.676 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-06 17:16:07.743 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-06 17:16:07.746 +03:00 [INF] Hosting environment: Development
+2026-05-06 17:16:07.748 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM

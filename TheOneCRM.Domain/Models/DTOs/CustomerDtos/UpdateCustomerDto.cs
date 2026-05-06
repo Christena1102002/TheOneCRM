@@ -14,7 +14,6 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public string? Email { get; set; }
         public string? CompanyName { get; set; }
         public string? Notes { get; set; }
-        public StatusOfCustomers Source { get; set; }
         public int? CampaignId { get; set; }
         public List<int>? ServiceIds { get; set; }
     }

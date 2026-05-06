@@ -14,6 +14,7 @@ namespace TheOneCRM.Domain.Models.Entities
         public string? imageUrl { get; set; }
         public bool? IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string? Address { get; set; }
         //public Department? Department { get; set; }
         //public ICollection<Activities> Activities { get; set; }
     }

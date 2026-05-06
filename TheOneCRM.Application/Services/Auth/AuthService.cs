@@ -1,17 +1,19 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.DTOs.Auth;
 using TheOneCRM.Application.Interfaces;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Domain.Models.DTOs.Auth;
 using TheOneCRM.Domain.Models.Entities;
+using TheOneCRM.Infrastructure.Specsification;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace TheOneCRM.Application.Services.Auth
 {
@@ -20,14 +22,16 @@ namespace TheOneCRM.Application.Services.Auth
         private readonly IUnitOfWork _unitOfWork;
         private readonly ITokenService _tokenService;
         private readonly UserManager<AppUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IMapper _mapper;
 
-        public AuthService(IUnitOfWork unitOfWork, ITokenService tokenService, UserManager<AppUser> userManager, IMapper mapper)
+        public AuthService(IUnitOfWork unitOfWork, ITokenService tokenService, UserManager<AppUser> userManager, IMapper mapper, RoleManager<IdentityRole> roleManager)
         {
             _unitOfWork = unitOfWork;
             _tokenService = tokenService;
             _userManager = userManager;
             _mapper = mapper;
+            _roleManager = roleManager;
         }
 
         public async Task<AuthResultDto?> LoginAsync(LoginDto dto)
@@ -67,11 +71,7 @@ namespace TheOneCRM.Application.Services.Auth
             var existing = await _userManager.FindByEmailAsync(dto.Email);
             if (existing != null)
             {
-                return new AuthResultDto
-                {
-                    IsSuccess = false,
-                    Message = "Email already in use"
-                };
+                throw new InvalidOperationException("Email already in use");
             }
 
             var user = _mapper.Map<AppUser>(dto);
@@ -80,20 +80,13 @@ namespace TheOneCRM.Application.Services.Auth
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                return new AuthResultDto
-                {
-                    IsSuccess = false,
-                    Message = errors
-                };
+                throw new InvalidOperationException("Email already in use");
             }
+
             var addRole = await _userManager.AddToRoleAsync(user, dto.Role);
             if (!addRole.Succeeded)
             {
-                return new AuthResultDto
-                {
-                    IsSuccess = false,
-                    Message = "Cannot assign role to user"
-                };
+                throw new InvalidOperationException("Cannot assign role to user");
             }
             var (accessToken, refreshToken) = await _tokenService.CreateTokenAsync(user);
             var roles = await _userManager.GetRolesAsync(user);
@@ -110,77 +103,130 @@ namespace TheOneCRM.Application.Services.Auth
             };
         }
 
-        public async Task<GenericResult<List<UsersDto>>> GetAllUsers()
+        public async Task<List<UsersDto>> GetAllUsers()
         {
             var users = await _unitOfWork.Repository<AppUser>().ListAllAsync();
-            if (users == null)
-                return GenericResult<List<UsersDto>>.Failure("Not Found Any User");
-
-            var results = users.Select(s => new UsersDto
+                if (users == null || !users.Any())
+                    throw new KeyNotFoundException("No users found");
+            var result = new List<UsersDto>();
+            foreach(var user in users)
             {
-                Email = s.Email,
-                Phone = s.PhoneNumber,
-                UserId = s.Id,
-                FullName = s.FullName
-            }).ToList();
-            return GenericResult<List<UsersDto>>.Success(results, "AllUsers retrieved successfully");
+                var role = await _userManager.GetRolesAsync(user);
+                result.Add(new UsersDto
+                {
+
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
+                    UserId = user.Id,
+                    FullName = user.FullName,
+                    Role = role.FirstOrDefault(),
+                    Address = user.Address
+
+
+                });
+            }
+            return result;
         }
 
-        public async Task<GenericResult<UsersDto>> GetUsersByID(string userID)
+        public async Task<UsersDto> GetUsersByID(string userID)
         {
             //var user= await _unitOfWork.Users.GetByIdAsync(userID);
             var user = await _userManager.FindByIdAsync(userID);
             if (user == null)
-                return GenericResult<UsersDto>.Failure("Not Found this User");
-
-            var results = new UsersDto
+                throw new KeyNotFoundException($"User with id '{userID}' not found");
+            var role = await _userManager.GetRolesAsync(user);
+            return new UsersDto
             {
                 Email = user.Email,
                 Phone = user.PhoneNumber,
                 UserId = user.Id,
-                FullName = user.FullName
+                FullName = user.FullName,
+                Address=user.Address,
+                Role=role.FirstOrDefault()
+
             };
-            return GenericResult<UsersDto>.Success(results, "Get User retrieved successfully");
+            
         }
 
-        public async Task<GenericResult<UsersDto>> UpdateUser(string userId, UpdateUserDto dto)
+        public async Task<UsersDto> UpdateUser(string userId, UpdateUserDto dto)
         {
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
-                return GenericResult<UsersDto>.Failure("Not Found this User");
+                throw new KeyNotFoundException($"User with id '{userId}' not found");
+
 
             user.FullName = dto.FullName;
             user.PhoneNumber = dto.Phone;
             user.Email = dto.Email;
+            user.Address = dto.Address;
+            user.UserName = dto.Email;
 
             //_unitOfWork.Users.Update(user);
             var result = await _userManager.UpdateAsync(user);
 
             if (!result.Succeeded)
-                return GenericResult<UsersDto>.Failure("Failed to delete user");
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                throw new InvalidOperationException($"Failed to update user: {errors}");
+            }
+
+            if (!string.IsNullOrWhiteSpace(dto.Role))
+            {
+                var roleExists = await _roleManager.RoleExistsAsync(dto.Role);
+                if (!roleExists)
+                    throw new KeyNotFoundException($"Role '{dto.Role}' does not exist.");
+
+
+                var currentRoles = await _userManager.GetRolesAsync(user);
+                if (currentRoles.Any())
+                {
+                    var removeResult = await _userManager.RemoveFromRolesAsync(user, currentRoles);
+                    if (!removeResult.Succeeded)
+                    {
+                        var errors = string.Join(", ", removeResult.Errors.Select(e => e.Description));
+                        throw new InvalidOperationException($"Failed to remove old roles: {errors}");
+                    }
+                }
+                var addResult = await _userManager.AddToRoleAsync(user, dto.Role);
+                if (!addResult.Succeeded)
+                {
+                    var errors = string.Join(", ", addResult.Errors.Select(e => e.Description));
+                    throw new InvalidOperationException($"Failed to assign new role: {errors}");
+                }
+            
+            }
+            var roles = await _userManager.GetRolesAsync(user);
+           
+           
+        
+
             await _unitOfWork.SaveChangesAsync();
 
-            var userDto = new UsersDto
+            return new UsersDto
             {
                 UserId = user.Id,
                 Email = user.Email,
                 Phone = user.PhoneNumber,
-                FullName = user.FullName
+                FullName = user.FullName,
+                Address = user.Address,
+                Role= roles.FirstOrDefault()
             };
-            return GenericResult<UsersDto>.Success(userDto, "Update this User Successfuly");
         }
-        public async Task<Result> DeleteUser(string userId)
+        public async Task DeleteUser(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
-                return Result.Failure("Not Found this User");
+                throw new KeyNotFoundException($"User with id '{userId}' not found");
 
             var result = await _userManager.DeleteAsync(user);
 
             if (!result.Succeeded)
-                return Result.Failure("Failed to delete user");
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                throw new InvalidOperationException($"Failed to delete user: {errors}");
+            }
             await _unitOfWork.SaveChangesAsync();
-            return Result.Success("Delete this User Successfuly");
+           
         }
         public async Task<AuthResultDto> RefreshTokenAsync(string refreshToken)
         {
@@ -200,6 +246,58 @@ namespace TheOneCRM.Application.Services.Auth
                 UserId=user.Id.ToString(),
                 Email=user.Email
             };
+        }
+        public async Task LogoutAsync(LogoutRequestDto request, string userId)
+        {
+            if (string.IsNullOrWhiteSpace(request.RefreshToken))
+                throw new InvalidOperationException("Refresh token is required");
+            var tokenHash= _tokenService.HashRefreshToken(request.RefreshToken);
+
+            var spec = new RefreshTokenByHashSpec(tokenHash);
+            var refreshToken = await _unitOfWork
+                .Repository<RefreshToken>()
+                .GetEntityWithSpec(spec);
+
+            if (refreshToken is null)
+                throw new KeyNotFoundException("Refresh token not found.");
+
+            if (refreshToken.OwnerId != userId)
+                throw new InvalidOperationException("Token does not belong to current user.");
+
+            if (refreshToken.IsRevoked)
+                throw new InvalidOperationException("Refresh token already revoked.");
+
+            refreshToken.IsRevoked = true;
+            refreshToken.RevokedAt = DateTime.UtcNow;
+
+            _unitOfWork.Repository<RefreshToken>().Update(refreshToken);
+            await _unitOfWork.SaveChangesAsync();
+
+
+        }
+
+        public async Task<List<UsersDto>> GetUsersByRoleAsync(string roleName)
+        {
+            var users = await _userManager.GetUsersInRoleAsync(roleName);
+
+            var result = new List<UsersDto>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+
+                result.Add(new UsersDto
+                {
+                    UserId = user.Id,
+                    Email = user.Email,
+                    Phone = user.PhoneNumber,
+                    FullName = user.FullName,
+                    Role = roles.FirstOrDefault(),
+                    Address=user.Address
+                });
+            }
+
+            return result;
         }
     }
 }

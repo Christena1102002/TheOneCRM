@@ -211,3 +211,288 @@ System.InvalidOperationException: ChannelSource already exists
 2026-05-04 13:45:32.184 +03:00 [INF] Hosting environment: Development
 2026-05-04 13:45:32.189 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
 2026-05-04 13:45:38.634 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 13:51:51.771 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 13:51:51.844 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 13:51:55.620 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 13:51:55.709 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 13:51:55.721 +03:00 [INF] Hosting environment: Development
+2026-05-04 13:51:55.742 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 14:53:25.826 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:53:25.893 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:53:25.900 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:53:29.578 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 14:53:29.666 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 14:53:29.668 +03:00 [INF] Hosting environment: Development
+2026-05-04 14:53:29.669 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 14:53:56.964 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 14:54:01.071 +03:00 [ERR] Failed executing DbCommand (87ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[AssignedToId], [t].[CampanyName], [t].[CreatedAt], [t].[CreatedById], [t].[Email], [t].[FullName], [t].[Notes], [t].[Phone], [t].[Priority], [t].[UpdatedAt], [t].[compaignId], [t].[status], [c0].[Id], [c0].[AppUserId], [c0].[Budget], [c0].[ChannelSourceId], [c0].[CreatedAt], [c0].[DailyBudget], [c0].[Description], [c0].[EndDate], [c0].[Name], [c0].[StartDate], [c0].[Status], [c0].[UpdatedAt], [c1].[Id], [c1].[CreatedAt], [c1].[Name], [c1].[UpdatedAt], [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[CreatedAt], [a].[Email], [a].[EmailConfirmed], [a].[FullName], [a].[IsActive], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName], [a].[imageUrl], [t0].[customerId], [t0].[ServiceId], [t0].[Id], [t0].[CreatedAt], [t0].[NameAr], [t0].[NameEn], [t0].[UpdatedAt]
+FROM (
+    SELECT [c].[Id], [c].[AssignedToId], [c].[CampanyName], [c].[CreatedAt], [c].[CreatedById], [c].[Email], [c].[FullName], [c].[Notes], [c].[Phone], [c].[Priority], [c].[UpdatedAt], [c].[compaignId], [c].[status]
+    FROM [customers] AS [c]
+    ORDER BY [c].[CreatedAt] DESC
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [t]
+LEFT JOIN [campaigns] AS [c0] ON [t].[compaignId] = [c0].[Id]
+LEFT JOIN [channelSources] AS [c1] ON [c0].[ChannelSourceId] = [c1].[Id]
+LEFT JOIN [AspNetUsers] AS [a] ON [t].[AssignedToId] = [a].[Id]
+LEFT JOIN (
+    SELECT [c2].[customerId], [c2].[ServiceId], [s].[Id], [s].[CreatedAt], [s].[NameAr], [s].[NameEn], [s].[UpdatedAt]
+    FROM [customerServices] AS [c2]
+    INNER JOIN [Services] AS [s] ON [c2].[ServiceId] = [s].[Id]
+) AS [t0] ON [t].[Id] = [t0].[customerId]
+ORDER BY [t].[CreatedAt] DESC, [t].[Id], [c0].[Id], [c1].[Id], [a].[Id], [t0].[customerId], [t0].[ServiceId]
+2026-05-04 14:54:01.218 +03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'TheOneCRM.Infrastructure.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DailyBudget'.
+Invalid column name 'Description'.
+Invalid column name 'Status'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9c4a4e1e-9160-4cf4-9a5f-7f461b044504
+Error Number:207,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DailyBudget'.
+Invalid column name 'Description'.
+Invalid column name 'Status'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:9c4a4e1e-9160-4cf4-9a5f-7f461b044504
+Error Number:207,State:1,Class:16
+2026-05-04 14:54:01.696 +03:00 [ERR] An error occurred while processing the request.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'DailyBudget'.
+Invalid column name 'Description'.
+Invalid column name 'Status'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__209_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at TheOneCRM.Infrastructure.Migrations.GenericRepository`1.ListAsync(ISpecification`1 spec) in E:\TheOneCRM\TheOneCRM.Infrastructure\Repositories\GenericRepository.cs:line 67
+   at TheOneCRM.Application.Services.Customers.CustomerService.GetAllCustomersAsync(CustomerPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 139
+   at TheOneCRM.API.Controllers.CustomersController.GetAll(CustomerPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 44
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+ClientConnectionId:9c4a4e1e-9160-4cf4-9a5f-7f461b044504
+Error Number:207,State:1,Class:16
+2026-05-04 14:56:06.748 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:06.789 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:06.789 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:07.060 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:07.060 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:07.061 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:31.322 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:31.365 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:31.365 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:48.947 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:49.005 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:49.011 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 14:56:52.276 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 14:56:52.342 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 14:56:52.346 +03:00 [INF] Hosting environment: Development
+2026-05-04 14:56:52.348 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 14:57:37.712 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 15:04:15.092 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 15:04:15.157 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 15:04:15.163 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 15:04:18.266 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 15:04:18.341 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 15:04:18.343 +03:00 [INF] Hosting environment: Development
+2026-05-04 15:04:18.346 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 15:09:21.783 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 16:20:22.423 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:20:22.486 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:20:22.491 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:20:25.650 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 16:20:25.732 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 16:20:25.735 +03:00 [INF] Hosting environment: Development
+2026-05-04 16:20:25.737 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 16:22:04.341 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 16:31:52.734 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:31:52.802 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:31:52.808 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:31:55.891 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 16:31:56.017 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 16:31:56.101 +03:00 [INF] Hosting environment: Development
+2026-05-04 16:31:56.103 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 16:32:23.922 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 16:32:38.961 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:32:39.020 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:32:39.026 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 16:32:42.087 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 16:32:42.164 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 16:32:42.181 +03:00 [INF] Hosting environment: Development
+2026-05-04 16:32:42.188 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:05:45.398 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 17:06:04.535 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:06:04.595 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:06:04.601 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:06:07.673 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 17:06:07.750 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 17:06:07.752 +03:00 [INF] Hosting environment: Development
+2026-05-04 17:06:07.755 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:06:26.245 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 17:11:30.765 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:11:30.822 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:11:30.830 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:11:33.839 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 17:11:33.914 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 17:11:33.918 +03:00 [INF] Hosting environment: Development
+2026-05-04 17:11:33.920 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:11:39.896 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 17:13:32.348 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:13:32.415 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:13:32.421 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:13:35.474 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 17:13:35.548 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 17:13:35.554 +03:00 [INF] Hosting environment: Development
+2026-05-04 17:13:35.557 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:13:43.698 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 17:13:46.963 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: An error was generated for warning 'Microsoft.EntityFrameworkCore.Query.InvalidIncludePathError': Unable to find navigation 'Country' specified in string based include path 'Countries.Country'. This exception can be suppressed or logged by passing event ID 'CoreEventId.InvalidIncludePathError' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+   at Microsoft.EntityFrameworkCore.Diagnostics.EventDefinition`2.Log[TLoggerCategory](IDiagnosticsLogger`1 logger, TParam1 arg1, TParam2 arg2)
+   at Microsoft.EntityFrameworkCore.Diagnostics.CoreLoggerExtensions.InvalidIncludePathError(IDiagnosticsLogger`1 diagnostics, String navigationChain, String navigationName)
+   at Microsoft.EntityFrameworkCore.Query.Internal.NavigationExpandingExpressionVisitor.ProcessInclude(NavigationExpansionExpression source, Expression expression, Boolean thenInclude, Boolean setLoaded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.NavigationExpandingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.NavigationExpandingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.NavigationExpandingExpressionVisitor.VisitMethodCall(MethodCallExpression methodCallExpression)
+   at Microsoft.EntityFrameworkCore.Query.Internal.NavigationExpandingExpressionVisitor.Expand(Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryTranslationPreprocessor.Process(Expression query)
+   at Microsoft.EntityFrameworkCore.Query.QueryCompilationContext.CreateQueryExecutor[TResult](Expression query)
+   at Microsoft.EntityFrameworkCore.Storage.Database.CompileQuery[TResult](Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.CompileQueryCore[TResult](IDatabase database, Expression query, IModel model, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass12_0`1.<ExecuteAsync>b__0()
+   at Microsoft.EntityFrameworkCore.Query.Internal.CompiledQueryCache.GetOrAddQuery[TResult](Object cacheKey, Func`1 compiler)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryable`1.GetAsyncEnumerator(CancellationToken cancellationToken)
+   at System.Runtime.CompilerServices.ConfiguredCancelableAsyncEnumerable`1.GetAsyncEnumerator()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at TheOneCRM.Infrastructure.Migrations.GenericRepository`1.ListAsync(ISpecification`1 spec) in E:\TheOneCRM\TheOneCRM.Infrastructure\Repositories\GenericRepository.cs:line 67
+   at TheOneCRM.Application.Services.CampaignService.GetAllCampaignsAsync(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 92
+   at TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns(CampaignPaginationParams paginationParams) in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 50
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-04 17:19:44.652 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:19:44.693 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:19:44.693 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:19:44.969 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:19:44.969 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:19:44.969 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:20:05.696 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:20:05.738 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:20:05.738 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:20:27.234 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:20:27.292 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:20:27.299 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:20:30.457 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 17:20:30.529 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 17:20:30.532 +03:00 [INF] Hosting environment: Development
+2026-05-04 17:20:30.534 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:21:07.461 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 17:21:10.435 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-04 17:21:10.441 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-04 17:24:54.271 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:24:54.311 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:24:54.311 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:24:54.567 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:24:54.568 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:24:54.568 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:25:02.053 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:25:02.101 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:25:02.102 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:35:12.420 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:35:12.480 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:35:12.487 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:35:15.949 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 17:35:16.043 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 17:35:16.047 +03:00 [INF] Hosting environment: Development
+2026-05-04 17:35:16.051 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:36:02.032 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 17:36:52.595 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-04 17:36:52.600 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-04 17:38:16.504 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+Swashbuckle.AspNetCore.SwaggerGen.SwaggerGeneratorException: Failed to generate Operation for action - TheOneCRM.API.Controllers.CampaignsController.GetAllCampaigns (TheOneCRM.API). See inner exception
+ ---> System.Reflection.AmbiguousMatchException: Ambiguous match found for 'TheOneCRM.Infrastructure.Specsification.CampaignsSpec.CampaignPaginationParams System.Nullable`1[TheOneCRM.Domain.Models.Enums.CampaignStatus] Status'.
+   at System.RuntimeType.GetPropertyImpl(String name, BindingFlags bindingAttr, Binder binder, Type returnType, Type[] types, ParameterModifier[] modifiers)
+   at System.Type.GetProperty(String name)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.PropertyInfo(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.ApiParameterDescriptionExtensions.CustomAttributes(ApiParameterDescription apiParameter)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.<>c.<GenerateParameters>b__16_0(ApiParameterDescription apiParam)
+   at System.Linq.Enumerable.WhereSelectListIterator`2.ToList()
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateParameters(ApiDescription apiDescription, SchemaRepository schemaRespository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   --- End of inner exception stack trace ---
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperation(ApiDescription apiDescription, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GenerateOperations(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GeneratePaths(IEnumerable`1 apiDescriptions, SchemaRepository schemaRepository)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerDocumentWithoutFilters(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator.GetSwaggerAsync(String documentName, String host, String basePath)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2026-05-04 17:39:52.679 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:39:52.736 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:39:52.744 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:39:56.361 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 17:39:56.428 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 17:39:56.431 +03:00 [INF] Hosting environment: Development
+2026-05-04 17:39:56.433 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:40:12.463 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-04 17:40:16.100 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-04 17:40:16.104 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-04 17:56:29.611 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:56:29.677 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:56:29.683 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-04 17:56:32.795 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-04 17:56:32.904 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-04 17:56:32.932 +03:00 [INF] Hosting environment: Development
+2026-05-04 17:56:32.934 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-04 17:56:54.499 +03:00 [WRN] Failed to determine the https port for redirect.
