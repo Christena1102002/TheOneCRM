@@ -480,6 +480,18 @@
         }
       }
     },
+    "/api/Campaigns/CampaignPerformance": {
+      "get": {
+        "tags": [
+          "Campaigns"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ChannelSources": {
       "post": {
         "tags": [
@@ -760,6 +772,18 @@
               "format": "int32"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Marketing/statistics": {
+      "get": {
+        "tags": [
+          "Marketing"
         ],
         "responses": {
           "200": {

@@ -6,6 +6,8 @@ using TheOneCRM.API.Error;
 using TheOneCRM.Application.Interfaces.ICampaign;
 using TheOneCRM.Domain.Models.DTOs.CampaignDto;
 using TheOneCRM.Domain.Models.DTOs.Common;
+using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
+using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Infrastructure.Specsification.CampaignsSpec;
 
 namespace TheOneCRM.API.Controllers
@@ -86,5 +88,20 @@ namespace TheOneCRM.API.Controllers
 
             return Content(json, "application/json");
         }
+        [HttpGet("CampaignPerformance")]
+        public async Task<IActionResult> CampaignPerformance()
+        {
+            var result = await _campaignService.GetCampaignPerformance();
+            return Ok(new ApiResponse(200, "Dashboard retrieved", result));
+        }
+
+        //[HttpGet("getLeadCustomer")]
+
+        //public async Task<IActionResult> GetAll([FromQuery] CustomerPaginationParams paginationParams)
+        //{
+        //    var result = await _campaignService.GetAllCustomersAsync(paginationParams);
+        //    return StatusCode(200,
+        //          new ApiResponse(200, "get customers successfully", result));
+        //}
     }
 }

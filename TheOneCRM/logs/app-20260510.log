@@ -1,0 +1,226 @@
+2026-05-10 11:08:28.673 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 11:08:28.769 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 11:08:28.773 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 11:08:35.976 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 11:08:36.537 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 11:08:37.324 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 11:08:37.426 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 11:08:37.444 +03:00 [INF] Hosting environment: Development
+2026-05-10 11:08:37.455 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 14:17:25.858 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:17:25.921 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:17:25.929 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:17:30.505 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 14:17:31.078 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 14:17:31.728 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 14:17:31.805 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 14:17:31.826 +03:00 [INF] Hosting environment: Development
+2026-05-10 14:17:31.827 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 14:17:40.281 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 14:17:42.543 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: Unable to resolve service for type 'TheOneCRM.Application.Interfaces.IMarketingService' while attempting to activate 'TheOneCRM.API.Controllers.MarketingController'.
+   at Microsoft.Extensions.DependencyInjection.ActivatorUtilities.ThrowHelperUnableToResolveService(Type type, Type requiredBy)
+   at lambda_method260(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-10 14:18:26.494 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:18:26.570 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:18:26.576 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:18:29.273 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 14:18:29.719 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 14:18:30.208 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 14:18:30.302 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 14:18:30.304 +03:00 [INF] Hosting environment: Development
+2026-05-10 14:18:30.329 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 14:18:45.350 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 14:22:30.682 +03:00 [ERR] An error occurred while processing the request.
+System.Collections.Generic.KeyNotFoundException: Campaign with id 1 not found
+   at TheOneCRM.Application.Services.Customers.CustomerService.CreateCustomerAsync(CreateCustomerDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Customers\CustomerService.cs:line 42
+   at TheOneCRM.API.Controllers.CustomersController.Create(CreateCustomerDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\CustomersController.cs:line 26
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-10 14:22:41.932 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-10 14:22:41.936 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-10 14:48:33.990 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:48:34.057 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:48:34.063 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 14:48:36.888 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 14:48:37.406 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 14:48:37.910 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 14:48:37.991 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 14:48:37.994 +03:00 [INF] Hosting environment: Development
+2026-05-10 14:48:37.996 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 14:48:45.637 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 15:26:03.295 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:26:03.355 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:26:03.361 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:26:06.247 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 15:26:06.745 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 15:26:07.311 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 15:26:07.395 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 15:26:07.397 +03:00 [INF] Hosting environment: Development
+2026-05-10 15:26:07.400 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 15:27:59.625 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 15:28:29.550 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:28:29.606 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:28:29.613 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:28:32.220 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 15:28:32.626 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 15:28:33.137 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 15:28:33.225 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 15:28:33.239 +03:00 [INF] Hosting environment: Development
+2026-05-10 15:28:33.247 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 15:30:11.363 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:30:11.424 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:30:11.431 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:30:14.157 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 15:30:14.648 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 15:30:15.205 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 15:30:15.293 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 15:30:15.298 +03:00 [INF] Hosting environment: Development
+2026-05-10 15:30:15.299 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 15:31:02.533 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 15:39:46.893 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:39:46.953 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:39:46.958 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 15:39:49.553 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 15:39:49.969 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 15:39:50.445 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 15:39:50.519 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 15:39:50.521 +03:00 [INF] Hosting environment: Development
+2026-05-10 15:39:50.524 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 15:40:02.588 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 15:41:01.085 +03:00 [ERR] An error occurred while processing the request.
+System.InvalidOperationException: ChannelSource already exists
+   at TheOneCRM.Application.Services.Sources.SourceService.CreateChannelSourceAsync(CreateChannelSourceDto dto) in E:\TheOneCRM\TheOneCRM.Application\Services\Sources\SourceService.cs:line 33
+   at TheOneCRM.API.Controllers.ChannelSourcesController.Create(CreateChannelSourceDto dto) in E:\TheOneCRM\TheOneCRM\Controllers\ChannelSourcesController.cs:line 24
+   at lambda_method345(Closure, Object)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-10 16:32:50.356 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 16:32:50.430 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 16:32:50.434 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 16:32:53.259 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 16:32:53.774 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 16:32:54.305 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 16:32:54.402 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 16:32:54.405 +03:00 [INF] Hosting environment: Development
+2026-05-10 16:32:54.407 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 16:33:42.666 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 16:34:01.683 +03:00 [ERR] An error occurred while processing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at TheOneCRM.Infrastructure.Specsification.SpecificationEvaluator`1.GetQuery(IQueryable`1 inputQuery, ISpecification`1 spec) in E:\TheOneCRM\TheOneCRM.Infrastructure\Specsification\SpecificationEvaluator.cs:line 17
+   at TheOneCRM.Infrastructure.Migrations.GenericRepository`1.ListWithSelectAsync[TResult](ISpecification`1 spec, Expression`1 selector) in E:\TheOneCRM\TheOneCRM.Infrastructure\Repositories\GenericRepository.cs:line 96
+   at TheOneCRM.Application.Services.CampaignService.GetPerformanceAsync() in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 199
+   at TheOneCRM.API.Controllers.CampaignsController.GetPerformance() in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 93
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-10 16:35:07.324 +03:00 [ERR] An error occurred while processing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at TheOneCRM.Infrastructure.Specsification.SpecificationEvaluator`1.GetQuery(IQueryable`1 inputQuery, ISpecification`1 spec) in E:\TheOneCRM\TheOneCRM.Infrastructure\Specsification\SpecificationEvaluator.cs:line 17
+   at TheOneCRM.Infrastructure.Migrations.GenericRepository`1.ListWithSelectAsync[TResult](ISpecification`1 spec, Expression`1 selector) in E:\TheOneCRM\TheOneCRM.Infrastructure\Repositories\GenericRepository.cs:line 96
+   at TheOneCRM.Application.Services.CampaignService.GetPerformanceAsync() in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 199
+   at TheOneCRM.API.Controllers.CampaignsController.GetPerformance() in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 93
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-10 16:41:10.149 +03:00 [ERR] An error occurred while processing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at TheOneCRM.Infrastructure.Specsification.SpecificationEvaluator`1.GetQuery(IQueryable`1 inputQuery, ISpecification`1 spec)
+   at TheOneCRM.Infrastructure.Migrations.GenericRepository`1.ListWithSelectAsync[TResult](ISpecification`1 spec, Expression`1 selector)
+   at TheOneCRM.Application.Services.CampaignService.GetPerformanceAsync() in E:\TheOneCRM\TheOneCRM.Application\Services\Campaigns\CampaignService.cs:line 199
+   at TheOneCRM.API.Controllers.CampaignsController.GetPerformance() in E:\TheOneCRM\TheOneCRM\Controllers\CampaignsController.cs:line 93
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at TheOneCRM.API.Middlewares.ExceptionMiddleware.InvokeAsync(HttpContext context) in E:\TheOneCRM\TheOneCRM\Middlewares\ExceptionMiddleware.cs:line 33
+2026-05-10 16:58:27.244 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 16:58:27.310 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 16:58:27.315 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 16:58:30.008 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 16:58:30.499 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 16:58:31.004 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 16:58:31.084 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 16:58:31.086 +03:00 [INF] Hosting environment: Development
+2026-05-10 16:58:31.088 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 17:00:12.994 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 17:15:22.662 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 17:15:22.721 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 17:15:22.728 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 17:15:25.542 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 17:15:26.030 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 17:15:26.532 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 17:15:26.601 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 17:15:26.604 +03:00 [INF] Hosting environment: Development
+2026-05-10 17:15:26.606 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 17:15:38.455 +03:00 [WRN] Failed to determine the https port for redirect.
+2026-05-10 17:18:17.480 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-10 17:18:17.486 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2026-05-10 17:38:44.400 +03:00 [WRN] No store type was specified for the decimal property 'Budget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 17:38:44.470 +03:00 [WRN] No store type was specified for the decimal property 'DailyBudget' on entity type 'Campaigns'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 17:38:44.478 +03:00 [WRN] No store type was specified for the decimal property 'Value' on entity type 'Deal'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-05-10 17:38:47.930 +03:00 [INF] Start installing Hangfire SQL objects...
+2026-05-10 17:38:48.515 +03:00 [INF] Hangfire SQL objects installed.
+2026-05-10 17:38:49.141 +03:00 [INF] Now listening on: http://localhost:5210
+2026-05-10 17:38:49.232 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-05-10 17:38:49.255 +03:00 [INF] Hosting environment: Development
+2026-05-10 17:38:49.256 +03:00 [INF] Content root path: E:\TheOneCRM\TheOneCRM
+2026-05-10 17:43:53.797 +03:00 [WRN] Failed to determine the https port for redirect.

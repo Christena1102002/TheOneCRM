@@ -12,6 +12,7 @@ using TheOneCRM.Domain.Models.DTOs.Common;
 using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Domain.Models.Enums;
+using TheOneCRM.Infrastructure.Specsification;
 using TheOneCRM.Infrastructure.Specsification.CampaignsSpec;
 using TheOneCRM.Infrastructure.Specsification.Customerspec;
 
@@ -193,7 +194,45 @@ namespace TheOneCRM.Application.Services
         
         }
 
+        public async Task<List<CampaignPerformanceRowDto>> GetCampaignPerformance()
+        {
+            var campaigns = await _unitOfWork.Repository<Campaigns>().ListWithSelectAsync(spec: null,
+        selector: c => new { c.Id, c.Name });
 
+            var allBuyers = await _unitOfWork.Repository<Customer>()
+                .ListAsync(new BuyerCustomersSpecification());
+            var allNonBuyers = await _unitOfWork.Repository<Customer>()
+                .ListAsync(new NotBuyerCustomersSpecification());
+
+            var rows = campaigns.Select(c =>
+            {
+                var buyers = allBuyers.Count(x => x.compaignId == c.Id);
+                var nonBuyers = allNonBuyers.Count(x => x.compaignId == c.Id);
+                var total = buyers + nonBuyers;
+
+                return new CampaignPerformanceRowDto
+                {
+                    CampaignId = c.Id,
+                    CampaignName = c.Name, 
+
+                    TotalCustomers = total,
+                    Buyers = buyers,
+                    NonBuyers = nonBuyers,
+                    ConversionRate = total == 0
+                        ? 0m
+                        : Math.Round((decimal)buyers * 100 / total, 1)
+                };
+            })
+            .OrderByDescending(x => x.TotalCustomers)
+            .ToList();
+
+       
+            return rows;
+        }
+
+
+
+     
         private static void CalculateBudgetMetrics(CampaignDetailsDto dto)
         {
             // ===== 1) الميزانية اليومية =====

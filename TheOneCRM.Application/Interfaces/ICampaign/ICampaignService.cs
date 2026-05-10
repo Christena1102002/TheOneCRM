@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TheOneCRM.Domain.Models.DTOs.CampaignDto;
 using TheOneCRM.Domain.Models.DTOs.Common;
 using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
+using TheOneCRM.Domain.Models.DTOs.SourceDtos;
 using TheOneCRM.Infrastructure.Specsification.CampaignsSpec;
 
 namespace TheOneCRM.Application.Interfaces.ICampaign
@@ -21,5 +22,7 @@ namespace TheOneCRM.Application.Interfaces.ICampaign
         Task DeleteCampaignAsync(int id);
         Task<CampaignResponseDto> ToggleCampaignStatusAsync(int id);
         Task<List<CampaignDashboardDto>> GetCampaignsDashboardAsync();
+        Task<List<CampaignPerformanceRowDto>> GetCampaignPerformance();
+
     }
 }

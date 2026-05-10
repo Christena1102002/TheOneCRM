@@ -33,8 +33,7 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<ICampaignService, CampaignService>();
             Services.AddScoped<ISourceService, SourceService>();
             Services.AddScoped<IServicesService, ServicesService>();
-            
-
+            Services.AddScoped<IMarketingService, MarketingService>();
             return Services;
         }
     }

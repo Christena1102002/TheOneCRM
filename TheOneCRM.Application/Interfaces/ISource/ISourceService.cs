@@ -11,5 +11,6 @@ namespace TheOneCRM.Application.Interfaces.ISourceService
     {
         Task<ChannelSourceDto> CreateChannelSourceAsync(CreateChannelSourceDto dto);
         Task<IReadOnlyList<ChannelSourceDto>> GetAllChannelSourcesAsync();
+        //Task<List<SourceStatisticsDto>> GetSourceStatisticsAsync();
     }
 }

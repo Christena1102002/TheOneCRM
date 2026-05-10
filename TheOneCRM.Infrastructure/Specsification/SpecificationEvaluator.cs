@@ -14,6 +14,9 @@ namespace TheOneCRM.Infrastructure.Specsification
         {
             var query = inputQuery;
 
+            if (spec == null)
+                return query;
+
             if (spec.Criteria is not null)
                 query = query.Where(spec.Criteria);
 

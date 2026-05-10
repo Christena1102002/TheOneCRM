@@ -31,6 +31,7 @@ namespace TheOneCRM.Domain.Specifications
 
         protected BaseSpecification()
         {
+        
         }
 
         protected BaseSpecification(Expression<Func<T, bool>> criteria)
@@ -61,6 +62,7 @@ namespace TheOneCRM.Domain.Specifications
 
         protected void ApplyThenByDescending(Expression<Func<T, object>> thenByDescExpression)
             => ThenByDescendingExpressions.Add(thenByDescExpression);
-
+     
     }
+    
 }
