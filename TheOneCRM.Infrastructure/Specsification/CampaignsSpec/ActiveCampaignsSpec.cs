@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TheOneCRM.Domain.Models.Entities;
+using TheOneCRM.Domain.Models.Enums;
 using TheOneCRM.Domain.Specifications;
 
 namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
@@ -14,5 +15,6 @@ namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
         {
             ApplyOrderBy(c => c.Name);
         }
+       
     }
 }

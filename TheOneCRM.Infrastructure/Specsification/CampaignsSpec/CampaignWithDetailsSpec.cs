@@ -10,7 +10,7 @@ namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
 {
     public class CampaignWithDetailsSpec : BaseSpecification<Campaigns>
     {
-        public CampaignWithDetailsSpec()
+        public CampaignWithDetailsSpec():base()
         {
             AddInclude(x => x.ChannelSource);
             AddInclude(x => x.Customers);

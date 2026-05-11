@@ -106,6 +106,7 @@ namespace TheOneCRM.Application.Services
             );
         }
 
+
         public async Task<CampaignResponseDto> ToggleCampaignStatusAsync(int id)
         {
             var campaign = await _unitOfWork.Repository<Campaigns>()

@@ -16,7 +16,7 @@ namespace TheOneCRM.Domain.Models.Entities
         public string? Phone { set; get; }
         public string CampanyName { set; get; }
         public PriorityStatus Priority { set; get; }
-        public StatusOfCustomers status { set; get; } = StatusOfCustomers.none;
+        public StatusOfCustomers status { set; get; } = StatusOfCustomers.New;
        //public bool IsActiveCustomer { set; get; }
        public string Notes {  set; get; }
 

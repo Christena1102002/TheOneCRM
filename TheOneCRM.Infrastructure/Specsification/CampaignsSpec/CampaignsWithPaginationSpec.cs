@@ -21,6 +21,7 @@ namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
         {
             AddInclude(c => c.ChannelSource);
             AddInclude(c=>c.Countries);
+            AddInclude(c=>c.Customers);
             //if(!string.IsNullOrEmpty(p.Status))
             //{
             //    Enum.TryParse<CampaignStatus>(p.Status,true,out var statusEnum)

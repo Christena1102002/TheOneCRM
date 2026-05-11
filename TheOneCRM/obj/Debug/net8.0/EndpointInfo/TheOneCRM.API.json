@@ -433,7 +433,7 @@
         }
       }
     },
-    "/api/Campaigns/{id}/toggle-status": {
+    "/api/Campaigns/{id}/toggleStatus": {
       "patch": {
         "tags": [
           "Campaigns"
@@ -456,7 +456,7 @@
         }
       }
     },
-    "/api/Campaigns/Statistics-Dashboard": {
+    "/api/Campaigns/StatisticsDashboard": {
       "get": {
         "tags": [
           "Campaigns"
@@ -781,6 +781,42 @@
       }
     },
     "/api/Marketing/statistics": {
+      "get": {
+        "tags": [
+          "Marketing"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Marketing/DashboardsStatistics": {
+      "get": {
+        "tags": [
+          "Marketing"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Marketing/potentialCustomersLastdays": {
+      "get": {
+        "tags": [
+          "Marketing"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Marketing/sourcePerformance": {
       "get": {
         "tags": [
           "Marketing"

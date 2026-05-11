@@ -30,7 +30,7 @@ namespace TheOneCRM.Domain.Models.DTOs.CampaignDto
         public string Gender { get; set; }
         public int MinAge { get; set; }
         public int MaxAge { get; set; }
-
+        public int CustomersCount { get; set; }
         public List<string> Countries { get; set; } = new();
     }
 

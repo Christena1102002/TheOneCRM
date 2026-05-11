@@ -99,6 +99,11 @@ namespace TheOneCRM.Infrastructure.Migrations
                 .Select(selector)
                 .ToListAsync();
         }
+
+        public IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_dbSet.AsQueryable(), spec);
+        }
     }
 }
 

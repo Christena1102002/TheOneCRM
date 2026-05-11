@@ -3,26 +3,118 @@
   "WorkspaceRootPath": "E:\\TheOneCRM\\TheOneCRM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\helper\\dataseader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\campaignscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\campaignscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\interfaces\\isource\\isourceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignswithpaginationspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\sources\\sourceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignsspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\campaigns\\campaignservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignscountspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\mapping\\campaignmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\repositories\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\dtos\\campaigndto\\campaignlistitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\entities\\campaigns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\marketingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\marketingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\marketingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\source\\sourceperformancespecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\specificationevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\specifications\\basespecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\dtos\\sourcedtos\\sourceperformancedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\interfaces\\imarketingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignwithdetailsspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignswithcustomersspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignsspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignpaginationparams.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\customerspec\\customerfilters.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\entities\\channelsource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\customerspec\\potentialcustomerslast7daysspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\dtos\\customerdtos\\dailyleadsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\activecampaignswithparamspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\allcustomersspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\customerspec\\todaycustomersspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\activecampaignsspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\dtos\\customerdtos\\marketingdashboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\interfaces\\isource\\isourceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\sources\\sourceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignbyidspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -37,20 +129,7 @@
       "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\customers\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\customerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\campaigns\\campaignservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\specificationevaluator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\notbuyercustomersspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\specifications\\basespecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\buyercustomersspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -61,10 +140,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\enums\\campaignstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\auth\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\channelsourcescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -80,29 +155,7 @@
       "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\customersbycampaignspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignswithcustomersspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\services\\servicesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\allcustomersspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\marketingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\marketingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\marketingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\entities\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\entities\\channelsource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\entities\\campaigns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\extensions\\applicationserviceextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -118,14 +171,7 @@
       "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\specifications\\ispecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\interfaces\\imarketingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\dtos\\customerdtos\\statisticsmarketingdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -144,10 +190,6 @@
       "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:theonecrm.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|solutionrelative:controllers\\servicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\mapping\\customermappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -157,19 +199,16 @@
       "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\dtos\\campaigndto\\createcampaigndto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\mapping\\campaignmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\auth\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A52D5FA-317B-09B2-ED1E-78DE01C700C0}|..\\TheOneCRM.Application\\TheOneCRM.Application.csproj|e:\\theonecrm\\theonecrm.application\\services\\auth\\refreshtokencleanupjob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\newfolder\\expirednonrevokedtokensspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\source\\expirednonrevokedtokensspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\newfolder\\oldrevokedtokensspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\source\\oldrevokedtokensspecification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EFB4390-904D-D515-3A40-FA0FCF2163C9}|TheOneCRM.API.csproj|e:\\theonecrm\\theonecrm\\extensions\\identityextension.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -219,15 +258,6 @@
       "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\customerspec\\customersbysearchspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignswithpaginationspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{788FC784-4DD2-3610-37A1-B5EB1C1ACE6F}|..\\TheOneCRM.Infrastructure\\TheOneCRM.Infrastructure.csproj|e:\\theonecrm\\theonecrm.infrastructure\\specsification\\campaignsspec\\campaignwithdetailsspec.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\dtos\\campaigndto\\campaignlistitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7415A384-0AE0-58BE-E47A-1FEFA18316BA}|..\\TheOneCRM.Domain\\TheOneCRM.Domain.csproj|e:\\theonecrm\\theonecrm.domain\\models\\entities\\campaigncountry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -244,11 +274,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 390,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 36,
               "Title": "CampaignByIdSpec.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignByIdSpec.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignByIdSpec.cs",
@@ -257,34 +287,44 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwA4AAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-05T11:02:39.097Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DataSeader.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Helper\\DataSeader.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Helper\\DataSeader.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Helper\\DataSeader.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Application\\Helper\\DataSeader.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAASwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T14:36:16.545Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "BuyerCustomersSpecification.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA+AAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "CampaignsWithPaginationSpec.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAuwBcAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:59:04.092Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:06:32.775Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "CampaignPaginationParams.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAnwA4AAAAtAAAAAAAAAA==",
+              "Title": "CampaignMapping.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:00:34.958Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T10:00:44.005Z"
             },
             {
               "$type": "Document",
@@ -294,23 +334,108 @@
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsCountSpec.cs",
               "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsCountSpec.cs",
               "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsCountSpec.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAADgvxQAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAYwAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:22:01.626Z",
+              "WhenOpened": "2026-05-05T09:22:01.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MarketingService.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\MarketingService.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\MarketingService.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\MarketingService.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Application\\Services\\MarketingService.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAADgv20AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T09:43:43.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAUwGYAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T07:52:27.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAABsAAAAAAAAAAAAEwAYAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-05T08:05:24.737Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CampaignListItemDto.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAIA2wB0AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T09:58:27.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CampaignsController.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CampaignsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CampaignsController.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CampaignsController.cs",
+              "RelativeToolTip": "Controllers\\CampaignsController.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAtwDUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T07:52:27.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Campaigns.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAA9wBkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T09:43:37.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MarketingController.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\MarketingController.cs",
+              "RelativeDocumentMoniker": "Controllers\\MarketingController.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\MarketingController.cs",
+              "RelativeToolTip": "Controllers\\MarketingController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwC0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T11:14:49.938Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "CampaignsSpec.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "Title": "CampaignService.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAIAywFwAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T14:15:49.951Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:58:59.485Z"
             },
             {
               "$type": "Document",
@@ -320,40 +445,256 @@
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Specifications\\BaseSpecification.cs",
               "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Specifications\\BaseSpecification.cs",
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Specifications\\BaseSpecification.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAlwCcAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAWwCIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:54:35.97Z",
+              "WhenOpened": "2026-05-10T09:54:35.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ServicesController.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\ServicesController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ServicesController.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\ServicesController.cs",
+              "RelativeToolTip": "Controllers\\ServicesController.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAArwDcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T07:52:27.732Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CampaignsController.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CampaignsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CampaignsController.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CampaignsController.cs",
-              "RelativeToolTip": "Controllers\\CampaignsController.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAUwFwAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 13,
+              "Title": "SourcePerformanceSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Source\\SourcePerformanceSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Source\\SourcePerformanceSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Source\\SourcePerformanceSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\Source\\SourcePerformanceSpecification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T07:52:27.706Z",
+              "WhenOpened": "2026-05-11T10:58:16.093Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SpecificationEvaluator.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAASwDkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T09:52:25.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CustomersController.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CustomersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CustomersController.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CustomersController.cs",
+              "RelativeToolTip": "Controllers\\CustomersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T07:52:27.674Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "GenericRepository.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Repositories\\GenericRepository.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAADgv2MAAAAfAAAAAAAAAA==",
+              "DocumentIndex": 17,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\Auth\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Auth\\AuthController.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\Auth\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\Auth\\AuthController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAArwBgAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T07:52:27.753Z",
+              "WhenOpened": "2026-05-04T14:53:57.943Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 20,
+              "Title": "CampaignWithDetailsSpec.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAvwBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T11:03:23.97Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IMarketingService.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAkwBAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T09:42:51.157Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SourcePerformanceDto.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\SourceDtos\\SourcePerformanceDto.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\SourceDtos\\SourcePerformanceDto.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\SourceDtos\\SourcePerformanceDto.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\SourceDtos\\SourcePerformanceDto.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwAoAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T10:40:00.344Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CampaignsWithCustomersSpec.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T12:11:48.786Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CampaignsSpec.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsSpec.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T14:15:49.951Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "CampaignPaginationParams.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignPaginationParams.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAnwA4AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T09:00:34.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "CustomerFilters.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomerFilters.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomerFilters.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomerFilters.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomerFilters.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T10:44:33.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PotentialCustomersLast7DaysSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\PotentialCustomersLast7DaysSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\PotentialCustomersLast7DaysSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\PotentialCustomersLast7DaysSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\PotentialCustomersLast7DaysSpecification.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAcwA8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T09:28:30.999Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ActiveCampaignsSpec.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsSpec.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsSpec.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsSpec.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsSpec.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T08:38:43.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ChannelSource.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T11:33:44.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ActiveCampaignsWithParamSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsWithParamSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsWithParamSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsWithParamSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\ActiveCampaignsWithParamSpecification.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T08:46:14.595Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "TodayCustomersSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\TodayCustomersSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\TodayCustomersSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\TodayCustomersSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\TodayCustomersSpecification.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T09:03:14.114Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "DailyLeadsDto.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\DailyLeadsDto.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\DailyLeadsDto.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\DailyLeadsDto.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\DailyLeadsDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T09:33:51.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "AllCustomersSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAWwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T09:56:30.022Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "MarketingDashboardDto.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\MarketingDashboardDto.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\MarketingDashboardDto.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\MarketingDashboardDto.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\MarketingDashboardDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-11T08:30:38.425Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
               "Title": "ISourceService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Interfaces\\ISource\\ISourceService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Interfaces\\ISource\\ISourceService.cs",
@@ -361,12 +702,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Application\\Interfaces\\ISource\\ISourceService.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAzwA0AAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T14:31:15.556Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T14:31:15.556Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 38,
               "Title": "SourceStatisticsDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\SourceDtos\\SourceStatisticsDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\SourceDtos\\SourceStatisticsDto.cs",
@@ -374,12 +714,35 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\SourceDtos\\SourceStatisticsDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T14:30:29.071Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T14:30:29.071Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 33,
+              "Title": "Customer.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAgwBgAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T14:38:32.651Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "BuyerCustomersSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\BuyerCustomersSpecification.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-10T09:59:04.092Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
               "Title": "SourceService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Sources\\SourceService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Sources\\SourceService.cs",
@@ -387,12 +750,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Application\\Services\\Sources\\SourceService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T14:31:35.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T14:31:35.737Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 40,
               "Title": "NotBuyerCustomersSpecification.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\NotBuyerCustomersSpecification.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\NotBuyerCustomersSpecification.cs",
@@ -400,25 +762,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\NotBuyerCustomersSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T11:09:32.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T11:09:32.118Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "SpecificationEvaluator.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\SpecificationEvaluator.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAWwDkAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:52:25.766Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 37,
               "Title": "ICampaignService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Interfaces\\ICampaign\\ICampaignService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Interfaces\\ICampaign\\ICampaignService.cs",
@@ -426,38 +774,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Application\\Interfaces\\ICampaign\\ICampaignService.cs",
               "ViewState": "AgIAABEAAAAAAAAAAIAwwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T10:59:33.323Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T10:59:33.323Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CampaignService.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Application\\Services\\Campaigns\\CampaignService.cs",
-              "ViewState": "AgIAANcAAAAAAAAAAAAmwNsAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:58:59.485Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CustomersController.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CustomersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CustomersController.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\CustomersController.cs",
-              "RelativeToolTip": "Controllers\\CustomersController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAArwCwAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T07:52:27.674Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 39,
               "Title": "CustomerService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Customers\\CustomerService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Customers\\CustomerService.cs",
@@ -465,12 +786,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Application\\Services\\Customers\\CustomerService.cs",
               "ViewState": "AgIAAGQAAAAAAAAAAAAjwIMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T10:59:52.461Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T10:59:52.461Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 42,
               "Title": "ExceptionMiddleware.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Middlewares\\ExceptionMiddleware.cs",
               "RelativeDocumentMoniker": "Middlewares\\ExceptionMiddleware.cs",
@@ -478,12 +798,11 @@
               "RelativeToolTip": "Middlewares\\ExceptionMiddleware.cs",
               "ViewState": "AgIAABYAAAAAAAAAAAD4vyMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-06T10:01:48.714Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-06T10:01:48.714Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 45,
               "Title": "CampaignPerformanceRowDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignPerformanceRowDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignPerformanceRowDto.cs",
@@ -491,12 +810,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignPerformanceRowDto.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAiwA8AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T12:05:08.95Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T12:05:08.95Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 44,
               "Title": "ChannelSourcesController.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\ChannelSourcesController.cs",
               "RelativeDocumentMoniker": "Controllers\\ChannelSourcesController.cs",
@@ -509,20 +827,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\Auth\\AuthController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Auth\\AuthController.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\Auth\\AuthController.cs",
-              "RelativeToolTip": "Controllers\\Auth\\AuthController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAArwB4AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-04T14:53:57.943Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 46,
               "Title": "CampaignResponseDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignResponseDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignResponseDto.cs",
@@ -530,12 +835,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T12:36:29.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T12:36:29.671Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 43,
               "Title": "CampaignStatus.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Enums\\CampaignStatus.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Enums\\CampaignStatus.cs",
@@ -543,25 +847,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Enums\\CampaignStatus.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:10:32.496Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:10:32.496Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "Campaigns.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Entities\\Campaigns.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA9wBYAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:43:37.483Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 48,
               "Title": "ServicesService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Services\\ServicesService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Services\\ServicesService.cs",
@@ -569,25 +859,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Application\\Services\\Services\\ServicesService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T12:07:12.444Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T12:07:12.444Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "CampaignsWithCustomersSpec.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithCustomersSpec.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T12:11:48.786Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 47,
               "Title": "CustomersByCampaignSpec.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CustomersByCampaignSpec.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CustomersByCampaignSpec.cs",
@@ -595,77 +871,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CustomersByCampaignSpec.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T12:12:10.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T12:12:10.229Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "MarketingService.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\MarketingService.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\MarketingService.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\MarketingService.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Application\\Services\\MarketingService.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAjwBkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:43:43.803Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "ChannelSource.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Entities\\ChannelSource.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T11:33:44.008Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "Customer.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Entities\\Customer.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAmwCcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T14:38:32.651Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "AllCustomersSpecification.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\AllCustomersSpecification.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:56:30.022Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "MarketingController.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\MarketingController.cs",
-              "RelativeDocumentMoniker": "Controllers\\MarketingController.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\MarketingController.cs",
-              "RelativeToolTip": "Controllers\\MarketingController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAswBQAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T11:14:49.938Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 49,
               "Title": "ApplicationServiceExtension.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Extensions\\ApplicationServiceExtension.cs",
               "RelativeDocumentMoniker": "Extensions\\ApplicationServiceExtension.cs",
@@ -673,12 +883,11 @@
               "RelativeToolTip": "Extensions\\ApplicationServiceExtension.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAgwCYAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T13:59:00.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T13:59:00.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 50,
               "Title": "StatusOfCustomers.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Enums\\StatusOfCustomers.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Enums\\StatusOfCustomers.cs",
@@ -686,12 +895,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Enums\\StatusOfCustomers.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T08:41:06.651Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T08:41:06.651Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 51,
               "Title": "Gender.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Enums\\Gender.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Enums\\Gender.cs",
@@ -699,12 +907,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\Enums\\Gender.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAAAQwAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:47:12.178Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-05T09:47:12.178Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 52,
               "Title": "ISpecification.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Specifications\\ISpecification.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Specifications\\ISpecification.cs",
@@ -712,25 +919,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Specifications\\ISpecification.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAYwA8AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:52:40.678Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T09:52:40.678Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
-              "Title": "IMarketingService.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Application\\Interfaces\\IMarketingService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:42:51.157Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 53,
               "Title": "StatisticsMarketingDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\StatisticsMarketingDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\StatisticsMarketingDto.cs",
@@ -738,12 +931,11 @@
               "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\StatisticsMarketingDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-10T09:23:08.368Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-10T09:23:08.368Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 57,
               "Title": "TheOneCRM.API.csproj",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\TheOneCRM.API.csproj",
               "RelativeDocumentMoniker": "TheOneCRM.API.csproj",
@@ -755,7 +947,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 60,
               "Title": "CreateCampaignDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CreateCampaignDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CreateCampaignDto.cs",
@@ -767,7 +959,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 54,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -779,20 +971,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAEwAYAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-05-05T08:05:24.737Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 56,
               "Title": "countries.json",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\wwwroot\\data\\countries.json",
               "RelativeDocumentMoniker": "wwwroot\\data\\countries.json",
@@ -804,7 +983,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 55,
               "Title": "countries.json",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\wwwroot\\data\\countries.json",
               "RelativeDocumentMoniker": "wwwroot\\data\\countries.json",
@@ -816,20 +995,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
-              "Title": "ServicesController.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\ServicesController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ServicesController.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM\\Controllers\\ServicesController.cs",
-              "RelativeToolTip": "Controllers\\ServicesController.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAjwDcAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T07:52:27.732Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 59,
               "Title": "UpdateCustomerDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\UpdateCustomerDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CustomerDtos\\UpdateCustomerDto.cs",
@@ -841,7 +1007,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 65,
               "Title": "IdentityExtension.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Extensions\\IdentityExtension.cs",
               "RelativeDocumentMoniker": "Extensions\\IdentityExtension.cs",
@@ -853,7 +1019,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 58,
               "Title": "CustomerMappingProfile.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Mapping\\CustomerMappingProfile.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Mapping\\CustomerMappingProfile.cs",
@@ -865,19 +1031,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
-              "Title": "CampaignMapping.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Application\\Mapping\\CampaignMapping.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAqwCcAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T10:00:44.005Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 61,
               "Title": "AuthService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Auth\\AuthService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Auth\\AuthService.cs",
@@ -889,7 +1043,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 66,
               "Title": "RefreshTokenByHashSpec.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\RefreshTokenByHashSpec.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\RefreshTokenByHashSpec.cs",
@@ -901,7 +1055,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 62,
               "Title": "RefreshTokenCleanupJob.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Auth\\RefreshTokenCleanupJob.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Auth\\RefreshTokenCleanupJob.cs",
@@ -913,31 +1067,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 64,
               "Title": "OldRevokedTokensSpecification.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\OldRevokedTokensSpecification.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\OldRevokedTokensSpecification.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\OldRevokedTokensSpecification.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\OldRevokedTokensSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Source\\OldRevokedTokensSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Source\\OldRevokedTokensSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Source\\OldRevokedTokensSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\Source\\OldRevokedTokensSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-06T11:37:01.601Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 63,
               "Title": "ExpiredNonRevokedTokensSpecification.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\ExpiredNonRevokedTokensSpecification.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\ExpiredNonRevokedTokensSpecification.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\ExpiredNonRevokedTokensSpecification.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\NewFolder\\ExpiredNonRevokedTokensSpecification.cs",
+              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Source\\ExpiredNonRevokedTokensSpecification.cs",
+              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Source\\ExpiredNonRevokedTokensSpecification.cs",
+              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Source\\ExpiredNonRevokedTokensSpecification.cs",
+              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\Source\\ExpiredNonRevokedTokensSpecification.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-06T11:37:37.798Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 69,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Interfaces\\IAuthService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Interfaces\\IAuthService.cs",
@@ -949,7 +1103,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 73,
               "Title": "LogoutRequestDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\Auth\\LogoutRequestDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\Auth\\LogoutRequestDto.cs",
@@ -961,7 +1115,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 67,
               "Title": "TokenService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Application\\Services\\Token\\TokenService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Application\\Services\\Token\\TokenService.cs",
@@ -973,7 +1127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 71,
               "Title": "ITokenService.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Interfaces\\ITokenService.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Interfaces\\ITokenService.cs",
@@ -985,7 +1139,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 72,
               "Title": "RefreshToken.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\RefreshToken.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\RefreshToken.cs",
@@ -997,7 +1151,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 68,
               "Title": "UsersDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\Auth\\UsersDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\Auth\\UsersDto.cs",
@@ -1009,7 +1163,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 82,
               "Title": "20260506085522_addedadresstouser.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Data\\Migrations\\20260506085522_addedadresstouser.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Data\\Migrations\\20260506085522_addedadresstouser.cs",
@@ -1021,7 +1175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 70,
               "Title": "AppUser.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\AppUser.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\AppUser.cs",
@@ -1033,7 +1187,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
+              "DocumentIndex": 74,
               "Title": "CampaignDashboardDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignDashboardDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignDashboardDto.cs",
@@ -1045,7 +1199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 76,
               "Title": "CampaignCountryDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignCountryDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignCountryDto.cs",
@@ -1057,7 +1211,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 77,
               "Title": "CorsExtension.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM\\Extensions\\CorsExtension.cs",
               "RelativeDocumentMoniker": "Extensions\\CorsExtension.cs",
@@ -1069,7 +1223,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 75,
               "Title": "CampaignDetailsDto.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignDetailsDto.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignDetailsDto.cs",
@@ -1081,19 +1235,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
-              "Title": "CampaignWithDetailsSpec.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignWithDetailsSpec.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T11:03:23.97Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 79,
               "Title": "CustomersBySearchSpec.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomersBySearchSpec.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomersBySearchSpec.cs",
@@ -1105,7 +1247,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
+              "DocumentIndex": 78,
               "Title": "CustomerByIdSpec.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomerByIdSpec.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\Customerspec\\CustomerByIdSpec.cs",
@@ -1117,19 +1259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
-              "Title": "CampaignListItemDto.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Domain\\Models\\DTOs\\CampaignDto\\CampaignListItemDto.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAIAzwB0AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:58:27.571Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 81,
               "Title": "20260505095505_ddedPROPERTIESTOCAMPINES.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Data\\Migrations\\20260505095505_ddedPROPERTIESTOCAMPINES.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Data\\Migrations\\20260505095505_ddedPROPERTIESTOCAMPINES.cs",
@@ -1141,7 +1271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 80,
               "Title": "CampaignCountry.cs",
               "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Domain\\Models\\Entities\\CampaignCountry.cs",
               "RelativeDocumentMoniker": "..\\TheOneCRM.Domain\\Models\\Entities\\CampaignCountry.cs",
@@ -1150,18 +1280,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-05T09:53:07.929Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 67,
-              "Title": "CampaignsWithPaginationSpec.cs",
-              "DocumentMoniker": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
-              "RelativeDocumentMoniker": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
-              "ToolTip": "E:\\TheOneCRM\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
-              "RelativeToolTip": "..\\TheOneCRM.Infrastructure\\Specsification\\CampaignsSpec\\CampaignsWithPaginationSpec.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAApwCAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-05T09:06:32.775Z"
             }
           ]
         }

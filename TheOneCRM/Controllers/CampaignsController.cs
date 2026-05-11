@@ -66,14 +66,14 @@ namespace TheOneCRM.API.Controllers
             return StatusCode(200,
                 new ApiResponse(200, "Campaign deleted successfully"));
         }
-        [HttpPatch("{id}/toggle-status")]
+        [HttpPatch("{id}/toggleStatus")]
         public async Task<IActionResult> ToggleStatus(int id)
         {
             var result = await _campaignService.ToggleCampaignStatusAsync(id);
 
             return Ok(new ApiResponse(200, "Campaign status toggled successfully", result));
         }
-        [HttpGet("Statistics-Dashboard")]
+        [HttpGet("StatisticsDashboard")]
         public async Task<IActionResult> GetDashboard()
         {
             var result = await _campaignService.GetCampaignsDashboardAsync();

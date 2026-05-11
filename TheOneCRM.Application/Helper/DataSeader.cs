@@ -35,8 +35,6 @@ namespace TheOneCRM.API.Helper
                 }
             }
 
-
-
             var adminUser = await _userManager.FindByEmailAsync(adminEmail);
             if (adminUser == null)
             {

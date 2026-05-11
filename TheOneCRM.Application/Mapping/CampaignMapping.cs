@@ -25,7 +25,9 @@ namespace TheOneCRM.Application.Mapping
         .ForMember(d => d.ChannelSource, o => o.MapFrom(s => s.ChannelSource.Name)) // عدّل حسب اسم البروبرتي عندك
         .ForMember(d => d.DurationDays, o => o.MapFrom(s => s.DurationDays))
         .ForMember(d => d.Countries, o => o.MapFrom(s => s.Countries.Select(cc => cc.name)))
-        .ForMember(d => d.Gender, o => o.MapFrom(s => s.Gender.ToString()));
+        .ForMember(d => d.Gender, o => o.MapFrom(s => s.Gender.ToString()))
+          .ForMember(dest => dest.CustomersCount,
+        opt => opt.MapFrom(src => src.Customers.Count()));
 
             CreateMap<Campaigns, CampaignDetailsDto>()
                 .ForMember(d=>d.Gender,o=>o.MapFrom(s => s.Gender.ToString()))
