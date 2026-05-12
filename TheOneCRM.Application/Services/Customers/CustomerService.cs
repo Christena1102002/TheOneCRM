@@ -132,7 +132,7 @@ namespace TheOneCRM.Application.Services.Customers
             var spec = new CustomersWithPaginationSpec(paginationParams);
 
 
-            var countSpec = new CustomersCountSpec(paginationParams);
+            var countSpec = new Infrastructure.Specsification.CustomersCountSpec(paginationParams);
             //var countSpec = new CustomersCountSpec();
 
 
@@ -274,5 +274,38 @@ namespace TheOneCRM.Application.Services.Customers
             // 3) Map للـ DTO
             return _mapper.Map<CustomerDetailsDto>(customer);
         }
+
+        public async Task<Pagination<CustomerListItemDto>> GetAllgetSalesCustomers(CustomerPaginationParams paginationParams,string? currentUserId,bool isSalesOnly)
+        {
+            var spec = new SalesCustomersWithPaginationSpec(paginationParams, currentUserId, isSalesOnly);
+            var countSpec = new SalesCustomersCountSpec(paginationParams, currentUserId, isSalesOnly);
+            var customers = await _unitOfWork.Repository<Customer>().ListAsync(spec);
+            var totalCount = await _unitOfWork.Repository<Customer>().CountAsync(countSpec);
+            var data = _mapper.Map<IReadOnlyList<CustomerListItemDto>>(customers);
+
+            return new Pagination<CustomerListItemDto>(
+                paginationParams.PageIndex,
+                paginationParams.PageSize,
+                totalCount,
+                data
+            );
+
+        }
+
+        public async Task UpdateCustomerNoteAsync(int customerId, string note, string userId)
+        {
+            var customer = await _unitOfWork.Repository<Customer>()
+                .GetByIdAsync(customerId);
+
+            if (customer == null)
+                throw new Exception("Customer not found");
+
+            customer.Notes = note;
+
+            _unitOfWork.Repository<Customer>().Update(customer);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
     }
+
 }

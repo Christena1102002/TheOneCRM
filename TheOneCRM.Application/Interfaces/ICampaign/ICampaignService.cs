@@ -23,6 +23,7 @@ namespace TheOneCRM.Application.Interfaces.ICampaign
         Task<CampaignResponseDto> ToggleCampaignStatusAsync(int id);
         Task<List<CampaignDashboardDto>> GetCampaignsDashboardAsync();
         Task<List<CampaignPerformanceRowDto>> GetCampaignPerformance();
-
+        // Service Interface
+        Task<CampaignResponseDto> UpdateCampaignAsync(int id, UpdateCampaignDto dto, string userId);
     }
 }

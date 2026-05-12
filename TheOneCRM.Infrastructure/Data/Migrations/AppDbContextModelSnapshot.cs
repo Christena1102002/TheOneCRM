@@ -475,6 +475,60 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.ToTable("customerServices");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.DailyReport", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AdditionalNotes")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<string>("Challenges")
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<string>("CompletedTasks")
+                        .IsRequired()
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PlannedTasks")
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<DateTime>("ReportDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("TasksInProgress")
+                        .HasMaxLength(4000)
+                        .HasColumnType("nvarchar(4000)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("WorkHours")
+                        .HasColumnType("decimal(5,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReportDate");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("DailyReports", (string)null);
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Deal", b =>
                 {
                     b.Property<int>("Id")
@@ -922,18 +976,29 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.HasOne("TheOneCRM.Domain.Models.Entities.Service", "Service")
                         .WithMany("customerServices")
                         .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "customers")
                         .WithMany("customerServices")
                         .HasForeignKey("customerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Service");
 
                     b.Navigation("customers");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.DailyReport", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "appUser")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("appUser");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Deal", b =>

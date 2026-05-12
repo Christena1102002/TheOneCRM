@@ -10,6 +10,7 @@ namespace TheOneCRM.Infrastructure.Data
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options) { }
 
+        public DbSet<DailyReport> dailyReports { get; set; }
         public DbSet<Activities> Activities { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Projects> Projects { get; set; }

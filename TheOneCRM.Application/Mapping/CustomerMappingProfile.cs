@@ -31,9 +31,25 @@ namespace TheOneCRM.Application.Mapping
      .ForMember(d => d.Services,
          o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
       .ForMember(dest => dest.Source,
-                opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name)); ;
+                opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name));
 
 
+            CreateMap<Customer, CustomerDetailsDto>()
+                .ForMember(d => d.Status, o => o.MapFrom(s => (int)s.status))
+                .ForMember(d => d.StatusName, o => o.MapFrom(s => s.status.ToString()))
+                .ForMember(d => d.CampaignName,
+         o => o.MapFrom(s => s.campaigns != null ? s.campaigns.Name : null))
+                .ForMember(d => d.SalesPersonName,
+         o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.UserName : null))
+     .ForMember(d => d.Services,
+         o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
+      .ForMember(dest => dest.Source,
+                opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name))
+      .ForMember(d=>d.SalesPersonId,o=>o.MapFrom(s=>s.AssignedToId))
+      .ForMember(d=>d.CampaignId,o=>o.MapFrom(s=>s.compaignId))
+      .ForMember(d=>d.AssignedAt,o=>o.MapFrom(s=>s.CreatedAt));
+
+   
 
             CreateMap<UpdateCustomerDto, Customer>()
         .ForMember(d => d.Id, o => o.Ignore())
@@ -45,40 +61,41 @@ namespace TheOneCRM.Application.Mapping
 
 
 
-            CreateMap<Customer, CustomerDetailsDto>()
 
 
-    // الحالة
-    .ForMember(d => d.Status,
-        o => o.MapFrom(s => (int)s.status))
-    .ForMember(d => d.StatusName,
-        o => o.MapFrom(s => s.status.ToString()))
 
-    // الحملة
-    .ForMember(d => d.CampaignName,
-        o => o.MapFrom(s => s.campaigns != null ? s.campaigns.Name : null))
+            //// الحالة
+            //.ForMember(d => d.Status,
+            //    o => o.MapFrom(s => (int)s.status))
+            //.ForMember(d => d.StatusName,
+            //    o => o.MapFrom(s => s.status.ToString()))
 
-    // المندوب
-    .ForMember(d => d.SalesPersonId,
-        o => o.MapFrom(s => s.AssignedToId))
-    .ForMember(d => d.SalesPersonName,
-        o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.UserName : null))
+            //// الحملة
+            //.ForMember(d => d.CampaignName,
+            //    o => o.MapFrom(s => s.campaigns != null ? s.campaigns.Name : null))
 
-    // الخدمات: IDs
-    .ForMember(d => d.ServiceIds,
-        o => o.MapFrom(s => s.customerServices.Select(cs => cs.ServiceId).ToList()))
+            // المندوب
+            //.ForMember(d => d.SalesPersonId,
+            //    o => o.MapFrom(s => s.AssignedToId))
+            //.ForMember(d => d.SalesPersonName,
+            //    o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.UserName : null))
 
-    // الخدمات: Objects
-    .ForMember(d => d.Services,
-        o => o.MapFrom(s => s.customerServices.Select(cs => new ServiceItemDto
-        {
-            Id = cs.Service.Id,
-            Name = cs.Service.NameAr
-        }).ToList()));
+            //// الخدمات: IDs
+            //.ForMember(d => d.ServiceIds,
+            //    o => o.MapFrom(s => s.customerServices.Select(cs => cs.ServiceId).ToList()))
 
-            CreateMap<Service, ServiceItemDto>();
+            //// الخدمات: Objects
+            //.ForMember(d => d.Services,
+            //    o => o.MapFrom(s => s.customerServices.Select(cs => new ServiceItemDto
+            //    {
+            //        Id = cs.Service.Id,
+            //        Name = cs.Service.NameAr
+            //    }).ToList()));
+
+            //        CreateMap<Service, ServiceItemDto>();
+            //    }
+
+
         }
-
-
     }
 }

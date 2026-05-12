@@ -86,6 +86,12 @@ namespace TheOneCRM
                 {
                     // 1) Apply migrations
                     var db = services.GetRequiredService<AppDbContext>();
+                    
+                    
+                    
+                    
+                    
+                    
                     await db.Database.MigrateAsync();
 
                     // 2) Run seeder

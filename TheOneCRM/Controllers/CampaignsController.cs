@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -33,7 +34,7 @@ namespace TheOneCRM.API.Controllers
             return StatusCode(200,
                  new ApiResponse(200, "get Campaign successfully", result));
         }
-        [HttpPost]
+        [HttpPost("CreateCampaign")]
         public async Task<ActionResult> CreateCampaign(CreateCampaignDto dto)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -44,6 +45,20 @@ namespace TheOneCRM.API.Controllers
             var result = await _campaignService.CreateCampaignAsync(dto, userId);
             return StatusCode(200,
                new ApiResponse(200, "get Campaign successfully", result));
+        }
+        [HttpPut("UpdateCampaign/{id}")]
+        [Authorize]
+        public async Task<ActionResult> UpdateCampaign(int id, [FromBody] UpdateCampaignDto dto)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var result = await _campaignService.UpdateCampaignAsync(id, dto, userId);
+
+            return StatusCode(200,
+                new ApiResponse(200, "Campaign updated successfully", result));
         }
         [HttpGet("GetAllCampaigns")]
         public async Task<IActionResult> GetAllCampaigns([FromQuery] CampaignPaginationParams paginationParams)

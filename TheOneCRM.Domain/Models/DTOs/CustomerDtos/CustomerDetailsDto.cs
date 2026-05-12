@@ -11,23 +11,20 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public int Id { get; set; }
 
         // البيانات الأساسية
-        public string Name { get; set; }
+        public string FullName { get; set; }
         public string Phone { get; set; }
         public string? Email { get; set; }
-        public string? CompanyName { get; set; }
+        public string? CampanyName{ get; set; }
         public string? Notes { get; set; }
-
-        // المصدر
-        public int Source { get; set; }                  // الـ ID للـ enum (للفورم)
-        public string SourceName { get; set; }           // الاسم للعرض
 
         // الحملة
         public int? CampaignId { get; set; }
-        public string? CampaignName { get; set; }
+
 
         // الخدمات (IDs للفورم + Names للعرض)
-        public List<int> ServiceIds { get; set; } = new();
-        public List<ServiceItemDto> Services { get; set; } = new();
+        public string? Source { get; set; }
+        public string? CampaignName { get; set; }
+        public List<string> Services { get; set; } = new();
 
         // الحالة
         public int Status { get; set; }

@@ -18,17 +18,26 @@ namespace TheOneCRM.Infrastructure.Data.Config
             builder.HasKey(x => new { x.customerId, x.ServiceId });
 
 
-            builder.HasOne(x => x.customers)
-    .WithMany(x => x.customerServices)
-    .HasForeignKey(x => x.customerId)
-    .OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasOne(x => x.Service)
-                .WithMany(x => x.customerServices)
-                .HasForeignKey(x => x.ServiceId)
-                .OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(cs => cs.customers)
+                   .WithMany(c => c.customerServices)
+                   .HasForeignKey(cs => cs.customerId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
+            builder.HasOne(cs => cs.Service)
+                   .WithMany(s => s.customerServices)
+                   .HasForeignKey(cs => cs.ServiceId)
+                   .OnDelete(DeleteBehavior.Cascade);
 
+            //builder.HasOne(x => x.Service)
+            //    .WithMany(x => x.customerServices)
+            //    .HasForeignKey(x => x.ServiceId)
+            //    .OnDelete(DeleteBehavior.NoAction);
+
+      //      builder.HasOne(cs => cs.customers)
+      //.WithMany(c => c.customerServices)
+      //.HasForeignKey(cs => cs.customerId)
+      //.OnDelete(DeleteBehavior.Cascade);
 
 
         }

@@ -106,7 +106,83 @@ namespace TheOneCRM.Application.Services
             );
         }
 
+        public async Task<CampaignResponseDto> UpdateCampaignAsync(
+    int id,
+    UpdateCampaignDto dto,
+    string userId)
+        {
+            // 1️⃣ Get user and check role
+            var user = await _userManager.FindByIdAsync(userId);
 
+            if (user == null)
+                throw new UnauthorizedAccessException("User not found");
+
+            var isMarketing = await _userManager.IsInRoleAsync(user, "Marketing");
+            var isAdmin = await _userManager.IsInRoleAsync(user, "Admin");
+
+            if (!isMarketing && !isAdmin)
+                throw new UnauthorizedAccessException(
+                    "Only Marketing and Admin users can update campaigns");
+
+            // 2️⃣ Get existing campaign with countries
+            var spec = new CampaignWithDetailsSpec(id);
+
+            var campaign = await _unitOfWork.Repository<Campaigns>()
+                .GetEntityWithSpec(spec);
+
+            if (campaign == null)
+                throw new KeyNotFoundException("Campaign not found");
+            // 3️⃣ Validate Channel Source
+            if (dto.ChannelSourceId.HasValue)
+            {
+                var source = await _unitOfWork.Repository<ChannelSource>()
+                    .GetByIdAsync(dto.ChannelSourceId.Value);
+
+                if (source == null)
+                    throw new KeyNotFoundException("Invalid Channel Source");
+            }
+
+            // 4️⃣ Validate dates
+            if (dto.StartDate.HasValue &&
+                dto.EndDate.HasValue &&
+                dto.EndDate < dto.StartDate)
+            {
+                throw new InvalidOperationException(
+                    "EndDate must be after StartDate");
+            }
+            // If only EndDate is sent
+            if (!dto.StartDate.HasValue &&
+                dto.EndDate.HasValue &&
+                dto.EndDate < campaign.StartDate)
+            {
+                throw new InvalidOperationException(
+                    "EndDate must be after StartDate");
+            }
+
+            // If only StartDate is sent
+            if (dto.StartDate.HasValue &&
+                !dto.EndDate.HasValue &&
+                campaign.EndDate < dto.StartDate)
+            {
+                throw new InvalidOperationException(
+                    "EndDate must be after StartDate");
+            }
+            _mapper.Map(dto, campaign);
+
+            if (dto.ChannelSourceId.HasValue)
+                campaign.ChannelSourceId = dto.ChannelSourceId.Value;
+
+            // 7️⃣ Save changes
+            _unitOfWork.Repository<Campaigns>().Update(campaign);
+            await _unitOfWork.SaveChangesAsync();
+
+            // 8️⃣ Reload updated campaign
+            var updatedCampaign = await _unitOfWork.Repository<Campaigns>()
+                .GetEntityWithSpec(new CampaignWithDetailsSpec(id));
+
+            // 9️⃣ Return response
+            return _mapper.Map<CampaignResponseDto>(updatedCampaign);
+        }
         public async Task<CampaignResponseDto> ToggleCampaignStatusAsync(int id)
         {
             var campaign = await _unitOfWork.Repository<Campaigns>()

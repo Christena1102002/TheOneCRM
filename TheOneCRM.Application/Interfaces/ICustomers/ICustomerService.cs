@@ -19,5 +19,8 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
         Task DeleteCustomerAsync(int id);
         Task<CustomerDetailsDto> GetCustomerByIdAsync(int id);
         Task<CustomerListItemDto> AssignToSalesPersonAsync(int id, string salesPersonId);
+
+        Task<Pagination<CustomerListItemDto>> GetAllgetSalesCustomers(CustomerPaginationParams paginationParams, string? currentUserId, bool isSalesOnly);
+        Task UpdateCustomerNoteAsync(int customerId, string note, string userId);
     }
 }

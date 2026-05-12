@@ -30,7 +30,7 @@ namespace TheOneCRM.Infrastructure.Data.Config
         .OnDelete(DeleteBehavior.NoAction)
         .IsRequired(false);
 
-
+           
         }
     }
 }

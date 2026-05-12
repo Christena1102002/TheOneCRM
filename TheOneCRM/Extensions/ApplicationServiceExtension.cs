@@ -2,12 +2,14 @@
 using TheOneCRM.Application.Interfaces;
 using TheOneCRM.Application.Interfaces.ICampaign;
 using TheOneCRM.Application.Interfaces.ICustomers;
+using TheOneCRM.Application.Interfaces.IDailyReport;
 using TheOneCRM.Application.Interfaces.IServices;
 using TheOneCRM.Application.Interfaces.ISourceService;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services;
 using TheOneCRM.Application.Services.Auth;
 using TheOneCRM.Application.Services.Customers;
+using TheOneCRM.Application.Services.Report;
 using TheOneCRM.Application.Services.Services;
 using TheOneCRM.Application.Services.Sources;
 using TheOneCRM.Application.Services.Token;
@@ -34,6 +36,7 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<ISourceService, SourceService>();
             Services.AddScoped<IServicesService, ServicesService>();
             Services.AddScoped<IMarketingService, MarketingService>();
+            Services.AddScoped<IDailyReportService, DailyReportService>();
             return Services;
         }
     }

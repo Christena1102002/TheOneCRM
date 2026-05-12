@@ -49,6 +49,11 @@ namespace TheOneCRM.Application.Mapping
                 .ForMember(dest => dest.ChannelSource,
         opt => opt.MapFrom(src => src.ChannelSource.Name));
             CreateMap<Campaigns, CampaignDashboardDto>();
+
+
+            CreateMap<UpdateCampaignDto, Campaigns>()
+    .ForAllMembers(opt =>
+        opt.Condition((src, dest, srcMember) => srcMember != null));
         }
 
     }

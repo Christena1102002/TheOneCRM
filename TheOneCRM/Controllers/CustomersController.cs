@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using TheOneCRM.API.Error;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.Interfaces.ICampaign;
@@ -85,5 +88,31 @@ namespace TheOneCRM.API.Controllers
             return StatusCode(200,
                    new ApiResponse(200, "Get Customer By Id successfully",result));
         }
+        [SwaggerOperation(Summary = "all customer already assigned by marketing to sales")]
+        [Authorize]
+        [HttpGet("getSalesCustomers")]
+        public async Task<IActionResult> getSalesCustomers([FromQuery] CustomerPaginationParams paginationParams)
+        {
+            
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var isSalesOnly = User.IsInRole("Sales");
+            var result = await _customerService.GetAllgetSalesCustomers(
+        paginationParams, userId, isSalesOnly);
+            return StatusCode(200,
+        new ApiResponse(200, "get customers successfully", result));
+        }
+        [SwaggerOperation(Summary = "Update customer note by sales")]
+        [HttpPatch("customers/{id}/note")]
+        public async Task<IActionResult> UpdateCustomerNote(
+    int id,
+    [FromBody] UpdateCustomerNoteDto dto)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await _customerService.UpdateCustomerNoteAsync(id, dto.Note, userId);
+
+            return Ok(new ApiResponse(200, "Customer note updated successfully"));
+        }
     }
+    
 }
