@@ -364,16 +364,42 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
-    "Method": "Create",
-    "RelativePath": "api/Customers",
-    "HttpMethod": "POST",
+    "ContainingType": "TheOneCRM.API.Controllers.CustomerNotesController",
+    "Method": "GetByCustomer",
+    "RelativePath": "api/CustomerNotes/customer/{customerId}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
+        "Name": "customerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "role",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomerNotesController",
+    "Method": "UpsertMyNote",
+    "RelativePath": "api/CustomerNotes/customer/{customerId}/myNote",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
         "Name": "dto",
-        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.CreateCustomerDto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.UpsertCustomerNoteDto",
         "IsRequired": true
       }
     ],
@@ -418,6 +444,48 @@
   },
   {
     "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
+    "Method": "AssignToSupportPerson",
+    "RelativePath": "api/Customers/{id}/AssignToSupportPerson",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.AssignToSupportPersonDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
+    "Method": "UpdateCustomerFollowUp",
+    "RelativePath": "api/Customers/{id}/followUp",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.UpdateCustomerFollowUpDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
     "Method": "GetById",
     "RelativePath": "api/Customers/{id}/getCustomerById",
     "HttpMethod": "GET",
@@ -427,6 +495,43 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
+    "Method": "UpdateCustomerStatus",
+    "RelativePath": "api/Customers/{id}/status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.UpdateCustomerStatusDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
+    "Method": "Create",
+    "RelativePath": "api/Customers/CreateCustomer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.CreateCustomerDto",
         "IsRequired": true
       }
     ],
@@ -451,6 +556,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
+    "Method": "GetdropdownCustomers",
+    "RelativePath": "api/Customers/dropdownCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -610,6 +725,106 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.PriceQuotationsController",
+    "Method": "CreatePriceQuotation",
+    "RelativePath": "api/PriceQuotations",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.PriceQuotationsDtos.CreatePriceQuotationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.PriceQuotationsController",
+    "Method": "GetAllPriceQuotations",
+    "RelativePath": "api/PriceQuotations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CustomerId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.PriceQuotationsController",
+    "Method": "GetPriceQuotationById",
+    "RelativePath": "api/PriceQuotations/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.PriceQuotationsController",
+    "Method": "UpdatePriceQuotation",
+    "RelativePath": "api/PriceQuotations/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.PriceQuotationsDtos.UpdatePriceQuotationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.PriceQuotationsController",
+    "Method": "DeletePriceQuotation",
+    "RelativePath": "api/PriceQuotations/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

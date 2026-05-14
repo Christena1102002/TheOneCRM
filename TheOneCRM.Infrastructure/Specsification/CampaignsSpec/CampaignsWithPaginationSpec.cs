@@ -20,7 +20,7 @@ namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
             )
         {
             AddInclude(c => c.ChannelSource);
-            AddInclude(c=>c.Countries);
+            AddInclude(c=>c.CampaignCountries);
             AddInclude(c=>c.Customers);
             //if(!string.IsNullOrEmpty(p.Status))
             //{

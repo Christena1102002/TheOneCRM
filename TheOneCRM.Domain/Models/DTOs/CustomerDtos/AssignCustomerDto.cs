@@ -10,4 +10,8 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
     {
         public string SalesPersonId { get; set; }
     }
+    public class AssignToSupportPersonDto
+    {
+        public string SupportPersonId { get; set; }
+    }
 }

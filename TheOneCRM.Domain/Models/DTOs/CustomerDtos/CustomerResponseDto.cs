@@ -10,5 +10,8 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
     {
         public int Id { get; set; }
         public string FullName { get; set; }
+        public DateTime? LastFollowUpDate { get; set; }
+        public DateTime? NextFollowUpDate { get; set; }
+        public List<CustomerNoteResponseDto> CustomerNotes { get; set; } = new();
     }
 }

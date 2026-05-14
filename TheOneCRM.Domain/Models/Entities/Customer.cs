@@ -18,13 +18,16 @@ namespace TheOneCRM.Domain.Models.Entities
         public PriorityStatus Priority { set; get; }
         public StatusOfCustomers status { set; get; } = StatusOfCustomers.New;
        //public bool IsActiveCustomer { set; get; }
-       public string Notes {  set; get; }
+       //public string Notes {  set; get; }
 
 
         //created-by
         public string? CreatedById { get; set; }
         public AppUser CreatedBy { get; set; }
 
+        // آخر متابعة والمتابعة القادمة
+        public DateTime? LastFollowUpDate { get; set; }
+        public DateTime? NextFollowUpDate { get; set; }
 
 
 
@@ -33,7 +36,13 @@ namespace TheOneCRM.Domain.Models.Entities
 
         public int? compaignId { set; get; }
         public Campaigns? campaigns { set; get; }
-
+        public ICollection<CustomerNote> Notes { get; set; }
+    = new List<CustomerNote>();
         public ICollection<CustomerServices>? customerServices { get; set; } = new List<CustomerServices>();
+
+        public ICollection<PriceQuotation> PriceQuotations { get; set; }= new List<PriceQuotation>();
+        public ICollection<CustomerAssignmentHistory> AssignmentHistory { get; set; }
+           = new List<CustomerAssignmentHistory>();
+
     }
 }

@@ -16,11 +16,18 @@ namespace TheOneCRM.Application.Mapping
             CreateMap<CreateCustomerDto, Customer>()
                 .ForMember(dest => dest.CampanyName, opt => opt.MapFrom(src => src.CompanyName))
                 .ForMember(dest => dest.compaignId, opt => opt.MapFrom(src => src.CampaignId))
-                .ForMember(dest => dest.customerServices, opt => opt.Ignore()); // هنعملها يدوي
-
-            CreateMap<Customer, CustomerResponseDto>();
-
-
+                .ForMember(dest => dest.customerServices, opt => opt.Ignore())
+                .ForMember(dest => dest.Notes, opt => opt.Ignore()); ; // هنعملها يدوي
+            CreateMap<CustomerNote, CustomerNoteResponseDto>()
+             .ForMember(d => d.CustomerName,
+                 o => o.MapFrom(s => s.Customer != null ? s.Customer.FullName : null))
+             .ForMember(d => d.CreatedByName,
+                 o => o.MapFrom(s => s.CreatedBy != null ? s.CreatedBy.UserName : null));
+            CreateMap<Customer, CustomerResponseDto>()
+                .ForMember(dest => dest.CustomerNotes, opt => opt.MapFrom(src => src.Notes));
+            CreateMap<CustomerNote, CustomerNoteResponseDto>()
+    .ForMember(d => d.CustomerName, o => o.MapFrom(s => s.Customer.FullName))
+    .ForMember(d => d.CreatedByName, o => o.MapFrom(s => s.CreatedBy.UserName));
             CreateMap<Customer, CustomerListItemDto>()
      .ForMember(d => d.Status,
          o => o.MapFrom(s => s.status.ToString()))
@@ -59,7 +66,9 @@ namespace TheOneCRM.Application.Mapping
         .ForMember(d => d.status, o => o.Ignore())
         .ForMember(d => d.CreatedAt, o => o.Ignore());
 
-
+            CreateMap<Customer, CustomerDropdownDto>()
+                .ForMember(d => d.Services,
+         o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()));
 
 
 

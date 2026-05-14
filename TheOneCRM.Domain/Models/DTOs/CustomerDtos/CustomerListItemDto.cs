@@ -17,5 +17,7 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public string Status { get; set; }
         public string? SalesPersonName { get; set; }
         public DateTime CreatedAt { get; set; }
+        public DateTime? LastFollowUpDate { get; set; }
+        public DateTime? NextFollowUpDate { get; set; }
     }
 }

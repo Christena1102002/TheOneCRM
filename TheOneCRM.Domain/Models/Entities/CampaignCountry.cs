@@ -8,8 +8,9 @@ namespace TheOneCRM.Domain.Models.Entities
 {
     public class CampaignCountry :BaseEntity
     {
-        public string name { get; set; }
+        //public string name { get; set; }
         public int CampaignId { get; set; }
         public Campaigns Campaign { get; set; }
+        public int CountryId { get; set; }
     }
 }

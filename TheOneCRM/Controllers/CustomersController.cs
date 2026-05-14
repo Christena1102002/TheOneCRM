@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using TheOneCRM.API.Error;
+using TheOneCRM.API.Extensions;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.Interfaces.ICampaign;
 using TheOneCRM.Application.Interfaces.ICustomers;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
+using TheOneCRM.API.Extensions;
 
 namespace TheOneCRM.API.Controllers
 {
@@ -16,22 +19,36 @@ namespace TheOneCRM.API.Controllers
     public class CustomersController : ControllerBase
     {
         private readonly ICustomerService _customerService;
-        private readonly ICampaignService _campaignService;
-        public CustomersController(ICustomerService customerService,ICampaignService campaignService)
+    
+        public CustomersController(ICustomerService customerService)
         {
             _customerService = customerService;
-            _campaignService = campaignService;
         }
-
-        [HttpPost]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales}")]
+        [HttpPost("CreateCustomer")]
         public async Task<IActionResult> Create([FromBody] CreateCustomerDto dto)
         {
-            var result = await _customerService.CreateCustomerAsync(dto);
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var role = User.GetPrimaryRole();
+            if (string.IsNullOrEmpty(role))
+                return Forbid();
+            var result = await _customerService.CreateCustomerAsync(dto, userId, role);
 
             return StatusCode(201,
                 new ApiResponse(201, "Customer created successfully", result));
         }
-
+       
+        [SwaggerOperation(Summary = "GET:Customer/dropdown Customers in marketing")]
+        [HttpGet("dropdownCustomers")]
+        public async Task<IActionResult> GetdropdownCustomers()
+        {
+            var result = await _customerService.GetCustomersForDropdownAsync();
+            return StatusCode(200,
+                 new ApiResponse(200, "Get dropdown Customers successfully", result));
+        }
         // GET: api/customers/search?term=أحمد
         [HttpGet("search")]
         public async Task<IActionResult> Search([FromQuery] string? SearchPhoneOrName)
@@ -74,11 +91,58 @@ namespace TheOneCRM.API.Controllers
         }
         // POST: api/customers/5/assign
         [HttpPost("{id}/assign")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales}")]
         public async Task<IActionResult> AssignToSalesPerson(int id, [FromBody] AssignCustomerDto dto)
         {
-            var result = await _customerService.AssignToSalesPersonAsync(id, dto.SalesPersonId);
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var role = User.GetPrimaryRole();
+            if (string.IsNullOrEmpty(role))
+                return Forbid();
+
+            var result = await _customerService.AssignToSalesPersonAsync(id, dto.SalesPersonId, userId,role);
             return StatusCode(200,
                    new ApiResponse(200, "Assign To SalesPerson successfully"));
+        }
+        [HttpPost("{id}/AssignToSupportPerson")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales},{UserRoles.Support}")]
+        public async Task<IActionResult> AssignToSupportPerson(
+    int id, [FromBody] AssignToSupportPersonDto dto)
+        {
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var role = User.GetPrimaryRole();
+            if (string.IsNullOrEmpty(role))
+                return Forbid();
+
+            var result = await _customerService.AssignToSupportPersonAsync(
+                id, dto.SupportPersonId, userId, role);
+
+            return Ok(new ApiResponse(200, "Customer assigned to support person successfully", result));
+        }
+        [HttpPut("{id}/status")]
+        //[Authorize] // أو [Authorize(Roles = "Admin,Sales")] حسب صلاحياتك
+        public async Task<IActionResult> UpdateCustomerStatus(
+    int id,
+    [FromBody] UpdateCustomerStatusDto dto)
+        {
+            var result = await _customerService.UpdateCustomerStatusAsync(id, dto);
+            return StatusCode(200,
+                  new ApiResponse(200, "Update Customer Status successfully", result));
+        }
+        [HttpPut("{id}/followUp")]
+        //[Authorize] // أو [Authorize(Roles = "Sales,Admin")]
+        public async Task<IActionResult> UpdateCustomerFollowUp(
+    int id,
+    [FromBody] UpdateCustomerFollowUpDto dto)
+        {
+            var result = await _customerService.UpdateCustomerFollowUpAsync(id, dto);
+            return StatusCode(200,
+                    new ApiResponse(200, "Update Customer FollowUp successfully", result));
         }
         // GET: api/customers/5
         [HttpGet("{id}/getCustomerById")]

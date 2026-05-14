@@ -13,7 +13,7 @@ namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
         public CampaignByIdSpec(int id) : base(x => x.Id == id)
         {
             AddInclude(c => c.ChannelSource);
-             AddInclude(c => c.Countries);
+             AddInclude(c => c.CampaignCountries);
             AddInclude(c=>c.appUser);
         }
     }

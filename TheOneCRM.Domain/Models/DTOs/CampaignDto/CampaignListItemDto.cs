@@ -31,7 +31,8 @@ namespace TheOneCRM.Domain.Models.DTOs.CampaignDto
         public int MinAge { get; set; }
         public int MaxAge { get; set; }
         public int CustomersCount { get; set; }
-        public List<string> Countries { get; set; } = new();
+        public ICollection<CampaignCountryDto> Countries { get; set; }
+    = new List<CampaignCountryDto>();
     }
 
 }

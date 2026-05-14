@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using TheOneCRM.Application.Interfaces.ICampaign;
+using TheOneCRM.Application.Interfaces.ICountry;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Domain.Models.DTOs.CampaignDto;
 using TheOneCRM.Domain.Models.DTOs.Common;
@@ -22,13 +23,15 @@ namespace TheOneCRM.Application.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly ICountryService _countryService;
         private readonly UserManager<AppUser> _userManager;
 
-        public CampaignService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager)
+        public CampaignService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager, ICountryService countryService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _userManager = userManager;
+            _countryService = countryService;
         }
 
         public async Task<IReadOnlyList<CampaignDropdownDto>> GetCampaignsForDropdownAsync()
@@ -59,16 +62,19 @@ namespace TheOneCRM.Application.Services
 
             // 2️⃣ Map main entity
             var campaign = _mapper.Map<Campaigns>(dto);
+          
+
+            
             campaign.AppUserId = userId;
             campaign.ChannelSourceId = (int)dto.ChannelSourceId;
             if (dto.Countries != null && dto.Countries.Any())
             {
-                campaign.Countries = dto.Countries
-                    .Select(c => new CampaignCountry
-                    {
-                        Id = c
-                    })
-                    .ToList();
+                campaign.CampaignCountries = dto.Countries
+                .Select(countryId => new CampaignCountry
+                {
+                    CountryId = countryId
+                })
+                .ToList();
             }
             // 3️⃣ Dates validation
             //if (dto.EndDate < dto.StartDate)
@@ -95,8 +101,21 @@ namespace TheOneCRM.Application.Services
 
             var campaigns = await _unitOfWork.Repository<Campaigns>().ListAsync(spec);
             var totalCount = await _unitOfWork.Repository<Campaigns>().CountAsync(countSpec);
+            var allCountries = await _countryService.GetAllCountriesAsync();
 
+            var countryDict = allCountries
+                .ToDictionary(c => c.id, c => c.name);
             var data = _mapper.Map<IReadOnlyList<CampaignListItemDto>>(campaigns);
+            foreach (var dto in data)
+            {
+                foreach (var country in dto.Countries)
+                {
+                    if (countryDict.TryGetValue(country.CountryId, out var name))
+                    {
+                        country.CountryName = name;
+                    }
+                }
+            }
 
             return new Pagination<CampaignListItemDto>(
                 paginationParams.PageIndex,
@@ -168,6 +187,19 @@ namespace TheOneCRM.Application.Services
                     "EndDate must be after StartDate");
             }
             _mapper.Map(dto, campaign);
+            // امسحي القديم
+            campaign.CampaignCountries.Clear();
+
+            // ضيفي الجديد
+            if (dto.CountryIds != null && dto.CountryIds.Any())
+            {
+                campaign.CampaignCountries = dto.CountryIds
+                    .Select(id => new CampaignCountry
+                    {
+                        CountryId = id
+                    })
+                    .ToList();
+            }
 
             if (dto.ChannelSourceId.HasValue)
                 campaign.ChannelSourceId = dto.ChannelSourceId.Value;
@@ -264,7 +296,16 @@ namespace TheOneCRM.Application.Services
             if (Campaigns == null)
                 throw new KeyNotFoundException($"Campaign with id {id} not found");
             var dto = _mapper.Map<CampaignDetailsDto>(Campaigns);
+            // قراءة الدول من ملف JSON
+            var allCountries = await _countryService.GetAllCountriesAsync();
 
+            // تحويل CountryId -> CountryName
+            foreach (var item in dto.Countries)
+            {
+                item.CountryName = allCountries
+                    .FirstOrDefault(c => c.id == item.CountryId)
+                    ?.name;
+            }
             CalculateBudgetMetrics(dto);
 
             return dto;

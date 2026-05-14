@@ -20,6 +20,6 @@ namespace TheOneCRM.Domain.Models.DTOs.CampaignDto
         public Gender? Gender { get; set; }
         public int? MinAge { get; set; }
         public int? MaxAge { get; set; }
-        public List<int>? Countries { get; set; }
+        public List<int>? CountryIds { get; set; }
     }
 }

@@ -25,6 +25,6 @@ namespace TheOneCRM.Domain.Models.Entities
         public int DurationDays { get; set; }
         public Gender Gender { get; set; }
         public ICollection<Customer> Customers { get; set; } = new List<Customer>();
-        public ICollection<CampaignCountry> Countries { get; set; } = new List<CampaignCountry>();
+        public ICollection<CampaignCountry> CampaignCountries    { get; set; } = new List<CampaignCountry>();
     }
 }

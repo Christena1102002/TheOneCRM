@@ -25,6 +25,10 @@ namespace TheOneCRM.Infrastructure.Data
         public DbSet<Tasks> tasks { set; get; } 
         public DbSet<ChannelSource> channelSources { set; get; }
         public DbSet<Campaigns> campaigns { set; get; }
+        public DbSet<PriceQuotation> priceQuotations { set; get; }
+        public DbSet<PriceQuotationDetails> priceQuotationDetails { set; get; }
+        public DbSet<CustomerNote> CustomerNotes { get; set; }
+        public DbSet<CustomerAssignmentHistory> CustomerAssignmentHistories { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -278,15 +278,14 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Property<int>("CampaignId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CountryId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -430,9 +429,11 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Notes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime?>("LastFollowUpDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("NextFollowUpDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
@@ -458,6 +459,89 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.HasIndex("compaignId");
 
                     b.ToTable("customers");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerAssignmentHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AssignedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FromRole")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FromUserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ToRole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ToUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("FromUserId");
+
+                    b.HasIndex("ToUserId");
+
+                    b.ToTable("CustomerAssignmentHistories");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerNote", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Note")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("CustomerNotes");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerServices", b =>
@@ -521,8 +605,6 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .HasColumnType("decimal(5,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ReportDate");
 
                     b.HasIndex("UserId");
 
@@ -628,6 +710,80 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("pipelineStages");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PriceQuotation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Discount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("NetTotal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.ToTable("PriceQuotations", (string)null);
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PriceQuotationDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PriceQuotationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PriceQuotationId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("PriceQuotationDetails", (string)null);
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Projects", b =>
@@ -920,7 +1076,7 @@ namespace TheOneCRM.Infrastructure.Migrations
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CampaignCountry", b =>
                 {
                     b.HasOne("TheOneCRM.Domain.Models.Entities.Campaigns", "Campaign")
-                        .WithMany("Countries")
+                        .WithMany("CampaignCountries")
                         .HasForeignKey("CampaignId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -969,6 +1125,50 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("campaigns");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerAssignmentHistory", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "Customer")
+                        .WithMany("AssignmentHistory")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "FromUser")
+                        .WithMany()
+                        .HasForeignKey("FromUserId");
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "ToUser")
+                        .WithMany()
+                        .HasForeignKey("ToUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("FromUser");
+
+                    b.Navigation("ToUser");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerNote", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "Customer")
+                        .WithMany("Notes")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Customer");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerServices", b =>
@@ -1024,6 +1224,36 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("customer");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PriceQuotation", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "Customer")
+                        .WithMany("PriceQuotations")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PriceQuotationDetails", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.PriceQuotation", "PriceQuotation")
+                        .WithMany("Items")
+                        .HasForeignKey("PriceQuotationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PriceQuotation");
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Projects", b =>
@@ -1089,19 +1319,30 @@ namespace TheOneCRM.Infrastructure.Migrations
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Campaigns", b =>
                 {
-                    b.Navigation("Countries");
+                    b.Navigation("CampaignCountries");
 
                     b.Navigation("Customers");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Customer", b =>
                 {
+                    b.Navigation("AssignmentHistory");
+
+                    b.Navigation("Notes");
+
+                    b.Navigation("PriceQuotations");
+
                     b.Navigation("customerServices");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PipelineStages", b =>
                 {
                     b.Navigation("Deals");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PriceQuotation", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Service", b =>

@@ -9,9 +9,14 @@ namespace TheOneCRM.Domain.Models.Enums
     public enum StatusOfCustomers
     {
         New = 1,
-        none = 2,
+        None = 2,
         Negotiating = 3,
         Buyer = 4,
-        NotBuyer = 5
+        NotBuyer = 5,
+        AssignedToSalesTeam = 6,
+        Contacted = 7,
+        NoResponse = 8,
+        SentQuote = 9,
+        TransferredToSupport = 10
     }
 }

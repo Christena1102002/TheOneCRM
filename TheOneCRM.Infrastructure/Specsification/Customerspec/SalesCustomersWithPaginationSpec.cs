@@ -17,7 +17,7 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
         bool isSalesOnly)
         : base(SalesCustomerFilters.Build(p, currentUserId, isSalesOnly))
         {
-            //AddInclude(c => c.campaigns.ChannelSource);
+            AddInclude(c => c.campaigns.ChannelSource);
             AddInclude(c => c.AssignedTo);
             AddInclude("customerServices.Service");
 
