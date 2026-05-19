@@ -10,6 +10,7 @@ namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
 {
     public class CampaignByIdSpec : BaseSpecification<Campaigns>
     {
+
         public CampaignByIdSpec(int id) : base(x => x.Id == id)
         {
             AddInclude(c => c.ChannelSource);

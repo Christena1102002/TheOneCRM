@@ -24,6 +24,10 @@ namespace TheOneCRM.API.Controllers
         {
             _customerService = customerService;
         }
+
+
+
+
         [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales}")]
         [HttpPost("CreateCustomer")]
         public async Task<IActionResult> Create([FromBody] CreateCustomerDto dto)
@@ -153,11 +157,10 @@ namespace TheOneCRM.API.Controllers
                    new ApiResponse(200, "Get Customer By Id successfully",result));
         }
         [SwaggerOperation(Summary = "all customer already assigned by marketing to sales")]
-        [Authorize]
+        //[Authorize]
         [HttpGet("getSalesCustomers")]
         public async Task<IActionResult> getSalesCustomers([FromQuery] CustomerPaginationParams paginationParams)
         {
-            
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isSalesOnly = User.IsInRole("Sales");
             var result = await _customerService.GetAllgetSalesCustomers(
@@ -165,18 +168,31 @@ namespace TheOneCRM.API.Controllers
             return StatusCode(200,
         new ApiResponse(200, "get customers successfully", result));
         }
-        [SwaggerOperation(Summary = "Update customer note by sales")]
-        [HttpPatch("customers/{id}/note")]
-        public async Task<IActionResult> UpdateCustomerNote(
-    int id,
-    [FromBody] UpdateCustomerNoteDto dto)
+        [SwaggerOperation(Summary = "all customer already assigned by marketing to sales")]
+        //[Authorize]
+        [HttpGet("getSupportCustomers")]
+        public async Task<IActionResult> getSupportCustomers([FromQuery] CustomerPaginationParams paginationParams)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            await _customerService.UpdateCustomerNoteAsync(id, dto.Note, userId);
-
-            return Ok(new ApiResponse(200, "Customer note updated successfully"));
+            var isSupportOnly = User.IsInRole("Support");
+            var result = await _customerService.GetAllgetSupportCustomers(
+        paginationParams, userId, isSupportOnly);
+            return StatusCode(200,
+        new ApiResponse(200, "get customers successfully", result));
         }
+
+        //    [SwaggerOperation(Summary = "Update customer note by sales")]
+        //    [HttpPatch("customers/{id}/note")]
+        //    public async Task<IActionResult> UpdateCustomerNote(
+        //int id,
+        //[FromBody] UpdateCustomerNoteDto dto)
+        //    {
+        //        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        //        var role = User.FindFirstValue(ClaimTypes.Role);
+        //        await _customerService.UpdateCustomerNoteAsync(id, dto.Note, userId, role);
+
+        //        return Ok(new ApiResponse(200, "Customer note updated successfully"));
+        //    }
     }
     
 }

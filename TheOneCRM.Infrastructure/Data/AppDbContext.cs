@@ -29,6 +29,8 @@ namespace TheOneCRM.Infrastructure.Data
         public DbSet<PriceQuotationDetails> priceQuotationDetails { set; get; }
         public DbSet<CustomerNote> CustomerNotes { get; set; }
         public DbSet<CustomerAssignmentHistory> CustomerAssignmentHistories { get; set; }
+       public DbSet<Appointment> Appointments { get; set; }
+        public DbSet<Contract> Contracts { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

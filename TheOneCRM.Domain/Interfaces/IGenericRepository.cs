@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using Microsoft.Extensions.Configuration;
 using TheOneCRM.Domain.Specifications;
@@ -38,5 +39,10 @@ namespace TheOneCRM.Domain.Interfaces
         Task<IReadOnlyList<TResult>> ListWithSelectAsync<TResult>(
       ISpecification<T> spec,
       Expression<Func<T, TResult>> selector);
+        IQueryable<T> GetQueryableWithSpec(ISpecification<T> spec);
+        Task<int> CountAsync();
+
+        IQueryable<T> ApplySpecification(ISpecification<T> spec);
+
     }
 }

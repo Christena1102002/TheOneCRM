@@ -10,9 +10,10 @@ namespace TheOneCRM.Domain.Models.Entities
     {
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
-
-        public string Note { get; set; }
-
+     
+        public string? NoteMarketing { get; set; }
+        public string? NoteSales { get; set; }
+        public string? NoteSupport { get; set; }
         public string CreatedById { get; set; }
         public AppUser CreatedBy { get; set; }
 

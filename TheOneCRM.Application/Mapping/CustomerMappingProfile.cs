@@ -28,13 +28,43 @@ namespace TheOneCRM.Application.Mapping
             CreateMap<CustomerNote, CustomerNoteResponseDto>()
     .ForMember(d => d.CustomerName, o => o.MapFrom(s => s.Customer.FullName))
     .ForMember(d => d.CreatedByName, o => o.MapFrom(s => s.CreatedBy.UserName));
+            
+            
+            
             CreateMap<Customer, CustomerListItemDto>()
      .ForMember(d => d.Status,
          o => o.MapFrom(s => s.status.ToString()))
      .ForMember(d => d.CampaignName,
          o => o.MapFrom(s => s.campaigns != null ? s.campaigns.Name : null))
-     .ForMember(d => d.SalesPersonName,
-         o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.UserName : null))
+
+          .ForMember(d => d.SalesPersonId,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Sales")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUserId)
+            .FirstOrDefault()))
+
+     .ForMember(d => d.SupportPersonId,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Support")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUserId)
+            .FirstOrDefault()))
+
+       .ForMember(d => d.SupportPersonName,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Support")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUser != null ? a.ToUser.FullName : null)
+            .FirstOrDefault()))
+
+         .ForMember(d => d.SalesPersonName,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Sales")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUser != null ? a.ToUser.FullName : null)
+            .FirstOrDefault()))
+
      .ForMember(d => d.Services,
          o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
       .ForMember(dest => dest.Source,
@@ -46,8 +76,35 @@ namespace TheOneCRM.Application.Mapping
                 .ForMember(d => d.StatusName, o => o.MapFrom(s => s.status.ToString()))
                 .ForMember(d => d.CampaignName,
          o => o.MapFrom(s => s.campaigns != null ? s.campaigns.Name : null))
-                .ForMember(d => d.SalesPersonName,
-         o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.UserName : null))
+             //       .ForMember(d => d.SalesPersonName,
+             //o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.FullName : null))
+             .ForMember(d => d.SalesPersonId,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Sales")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUserId)
+            .FirstOrDefault()))
+
+     .ForMember(d => d.SupportPersonId,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Support")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUserId)
+            .FirstOrDefault()))
+
+       .ForMember(d => d.SupportPersonName,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Support")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUser != null ? a.ToUser.FullName : null)
+            .FirstOrDefault()))
+
+         .ForMember(d => d.SalesPersonName,
+        o => o.MapFrom(s => s.AssignmentHistory
+            .Where(a => a.ToRole == "Sales")
+            .OrderByDescending(a => a.AssignedAt)
+            .Select(a => a.ToUser != null ? a.ToUser.FullName : null)
+            .FirstOrDefault()))
      .ForMember(d => d.Services,
          o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
       .ForMember(dest => dest.Source,

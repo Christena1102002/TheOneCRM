@@ -18,7 +18,8 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
         : base(SalesCustomerFilters.Build(p, currentUserId, isSalesOnly))
         {
             AddInclude(c => c.campaigns.ChannelSource);
-            AddInclude(c => c.AssignedTo);
+            //AddInclude(c => c.AssignedTo);
+            AddInclude("AssignmentHistory.ToUser");
             AddInclude("customerServices.Service");
 
             ApplyOrderByDescending(c => c.CreatedAt);

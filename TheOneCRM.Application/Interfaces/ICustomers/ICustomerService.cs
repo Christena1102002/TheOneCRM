@@ -23,7 +23,7 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
     int id, string salesPersonId, string currentUserId, string currentUserRole);
 
         Task<Pagination<CustomerListItemDto>> GetAllgetSalesCustomers(CustomerPaginationParams paginationParams, string? currentUserId, bool isSalesOnly);
-        Task UpdateCustomerNoteAsync(int customerId, string note, string userId);
+        Task UpdateCustomerNoteAsync(int customerId, string note, string userId,string role);
         Task<IReadOnlyList<CustomerDropdownDto>> GetCustomersForDropdownAsync();
         Task<CustomerListItemDto> AssignToSupportPersonAsync(int id, string SupportPersonId, string currentUserId, string currentUserRole);
         Task<CustomerResponseDto> UpdateCustomerStatusAsync(int id, UpdateCustomerStatusDto dto);
@@ -33,5 +33,6 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
             int customerId, string note, string userId, string role);
         Task<IReadOnlyList<CustomerNoteResponseDto>> GetNotesByCustomerAsync(
       int customerId, string? role = null);
+        Task<Pagination<CustomerListItemDto>> GetAllgetSupportCustomers(CustomerPaginationParams paginationParams, string? currentUserId, bool isSupportOnly);
     }
 }

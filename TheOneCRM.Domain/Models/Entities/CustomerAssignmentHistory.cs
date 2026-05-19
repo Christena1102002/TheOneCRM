@@ -28,5 +28,18 @@ namespace TheOneCRM.Domain.Models.Entities
         //public string? Reason { get; set; }
 
         public DateTime AssignedAt { get; set; } = DateTime.UtcNow;
+
+
+        //// ✅ Flags بتحدد نوع التحويل
+        //public bool IsMarketingToSales { get; set; }
+        //public bool IsSalesToSupport { get; set; }
+        //public bool IsSupportToSales { get; set; }
+
+        //public void SetTransferFlags()
+        //{
+        //    IsMarketingToSales = FromRole == "Marketing" && ToRole == "Sales";
+        //    IsSalesToSupport = FromRole == "Sales" && ToRole == "Support";
+        //    IsSupportToSales = FromRole == "Support" && ToRole == "Sales";
+        //}
     }
 }

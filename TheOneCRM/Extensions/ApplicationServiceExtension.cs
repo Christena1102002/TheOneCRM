@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TheOneCRM.Application.Interfaces;
+using TheOneCRM.Application.Interfaces.IAppointment;
 using TheOneCRM.Application.Interfaces.ICampaign;
+using TheOneCRM.Application.Interfaces.IContracts;
 using TheOneCRM.Application.Interfaces.ICountry;
 using TheOneCRM.Application.Interfaces.ICustomers;
 using TheOneCRM.Application.Interfaces.IDailyReport;
@@ -9,7 +11,9 @@ using TheOneCRM.Application.Interfaces.IServices;
 using TheOneCRM.Application.Interfaces.ISourceService;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services;
+using TheOneCRM.Application.Services.AppointmentS;
 using TheOneCRM.Application.Services.Auth;
+using TheOneCRM.Application.Services.Contracts;
 using TheOneCRM.Application.Services.Country;
 using TheOneCRM.Application.Services.Customers;
 using TheOneCRM.Application.Services.price;
@@ -43,7 +47,9 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<IDailyReportService, DailyReportService>();
             Services.AddScoped<IPriceQuotationService, PriceQuotationService>();
             Services.AddScoped<ICountryService, CountryService>();
-            
+            Services.AddScoped<IContractService, ContractService>();
+            Services.AddScoped<IAppointmentService, AppointmentService>();
+
             return Services;
         }
     }

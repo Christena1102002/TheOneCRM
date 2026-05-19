@@ -1,5 +1,130 @@
 [
   {
+    "ContainingType": "TheOneCRM.API.Controllers.AppointmentsController",
+    "Method": "CreateAppointment",
+    "RelativePath": "api/Appointments/CreateAppointment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.Appointments.CreateAppointmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.AppointmentsController",
+    "Method": "DeleteAppointment",
+    "RelativePath": "api/Appointments/DeleteAppointment/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.AppointmentsController",
+    "Method": "GetAppointmentById",
+    "RelativePath": "api/Appointments/GetAppointmentById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.AppointmentsController",
+    "Method": "GetAppointments",
+    "RelativePath": "api/Appointments/GetAppointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FromDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "ToDate",
+        "Type": "System.Nullable\u00601[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "AssignedToUserId",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CustomerId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.AppointmentsController",
+    "Method": "GetStats",
+    "RelativePath": "api/Appointments/GetStats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.AppointmentsController",
+    "Method": "UpdateAppointment",
+    "RelativePath": "api/Appointments/UpdateAppointment/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.Appointments.UpdateAppointmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TheOneCRM.API.Controllers.Auth.AuthController",
     "Method": "Register",
     "RelativePath": "api/Auth/AddApplicationUser",
@@ -364,6 +489,127 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TheOneCRM.API.Controllers.ContractsController",
+    "Method": "GetStatistics",
+    "RelativePath": "api/Contracts/ContractStatistics",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.ContractsController",
+    "Method": "CreateContract",
+    "RelativePath": "api/Contracts/CreateContract",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.Contracts.CreateContractDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.ContractsController",
+    "Method": "GetCustomerLookup",
+    "RelativePath": "api/Contracts/customerLookup/{customerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "customerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.ContractsController",
+    "Method": "DeleteContract",
+    "RelativePath": "api/Contracts/DeleteContract/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.ContractsController",
+    "Method": "GetContract",
+    "RelativePath": "api/Contracts/GetContractById/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.ContractsController",
+    "Method": "GetContracts",
+    "RelativePath": "api/Contracts/GetContracts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.ContractsController",
+    "Method": "UpdateContract",
+    "RelativePath": "api/Contracts/UpdateContract/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "TheOneCRM.Domain.Models.DTOs.Contracts.UpdateContractDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TheOneCRM.API.Controllers.CustomerNotesController",
     "Method": "GetByCustomer",
     "RelativePath": "api/CustomerNotes/customer/{customerId}",
@@ -539,27 +785,6 @@
   },
   {
     "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
-    "Method": "UpdateCustomerNote",
-    "RelativePath": "api/Customers/customers/{id}/note",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "dto",
-        "Type": "TheOneCRM.Domain.Models.DTOs.CustomerDtos.UpdateCustomerNoteDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
     "Method": "GetdropdownCustomers",
     "RelativePath": "api/Customers/dropdownCustomers",
     "HttpMethod": "GET",
@@ -608,6 +833,42 @@
     "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
     "Method": "getSalesCustomers",
     "RelativePath": "api/Customers/getSalesCustomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SourceId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CustomerStatusId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheOneCRM.API.Controllers.CustomersController",
+    "Method": "getSupportCustomers",
+    "RelativePath": "api/Customers/getSupportCustomers",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

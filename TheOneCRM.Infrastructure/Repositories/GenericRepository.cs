@@ -60,7 +60,10 @@ namespace TheOneCRM.Infrastructure.Migrations
         {
             return await _dbSet.ToListAsync();
         }
-
+        public IQueryable<T> GetQueryableWithSpec(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(_dbSet.AsQueryable(), spec);
+        }
         public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
         {
             var query = SpecificationEvaluator<T>.GetQuery(_dbSet.AsQueryable(), spec);
@@ -103,6 +106,10 @@ namespace TheOneCRM.Infrastructure.Migrations
         public IQueryable<T> ApplySpecification(ISpecification<T> spec)
         {
             return SpecificationEvaluator<T>.GetQuery(_dbSet.AsQueryable(), spec);
+        }
+        public async Task<int> CountAsync()
+        {
+            return await _dbSet.CountAsync();
         }
     }
 }

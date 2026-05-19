@@ -15,9 +15,15 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public string? CampaignName { get; set; }
         public List<string> Services { get; set; } = new();
         public string Status { get; set; }
+        public string? SalesPersonId { get; set; }
         public string? SalesPersonName { get; set; }
+        public string? SupportPersonName { get; set; }
+        public string? SupportPersonId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? LastFollowUpDate { get; set; }
         public DateTime? NextFollowUpDate { get; set; }
+        public bool IsMarketingToSales { get; set; }
+        public bool IsSalesToSupport { get; set; }
+        public bool IsSupportToSales { get; set; }
     }
 }

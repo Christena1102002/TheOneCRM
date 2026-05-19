@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TheOneCRM.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a1449935db56c4ac509c361d3fcb5cb4cd98ccde")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58715ced3182a414a7f41c4e8c630dcd5438bf22")]
 [assembly: System.Reflection.AssemblyProductAttribute("TheOneCRM.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TheOneCRM.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

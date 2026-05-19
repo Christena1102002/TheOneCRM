@@ -33,11 +33,17 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         // المندوب
         public string? SalesPersonId { get; set; }
         public string? SalesPersonName { get; set; }
+
+        public string? SupportPersonName { get; set; }
+        public string? SupportPersonId { get; set; }
         public DateTime? AssignedAt { get; set; }
 
         // التواريخ
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
+        public bool IsMarketingToSales { get; set; }
+        public bool IsSalesToSupport { get; set; }
+        public bool IsSupportToSales { get; set; }
     }
 
     public class ServiceItemDto

@@ -32,10 +32,12 @@ namespace TheOneCRM.Infrastructure.Specsification
     : base(CustomerFilters.Build(p))
             {
                 AddInclude(c => c.campaigns.ChannelSource);
-                AddInclude(c => c.AssignedTo);
+                //AddInclude(c => c.AssignedTo);
 
                 AddInclude("customerServices.Service");
 
+
+                AddInclude("AssignmentHistory.ToUser");
                 // الترتيب: الأحدث أولاً
                 ApplyOrderByDescending(c => c.CreatedAt);
 

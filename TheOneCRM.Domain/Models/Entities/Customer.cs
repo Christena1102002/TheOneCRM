@@ -30,12 +30,15 @@ namespace TheOneCRM.Domain.Models.Entities
         public DateTime? NextFollowUpDate { get; set; }
 
 
-
+        public string? Address { get; set; }
         public string? AssignedToId { get; set; }
         public AppUser AssignedTo { get; set; }
 
         public int? compaignId { set; get; }
         public Campaigns? campaigns { set; get; }
+        public bool IsMarketingToSales { get; set; }
+        public bool IsSalesToSupport { get; set; }
+        public bool IsSupportToSales { get; set; }
         public ICollection<CustomerNote> Notes { get; set; }
     = new List<CustomerNote>();
         public ICollection<CustomerServices>? customerServices { get; set; } = new List<CustomerServices>();
@@ -43,6 +46,6 @@ namespace TheOneCRM.Domain.Models.Entities
         public ICollection<PriceQuotation> PriceQuotations { get; set; }= new List<PriceQuotation>();
         public ICollection<CustomerAssignmentHistory> AssignmentHistory { get; set; }
            = new List<CustomerAssignmentHistory>();
-
+        public ICollection<Contract> Contracts { get; set; } = new List<Contract>();
     }
 }
