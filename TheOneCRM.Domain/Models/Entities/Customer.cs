@@ -29,7 +29,7 @@ namespace TheOneCRM.Domain.Models.Entities
         public DateTime? LastFollowUpDate { get; set; }
         public DateTime? NextFollowUpDate { get; set; }
 
-
+        public string? NotBuyingReason { get; set; }
         public string? Address { get; set; }
         public string? AssignedToId { get; set; }
         public AppUser AssignedTo { get; set; }

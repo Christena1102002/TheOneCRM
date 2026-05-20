@@ -10,5 +10,8 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
     public class UpdateCustomerStatusDto
     {
         public StatusOfCustomers Status { get; set; }
+
+        // مطلوب فقط إذا كانت الحالة = NotBuyer
+        public string? NotBuyingReason { get; set; }
     }
 }

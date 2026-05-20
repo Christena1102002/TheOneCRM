@@ -12,6 +12,12 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public string FullName { get; set; }
         public DateTime? LastFollowUpDate { get; set; }
         public DateTime? NextFollowUpDate { get; set; }
-        public List<CustomerNoteResponseDto> CustomerNotes { get; set; } = new();
+        public bool IsMarketingToSales { get; set; }
+        public bool IsSalesToSupport { get; set; }
+        public bool IsSupportToSales { get; set; }
+
+        public string? NoteMarketing { get; set; }
+        public string? NoteSales { get; set; }
+        public string? NoteSupport { get; set; }
     }
 }

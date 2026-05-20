@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
 using TheOneCRM.Domain.Models.Entities;
+using TheOneCRM.Domain.Models.Enums;
 
 namespace TheOneCRM.Application.Mapping
 {
@@ -17,20 +19,68 @@ namespace TheOneCRM.Application.Mapping
                 .ForMember(dest => dest.CampanyName, opt => opt.MapFrom(src => src.CompanyName))
                 .ForMember(dest => dest.compaignId, opt => opt.MapFrom(src => src.CampaignId))
                 .ForMember(dest => dest.customerServices, opt => opt.Ignore())
-                .ForMember(dest => dest.Notes, opt => opt.Ignore()); ; // هنعملها يدوي
-            CreateMap<CustomerNote, CustomerNoteResponseDto>()
-             .ForMember(d => d.CustomerName,
-                 o => o.MapFrom(s => s.Customer != null ? s.Customer.FullName : null))
-             .ForMember(d => d.CreatedByName,
-                 o => o.MapFrom(s => s.CreatedBy != null ? s.CreatedBy.UserName : null));
+                .ForMember(dest => dest.Notes, opt => opt.Ignore()); 
+
+
             CreateMap<Customer, CustomerResponseDto>()
-                .ForMember(dest => dest.CustomerNotes, opt => opt.MapFrom(src => src.Notes));
+                 .ForMember(dest => dest.NoteMarketing,
+        opt => opt.MapFrom(src =>
+            src.Notes
+                .OrderByDescending(n => n.Id)
+                .Select(n => n.NoteMarketing)
+                .FirstOrDefault(n => !string.IsNullOrWhiteSpace(n))))
+
+    .ForMember(dest => dest.NoteSales,
+        opt => opt.MapFrom(src =>
+            src.Notes
+                .OrderByDescending(n => n.Id)
+                .Select(n => n.NoteSales)
+                .FirstOrDefault(n => !string.IsNullOrWhiteSpace(n))))
+
+    .ForMember(dest => dest.NoteSupport,
+        opt => opt.MapFrom(src =>
+            src.Notes
+                .OrderByDescending(n => n.Id)
+                .Select(n => n.NoteSupport)
+                .FirstOrDefault(n => !string.IsNullOrWhiteSpace(n))));
             CreateMap<CustomerNote, CustomerNoteResponseDto>()
     .ForMember(d => d.CustomerName, o => o.MapFrom(s => s.Customer.FullName))
-    .ForMember(d => d.CreatedByName, o => o.MapFrom(s => s.CreatedBy.UserName));
-            
-            
-            
+    // Notes
+    .ForMember(d => d.NoteMarketing,
+        o => o.MapFrom(s => s.NoteMarketing))
+
+    .ForMember(d => d.NoteSales,
+        o => o.MapFrom(s => s.NoteSales))
+
+    .ForMember(d => d.NoteSupport,
+        o => o.MapFrom(s => s.NoteSupport))
+
+    // Roles
+    .ForMember(d => d.MarketingRole,
+        o => o.MapFrom(s =>
+            !string.IsNullOrWhiteSpace(s.NoteMarketing) ? "Marketing" : null))
+
+    .ForMember(d => d.SalesRole,
+        o => o.MapFrom(s =>
+            !string.IsNullOrWhiteSpace(s.NoteSales) ? "Sales" : null))
+
+    .ForMember(d => d.SupportRole,
+        o => o.MapFrom(s =>
+            !string.IsNullOrWhiteSpace(s.NoteSupport) ? "Support" : null))
+    // Marketing
+    .ForMember(d => d.NoteMarketingName,
+        o => o.MapFrom(s => s.MarketingCreatedBy != null ? s.MarketingCreatedBy.FullName : null))
+
+    // Sales
+    .ForMember(d => d.NoteSalesName,
+        o => o.MapFrom(s => s.SalesCreatedBy != null ? s.SalesCreatedBy.FullName : null))
+
+    // Support
+    .ForMember(d => d.NoteSupportName,
+        o => o.MapFrom(s => s.SupportCreatedBy != null ? s.SupportCreatedBy.FullName : null));
+
+
+
             CreateMap<Customer, CustomerListItemDto>()
      .ForMember(d => d.Status,
          o => o.MapFrom(s => s.status.ToString()))
@@ -68,7 +118,11 @@ namespace TheOneCRM.Application.Mapping
      .ForMember(d => d.Services,
          o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
       .ForMember(dest => dest.Source,
-                opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name));
+                opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name))
+      .ForMember(dest => dest.NotBuyerReason,
+        opt => opt.MapFrom(src =>
+            src.status== StatusOfCustomers.NotBuyer ? src.NotBuyingReason : null));
+      
 
 
             CreateMap<Customer, CustomerDetailsDto>()
@@ -111,7 +165,8 @@ namespace TheOneCRM.Application.Mapping
                 opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name))
       .ForMember(d=>d.SalesPersonId,o=>o.MapFrom(s=>s.AssignedToId))
       .ForMember(d=>d.CampaignId,o=>o.MapFrom(s=>s.compaignId))
-      .ForMember(d=>d.AssignedAt,o=>o.MapFrom(s=>s.CreatedAt));
+      .ForMember(d=>d.AssignedAt,o=>o.MapFrom(s=>s.CreatedAt))
+      ;
 
    
 
@@ -128,39 +183,44 @@ namespace TheOneCRM.Application.Mapping
          o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()));
 
 
+            CreateMap<CustomerNote, CustomerNoteResponseDto>()
+                 // Notes
+    .ForMember(d => d.NoteMarketing,
+        o => o.MapFrom(s => s.NoteMarketing))
 
+    .ForMember(d => d.NoteSales,
+        o => o.MapFrom(s => s.NoteSales))
 
-            //// الحالة
-            //.ForMember(d => d.Status,
-            //    o => o.MapFrom(s => (int)s.status))
-            //.ForMember(d => d.StatusName,
-            //    o => o.MapFrom(s => s.status.ToString()))
+    .ForMember(d => d.NoteSupport,
+        o => o.MapFrom(s => s.NoteSupport))
 
-            //// الحملة
-            //.ForMember(d => d.CampaignName,
-            //    o => o.MapFrom(s => s.campaigns != null ? s.campaigns.Name : null))
+    // Roles
+    .ForMember(d => d.MarketingRole,
+        o => o.MapFrom(s =>
+            !string.IsNullOrWhiteSpace(s.NoteMarketing) ? "Marketing" : null))
 
-            // المندوب
-            //.ForMember(d => d.SalesPersonId,
-            //    o => o.MapFrom(s => s.AssignedToId))
-            //.ForMember(d => d.SalesPersonName,
-            //    o => o.MapFrom(s => s.AssignedTo != null ? s.AssignedTo.UserName : null))
+    .ForMember(d => d.SalesRole,
+        o => o.MapFrom(s =>
+            !string.IsNullOrWhiteSpace(s.NoteSales) ? "Sales" : null))
 
-            //// الخدمات: IDs
-            //.ForMember(d => d.ServiceIds,
-            //    o => o.MapFrom(s => s.customerServices.Select(cs => cs.ServiceId).ToList()))
+    .ForMember(d => d.SupportRole,
+        o => o.MapFrom(s =>
+            !string.IsNullOrWhiteSpace(s.NoteSupport) ? "Support" : null))
+            .ForMember(dest => dest.CustomerName,
+        opt => opt.MapFrom(src => src.Customer.FullName))
+    // Marketing
+    .ForMember(d => d.NoteMarketingName,
+        o => o.MapFrom(s => s.MarketingCreatedBy != null ? s.MarketingCreatedBy.FullName : null))
 
-            //// الخدمات: Objects
-            //.ForMember(d => d.Services,
-            //    o => o.MapFrom(s => s.customerServices.Select(cs => new ServiceItemDto
-            //    {
-            //        Id = cs.Service.Id,
-            //        Name = cs.Service.NameAr
-            //    }).ToList()));
+    // Sales
+    .ForMember(d => d.NoteSalesName,
+        o => o.MapFrom(s => s.SalesCreatedBy != null ? s.SalesCreatedBy.FullName : null))
 
-            //        CreateMap<Service, ServiceItemDto>();
-            //    }
+    // Support
+    .ForMember(d => d.NoteSupportName,
+        o => o.MapFrom(s => s.SupportCreatedBy != null ? s.SupportCreatedBy.FullName : null));
 
+            
 
         }
     }

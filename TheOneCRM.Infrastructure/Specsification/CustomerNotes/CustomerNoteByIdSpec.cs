@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Domain.Specifications;
 
-namespace TheOneCRM.Infrastructure.Specsification.Customerspec
+namespace TheOneCRM.Infrastructure.Specsification.CustomerNotes
 {
-    public class CustomerNotesByCustomerSpecification : BaseSpecification<CustomerNote>
+    public class CustomerNoteByIdSpec : BaseSpecification<CustomerNote>
     {
-        public CustomerNotesByCustomerSpecification(int customerId, string? role = null)
-            : base(x => x.CustomerId == customerId
-                     && (role == null || x.Role == role))
+        public CustomerNoteByIdSpec(int id)
+            : base(x => x.Id == id)
         {
             AddInclude(x => x.Customer);
             AddInclude(x => x.MarketingCreatedBy);
             AddInclude(x => x.SalesCreatedBy);
             AddInclude(x => x.SupportCreatedBy);
-            ApplyOrderByDescending(x => x.CreatedAt);
         }
     }
 }

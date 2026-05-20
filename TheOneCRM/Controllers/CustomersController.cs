@@ -63,10 +63,17 @@ namespace TheOneCRM.API.Controllers
         }
         // GET: api/customers?pageIndex=1&pageSize=10
         [HttpGet("getLeadCustomer")]
-
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] CustomerPaginationParams paginationParams)
         {
-            var result = await _customerService.GetAllCustomersAsync(paginationParams);
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var role = User.GetPrimaryRole();
+            if (string.IsNullOrEmpty(role))
+                return Forbid();
+            var result = await _customerService.GetAllCustomersAsync(paginationParams,userId);
             return StatusCode(200,
                   new ApiResponse(200, "get customers successfully", result));
         }
@@ -157,7 +164,7 @@ namespace TheOneCRM.API.Controllers
                    new ApiResponse(200, "Get Customer By Id successfully",result));
         }
         [SwaggerOperation(Summary = "all customer already assigned by marketing to sales")]
-        //[Authorize]
+        [Authorize]
         [HttpGet("getSalesCustomers")]
         public async Task<IActionResult> getSalesCustomers([FromQuery] CustomerPaginationParams paginationParams)
         {
@@ -193,6 +200,11 @@ namespace TheOneCRM.API.Controllers
 
         //        return Ok(new ApiResponse(200, "Customer note updated successfully"));
         //    }
+
+        
+   
+
+       
     }
     
 }

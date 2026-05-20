@@ -21,6 +21,7 @@ using TheOneCRM.Domain.Models.Enums;
 using TheOneCRM.Infrastructure.Migrations;
 using TheOneCRM.Infrastructure.Specsification;
 using TheOneCRM.Infrastructure.Specsification.CampaignsSpec;
+using TheOneCRM.Infrastructure.Specsification.CustomerNotes;
 using TheOneCRM.Infrastructure.Specsification.Customerspec;
 using static TheOneCRM.Infrastructure.Specsification.CustomersWithFilterSpec;
 
@@ -126,7 +127,8 @@ namespace TheOneCRM.Application.Services.Customers
                 customer.Notes.Add(new CustomerNote
                 {
                     NoteMarketing = dto.Notes,
-                    CreatedById = currentUserId,
+                    MarketingCreatedById = currentUserId,
+                    MarketingCreatedAt = DateTime.UtcNow,
                     Role = currentUserRole
                 });
             }
@@ -177,7 +179,7 @@ namespace TheOneCRM.Application.Services.Customers
         }
 
         public async Task<Pagination<CustomerListItemDto>> GetAllCustomersAsync(
-    CustomerPaginationParams paginationParams)
+    CustomerPaginationParams paginationParams,string currentUserId)
         {
 
             //var spec = new CustomersWithPaginationSpec(paginationParams);
@@ -215,6 +217,33 @@ namespace TheOneCRM.Application.Services.Customers
             var data = await query
                 .ProjectTo<CustomerListItemDto>(_mapper.ConfigurationProvider)
                 .ToListAsync();
+            if (data.Count > 0)
+            {
+                var customerIds = data.Select(d => d.Id).ToList();
+
+                var notesSpec = new CustomerNotesByUserForCustomersSpec(customerIds);
+                var allNotes = await _unitOfWork.Repository<CustomerNote>().ListAsync(notesSpec);
+
+                // كل عميل عنده ريكورد واحد فقط، فالـ dictionary مباشر
+                var notesMap = allNotes
+       .GroupBy(n => n.CustomerId)
+       .ToDictionary(
+           g => g.Key,
+           g => g.OrderByDescending(x => x.CreatedAt)
+                 .First()
+       );
+
+                foreach (var dto in data)
+                {
+                    if (notesMap.TryGetValue(dto.Id, out var note))
+                    {
+                        dto.NoteMarketing = note.NoteMarketing;
+                        dto.NoteSales = note.NoteSales;
+                        dto.NoteSupport = note.NoteSupport;
+                    }
+                }
+            }
+  
 
             return new Pagination<CustomerListItemDto>(
                 paginationParams.PageIndex,
@@ -382,14 +411,75 @@ namespace TheOneCRM.Application.Services.Customers
             var customers = await _unitOfWork.Repository<Customer>().ListAsync(spec);
             var totalCount = await _unitOfWork.Repository<Customer>().CountAsync(countSpec);
             var data = _mapper.Map<IReadOnlyList<CustomerListItemDto>>(customers);
+            if (data.Count > 0)
+            {
+                var customerIds = data.Select(d => d.Id).ToList();
 
-            return new Pagination<CustomerListItemDto>(
+                var notesSpec = new CustomerNotesByUserForCustomersSpec(customerIds);
+                var allNotes = await _unitOfWork.Repository<CustomerNote>().ListAsync(notesSpec);
+
+                // كل عميل عنده ريكورد واحد فقط، فالـ dictionary مباشر
+                var notesMap = allNotes
+       .GroupBy(n => n.CustomerId)
+       .ToDictionary(
+           g => g.Key,
+           g => g.OrderByDescending(x => x.CreatedAt)
+                 .First()
+       );
+
+                foreach (var dto in data)
+                {
+                    if (notesMap.TryGetValue(dto.Id, out var note))
+                    {
+                        dto.NoteMarketing = note.NoteMarketing;
+                        dto.NoteSales = note.NoteSales;
+                        dto.NoteSupport = note.NoteSupport;
+                    }
+                }
+            }
+
+                //         var notesMap = myNotes
+                //.GroupBy(n => n.CustomerId)
+                //.ToDictionary(
+                //    g => g.Key,
+                //     g => new
+                //     {
+                //         NoteMarketing = g
+                //          .Where(x => x.MarketingCreatedById == currentUserId)
+                //             .OrderByDescending(x => x.CreatedAt)
+                //             .Select(x => x.NoteMarketing)
+                //             .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)),
+
+                //         NoteSales = g
+                //             .Where(x => x.SalesCreatedById == currentUserId)
+                //             .OrderByDescending(x => x.CreatedAt)
+                //             .Select(x => x.NoteSales)
+                //             .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)),
+
+                //         NoteSupport = g
+                //          .Where(x => x.SupportCreatedById == currentUserId)
+                //             .OrderByDescending(x => x.CreatedAt)
+                //             .Select(x => x.NoteSupport)
+                //             .FirstOrDefault(x => !string.IsNullOrWhiteSpace(x))
+                //     });
+                //         foreach (var dto in data)
+                //         {
+                //             if (notesMap.TryGetValue(dto.Id, out var notes))
+                //             {
+                //                 dto.NoteMarketing = notes.NoteMarketing;
+                //                 dto.NoteSales = notes.NoteSales;
+                //                 dto.NoteSupport = notes.NoteSupport;
+                //             }
+                //         }
+                //     }
+                return new Pagination<CustomerListItemDto>(
                 paginationParams.PageIndex,
                 paginationParams.PageSize,
                 totalCount,
                 data
             );
 
+            
         }
         public async Task<Pagination<CustomerListItemDto>> GetAllgetSupportCustomers(CustomerPaginationParams paginationParams, string? currentUserId, bool isSupportOnly)
         {
@@ -398,7 +488,34 @@ namespace TheOneCRM.Application.Services.Customers
             var customers = await _unitOfWork.Repository<Customer>().ListAsync(spec);
             var totalCount = await _unitOfWork.Repository<Customer>().CountAsync(countSpec);
             var data = _mapper.Map<IReadOnlyList<CustomerListItemDto>>(customers);
+            if (!string.IsNullOrWhiteSpace(currentUserId) && data.Count > 0)
+            {
+                var customerIds = data.Select(d => d.Id).ToList();
 
+                var notesSpec = new CustomerNotesByUserForCustomersSpec(customerIds);
+                var allNotes = await _unitOfWork.Repository<CustomerNote>().ListAsync(notesSpec);
+
+                // كل عميل عنده ريكورد واحد فقط، فالـ dictionary مباشر
+                var notesMap = allNotes
+        .GroupBy(n => n.CustomerId)
+        .ToDictionary(
+            g => g.Key,
+            g => g.OrderByDescending(x => x.CreatedAt)
+                  .First()
+        );
+
+                foreach (var dto in data)
+                {
+                    if (notesMap.TryGetValue(dto.Id, out var note))
+                    {
+                        dto.NoteMarketing = note.NoteMarketing;
+                        dto.NoteSales = note.NoteSales;
+                        dto.NoteSupport = note.NoteSupport;
+                    }
+                }
+               
+
+            }
             return new Pagination<CustomerListItemDto>(
                 paginationParams.PageIndex,
                 paginationParams.PageSize,
@@ -420,84 +537,60 @@ namespace TheOneCRM.Application.Services.Customers
             // البحث عن ملاحظة موجودة لهذا العميل
             var customerNote = await _unitOfWork.Repository<CustomerNote>()
                 .FirstOrDefaultAsync(n => n.CustomerId == customerId);
-
+            var now = DateTime.UtcNow;
             // إذا لا توجد ملاحظة، أنشئ سجل جديد
             if (customerNote == null)
             {
                 customerNote = new CustomerNote
                 {
                     CustomerId = customerId,
-                    CreatedById = userId,
-                    Role = role
+                    //CreatedById = userId,
+                    //Role = role
                 };
 
-                // تعبئة الحقل المناسب حسب الـ Role
-                switch (role.Trim().ToLower())
-                {
-                    case "marketing":
-                        customerNote.NoteMarketing = note;
-                        break;
-
-                    case "sales":
-                        customerNote.NoteSales = note;
-                        break;
-
-                    case "support":
-                        customerNote.NoteSupport = note;
-                        break;
-
-                    default:
-                        throw new InvalidOperationException(
-                            $"Unsupported role: {role}");
-                }
-
+                ApplyNoteByRole(customerNote, role, note, userId, now);
                 await _unitOfWork.Repository<CustomerNote>()
                     .AddAsync(customerNote);
             }
             else
             {
-                // تحديث بيانات السجل الموجود
-                customerNote.CreatedById = userId;
-                customerNote.Role = role;
-
-                // تحديث الحقل المناسب حسب الـ Role
-                switch (role.Trim().ToLower())
-                {
-                    case "marketing":
-                        customerNote.NoteMarketing = note;
-                        break;
-
-                    case "sales":
-                        customerNote.NoteSales = note;
-                        break;
-
-                    case "support":
-                        customerNote.NoteSupport = note;
-                        break;
-
-                    default:
-                        throw new InvalidOperationException(
-                            $"Unsupported role: {role}");
-                }
-
+                
+                ApplyNoteByRole(customerNote, role, note, userId, now);
                 _unitOfWork.Repository<CustomerNote>()
                     .Update(customerNote);
             }
 
             await _unitOfWork.SaveChangesAsync();
 
-            //var customerNote = new CustomerNote
-            //{
-            //    CustomerId = customerId,
-            //    Note = note,
-            //    CreatedById = userId,
-            //    Role = role
-            //};
-
-            //_unitOfWork.Repository<CustomerNote>().Update(customerNote);
-            //await _unitOfWork.SaveChangesAsync();
+            
         }
+        private static void ApplyNoteByRole(
+    CustomerNote target, string role, string note, string userId, DateTime now)
+        {
+            switch (role.Trim().ToLower())
+            {
+                case "marketing":
+                    target.NoteMarketing = note;
+                    target.MarketingCreatedById = userId;
+                    target.MarketingCreatedAt = now;
+                    break;
 
+                case "sales":
+                    target.NoteSales = note;
+                    target.SalesCreatedById = userId;
+                    target.SalesCreatedAt = now;
+                    break;
+
+                case "support":
+                    target.NoteSupport = note;
+                    target.SupportCreatedById = userId;
+                    target.SupportCreatedAt = now;
+                    break;
+
+                default:
+                    throw new InvalidOperationException($"Unsupported role: {role}");
+            }
+        }
         public async Task<IReadOnlyList<CustomerDropdownDto>> GetCustomersForDropdownAsync()
         {
             //var spec = new CustomersDropdownSpec();
@@ -588,8 +681,9 @@ namespace TheOneCRM.Application.Services.Customers
 
         public async Task<CustomerResponseDto> UpdateCustomerStatusAsync(int id, UpdateCustomerStatusDto dto)
         {
-            // 1) جيب العميل
-            var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(id);
+            var spec = new CustomerWithNotesSpecification(id);
+            var customer = await _unitOfWork.Repository<Customer>()
+                .GetEntityWithSpec(spec);
 
             if (customer == null)
                 throw new KeyNotFoundException($"Customer with id {id} not found.");
@@ -597,13 +691,29 @@ namespace TheOneCRM.Application.Services.Customers
             // 2) تحقق إن الـ Status قيمة صحيحة في الـ Enum
             if (!Enum.IsDefined(typeof(StatusOfCustomers), dto.Status))
                 throw new InvalidOperationException("Invalid customer status value.");
-
+            // 3) لو الحالة الجديدة هي NotBuyer لازم سبب عدم الشراء يكون موجود
+            if (dto.Status == StatusOfCustomers.NotBuyer)
+            {
+                if (string.IsNullOrWhiteSpace(dto.NotBuyingReason))
+                    throw new InvalidOperationException(
+                        "Reason for not buying is required.");
+            }
             // 3) لو نفس الحالة الحالية، مفيش داعي للتحديث
             if (customer.status == dto.Status)
                 throw new InvalidOperationException("Customer already has this status.");
 
             // 4) حدّث الحالة
             customer.status = dto.Status;
+
+            if (dto.Status == StatusOfCustomers.NotBuyer)
+            {
+                customer.NotBuyingReason= dto.NotBuyingReason!.Trim();
+            }
+            else
+            {
+                // لو غير الحالة إلى أي حالة أخرى، امسح السبب
+                customer.NotBuyingReason = null;
+            }
 
             _unitOfWork.Repository<Customer>().Update(customer);
             await _unitOfWork.SaveChangesAsync();
@@ -617,7 +727,9 @@ namespace TheOneCRM.Application.Services.Customers
         public async Task<CustomerResponseDto> UpdateCustomerFollowUpAsync(int id, UpdateCustomerFollowUpDto dto)
         {
             // 1) جيب العميل
-            var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(id);
+            var spec = new CustomerWithNotesSpecification(id);
+            var customer = await _unitOfWork.Repository<Customer>()
+                .GetEntityWithSpec(spec);
 
             if (customer == null)
                 throw new KeyNotFoundException($"Customer with id {id} not found.");
@@ -647,78 +759,51 @@ namespace TheOneCRM.Application.Services.Customers
                 throw new InvalidOperationException("Note content cannot be empty.");
             if (string.IsNullOrWhiteSpace(role))
                 throw new InvalidOperationException("User role could not be determined.");
+            if (string.IsNullOrWhiteSpace(userId))
+                throw new InvalidOperationException("User id could not be determined.");
+
             // تأكد إن العميل موجود
             var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(customerId);
             if (customer == null)
                 throw new KeyNotFoundException($"Customer with id {customerId} not found.");
+            // (2) Admin يعدّي، غيره لازم يكون هو AssignedToId
+            var isAdmin = string.Equals(role.Trim(), UserRoles.Admin, StringComparison.OrdinalIgnoreCase);
 
-            // ابحث عن ملاحظة موجودة لنفس المستخدم على نفس العميل
-            var spec = new CustomerNoteByUserAndCustomerSpec(customerId, userId);
+            if ( !string.Equals(customer.AssignedToId, userId, StringComparison.Ordinal))
+            {
+                throw new InvalidOperationException(
+                    "You are not the current assignee for this customer. " +
+                    "You cannot add or update a note for it.");
+            }
+
+                // ابحث عن ملاحظة موجودة لنفس المستخدم على نفس العميل
+                var spec = new CustomerNoteByUserAndCustomerSpec(customerId, userId);
             var existingNote = await _unitOfWork.Repository<CustomerNote>().GetEntityWithSpec(spec);
 
+            var now = DateTime.UtcNow;
             CustomerNote resultNote;
 
             if (existingNote == null)
             {
-                // تعديل الملاحظة الموجودة
-                //existingNote.Note = note;
-                //_unitOfWork.Repository<CustomerNote>().Update(existingNote);
-                //resultNote = existingNote;
+                
                 resultNote = new CustomerNote
                 {
                     CustomerId = customerId,
-                    CreatedById = userId,
-                    Role = role
+                    //CreatedById = userId,
+                    //Role = role
                 };
 
-                // تعبئة الحقل المناسب حسب الدور
-                switch (role.Trim().ToLower())
-                {
-                    case "marketing":
-                        resultNote.NoteMarketing = note;
-                        break;
-
-                    case "sales":
-                        resultNote.NoteSales = note;
-                        break;
-
-                    case "support":
-                        resultNote.NoteSupport = note;
-                        break;
-
-                    default:
-                        throw new InvalidOperationException(
-                            $"Unsupported role: {role}");
-                }
-
+                ApplyNoteByRole(resultNote, role, note, userId, now);
                 await _unitOfWork.Repository<CustomerNote>()
                     .AddAsync(resultNote);
             }
             else
             {
-                existingNote.CreatedById = userId;
-                existingNote.Role = role;
+                // الريكورد موجود → حدّثي بس section الـ role الحالي
+                ApplyNoteByRole(existingNote, role, note, userId, now);
 
-                // تحديث الحقل المناسب حسب الدور
-                switch (role.Trim().ToLower())
-                {
-                    case "marketing":
-                        existingNote.NoteMarketing = note;
-                        break;
 
-                    case "sales":
-                        existingNote.NoteSales = note;
-                        break;
-
-                    case "support":
-                        existingNote.NoteSupport = note;
-                        break;
-
-                    default:
-                        throw new InvalidOperationException(
-                            $"Unsupported role: {role}");
-                }
-
+                
 
                 _unitOfWork.Repository<CustomerNote>()
          .Update(existingNote);
@@ -728,25 +813,15 @@ namespace TheOneCRM.Application.Services.Customers
             }
 
             await _unitOfWork.SaveChangesAsync();
+            // إعادة تحميل الكيان بكل الـ navigation properties
+            var responseSpec = new CustomerNoteByIdSpec(resultNote.Id);
+            var savedNote = await _unitOfWork.Repository<CustomerNote>()
+                .GetEntityWithSpec(responseSpec);
 
-            return _mapper.Map<CustomerNoteResponseDto>(resultNote);
-            //{
-            //    //// إضافة ملاحظة جديدة
-            //    //resultNote = new CustomerNote
-            //    //{
-            //    //    CustomerId = customerId,
-            //    //    Note = note,
-            //    //    CreatedById = userId,
-            //    //    Role = role
-            //    //};
-            //    //await _unitOfWork.Repository<CustomerNote>().AddAsync(resultNote);
-            //}
-
-            //await _unitOfWork.SaveChangesAsync();
-
-            //return _mapper.Map<CustomerNoteResponseDto>(resultNote);
+            return _mapper.Map<CustomerNoteResponseDto>(savedNote);
+      
         }
-
+        
         public async Task<IReadOnlyList<CustomerNoteResponseDto>> GetNotesByCustomerAsync(
        int customerId, string? role = null)
         {
@@ -759,8 +834,93 @@ namespace TheOneCRM.Application.Services.Customers
 
             return _mapper.Map<IReadOnlyList<CustomerNoteResponseDto>>(notes);
         }
+
+        public async Task<SalesDashboardStatsDto> GetSalesDashboardStatsAsync(string salesPersonId)
+        {
+            if (string.IsNullOrWhiteSpace(salesPersonId))
+                throw new InvalidOperationException("SalesPersonId is required");
+
+
+            var today = DateTime.UtcNow.Date;
+            var tomorrow = today.AddDays(1);
+
        
+       
+            
+            var BuyerCustomers = await _unitOfWork.Repository<Customer>()
+             .CountAsync(new BuyerCustomersBySalesPersonSpec(salesPersonId));
+
+            // 2) مكالمات النهاردة (متابعة آخر تاريخها = النهاردة)
+            var callsToday = await _unitOfWork.Repository<Customer>()
+           .CountAsync(new CallsTodayBySalesPersonSpec(salesPersonId, today, tomorrow));
+
+            // 3) متابعات قادمة (موعدها من النهاردة وللأمام)
+            var upcomingFollowUps = await _unitOfWork.Repository<Customer>()
+                   .CountAsync(new UpcomingFollowUpsSpec(salesPersonId, today));
+
+            // 4) متابعات فاتت موعدها
+            var overdueFollowUps = await _unitOfWork.Repository<Customer>()
+     .CountAsync(new OverdueFollowUpsSpec(salesPersonId, today));
+
+            // 5) و 6) التحويلات من AssignmentHistory
+            // 5) عملاء حولّتهم لـ Support
+            var transferredToSupport = await _unitOfWork.Repository<CustomerAssignmentHistory>()
+                .CountAsync(new TransferredToSupportBySalesPersonSpec(salesPersonId));
+
+            // 6) عملاء استلمتهم من Marketing
+            var receivedFromMarketing = await _unitOfWork.Repository<CustomerAssignmentHistory>()
+                .CountAsync(new ReceivedFromMarketingBySalesPersonSpec(salesPersonId));
+
+            return new SalesDashboardStatsDto
+            {
+                BuyerCustomers = BuyerCustomers,
+                CallsToday = callsToday,
+                UpcomingFollowUps = upcomingFollowUps,
+                OverdueFollowUps = overdueFollowUps,
+                TransferredToSupport = transferredToSupport,
+                ReceivedFromMarketing = receivedFromMarketing
+            };
+
+        }
+
+        public async Task<List<string>> GetNotBuyingReasonsAsync()
+        {
+            var spec = new NotBuyingReasonsSpecification();
+
+            // استخدام ListWithSelectAsync الموجود بالفعل في GenericRepository
+            var reasons = await _unitOfWork.Repository<Customer>()
+                .ListWithSelectAsync(
+                    spec,
+                    c => c.NotBuyingReason!
+                );
+
+            return reasons
+      .Distinct(StringComparer.OrdinalIgnoreCase)
+      .ToList();
+        }
+        public async Task<List<CustomerStatusCountDto>> GetCustomerCountByStatusAsync(string currentUserId)
+        {
+            var spec = new CustomerCountByStatusSpec(currentUserId);
+
+            var customers = await _unitOfWork
+                .Repository<Customer>()
+                .ListAsync(spec);
+
+            var result = customers
+                .GroupBy(c => c.status)
+                .Select(g => new CustomerStatusCountDto
+                {
+                    StatusId = (int)g.Key,
+                    StatusName = g.Key.ToString(),
+                    Count = g.Count()
+                })
+                .OrderBy(x => x.StatusId)
+                .ToList();
+
+            return result;
+        }
+
     }
-    
+
 
 }

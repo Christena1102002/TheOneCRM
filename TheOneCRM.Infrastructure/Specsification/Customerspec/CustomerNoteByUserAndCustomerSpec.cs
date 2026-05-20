@@ -11,8 +11,11 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
     public class CustomerNoteByUserAndCustomerSpec : BaseSpecification<CustomerNote>
     {
         public CustomerNoteByUserAndCustomerSpec(int customerId, string userId)
-            : base(x => x.CustomerId == customerId && x.CreatedById == userId)
+            : base(x => x.CustomerId == customerId )
         {
+            AddInclude(x => x.MarketingCreatedBy);
+            AddInclude(x => x.SalesCreatedBy);
+            AddInclude(x => x.SupportCreatedBy);
         }
     }
 }
