@@ -53,7 +53,7 @@ namespace TheOneCRM.API.Controllers.Auth
             return Ok(new ApiResponse(200, res.Message, res));
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet("GetAllUsers")]
         [SwaggerOperation(Summary = "GetAllUsersbyAdmin")]
         public async Task<IActionResult> GetAllUsers()

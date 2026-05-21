@@ -14,8 +14,8 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public string FullName { get; set; }
         public string Phone { get; set; }
         public string? Email { get; set; }
+        public string? Address { get; set; }
         public string? CampanyName{ get; set; }
-        public string? Notes { get; set; }
 
         // الحملة
         public int? CampaignId { get; set; }
@@ -24,7 +24,7 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         // الخدمات (IDs للفورم + Names للعرض)
         public string? Source { get; set; }
         public string? CampaignName { get; set; }
-        public List<string> Services { get; set; } = new();
+        public List<ServiceItemDto> Services { get; set; } = new();
 
         // الحالة
         public int Status { get; set; }
@@ -44,6 +44,12 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public bool IsMarketingToSales { get; set; }
         public bool IsSalesToSupport { get; set; }
         public bool IsSupportToSales { get; set; }
+        public bool IsConsulted { get; set; }
+
+        // الملاحظات الثلاثة
+        public string? NoteMarketing { get; set; }
+        public string? NoteSales { get; set; }
+        public string? NoteSupport { get; set; }
     }
 
     public class ServiceItemDto

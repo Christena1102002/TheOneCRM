@@ -39,6 +39,8 @@ namespace TheOneCRM.Domain.Models.Entities
         public bool IsMarketingToSales { get; set; }
         public bool IsSalesToSupport { get; set; }
         public bool IsSupportToSales { get; set; }
+        // تمت الاستشارة — يبقى true لما الدعم يحوّل العميل لمندوب مبيعات
+        public bool IsConsulted { get; set; } = false;
         public ICollection<CustomerNote> Notes { get; set; }
     = new List<CustomerNote>();
         public ICollection<CustomerServices>? customerServices { get; set; } = new List<CustomerServices>();

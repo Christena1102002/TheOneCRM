@@ -9,6 +9,7 @@ using TheOneCRM.Application.Interfaces.IDailyReport;
 using TheOneCRM.Application.Interfaces.IPriceQuotation;
 using TheOneCRM.Application.Interfaces.IServices;
 using TheOneCRM.Application.Interfaces.ISourceService;
+using TheOneCRM.Application.Interfaces.ISupportTickets;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services;
 using TheOneCRM.Application.Services.AppointmentS;
@@ -20,6 +21,7 @@ using TheOneCRM.Application.Services.price;
 using TheOneCRM.Application.Services.Report;
 using TheOneCRM.Application.Services.Services;
 using TheOneCRM.Application.Services.Sources;
+using TheOneCRM.Application.Services.Tickets;
 using TheOneCRM.Application.Services.Token;
 
 
@@ -49,6 +51,7 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<ICountryService, CountryService>();
             Services.AddScoped<IContractService, ContractService>();
             Services.AddScoped<IAppointmentService, AppointmentService>();
+            Services.AddScoped<ISupportTicketService, SupportTicketService>();
 
             return Services;
         }

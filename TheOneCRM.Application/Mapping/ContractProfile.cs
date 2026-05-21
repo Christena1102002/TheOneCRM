@@ -23,6 +23,8 @@ namespace TheOneCRM.Application.Mapping
                   opt => opt.MapFrom(s => s.Customer != null ? s.Customer.CampanyName : null))
               .ForMember(d => d.Phone,
                   opt => opt.MapFrom(s => s.Customer != null ? s.Customer.Phone : null))
+              .ForMember(d => d.Address,
+                  opt => opt.MapFrom(s => s.Customer != null ? s.Customer.Address : null))
               .ForMember(d => d.CreatedByName,
                   opt => opt.MapFrom(s => s.CreatedBy != null ? s.CreatedBy.FullName : null))
               .ForMember(d => d.StatusName,

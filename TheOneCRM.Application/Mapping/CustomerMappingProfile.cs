@@ -116,7 +116,11 @@ namespace TheOneCRM.Application.Mapping
             .FirstOrDefault()))
 
      .ForMember(d => d.Services,
-         o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
+         o => o.MapFrom(s => s.customerServices.Select(cs => new ServiceItemDto
+         {
+             Id = cs.Service.Id,
+             Name = cs.Service.NameAr
+         }).ToList()))
       .ForMember(dest => dest.Source,
                 opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name))
       .ForMember(dest => dest.NotBuyerReason,
@@ -160,12 +164,31 @@ namespace TheOneCRM.Application.Mapping
             .Select(a => a.ToUser != null ? a.ToUser.FullName : null)
             .FirstOrDefault()))
      .ForMember(d => d.Services,
-         o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()))
+         o => o.MapFrom(s => s.customerServices.Select(cs => new ServiceItemDto
+         {
+             Id = cs.Service.Id,
+             Name = cs.Service.NameAr
+         }).ToList()))
       .ForMember(dest => dest.Source,
                 opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name))
       .ForMember(d=>d.SalesPersonId,o=>o.MapFrom(s=>s.AssignedToId))
       .ForMember(d=>d.CampaignId,o=>o.MapFrom(s=>s.compaignId))
       .ForMember(d=>d.AssignedAt,o=>o.MapFrom(s=>s.CreatedAt))
+      .ForMember(d => d.NoteMarketing,
+          o => o.MapFrom(s => s.Notes
+              .OrderByDescending(n => n.Id)
+              .Select(n => n.NoteMarketing)
+              .FirstOrDefault(n => !string.IsNullOrWhiteSpace(n))))
+      .ForMember(d => d.NoteSales,
+          o => o.MapFrom(s => s.Notes
+              .OrderByDescending(n => n.Id)
+              .Select(n => n.NoteSales)
+              .FirstOrDefault(n => !string.IsNullOrWhiteSpace(n))))
+      .ForMember(d => d.NoteSupport,
+          o => o.MapFrom(s => s.Notes
+              .OrderByDescending(n => n.Id)
+              .Select(n => n.NoteSupport)
+              .FirstOrDefault(n => !string.IsNullOrWhiteSpace(n))))
       ;
 
    
@@ -180,7 +203,11 @@ namespace TheOneCRM.Application.Mapping
 
             CreateMap<Customer, CustomerDropdownDto>()
                 .ForMember(d => d.Services,
-         o => o.MapFrom(s => s.customerServices.Select(cs => cs.Service.NameAr).ToList()));
+         o => o.MapFrom(s => s.customerServices.Select(cs => new ServiceDropdownDto
+         {
+             Id = cs.Service.Id,
+             Name = cs.Service.NameAr
+         }).ToList()));
 
 
             CreateMap<CustomerNote, CustomerNoteResponseDto>()

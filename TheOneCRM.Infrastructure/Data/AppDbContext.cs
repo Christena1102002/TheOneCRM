@@ -53,6 +53,19 @@ namespace TheOneCRM.Infrastructure.Data
     .WithMany()
     .OnDelete(DeleteBehavior.NoAction);
 
+            // SupportTickets: امنع تعدد مسارات الـ cascade
+            modelBuilder.Entity<SupportTickets>()
+                .HasOne(t => t.Customer)
+                .WithMany()
+                .HasForeignKey(t => t.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<SupportTickets>()
+                .HasOne(t => t.Service)
+                .WithMany()
+                .HasForeignKey(t => t.ServiceId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

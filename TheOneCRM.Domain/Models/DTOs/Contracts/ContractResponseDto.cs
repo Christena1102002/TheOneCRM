@@ -18,6 +18,7 @@ namespace TheOneCRM.Domain.Models.DTOs.Contracts
         public string? CustomerName { get; set; }
         public string? CompanyName { get; set; }
         public string? Phone { get; set; }
+        public string? Address { get; set; }
 
         // اللي أنشأ العقد
         public string? CreatedById { get; set; }

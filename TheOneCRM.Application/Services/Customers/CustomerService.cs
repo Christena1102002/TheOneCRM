@@ -132,6 +132,7 @@ namespace TheOneCRM.Application.Services.Customers
                     Role = currentUserRole
                 });
             }
+            customer.AssignedToId = currentUserId;
             await _unitOfWork.Repository<Customer>().AddAsync(customer);
             await _unitOfWork.SaveChangesAsync();
 
@@ -388,6 +389,70 @@ namespace TheOneCRM.Application.Services.Customers
             await _unitOfWork.SaveChangesAsync();
 
             // 7) رجّع بيانات العميل المحدّثة
+            return _mapper.Map<CustomerListItemDto>(customer);
+        }
+        // الدعم يرجّع العميل لمندوب المبيعات اللي حوّله للدعم أصلاً (من الـ AssignmentHistory)
+        public async Task<CustomerListItemDto> ReturnCustomerToSalesAsync(
+            int id, string currentUserId, string currentUserRole)
+        {
+            // 1) جيب العميل (مع الـ AssignmentHistory)
+            var customer = await _unitOfWork.Repository<Customer>()
+                .GetEntityWithSpec(new CustomerByIdSpec(id));
+
+            if (customer == null)
+                throw new KeyNotFoundException($"Customer with id {id} not found");
+
+            // 2) دوّر على مندوب المبيعات اللي حوّل العميل للدعم (أحدث تحويل Sales -> Support)
+            var salesPersonId = customer.AssignmentHistory
+                .Where(h => h.ToRole == UserRoles.Support
+                            && h.FromRole == UserRoles.Sales
+                            && h.FromUserId != null)
+                .OrderByDescending(h => h.AssignedAt)
+                .Select(h => h.FromUserId)
+                .FirstOrDefault();
+
+            if (string.IsNullOrEmpty(salesPersonId))
+                throw new InvalidOperationException(
+                    "Cannot determine the sales person who transferred this customer to support.");
+
+            // 3) تأكد إن المندوب لسه موجود ودوره Sales
+            var salesPerson = await _userManager.FindByIdAsync(salesPersonId);
+            if (salesPerson == null)
+                throw new KeyNotFoundException($"User with id {salesPersonId} not found");
+
+            var isSales = await _userManager.IsInRoleAsync(salesPerson, "Sales");
+            if (!isSales)
+                throw new InvalidOperationException(
+                    $"User '{salesPerson.UserName}' is not a sales person anymore");
+
+            // 4) لو العميل أصلاً معين لنفس الشخص
+            if (customer.AssignedToId == salesPersonId)
+                throw new InvalidOperationException("Customer is already assigned to this sales person");
+
+            // 5) سجل في الـ History: من الدعم الحالي رجوعاً للمبيعات
+            customer.AssignmentHistory.Add(new CustomerAssignmentHistory
+            {
+                FromUserId = customer.AssignedToId,
+                FromRole = customer.AssignedToId != null
+                    ? await GetUserRoleAsync(customer.AssignedToId)
+                    : currentUserRole,
+                ToUserId = salesPersonId,
+                ToRole = UserRoles.Sales,
+                AssignedAt = DateTime.UtcNow
+            });
+
+            // 6) سيب الفلاج زي ما هو
+            customer.IsSupportToSales = true;
+            customer.IsConsulted = true;
+
+            // 7) رجّع العميل للمندوب وحدّث الـ AssignedToId والحالة
+            customer.AssignedToId = salesPersonId;
+            customer.status = StatusOfCustomers.AssignedToSalesTeam;
+
+            // 8) احفظ
+            _unitOfWork.Repository<Customer>().Update(customer);
+            await _unitOfWork.SaveChangesAsync();
+
             return _mapper.Map<CustomerListItemDto>(customer);
         }
         public async Task<CustomerDetailsDto> GetCustomerByIdAsync(int id)
@@ -766,14 +831,17 @@ namespace TheOneCRM.Application.Services.Customers
             var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(customerId);
             if (customer == null)
                 throw new KeyNotFoundException($"Customer with id {customerId} not found.");
-            // (2) Admin يعدّي، غيره لازم يكون هو AssignedToId
+            // (2) يُسمح بالتعديل لو: Admin، أو الشخص المعيَّن حالياً، أو اللي أنشأ العميل
             var isAdmin = string.Equals(role.Trim(), UserRoles.Admin, StringComparison.OrdinalIgnoreCase);
+            var isAssignee = string.Equals(customer.AssignedToId, userId, StringComparison.Ordinal);
+            //var isCreator = string.Equals(customer.CreatedById, userId, StringComparison.Ordinal);
 
-            if ( !string.Equals(customer.AssignedToId, userId, StringComparison.Ordinal))
+            //if (!isAdmin && !isAssignee && !isCreator)
+            if (!isAdmin && !isAssignee)
             {
                 throw new InvalidOperationException(
-                    "You are not the current assignee for this customer. " +
-                    "You cannot add or update a note for it.");
+                    "You are not allowed to add or update a note for this customer. " +
+                    "Only the current assignee, the customer's creator, or an admin can do that.");
             }
 
                 // ابحث عن ملاحظة موجودة لنفس المستخدم على نفس العميل

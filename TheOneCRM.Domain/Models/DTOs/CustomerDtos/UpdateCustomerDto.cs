@@ -13,6 +13,7 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public string Phone { get; set; }
         public string? Email { get; set; }
         public string? CompanyName { get; set; }
+        public string? Address { get; set; }
         public string? Notes { get; set; }
         public int? CampaignId { get; set; }
         public List<int>? ServiceIds { get; set; }

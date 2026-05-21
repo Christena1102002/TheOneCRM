@@ -16,6 +16,7 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
             //AddInclude(c => c.AssignedTo);
             AddInclude("AssignmentHistory.ToUser");
             AddInclude("customerServices.Service");
+            Includes.Add(c => c.Notes);
         }
     }
 }

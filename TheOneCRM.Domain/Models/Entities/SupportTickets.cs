@@ -16,14 +16,32 @@ namespace TheOneCRM.Domain.Models.Entities
         public StatusOfTickets Status { get; set; }
         public PriorityStatus priority { get; set; }
 
+        // تاريخ حل التذكرة (يتسجّل لما الحالة تبقى Resolved)
+        public DateTime? ResolvedAt { get; set; }
+
+        // تاريخ المتابعة القادمة (مطلوب لما الحالة Open)
+        public DateTime? NextFollowUpDate { get; set; }
+
+        // العميل
+        public int CustomerId { get; set; }
+
+        [ForeignKey("CustomerId")]
+        public Customer Customer { get; set; }
+
+        // الخدمة
+        public int ServiceId { get; set; }
+
+        [ForeignKey("ServiceId")]
+        public Service Service { get; set; }
+
         public string? CreatedById { get; set; }
 
         [ForeignKey("CreatedById")]
         public AppUser CreatedBy { get; set; }
-        public string? AssignedToId { get; set; }
+        //public string? AssignedToId { get; set; }
 
-        [ForeignKey("AssignedToId")]
-        public AppUser AssignedTo { get; set; }
+        //[ForeignKey("AssignedToId")]
+        //public AppUser AssignedTo { get; set; }
 
     }
 }
