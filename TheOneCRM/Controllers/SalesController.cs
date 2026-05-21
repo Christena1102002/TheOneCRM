@@ -30,16 +30,18 @@ namespace TheOneCRM.API.Controllers
             return Ok(stats);
         }
         [HttpGet("SalesCustomerStatusCount")]
+        [Authorize(Roles = "Sales,Admin")]
         public async Task<ActionResult> GetCustomerStatusCount()
         {
             var currentUserId = User.GetUserId();
             if (string.IsNullOrEmpty(currentUserId))
                 return Unauthorized();
 
-            var result = await _customerService.GetCustomerCountByStatusAsync(currentUserId);
+            var isAdmin = User.IsAdmin();
+            var result = await _customerService.GetCustomerCountByStatusAsync(currentUserId, isAdmin);
             return Ok(new ApiResponse(
                  200,
-                 "Not buying reasons retrieved successfully",
+                 "Customer status counts retrieved successfully",
                  result
              ));
         }

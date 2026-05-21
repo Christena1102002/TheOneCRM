@@ -898,9 +898,9 @@ namespace TheOneCRM.Application.Services.Customers
       .Distinct(StringComparer.OrdinalIgnoreCase)
       .ToList();
         }
-        public async Task<List<CustomerStatusCountDto>> GetCustomerCountByStatusAsync(string currentUserId)
+        public async Task<List<CustomerStatusCountDto>> GetCustomerCountByStatusAsync(string currentUserId, bool isAdmin)
         {
-            var spec = new CustomerCountByStatusSpec(currentUserId);
+            var spec = new CustomerCountByStatusSpec(currentUserId, isAdmin);
 
             var customers = await _unitOfWork
                 .Repository<Customer>()

@@ -10,8 +10,8 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 {
     public class CustomerCountByStatusSpec : BaseSpecification<Customer>
     {
-        public CustomerCountByStatusSpec(string currentUserId)
+        public CustomerCountByStatusSpec(string currentUserId, bool isAdmin)
             : base(c =>
-                c.AssignedToId == currentUserId) { }
+                isAdmin || c.AssignedToId == currentUserId) { }
     }
 }

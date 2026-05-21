@@ -37,6 +37,6 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
 
         Task<SalesDashboardStatsDto> GetSalesDashboardStatsAsync(string salesPersonId);
         Task<List<string>> GetNotBuyingReasonsAsync();
-        Task<List<CustomerStatusCountDto>> GetCustomerCountByStatusAsync(string currentUserId);
+        Task<List<CustomerStatusCountDto>> GetCustomerCountByStatusAsync(string currentUserId, bool isAdmin);
     }
 }
