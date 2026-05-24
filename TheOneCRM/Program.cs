@@ -89,7 +89,7 @@ namespace TheOneCRM
                     
                     
                     
-                    
+                 
                     
                     
                     await db.Database.MigrateAsync();
@@ -111,8 +111,6 @@ namespace TheOneCRM
             //    app.UseSwagger();
             //    app.UseSwaggerUI();
             //}
-
-         
             app.UseSwagger();
             app.UseCors("CorsPolicy");
             app.UseSwaggerUI();
@@ -132,7 +130,7 @@ namespace TheOneCRM
                     builder.Configuration.GetValue<string>("RefreshTokenCleanup:CronExpression") ?? Cron.Daily());
             });
             app.MapControllers();
-
+               
             app.Run();
         }
     }

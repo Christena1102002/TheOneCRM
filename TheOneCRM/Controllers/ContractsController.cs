@@ -68,6 +68,7 @@ namespace TheOneCRM.API.Controllers
             await _contractService.DeleteContractAsync(id);
             return Ok(new ApiResponse(200, "Contract deleted successfully" ));
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet("ContractStatistics")]
         public async Task<IActionResult> GetStatistics()
         {

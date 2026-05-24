@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheOneCRM.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using TheOneCRM.Infrastructure.Data;
 namespace TheOneCRM.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260522125341_Projects")]
+    partial class Projects
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,9 +245,6 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Specialty")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -1155,17 +1155,8 @@ namespace TheOneCRM.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ActualHours")
-                        .HasColumnType("int");
-
                     b.Property<string>("AssignedToId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Category")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("CompletedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -1179,13 +1170,7 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EstimatedHours")
-                        .HasColumnType("int");
-
                     b.Property<int?>("OrderIndex")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Priority")
                         .HasColumnType("int");
 
                     b.Property<int>("ProjectId")
@@ -1193,9 +1178,6 @@ namespace TheOneCRM.Infrastructure.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
-
-                    b.Property<string>("Tags")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -1583,18 +1565,16 @@ namespace TheOneCRM.Infrastructure.Migrations
                 {
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "AssignedTo")
                         .WithMany()
-                        .HasForeignKey("AssignedToId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("AssignedToId");
 
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "CreatedBy")
                         .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("CreatedById");
 
                     b.HasOne("TheOneCRM.Domain.Models.Entities.Projects", "Project")
-                        .WithMany("Tasks")
+                        .WithMany()
                         .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("AssignedTo");
@@ -1637,8 +1617,6 @@ namespace TheOneCRM.Infrastructure.Migrations
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Projects", b =>
                 {
                     b.Navigation("ProjectEngineers");
-
-                    b.Navigation("Tasks");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Service", b =>

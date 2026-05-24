@@ -15,6 +15,8 @@ namespace TheOneCRM.Domain.Models.Entities
         public bool? IsActive { get; set; }
         public DateTime CreatedAt { get; set; }
         public string? Address { get; set; }
+        // تخصّص المطوّر (Full Stack / Backend / ...) — nullable لأن باقي الأدوار مش محتاجاه
+        public string? Specialty { get; set; }
         //public Department? Department { get; set; }
         //public ICollection<Activities> Activities { get; set; }
     }

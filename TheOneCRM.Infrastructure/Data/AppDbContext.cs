@@ -13,7 +13,8 @@ namespace TheOneCRM.Infrastructure.Data
         public DbSet<DailyReport> dailyReports { get; set; }
         public DbSet<Activities> Activities { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-        public DbSet<Projects> Projects { get; set; }
+        public DbSet<Projects> Project { get; set; }
+        public DbSet<ProjectEngineer> ProjectEngineers { get; set; }
         public DbSet<ChatMessagesChannels> chatMessagesChannels { set; get; }
         public  DbSet<Deal> deals { get; set; } 
         public DbSet<Customer>customers { get; set; }
@@ -64,6 +65,60 @@ namespace TheOneCRM.Infrastructure.Data
                 .HasOne(t => t.Service)
                 .WithMany()
                 .HasForeignKey(t => t.ServiceId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Projects: امنع تعدد مسارات الـ cascade على AspNetUsers و Customer
+            modelBuilder.Entity<Projects>()
+                .HasOne(p => p.Customer)
+                .WithMany()
+                .HasForeignKey(p => p.CustomerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Projects>()
+                .HasOne(p => p.CreatedBy)
+                .WithMany()
+                .HasForeignKey(p => p.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Projects>()
+                .HasOne(p => p.ProjectManager)
+                .WithMany()
+                .HasForeignKey(p => p.ProjectManagerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // ProjectEngineer: many-to-many بين المشروع والمهندسين
+            modelBuilder.Entity<ProjectEngineer>()
+                .HasKey(pe => new { pe.ProjectId, pe.EngineerId });
+
+            modelBuilder.Entity<ProjectEngineer>()
+                .HasOne(pe => pe.Project)
+                .WithMany(p => p.ProjectEngineers)
+                .HasForeignKey(pe => pe.ProjectId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ProjectEngineer>()
+                .HasOne(pe => pe.Engineer)
+                .WithMany()
+                .HasForeignKey(pe => pe.EngineerId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Tasks: امنع تعدد مسارات الـ cascade على AspNetUsers و Projects
+            modelBuilder.Entity<Tasks>()
+                .HasOne(t => t.Project)
+                .WithMany(p => p.Tasks)
+                .HasForeignKey(t => t.ProjectId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Tasks>()
+                .HasOne(t => t.CreatedBy)
+                .WithMany()
+                .HasForeignKey(t => t.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Tasks>()
+                .HasOne(t => t.AssignedTo)
+                .WithMany()
+                .HasForeignKey(t => t.AssignedToId)
                 .OnDelete(DeleteBehavior.Restrict);
 
         }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace TheOneCRM.Domain.Models.Enums
 {
     public enum StatusOfProject
     {
-       Active,
-        notActive,
-        pending
+        Planned = 1,    // مخطط
+        InProgress = 2, // قيد التنفيذ
+        Completed = 3,  // مكتمل
+        OnHold = 4,     // متوقف
+        Cancelled = 5   // ملغي
     }
 }

@@ -15,6 +15,7 @@ namespace TheOneCRM.Application.DTOs.Auth
         //public List<string> Roles { get; set; } = new();
         public string Role { get; set; }
         public string? Address { get; set; }
+        public string? Specialty { get; set; }
     }
     public class UpdateUserDto
     {
@@ -23,5 +24,6 @@ namespace TheOneCRM.Application.DTOs.Auth
         public string FullName { get; set; }
         public string Role { get; set; }
         public string? Address { get; set; }
+        public string? Specialty { get; set; }
     }
 }

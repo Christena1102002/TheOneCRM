@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TheOneCRM.Application.Interfaces;
+using TheOneCRM.Application.Interfaces.IAnalytics;
 using TheOneCRM.Application.Interfaces.IAppointment;
 using TheOneCRM.Application.Interfaces.ICampaign;
 using TheOneCRM.Application.Interfaces.IContracts;
@@ -7,6 +8,9 @@ using TheOneCRM.Application.Interfaces.ICountry;
 using TheOneCRM.Application.Interfaces.ICustomers;
 using TheOneCRM.Application.Interfaces.IDailyReport;
 using TheOneCRM.Application.Interfaces.IPriceQuotation;
+using TheOneCRM.Application.Interfaces.IProjects;
+using TheOneCRM.Application.Interfaces.IResources;
+using TheOneCRM.Application.Interfaces.ITasks;
 using TheOneCRM.Application.Interfaces.IServices;
 using TheOneCRM.Application.Interfaces.ISourceService;
 using TheOneCRM.Application.Interfaces.ISupportTickets;
@@ -18,6 +22,10 @@ using TheOneCRM.Application.Services.Contracts;
 using TheOneCRM.Application.Services.Country;
 using TheOneCRM.Application.Services.Customers;
 using TheOneCRM.Application.Services.price;
+using TheOneCRM.Application.Services.Analytics;
+using TheOneCRM.Application.Services.Projects;
+using TheOneCRM.Application.Services.Resources;
+using TheOneCRM.Application.Services.Tasks;
 using TheOneCRM.Application.Services.Report;
 using TheOneCRM.Application.Services.Services;
 using TheOneCRM.Application.Services.Sources;
@@ -52,6 +60,10 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<IContractService, ContractService>();
             Services.AddScoped<IAppointmentService, AppointmentService>();
             Services.AddScoped<ISupportTicketService, SupportTicketService>();
+            Services.AddScoped<IProjectService, ProjectService>();
+            Services.AddScoped<ITaskService, TaskService>();
+            Services.AddScoped<IResourceManagementService, ResourceManagementService>();
+            Services.AddScoped<IDeveloperAnalyticsService, DeveloperAnalyticsService>();
 
             return Services;
         }

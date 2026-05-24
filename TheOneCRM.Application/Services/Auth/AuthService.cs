@@ -120,7 +120,8 @@ namespace TheOneCRM.Application.Services.Auth
                     UserId = user.Id,
                     FullName = user.FullName,
                     Role = role.FirstOrDefault(),
-                    Address = user.Address
+                    Address = user.Address,
+                    Specialty = user.Specialty
 
 
                 });
@@ -142,7 +143,8 @@ namespace TheOneCRM.Application.Services.Auth
                 UserId = user.Id,
                 FullName = user.FullName,
                 Address=user.Address,
-                Role=role.FirstOrDefault()
+                Role=role.FirstOrDefault(),
+                Specialty=user.Specialty
 
             };
             
@@ -159,6 +161,7 @@ namespace TheOneCRM.Application.Services.Auth
             user.PhoneNumber = dto.Phone;
             user.Email = dto.Email;
             user.Address = dto.Address;
+            user.Specialty = dto.Specialty;
             user.UserName = dto.Email;
 
             //_unitOfWork.Users.Update(user);
@@ -209,7 +212,8 @@ namespace TheOneCRM.Application.Services.Auth
                 Phone = user.PhoneNumber,
                 FullName = user.FullName,
                 Address = user.Address,
-                Role= roles.FirstOrDefault()
+                Role= roles.FirstOrDefault(),
+                Specialty = user.Specialty
             };
         }
         public async Task DeleteUser(string userId)
@@ -293,7 +297,8 @@ namespace TheOneCRM.Application.Services.Auth
                     Phone = user.PhoneNumber,
                     FullName = user.FullName,
                     Role = roles.FirstOrDefault(),
-                    Address=user.Address
+                    Address=user.Address,
+                    Specialty=user.Specialty
                 });
             }
 
