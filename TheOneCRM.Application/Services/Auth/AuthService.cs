@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.DTOs.Auth;
 using TheOneCRM.Application.Interfaces;
@@ -303,6 +304,13 @@ namespace TheOneCRM.Application.Services.Auth
             }
 
             return result;
+        }
+
+        public async Task<List<string>> GetAllRolesAsync()
+        {
+            return await _roleManager.Roles
+                .Select(r => r.Name!)
+                .ToListAsync();
         }
     }
 }

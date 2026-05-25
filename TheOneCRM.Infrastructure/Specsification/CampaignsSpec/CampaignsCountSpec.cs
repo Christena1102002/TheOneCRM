@@ -10,11 +10,12 @@ namespace TheOneCRM.Infrastructure.Specsification.CampaignsSpec
 {
     public class CampaignsCountSpec : BaseSpecification<Campaigns>
     {
-        public CampaignsCountSpec(CampaignPaginationParams p)
+        public CampaignsCountSpec(CampaignPaginationParams p, string? ownerId)
            : base(c =>
+               (ownerId == null || c.AppUserId == ownerId) &&
                (!p.ChannelSourceId.HasValue || c.ChannelSourceId == p.ChannelSourceId.Value) &&
                //(string.IsNullOrEmpty(p.Status) || c.Status.ToString() == p.Status) &&
-                (!p.Status.HasValue || (int)c.Status==p.Status.Value)&&    
+                (!p.Status.HasValue || (int)c.Status==p.Status.Value)&&
            (string.IsNullOrEmpty(p.Search) || c.Name.ToLower().Contains(p.Search))
            )
         {

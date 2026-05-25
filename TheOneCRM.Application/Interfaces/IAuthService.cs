@@ -20,5 +20,6 @@ namespace TheOneCRM.Application.Interfaces
         Task DeleteUser(string userId);
         Task LogoutAsync(LogoutRequestDto request, string userId);
         Task<List<UsersDto>> GetUsersByRoleAsync(string roleName);
+        Task<List<string>> GetAllRolesAsync();
     }
 }

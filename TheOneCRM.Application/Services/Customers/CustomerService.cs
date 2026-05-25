@@ -609,8 +609,7 @@ namespace TheOneCRM.Application.Services.Customers
                 customerNote = new CustomerNote
                 {
                     CustomerId = customerId,
-                    //CreatedById = userId,
-                    //Role = role
+                    Role = role
                 };
 
                 ApplyNoteByRole(customerNote, role, note, userId, now);
@@ -857,8 +856,7 @@ namespace TheOneCRM.Application.Services.Customers
                 resultNote = new CustomerNote
                 {
                     CustomerId = customerId,
-                    //CreatedById = userId,
-                    //Role = role
+                    Role = role
                 };
 
                 ApplyNoteByRole(resultNote, role, note, userId, now);

@@ -5,6 +5,7 @@ using TheOneCRM.API.Error;
 using TheOneCRM.API.Extensions;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.Interfaces.IContracts;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.Common;
 using TheOneCRM.Domain.Models.DTOs.Contracts;
 
@@ -12,6 +13,7 @@ namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales}")]
     public class ContractsController : ControllerBase
     {
         private readonly IContractService _contractService;
@@ -61,8 +63,8 @@ namespace TheOneCRM.API.Controllers
             return Ok(new ApiResponse(200, "Contract updated successfully" ));
         }
         // DELETE: api/contracts/5
-        //[Authorize(Roles = "Admin")]
         [HttpDelete("DeleteContract/{id:int}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> DeleteContract(int id)
         {
             await _contractService.DeleteContractAsync(id);

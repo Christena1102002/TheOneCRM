@@ -8,8 +8,10 @@ using TheOneCRM.Application.Interfaces.IAnalytics;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.Analytics;
+using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Domain.Models.Enums;
+using TheOneCRM.Infrastructure.Specsification.ProjectSpec;
 using TaskEntity = TheOneCRM.Domain.Models.Entities.Tasks;
 using ProjectEntity = TheOneCRM.Domain.Models.Entities.Projects;
 
@@ -33,10 +35,10 @@ namespace TheOneCRM.Application.Services.Analytics
             _userManager = userManager;
         }
 
-        public async Task<DeveloperAnalyticsSummaryDto> GetSummaryAsync()
+        public async Task<DeveloperAnalyticsSummaryDto> GetSummaryAsync(DeveloperAnalyticsParams p)
         {
-            var tasks = await _unitOfWork.Repository<TaskEntity>().ListAllAsync();
-            var developers = await _userManager.GetUsersInRoleAsync(UserRoles.Developer);
+            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: true);
+            var developers = await GetDevelopersAsync(p.DeveloperId);
 
             var today = DateTime.UtcNow.Date;
             var completed = tasks.Where(t => t.Status == StatusOfTask.Completed).ToList();
@@ -118,19 +120,20 @@ namespace TheOneCRM.Application.Services.Analytics
             };
         }
 
-        public async Task<List<DeveloperStatItemDto>> GetDeveloperStatsAsync()
+        public async Task<List<DeveloperStatItemDto>> GetDeveloperStatsAsync(DeveloperAnalyticsParams p)
         {
-            var tasks = await _unitOfWork.Repository<TaskEntity>().ListAllAsync();
-            var developers = await _userManager.GetUsersInRoleAsync(UserRoles.Developer);
+            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: true);
+            var developers = await GetDevelopersAsync(p.DeveloperId);
 
             return BuildDeveloperStats(developers, tasks)
                 .OrderByDescending(d => d.CompletedTasks)
                 .ToList();
         }
 
-        public async Task<AnalyticsChartsDto> GetChartsAsync()
+        public async Task<AnalyticsChartsDto> GetChartsAsync(DeveloperAnalyticsParams p)
         {
-            var tasks = await _unitOfWork.Repository<TaskEntity>().ListAllAsync();
+            // الشارت ليه محور زمني خاص بيه (أيام الأسبوع/شهور)، فمنطبّقش فلتر الفترة عليه
+            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: false);
             var projects = await _unitOfWork.Repository<ProjectEntity>().ListAllAsync();
 
             var today = DateTime.UtcNow.Date;
@@ -170,9 +173,10 @@ namespace TheOneCRM.Application.Services.Analytics
             return charts;
         }
 
-        public async Task<BugAnalyticsDto> GetBugAnalyticsAsync()
+        public async Task<BugAnalyticsDto> GetBugAnalyticsAsync(DeveloperAnalyticsParams p)
         {
-            var tasks = await _unitOfWork.Repository<TaskEntity>().ListAllAsync();
+            // التحليل الشهري ليه محوره الزمني الخاص (آخر 5 شهور)، فمنطبّقش فلتر الفترة هنا
+            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: false);
             var projects = await _unitOfWork.Repository<ProjectEntity>().ListAllAsync();
 
             var projectNames = projects
@@ -215,7 +219,75 @@ namespace TheOneCRM.Application.Services.Analytics
             return result;
         }
 
+        // قائمة المشاريع للـ dropdown — مشاريع المطوّر المختار (أو الكل لو developerId = null)
+        public async Task<List<StatusClientDto>> GetProjectOptionsAsync(string? developerId)
+        {
+            var items = await _unitOfWork.Repository<ProjectEntity>().ListWithSelectAsync(
+                new ProjectsForDropdownSpec(developerId),
+                p => new StatusClientDto { Id = p.Id, Name = p.Title });
+
+            return items.ToList();
+        }
+
         // ===== Helpers =====
+
+        // فلترة المهام بالمطوّر + المشروع + (اختياري) الفترة الزمنية
+        private static IReadOnlyList<TaskEntity> ApplyFilters(
+            IReadOnlyList<TaskEntity> tasks, DeveloperAnalyticsParams p, bool applyPeriod)
+        {
+            IEnumerable<TaskEntity> q = tasks;
+
+            if (!string.IsNullOrEmpty(p.DeveloperId))
+                q = q.Where(t => t.AssignedToId == p.DeveloperId);
+
+            if (p.ProjectId.HasValue)
+                q = q.Where(t => t.ProjectId == p.ProjectId.Value);
+
+            if (applyPeriod)
+            {
+                var (start, end) = PeriodRange(p.Period, DateTime.UtcNow.Date);
+                q = q.Where(t =>
+                    (t.CreatedAt >= start && t.CreatedAt < end) ||
+                    (t.Status == StatusOfTask.Completed &&
+                     CompletionDate(t) >= start && CompletionDate(t) < end));
+            }
+
+            return q.ToList();
+        }
+
+        // حساب مدى التاريخ حسب الفترة المختارة
+        private static (DateTime start, DateTime end) PeriodRange(AnalyticsPeriod period, DateTime today)
+        {
+            switch (period)
+            {
+                case AnalyticsPeriod.CurrentWeek:
+                    var weekStart = StartOfWeek(today);
+                    return (weekStart, weekStart.AddDays(7));
+
+                case AnalyticsPeriod.CurrentQuarter:
+                    var quarter = (today.Month - 1) / 3;          // 0..3
+                    var qStart = new DateTime(today.Year, quarter * 3 + 1, 1);
+                    return (qStart, qStart.AddMonths(3));
+
+                case AnalyticsPeriod.CurrentYear:
+                    var yStart = new DateTime(today.Year, 1, 1);
+                    return (yStart, yStart.AddYears(1));
+
+                case AnalyticsPeriod.CurrentMonth:
+                default:
+                    var mStart = new DateTime(today.Year, today.Month, 1);
+                    return (mStart, mStart.AddMonths(1));
+            }
+        }
+
+        // قائمة المطورين (أو مطوّر واحد لو developerId محدّد)
+        private async Task<IList<AppUser>> GetDevelopersAsync(string? developerId)
+        {
+            var developers = await _userManager.GetUsersInRoleAsync(UserRoles.Developer);
+            if (!string.IsNullOrEmpty(developerId))
+                developers = developers.Where(d => d.Id == developerId).ToList();
+            return developers;
+        }
 
         private static List<DeveloperStatItemDto> BuildDeveloperStats(
             IList<AppUser> developers,

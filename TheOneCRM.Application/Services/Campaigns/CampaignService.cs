@@ -94,10 +94,10 @@ namespace TheOneCRM.Application.Services
             return _mapper.Map<CampaignResponseDto>(createdCampaign);
         }
         public async Task<Pagination<CampaignListItemDto>> GetAllCampaignsAsync(
-    CampaignPaginationParams paginationParams)
+    CampaignPaginationParams paginationParams, string? ownerId)
         {
-            var spec = new CampaignsWithPaginationSpec(paginationParams);
-            var countSpec = new CampaignsCountSpec(paginationParams);
+            var spec = new CampaignsWithPaginationSpec(paginationParams, ownerId);
+            var countSpec = new CampaignsCountSpec(paginationParams, ownerId);
 
             var campaigns = await _unitOfWork.Repository<Campaigns>().ListAsync(spec);
             var totalCount = await _unitOfWork.Repository<Campaigns>().CountAsync(countSpec);
@@ -256,10 +256,10 @@ namespace TheOneCRM.Application.Services
 
           
         }
-        public async Task<List<CampaignDashboardDto>> GetCampaignsDashboardAsync()
+        public async Task<List<CampaignDashboardDto>> GetCampaignsDashboardAsync(string? ownerId)
         {
             var campaigns = await _unitOfWork.Repository<Campaigns>()
-                .ListAsync(new CampaignsSpec());
+                .ListAsync(new CampaignsSpec(ownerId));
 
             // map لكل الحملات
             var dtos = _mapper.Map<List<CampaignDetailsDto>>(campaigns);
@@ -286,7 +286,7 @@ namespace TheOneCRM.Application.Services
 
             return new List<CampaignDashboardDto> { result };
         }
-        public async Task<CampaignDetailsDto> GetCampaignByIdAsync(int id)
+        public async Task<CampaignDetailsDto> GetCampaignByIdAsync(int id, string? ownerId)
         {
             // 1) جيب العميل مع البيانات المرتبطة
             var Campaigns = await _unitOfWork.Repository<Campaigns>()
@@ -295,6 +295,11 @@ namespace TheOneCRM.Application.Services
             // 2) لو مش موجود
             if (Campaigns == null)
                 throw new KeyNotFoundException($"Campaign with id {id} not found");
+
+            // 3) الماركتينج يشوف حملاته هو بس (ownerId != null)، الأدمن يشوف أي حملة (ownerId = null)
+            if (ownerId != null && Campaigns.AppUserId != ownerId)
+                throw new UnauthorizedAccessException("This campaign does not belong to you");
+
             var dto = _mapper.Map<CampaignDetailsDto>(Campaigns);
             // قراءة الدول من ملف JSON
             var allCountries = await _countryService.GetAllCountriesAsync();
@@ -312,9 +317,10 @@ namespace TheOneCRM.Application.Services
         
         }
 
-        public async Task<List<CampaignPerformanceRowDto>> GetCampaignPerformance()
+        public async Task<List<CampaignPerformanceRowDto>> GetCampaignPerformance(string? ownerId)
         {
-            var campaigns = await _unitOfWork.Repository<Campaigns>().ListWithSelectAsync(spec: null,
+            var campaigns = await _unitOfWork.Repository<Campaigns>().ListWithSelectAsync(
+        spec: new CampaignsSpec(ownerId),
         selector: c => new { c.Id, c.Name });
 
             var allBuyers = await _unitOfWork.Repository<Customer>()

@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using TheOneCRM.API.Error;
 using TheOneCRM.Application.Interfaces.IPriceQuotation;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.PriceQuotationsDtos;
 
 namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales}")]
     public class PriceQuotationsController : ControllerBase
     {
         private readonly IPriceQuotationService _priceQuotationService;
@@ -52,6 +55,7 @@ namespace TheOneCRM.API.Controllers
         }
         [SwaggerOperation(Summary = "DELETE: Delete Price Quotation by Id")]
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> DeletePriceQuotation(int id)
         {
             await _priceQuotationService.DeletePriceQuotationAsync(id);

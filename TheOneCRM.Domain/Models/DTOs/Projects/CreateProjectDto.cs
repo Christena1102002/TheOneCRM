@@ -10,7 +10,6 @@ namespace TheOneCRM.Domain.Models.DTOs.Projects
         public string? Description { get; set; }
 
         public int CustomerId { get; set; }
-        public string? ProjectManagerId { get; set; }
 
         public StatusOfProject Status { get; set; } = StatusOfProject.Planned;
         public PriorityStatus Priority { get; set; } = PriorityStatus.Medium;

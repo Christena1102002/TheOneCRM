@@ -37,12 +37,6 @@ namespace TheOneCRM.Domain.Models.Entities
         [ForeignKey("CreatedById")]
         public AppUser? CreatedBy { get; set; }
 
-        // مدير المشروع
-        public string? ProjectManagerId { get; set; }
-
-        [ForeignKey("ProjectManagerId")]
-        public AppUser? ProjectManager { get; set; }
-
         // المهندسون المعيّنون للمشروع (many-to-many)
         public ICollection<ProjectEngineer> ProjectEngineers { get; set; }
             = new List<ProjectEngineer>();

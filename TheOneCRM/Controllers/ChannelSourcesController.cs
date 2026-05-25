@@ -1,14 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TheOneCRM.API.Error;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.Interfaces.ISourceService;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.SourceDtos;
 
 namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing}")]
     public class ChannelSourcesController : ControllerBase
     {
         private readonly ISourceService _service;

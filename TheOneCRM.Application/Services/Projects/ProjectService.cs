@@ -49,10 +49,7 @@ namespace TheOneCRM.Application.Services.Projects
             if (dto.End < dto.Start)
                 throw new InvalidOperationException("End date cannot be before start date");
 
-            // 3) مدير المشروع (اختياري لكن لو اتبعت لازم يكون موجود)
-            await EnsureManagerExistsAsync(dto.ProjectManagerId);
-
-            // 4) المهندسون مطلوبون ولازم يكونوا Developers
+            // 3) المهندسون مطلوبون ولازم يكونوا Developers
             var engineerIds = NormalizeEngineerIds(dto.EngineerIds);
             await ValidateEngineersAsync(engineerIds);
 
@@ -109,14 +106,11 @@ namespace TheOneCRM.Application.Services.Projects
             if (dto.End < dto.Start)
                 throw new InvalidOperationException("End date cannot be before start date");
 
-            // 3) مدير المشروع
-            await EnsureManagerExistsAsync(dto.ProjectManagerId);
-
-            // 4) المهندسون
+            // 3) المهندسون
             var engineerIds = NormalizeEngineerIds(dto.EngineerIds);
             await ValidateEngineersAsync(engineerIds);
 
-            // 5) تحديث الحقول
+            // 4) تحديث الحقول
             _mapper.Map(dto, project);
 
             // 6) مزامنة المهندسين بالـ diff (نشيل اللي اتشال ونضيف الجديد بس)
@@ -222,16 +216,6 @@ namespace TheOneCRM.Application.Services.Projects
                 throw new InvalidOperationException("At least one engineer must be assigned to the project");
 
             return ids;
-        }
-
-        private async Task EnsureManagerExistsAsync(string? managerId)
-        {
-            if (string.IsNullOrWhiteSpace(managerId))
-                return;
-
-            var manager = await _userManager.FindByIdAsync(managerId);
-            if (manager is null)
-                throw new KeyNotFoundException($"Project manager {managerId} not found");
         }
 
         private async Task ValidateEngineersAsync(IEnumerable<string> engineerIds)

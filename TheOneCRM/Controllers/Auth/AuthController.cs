@@ -53,7 +53,7 @@ namespace TheOneCRM.API.Controllers.Auth
             return Ok(new ApiResponse(200, res.Message, res));
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetAllUsers")]
         [SwaggerOperation(Summary = "GetAllUsersbyAdmin")]
         public async Task<IActionResult> GetAllUsers()
@@ -93,6 +93,7 @@ namespace TheOneCRM.API.Controllers.Auth
             return Ok(new { message = "User deleted successfully" });
         }
       
+        [Authorize(Roles = "Admin")]
         [HttpGet("admins")]
         public async Task<IActionResult> GetAdmins()
         {
@@ -100,7 +101,8 @@ namespace TheOneCRM.API.Controllers.Auth
             return Ok(new ApiResponse(200, "Success", users));
         }
 
-    
+
+        [Authorize(Roles = "Admin")]
         [HttpGet("developers")]
         public async Task<IActionResult> GetDevelopers()
         {
@@ -109,6 +111,7 @@ namespace TheOneCRM.API.Controllers.Auth
         }
 
 
+        [Authorize(Roles = "Admin,Marketing,Sales")]
         [HttpGet("sales")]
         public async Task<IActionResult> GetSales()
         {
@@ -116,7 +119,8 @@ namespace TheOneCRM.API.Controllers.Auth
             return Ok(new ApiResponse(200, "Success", users));
         }
 
-    
+
+        [Authorize(Roles = "Admin")]
         [HttpGet("marketing")]
         public async Task<IActionResult> GetMarketing()
         {
@@ -124,11 +128,21 @@ namespace TheOneCRM.API.Controllers.Auth
             return Ok(new ApiResponse(200, "Success", users));
         }
 
+        [Authorize(Roles = "Admin,Sales,Support")]
         [HttpGet("support")]
         public async Task<IActionResult> GetSupport()
         {
             var users = await _auth.GetUsersByRoleAsync("Support");
             return Ok(new ApiResponse(200, "Success", users));
         }
-    } 
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("roles")]
+        [SwaggerOperation(Summary = "Get all roles")]
+        public async Task<IActionResult> GetRoles()
+        {
+            var roles = await _auth.GetAllRolesAsync();
+            return Ok(new ApiResponse(200, "Roles retrieved successfully", roles));
+        }
+    }
 }

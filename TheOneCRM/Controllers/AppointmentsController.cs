@@ -6,6 +6,7 @@ using TheOneCRM.API.Error;
 using TheOneCRM.API.Extensions;
 using TheOneCRM.Application.Interfaces.IAppointment;
 using TheOneCRM.Application.Services.AppointmentS;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.Appointments;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Infrastructure.Specsification.Appointments;
@@ -14,6 +15,7 @@ namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales},{UserRoles.Support}")]
     public class AppointmentsController : ControllerBase
     {
         private readonly IAppointmentService _appointmentService;

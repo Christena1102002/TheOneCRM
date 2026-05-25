@@ -46,6 +46,7 @@ namespace TheOneCRM.API.Controllers
              ));
         }
         [HttpGet("NotBuyingReasons")]
+        [Authorize(Roles = "Admin,Sales")]
         public async Task<IActionResult> GetNotBuyingReasons()
         {
             var reasons = await _customerService.GetNotBuyingReasonsAsync();

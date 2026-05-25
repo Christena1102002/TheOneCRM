@@ -38,6 +38,7 @@ namespace TheOneCRM.API.Controllers
         }
         // ✅ جلب كل ملاحظات عميل (اختيارياً فلترة بنوع الـ role)
         [HttpGet("customer/{customerId}")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> GetByCustomer(
             int customerId, [FromQuery] string? role = null)
         {

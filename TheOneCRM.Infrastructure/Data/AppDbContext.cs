@@ -32,6 +32,9 @@ namespace TheOneCRM.Infrastructure.Data
         public DbSet<CustomerAssignmentHistory> CustomerAssignmentHistories { get; set; }
        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Contract> Contracts { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleAttachment> ArticleAttachments { get; set; }
+        public DbSet<CompanySettings> CompanySettings { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -80,12 +83,6 @@ namespace TheOneCRM.Infrastructure.Data
                 .HasForeignKey(p => p.CreatedById)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Projects>()
-                .HasOne(p => p.ProjectManager)
-                .WithMany()
-                .HasForeignKey(p => p.ProjectManagerId)
-                .OnDelete(DeleteBehavior.Restrict);
-
             // ProjectEngineer: many-to-many بين المشروع والمهندسين
             modelBuilder.Entity<ProjectEngineer>()
                 .HasKey(pe => new { pe.ProjectId, pe.EngineerId });
@@ -120,6 +117,20 @@ namespace TheOneCRM.Infrastructure.Data
                 .WithMany()
                 .HasForeignKey(t => t.AssignedToId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            // Article: امنع cascade على AspNetUsers
+            modelBuilder.Entity<Article>()
+                .HasOne(a => a.CreatedBy)
+                .WithMany()
+                .HasForeignKey(a => a.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // ArticleAttachment: المرفقات تتمسح مع المقالة
+            modelBuilder.Entity<ArticleAttachment>()
+                .HasOne(att => att.Article)
+                .WithMany(a => a.Attachments)
+                .HasForeignKey(att => att.ArticleId)
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }

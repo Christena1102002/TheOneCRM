@@ -38,10 +38,19 @@ namespace TheOneCRM
             //builder.Configuration.GetSection("JwtSettings");
             
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    // اعرض/استقبل الـ enums بالأسماء بدل الأرقام
+                    options.JsonSerializerOptions.Converters.Add(
+                        new System.Text.Json.Serialization.JsonStringEnumConverter());
+                });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SchemaFilter<TheOneCRM.API.Helper.DescriptionEnumSchemaFilter>();
+            });
             builder.Services.AddScoped<DataSeader>();
             //builder.Services.AddCors(options =>
             //{

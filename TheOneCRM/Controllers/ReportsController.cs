@@ -1,15 +1,18 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TheOneCRM.API.Error;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.Interfaces.IDailyReport;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.DailyReports;
 
 namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ReportsController : ControllerBase
     {
         private readonly IDailyReportService _service;
@@ -63,6 +66,7 @@ namespace TheOneCRM.API.Controllers
 
         // GET: api/DailyReports?PageIndex=1&PageSize=10&UserId=...&FromDate=...&ToDate=...
         [HttpGet]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> GetAll([FromQuery] DailyReportQueryParams p)
         {
             // غير الـ Admin يشوف تقاريره بس

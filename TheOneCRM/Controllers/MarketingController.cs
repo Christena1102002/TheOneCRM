@@ -1,13 +1,16 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TheOneCRM.API.Error;
 using TheOneCRM.Application.Interfaces;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
 
 namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing}")]
     public class MarketingController : ControllerBase
     {
         private readonly IMarketingService _marketingService;

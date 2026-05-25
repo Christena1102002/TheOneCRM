@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Mvc;
 using TheOneCRM.API.Error;
 using TheOneCRM.API.Extensions;
 using TheOneCRM.Application.Interfaces.ISupportTickets;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.SupportTickets;
 
 namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Support}")]
     public class SupportTicketsController : ControllerBase
     {
         private readonly ISupportTicketService _ticketService;

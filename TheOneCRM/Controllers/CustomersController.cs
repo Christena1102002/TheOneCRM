@@ -47,6 +47,7 @@ namespace TheOneCRM.API.Controllers
        
         [SwaggerOperation(Summary = "GET:Customer/dropdown Customers in marketing")]
         [HttpGet("dropdownCustomers")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> GetdropdownCustomers()
         {
             var result = await _customerService.GetCustomersForDropdownAsync();
@@ -55,6 +56,7 @@ namespace TheOneCRM.API.Controllers
         }
         // GET: api/customers/search?term=أحمد
         [HttpGet("search")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> Search([FromQuery] string? SearchPhoneOrName)
         {
             var result = await _customerService.SearchCustomersAsync(SearchPhoneOrName);
@@ -63,7 +65,7 @@ namespace TheOneCRM.API.Controllers
         }
         // GET: api/customers?pageIndex=1&pageSize=10
         [HttpGet("getLeadCustomer")]
-        [Authorize]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing}")]
         public async Task<IActionResult> GetAll([FromQuery] CustomerPaginationParams paginationParams)
         {
             var userId = User.GetUserId();
@@ -78,6 +80,7 @@ namespace TheOneCRM.API.Controllers
                   new ApiResponse(200, "get customers successfully", result));
         }
         [HttpGet("statuses")]
+        [Authorize]
         public async Task<IActionResult> GetStatuses()
         {
             var result = _customerService.GetCustomerStatuses();
@@ -86,6 +89,7 @@ namespace TheOneCRM.API.Controllers
         }
         // PUT: api/customers/5
         [HttpPut("updateCustomer/{id}")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales}")]
         public async Task<IActionResult> Update(int id, [FromBody] UpdateCustomerDto dto)
         {
             var result = await _customerService.UpdateCustomerAsync(id, dto);
@@ -94,6 +98,7 @@ namespace TheOneCRM.API.Controllers
         }
         // DELETE: api/customers/5
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Delete(int id)
         {
             await _customerService.DeleteCustomerAsync(id);
@@ -136,7 +141,7 @@ namespace TheOneCRM.API.Controllers
             return Ok(new ApiResponse(200, "Customer assigned to support person successfully", result));
         }
         [HttpPut("{id}/status")]
-        //[Authorize] // أو [Authorize(Roles = "Admin,Sales")] حسب صلاحياتك
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> UpdateCustomerStatus(
     int id,
     [FromBody] UpdateCustomerStatusDto dto)
@@ -146,7 +151,7 @@ namespace TheOneCRM.API.Controllers
                   new ApiResponse(200, "Update Customer Status successfully", result));
         }
         [HttpPut("{id}/followUp")]
-        //[Authorize] // أو [Authorize(Roles = "Sales,Admin")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> UpdateCustomerFollowUp(
     int id,
     [FromBody] UpdateCustomerFollowUpDto dto)
@@ -157,6 +162,7 @@ namespace TheOneCRM.API.Controllers
         }
         // GET: api/customers/5
         [HttpGet("{id}/getCustomerById")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _customerService.GetCustomerByIdAsync(id);
@@ -164,7 +170,7 @@ namespace TheOneCRM.API.Controllers
                    new ApiResponse(200, "Get Customer By Id successfully",result));
         }
         [SwaggerOperation(Summary = "all customer already assigned by marketing to sales")]
-        [Authorize]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales}")]
         [HttpGet("getSalesCustomers")]
         public async Task<IActionResult> getSalesCustomers([FromQuery] CustomerPaginationParams paginationParams)
         {
@@ -176,7 +182,7 @@ namespace TheOneCRM.API.Controllers
         new ApiResponse(200, "get customers successfully", result));
         }
         [SwaggerOperation(Summary = "all customer already assigned by marketing to sales")]
-        //[Authorize]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Support}")]
         [HttpGet("getSupportCustomers")]
         public async Task<IActionResult> getSupportCustomers([FromQuery] CustomerPaginationParams paginationParams)
         {

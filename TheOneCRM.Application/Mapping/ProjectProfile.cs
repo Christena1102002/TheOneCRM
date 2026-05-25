@@ -14,8 +14,7 @@ namespace TheOneCRM.Application.Mapping
                 .ForMember(d => d.ProjectEngineers, opt => opt.Ignore())
                 .ForMember(d => d.CreatedById, opt => opt.Ignore())
                 .ForMember(d => d.CreatedBy, opt => opt.Ignore())
-                .ForMember(d => d.Customer, opt => opt.Ignore())
-                .ForMember(d => d.ProjectManager, opt => opt.Ignore());
+                .ForMember(d => d.Customer, opt => opt.Ignore());
 
             // ============ Update: DTO -> Entity ============
             CreateMap<UpdateProjectDto, Projects>()
@@ -24,7 +23,6 @@ namespace TheOneCRM.Application.Mapping
                 .ForMember(d => d.CreatedById, opt => opt.Ignore())
                 .ForMember(d => d.CreatedBy, opt => opt.Ignore())
                 .ForMember(d => d.Customer, opt => opt.Ignore())
-                .ForMember(d => d.ProjectManager, opt => opt.Ignore())
                 .ForMember(d => d.ProjectEngineers, opt => opt.Ignore());
 
             // ============ Customer lookup ============
@@ -41,8 +39,6 @@ namespace TheOneCRM.Application.Mapping
                     opt => opt.MapFrom(s => s.Customer != null ? s.Customer.FullName : null))
                 .ForMember(d => d.CompanyName,
                     opt => opt.MapFrom(s => s.Customer != null ? s.Customer.CampanyName : null))
-                .ForMember(d => d.ProjectManagerName,
-                    opt => opt.MapFrom(s => s.ProjectManager != null ? s.ProjectManager.FullName : null))
                 .ForMember(d => d.CreatedByName,
                     opt => opt.MapFrom(s => s.CreatedBy != null ? s.CreatedBy.FullName : null))
                 .ForMember(d => d.StatusName,

@@ -15,10 +15,6 @@ namespace TheOneCRM.Domain.Models.DTOs.Projects
         public string? CustomerName { get; set; }
         public string? CompanyName { get; set; }
 
-        // مدير المشروع
-        public string? ProjectManagerId { get; set; }
-        public string? ProjectManagerName { get; set; }
-
         // اللي أنشأ المشروع
         public string? CreatedById { get; set; }
         public string? CreatedByName { get; set; }

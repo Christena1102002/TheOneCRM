@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TheOneCRM.API.Error;
 using TheOneCRM.Application.Common;
 using TheOneCRM.Application.Interfaces.IServices;
+using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.Common;
 using TheOneCRM.Domain.Models.DTOs.ServicesDtos;
 
@@ -10,6 +12,7 @@ namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ServicesController : ControllerBase
     {
         private readonly IServicesService _servicesService;
@@ -20,6 +23,7 @@ namespace TheOneCRM.API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<ActionResult> CreateService(
             [FromBody] CreateServiceDto dto)
         {
@@ -36,6 +40,7 @@ namespace TheOneCRM.API.Controllers
             new ApiResponse(200, "Get Service ById successfully", result));
         }
         [HttpPut("{id:int}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> UpdateService(
     int id, [FromBody] UpdateServiceDto dto)
         {
@@ -44,6 +49,7 @@ namespace TheOneCRM.API.Controllers
               new ApiResponse(200, "Update Service successfully", result));
         }
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> DeleteService(int id)
         {
             await _servicesService.DeleteServiceAsync(id);

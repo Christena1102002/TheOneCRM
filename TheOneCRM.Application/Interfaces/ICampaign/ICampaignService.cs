@@ -17,12 +17,12 @@ namespace TheOneCRM.Application.Interfaces.ICampaign
         Task<CampaignResponseDto> CreateCampaignAsync(CreateCampaignDto dto, string userId);
         // ICampaignService.cs
       
-        Task<Pagination<CampaignListItemDto>> GetAllCampaignsAsync(CampaignPaginationParams paginationParams);
-        Task<CampaignDetailsDto> GetCampaignByIdAsync(int id);
+        Task<Pagination<CampaignListItemDto>> GetAllCampaignsAsync(CampaignPaginationParams paginationParams, string? ownerId);
+        Task<CampaignDetailsDto> GetCampaignByIdAsync(int id, string? ownerId);
         Task DeleteCampaignAsync(int id);
         Task<CampaignResponseDto> ToggleCampaignStatusAsync(int id);
-        Task<List<CampaignDashboardDto>> GetCampaignsDashboardAsync();
-        Task<List<CampaignPerformanceRowDto>> GetCampaignPerformance();
+        Task<List<CampaignDashboardDto>> GetCampaignsDashboardAsync(string? ownerId);
+        Task<List<CampaignPerformanceRowDto>> GetCampaignPerformance(string? ownerId);
         // Service Interface
         Task<CampaignResponseDto> UpdateCampaignAsync(int id, UpdateCampaignDto dto, string userId);
     }
