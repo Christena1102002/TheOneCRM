@@ -1,5 +1,4 @@
-﻿
-//using Swashbuckle.AspNetCore.Swagger;
+﻿//using Swashbuckle.AspNetCore.Swagger;
 using System.Text;
 using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -18,7 +17,6 @@ using TheOneCRM.API.Middlewares;
 using TheOneCRM.Application.Interfaces;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services.Auth;
-
 //using TheOneCRM.Application.Services.Auth;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Infrastructure.Data;
@@ -94,13 +92,7 @@ namespace TheOneCRM
                 try
                 {
                     // 1) Apply migrations
-                    var db = services.GetRequiredService<AppDbContext>();
-                    
-                    
-                    
-                 
-                    
-                    
+                    var db = services.GetRequiredService<AppDbContext>();  
                     await db.Database.MigrateAsync();
 
                     // 2) Run seeder
@@ -124,6 +116,7 @@ namespace TheOneCRM
             app.UseCors("CorsPolicy");
             app.UseSwaggerUI();
             app.UseHttpsRedirection();
+            app.UseStaticFiles(); // عشان الصور المرفوعة في wwwroot/Images تشتغل
             app.UseMiddleware<ExceptionMiddleware>();
             app.UseAuthentication();
             app.UseAuthorization();

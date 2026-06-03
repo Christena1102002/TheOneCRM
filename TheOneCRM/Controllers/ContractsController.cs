@@ -45,22 +45,27 @@ namespace TheOneCRM.API.Controllers
         [HttpGet("GetContractById/{id:int}")]
         public async Task<IActionResult> GetContract(int id)
         {
-            var contract = await _contractService.GetContractByIdAsync(id);
+            // الأدمن يشوف أي عقد (null)، السيلز يشوف اللي هو أنشأه بس
+            var ownerId = User.IsAdmin() ? null : User.GetUserId();
+            var contract = await _contractService.GetContractByIdAsync(id, ownerId);
             return Ok(new ApiResponse(200, "Contract retrieved successfully", contract));
         }
         [HttpGet("GetContracts")]
-        public async Task<IActionResult> GetContracts(
-    [FromQuery] ContractParams p)
+        public async Task<IActionResult> GetContracts([FromQuery] ContractParams p)
         {
-            var result = await _contractService.GetContractsAsync(p);
+            // الأدمن يشوف الكل (null)، السيلز يشوف عقوده هو بس
+            var ownerId = User.IsAdmin() ? null : User.GetUserId();
+            var result = await _contractService.GetContractsAsync(p, ownerId);
             return Ok(new ApiResponse(200, "Contract retrieved successfully", result));
         }
         // PUT: api/contracts/5
         [HttpPut("UpdateContract/{id:int}")]
         public async Task<IActionResult> UpdateContract(int id, UpdateContractDto dto)
         {
-            await _contractService.UpdateContractAsync(id, dto);
-            return Ok(new ApiResponse(200, "Contract updated successfully" ));
+            // الأدمن يعدّل أي عقد (null)، السيلز يعدّل عقده هو بس
+            var ownerId = User.IsAdmin() ? null : User.GetUserId();
+            await _contractService.UpdateContractAsync(id, dto, ownerId);
+            return Ok(new ApiResponse(200, "Contract updated successfully"));
         }
         // DELETE: api/contracts/5
         [HttpDelete("DeleteContract/{id:int}")]
@@ -70,11 +75,13 @@ namespace TheOneCRM.API.Controllers
             await _contractService.DeleteContractAsync(id);
             return Ok(new ApiResponse(200, "Contract deleted successfully" ));
         }
-        [Authorize(Roles = "Admin")]
+ 
         [HttpGet("ContractStatistics")]
         public async Task<IActionResult> GetStatistics()
         {
-            var result = await _contractService.GetContractStatisticsAsync();
+            // الأدمن يشوف إحصائيات الكل، السيلز يشوف إحصائيات عقوده هو بس
+            var ownerId = User.IsAdmin() ? null : User.GetUserId();
+            var result = await _contractService.GetContractStatisticsAsync(ownerId);
 
             return Ok(new ApiResponse(200, "Contract statistics retrieved successfully", result));
         }

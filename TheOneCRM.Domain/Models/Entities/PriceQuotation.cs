@@ -24,6 +24,10 @@ namespace TheOneCRM.Domain.Models.Entities
         // ملاحظات
         public string? Notes { get; set; }
 
+        // اللي أنشأ عرض السعر
+        public string? CreatedById { get; set; }
+        public AppUser? CreatedBy { get; set; }
+
         // تفاصيل الخدمات داخل عرض السعر
         public ICollection<PriceQuotationDetails> Items { get; set; }
             = new List<PriceQuotationDetails>();

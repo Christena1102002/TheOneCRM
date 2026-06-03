@@ -63,7 +63,8 @@ namespace TheOneCRM.Application.Services.Auth
                 RefreshToken = refreshToken,
                 Role = role,
                 UserId = User.Id,
-                Email = User.Email
+                Email = User.Email,
+                FullName = User.FullName
             };
             return result;
         }
@@ -98,6 +99,7 @@ namespace TheOneCRM.Application.Services.Auth
                 UserId = user.Id,
                 Email = user.Email,
                 Role = role,
+                FullName = user.FullName,
                 AccessToken=accessToken,
                 RefreshToken=refreshToken,
                 //Message = "Account create Successfuly"
@@ -249,7 +251,8 @@ namespace TheOneCRM.Application.Services.Auth
                 RefreshToken = newRefreshTokenPlain,
                 Role=roles.FirstOrDefault(),
                 UserId=user.Id.ToString(),
-                Email=user.Email
+                Email=user.Email,
+                FullName = user.FullName
             };
         }
         public async Task LogoutAsync(LogoutRequestDto request, string userId)

@@ -62,7 +62,12 @@ namespace TheOneCRM.Application.Services.Customers
                 var existingServices = await _unitOfWork.Repository<Service>()
                     .ListAsync(new ServicesByIdsSpec(dto.ServiceIds));
 
-                var validServiceIds = existingServices.Select(s => s.Id).ToList();
+                var validServiceIds = existingServices.Select(s => 
+                
+                
+                
+                
+                s.Id).ToList();
                 var missingIds = dto.ServiceIds.Except(validServiceIds).ToList();
 
                 if (missingIds.Any())
@@ -117,6 +122,7 @@ namespace TheOneCRM.Application.Services.Customers
 
                 //customer.AssignmentHistory.Add(history);
                 customer.AssignedToId = dto.SalesPersonId;
+                customer.CreatedById = currentUserId;
                 customer.status = StatusOfCustomers.AssignedToSalesTeam;
 
 
@@ -132,7 +138,11 @@ namespace TheOneCRM.Application.Services.Customers
                     Role = currentUserRole
                 });
             }
-            customer.AssignedToId = currentUserId;
+            // لو مش متعيّن لسيلز، يبقى مع اللي أنشأه (الماركتينج)
+            if (!dto.AssignToSalesTeam)
+                customer.AssignedToId = currentUserId;
+
+            customer.CreatedById = currentUserId;
             await _unitOfWork.Repository<Customer>().AddAsync(customer);
             await _unitOfWork.SaveChangesAsync();
 
@@ -180,8 +190,10 @@ namespace TheOneCRM.Application.Services.Customers
         }
 
         public async Task<Pagination<CustomerListItemDto>> GetAllCustomersAsync(
-    CustomerPaginationParams paginationParams,string currentUserId)
+    CustomerPaginationParams paginationParams, string currentUserId, bool isAdmin)
         {
+            // الأدمن يشوف الكل (null)، الماركتينج يشوف اللي هو أنشأه بس
+            var ownerId = isAdmin ? null : currentUserId;
 
             //var spec = new CustomersWithPaginationSpec(paginationParams);
 
@@ -203,9 +215,9 @@ namespace TheOneCRM.Application.Services.Customers
             //    totalCount,
             //    data
             //);
-            var spec = new CustomersWithPaginationSpec(paginationParams);
+            var spec = new CustomersWithPaginationSpec(paginationParams, ownerId);
 
-            var countSpec = new CustomersCountSpec(paginationParams);
+            var countSpec = new CustomersCountSpec(paginationParams, ownerId);
 
             var totalCount = await _unitOfWork
                 .Repository<Customer>()
@@ -455,7 +467,7 @@ namespace TheOneCRM.Application.Services.Customers
 
             return _mapper.Map<CustomerListItemDto>(customer);
         }
-        public async Task<CustomerDetailsDto> GetCustomerByIdAsync(int id)
+        public async Task<CustomerDetailsDto> GetCustomerByIdAsync(int id, string userId, string role, bool isAdmin)
         {
             // 1) جيب العميل مع البيانات المرتبطة
             var customer = await _unitOfWork.Repository<Customer>()
@@ -465,7 +477,22 @@ namespace TheOneCRM.Application.Services.Customers
             if (customer == null)
                 throw new KeyNotFoundException($"Customer with id {id} not found");
 
-            // 3) Map للـ DTO
+            // 3) فحص الملكية: الأدمن يشوف الكل، غيره حسب الرول
+            if (!isAdmin)
+            {
+                bool allowed = role switch
+                {
+                    UserRoles.Sales => customer.AssignedToId == userId,
+                    UserRoles.Support => customer.AssignedToId == userId,
+                    UserRoles.Marketing => customer.CreatedById == userId,
+                    _ => false
+                };
+
+                if (!allowed)
+                    throw new UnauthorizedAccessException("This customer does not belong to you");
+            }
+
+            // 4) Map للـ DTO
             return _mapper.Map<CustomerDetailsDto>(customer);
         }
 
@@ -769,6 +796,13 @@ namespace TheOneCRM.Application.Services.Customers
             // 4) حدّث الحالة
             customer.status = dto.Status;
 
+            // ✅ لو الحالة بقت Contacted، سجّل تاريخ المكالمة تلقائي
+            // كده "مكالمات اليوم" في الداشبورد تتعد صح حتى لو العميل لسه جديد
+            if (dto.Status == StatusOfCustomers.Contacted)
+            {
+                customer.LastFollowUpDate = DateTime.UtcNow;
+            }
+
             if (dto.Status == StatusOfCustomers.NotBuyer)
             {
                 customer.NotBuyingReason= dto.NotBuyingReason!.Trim();
@@ -901,11 +935,10 @@ namespace TheOneCRM.Application.Services.Customers
             return _mapper.Map<IReadOnlyList<CustomerNoteResponseDto>>(notes);
         }
 
-        public async Task<SalesDashboardStatsDto> GetSalesDashboardStatsAsync(string salesPersonId)
+        public async Task<SalesDashboardStatsDto> GetSalesDashboardStatsAsync(string? salesPersonId)
         {
-            if (string.IsNullOrWhiteSpace(salesPersonId))
-                throw new InvalidOperationException("SalesPersonId is required");
-
+            // الأدمن: salesPersonId = null → بيرجع إحصائيات الكل
+            // السيلز: salesPersonId = userId → بيرجع إحصائياته هو بس
 
             var today = DateTime.UtcNow.Date;
             var tomorrow = today.AddDays(1);

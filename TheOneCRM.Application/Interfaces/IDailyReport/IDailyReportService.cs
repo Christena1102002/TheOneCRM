@@ -13,7 +13,7 @@ namespace TheOneCRM.Application.Interfaces.IDailyReport
         Task<DailyReportResponseDto> CreateDailyReportAsync(CreateDailyReportDto dto, string userId);
         Task<DailyReportResponseDto> UpdateDailyReportAsync(int id, UpdateDailyReportDto dto, string userId);
         Task DeleteDailyReportAsync(int id, string userId, bool isAdmin);
-        Task<DailyReportResponseDto> GetDailyReportByIdAsync(int id);
+        Task<DailyReportResponseDto> GetDailyReportByIdAsync(int id, string userId, bool isAdmin);
         Task<Pagination<DailyReportListItemDto>> GetDailyReportsAsync(DailyReportQueryParams p);
         Task<DailyReportResponseDto?> GetMyReportByDateAsync(string userId, DateTime date);
     }

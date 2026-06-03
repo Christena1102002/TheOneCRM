@@ -132,6 +132,13 @@ namespace TheOneCRM.Infrastructure.Data
                 .HasForeignKey(att => att.ArticleId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // PriceQuotation: امنع cascade على AspNetUsers
+            modelBuilder.Entity<PriceQuotation>()
+                .HasOne(q => q.CreatedBy)
+                .WithMany()
+                .HasForeignKey(q => q.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

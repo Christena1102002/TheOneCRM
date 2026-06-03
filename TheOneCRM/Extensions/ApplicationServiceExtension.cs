@@ -12,6 +12,7 @@ using TheOneCRM.Application.Interfaces.IProjects;
 using TheOneCRM.Application.Interfaces.IResources;
 using TheOneCRM.Application.Interfaces.ITasks;
 using TheOneCRM.Application.Interfaces.IServices;
+using TheOneCRM.Application.Interfaces.IAdminDashboard;
 using TheOneCRM.Application.Interfaces.IArticles;
 using TheOneCRM.Application.Interfaces.ICompanySettings;
 using TheOneCRM.Application.Interfaces.ISourceService;
@@ -19,6 +20,7 @@ using TheOneCRM.Application.Interfaces.ISupportTickets;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services;
 using TheOneCRM.Application.Services.AppointmentS;
+using TheOneCRM.Application.Services.AdminDashboard;
 using TheOneCRM.Application.Services.Articles;
 using TheOneCRM.Application.Services.CompanySettings;
 using TheOneCRM.Application.Services.Auth;
@@ -70,6 +72,7 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<IDeveloperAnalyticsService, DeveloperAnalyticsService>();
             Services.AddScoped<IArticleService, ArticleService>();
             Services.AddScoped<ICompanySettingsService, CompanySettingsService>();
+            Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
 
             return Services;
         }

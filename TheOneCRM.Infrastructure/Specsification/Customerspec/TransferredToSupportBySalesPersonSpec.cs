@@ -10,8 +10,9 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 {
     public class TransferredToSupportBySalesPersonSpec : BaseSpecification<CustomerAssignmentHistory>
     {
-        public TransferredToSupportBySalesPersonSpec(string salesPersonId)
-            : base(h => h.FromUserId == salesPersonId)
+        public TransferredToSupportBySalesPersonSpec(string? salesPersonId)
+            : base(h => h.ToRole == "Support"
+                     && (salesPersonId == null || h.FromUserId == salesPersonId))
         {
         }
     }

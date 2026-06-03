@@ -10,7 +10,7 @@ namespace TheOneCRM.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class CompanySettingsController : ControllerBase
     {
         private readonly ICompanySettingsService _settingsService;

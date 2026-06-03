@@ -13,7 +13,7 @@ namespace TheOneCRM.Application.Interfaces.IAppointment
         Task<AppointmentResponseDto> CreateAppointmentAsync(CreateAppointmentDto dto, string createdByUserId);
 
         Task<AppointmentResponseDto> UpdateAppointmentAsync(int id,UpdateAppointmentDto dto,string currentUserId, string currentUserRole);
-        Task<AppointmentResponseDto> GetAppointmentByIdAsync(int id);
+        Task<AppointmentResponseDto> GetAppointmentByIdAsync(int id, string userId, bool isAdmin);
         Task<bool> DeleteAppointmentAsync(int id, string currentUserId, string currentUserRole);
 
         // ⭐ الجديدين

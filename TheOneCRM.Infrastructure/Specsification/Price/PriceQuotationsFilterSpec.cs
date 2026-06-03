@@ -11,8 +11,9 @@ namespace TheOneCRM.Infrastructure.Specsification.Price
 {
     public class PriceQuotationsFilterSpec : BaseSpecification<PriceQuotation>
     {
-        public PriceQuotationsFilterSpec(PriceQuotationParams p)
+        public PriceQuotationsFilterSpec(PriceQuotationParams p, string? ownerId)
             : base(x =>
+                (ownerId == null || x.CreatedById == ownerId) &&
                 (!p.CustomerId.HasValue || x.CustomerId == p.CustomerId.Value) &&
                 (string.IsNullOrEmpty(p.Search)
                     || (x.Notes != null && x.Notes.Contains(p.Search))

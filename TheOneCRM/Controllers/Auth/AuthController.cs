@@ -64,7 +64,7 @@ namespace TheOneCRM.API.Controllers.Auth
             return Ok(new ApiResponse(200, "Users retrieved successfully", result));
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize]
         [HttpGet("GetUserbyId")]
         [SwaggerOperation(Summary = " GetUserbyId(Admin)")]
         public async Task<IActionResult> GetUserById(string userid)

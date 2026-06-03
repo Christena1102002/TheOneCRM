@@ -19,8 +19,8 @@ namespace TheOneCRM.Infrastructure.Specsification
         //: base(CustomerFilters.Build(p))
         // {
         // }
-        public CustomersCountSpec(CustomerPaginationParams p)
-     : base(CustomerFilters.Build(p))
+        public CustomersCountSpec(CustomerPaginationParams p, string? ownerId)
+     : base(CustomerFilters.Build(p, ownerId))
         {
         }
     }

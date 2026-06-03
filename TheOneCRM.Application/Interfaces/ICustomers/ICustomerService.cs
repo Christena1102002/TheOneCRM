@@ -14,11 +14,11 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
     {
         Task<CustomerListItemDto> UpdateCustomerAsync(int id, UpdateCustomerDto dto);
         Task<CustomerResponseDto> CreateCustomerAsync(CreateCustomerDto dto, string currentUserId, string currentUserRole);
-        Task<Pagination<CustomerListItemDto>> GetAllCustomersAsync(CustomerPaginationParams paginationParams, string currentUserId);
+        Task<Pagination<CustomerListItemDto>> GetAllCustomersAsync(CustomerPaginationParams paginationParams, string currentUserId, bool isAdmin);
         Task<IReadOnlyList<CustomerListItemDto>> SearchCustomersAsync(string? searchTerm);
         List<StatusClientDto> GetCustomerStatuses();
         Task DeleteCustomerAsync(int id);
-        Task<CustomerDetailsDto> GetCustomerByIdAsync(int id);
+        Task<CustomerDetailsDto> GetCustomerByIdAsync(int id, string userId, string role, bool isAdmin);
         Task<CustomerListItemDto> AssignToSalesPersonAsync(
     int id, string salesPersonId, string currentUserId, string currentUserRole);
         Task<CustomerListItemDto> ReturnCustomerToSalesAsync(
@@ -37,7 +37,7 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
       int customerId, string? role = null);
         Task<Pagination<CustomerListItemDto>> GetAllgetSupportCustomers(CustomerPaginationParams paginationParams, string? currentUserId, bool isSupportOnly);
 
-        Task<SalesDashboardStatsDto> GetSalesDashboardStatsAsync(string salesPersonId);
+        Task<SalesDashboardStatsDto> GetSalesDashboardStatsAsync(string? salesPersonId);
         Task<List<string>> GetNotBuyingReasonsAsync();
         Task<List<CustomerStatusCountDto>> GetCustomerCountByStatusAsync(string currentUserId, bool isAdmin);
     }

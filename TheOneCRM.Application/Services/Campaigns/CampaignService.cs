@@ -108,6 +108,11 @@ namespace TheOneCRM.Application.Services
             var data = _mapper.Map<IReadOnlyList<CampaignListItemDto>>(campaigns);
             foreach (var dto in data)
             {
+                // حساب الميزانية اليومية = الميزانية ÷ مدة الحملة
+                dto.DailyBudget = dto.DurationDays > 0
+                    ? Math.Round(dto.Budget / dto.DurationDays, 2)
+                    : 0;
+
                 foreach (var country in dto.Countries)
                 {
                     if (countryDict.TryGetValue(country.CountryId, out var name))

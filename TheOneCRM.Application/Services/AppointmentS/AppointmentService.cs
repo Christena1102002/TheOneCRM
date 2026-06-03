@@ -101,7 +101,7 @@ namespace TheOneCRM.Application.Services.AppointmentS
             return response!;
 
         }
-        public async Task<AppointmentResponseDto> GetAppointmentByIdAsync(int id)
+        public async Task<AppointmentResponseDto> GetAppointmentByIdAsync(int id, string userId, bool isAdmin)
         {
             var spec = new AppointmentSpecification(id);
 
@@ -112,6 +112,10 @@ namespace TheOneCRM.Application.Services.AppointmentS
 
             if (appointment == null)
                 throw new KeyNotFoundException($"الموعد برقم {id} مش موجود");
+
+            // الأدمن يشوف أي موعد، غيره: لو هو اللي أنشأه أو الموعد معه (AssignedToId)
+            if (!isAdmin && appointment.AssignedToId != userId && appointment.CreatedById != userId)
+                throw new UnauthorizedAccessException("This appointment does not belong to you");
 
             return appointment;
         }

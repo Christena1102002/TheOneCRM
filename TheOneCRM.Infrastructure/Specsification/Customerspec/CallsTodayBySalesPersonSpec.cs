@@ -11,12 +11,12 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 {
     public class CallsTodayBySalesPersonSpec : BaseSpecification<Customer>
     {
-        public CallsTodayBySalesPersonSpec(string salesPersonId, DateTime today, DateTime tomorrow)
-            : base(c => c.AssignedToId == salesPersonId
+        public CallsTodayBySalesPersonSpec(string? salesPersonId, DateTime today, DateTime tomorrow)
+            : base(c => (salesPersonId == null || c.AssignedToId == salesPersonId)
                      && c.LastFollowUpDate.HasValue
                      && c.LastFollowUpDate.Value >= today
                      && c.LastFollowUpDate.Value < tomorrow
-            &&c.status==StatusOfCustomers.Contacted
+                     && c.status == StatusOfCustomers.Contacted
             )
         {
         }

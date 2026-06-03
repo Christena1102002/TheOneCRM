@@ -10,7 +10,7 @@ public class SupportCustomersCountSpec : BaseSpecification<Customer>
         CustomerPaginationParams p,
         string? currentUserId,
         bool isSalesOnly)
-        : base(SalesCustomerFilters.Build(p, currentUserId, isSalesOnly))
+        : base(SupportCustomerFilters.Build(p, currentUserId, isSalesOnly))
     {
     }
 

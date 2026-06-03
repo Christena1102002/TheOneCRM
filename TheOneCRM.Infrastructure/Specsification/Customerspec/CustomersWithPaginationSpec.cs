@@ -28,8 +28,8 @@ namespace TheOneCRM.Infrastructure.Specsification
             //    // Pagination
             //    ApplyPaging(p.PageSize * (p.PageIndex - 1), p.PageSize);
             //}
-            public CustomersWithPaginationSpec(CustomerPaginationParams p)
-    : base(CustomerFilters.Build(p))
+            public CustomersWithPaginationSpec(CustomerPaginationParams p, string? ownerId)
+    : base(CustomerFilters.Build(p, ownerId))
             {
                 AddInclude(c => c.campaigns.ChannelSource);
                 //AddInclude(c => c.AssignedTo);

@@ -11,8 +11,9 @@ namespace TheOneCRM.Infrastructure.Specsification.Price
 {
     public class PriceQuotationsCountSpec : BaseSpecification<PriceQuotation>
     {
-        public PriceQuotationsCountSpec(PriceQuotationParams p)
+        public PriceQuotationsCountSpec(PriceQuotationParams p, string? ownerId)
             : base(x =>
+                (ownerId == null || x.CreatedById == ownerId) &&
                 (!p.CustomerId.HasValue || x.CustomerId == p.CustomerId.Value) &&
                 (string.IsNullOrEmpty(p.Search)
                     || (x.Notes != null && x.Notes.Contains(p.Search))

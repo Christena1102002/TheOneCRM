@@ -17,7 +17,7 @@ namespace TheOneCRM.Application.Mapping
         {
             CreateMap<CreateCustomerDto, Customer>()
                 .ForMember(dest => dest.CampanyName, opt => opt.MapFrom(src => src.CompanyName))
-                .ForMember(dest => dest.compaignId, opt => opt.MapFrom(src => src.CampaignId))
+                .ForMember(dest => dest.compaignId, opt => opt.MapFrom(src => src.CampaignId == 0 ? (int?)null : src.CampaignId))
                 .ForMember(dest => dest.customerServices, opt => opt.Ignore())
                 .ForMember(dest => dest.Notes, opt => opt.Ignore()); 
 
@@ -195,11 +195,16 @@ namespace TheOneCRM.Application.Mapping
 
             CreateMap<UpdateCustomerDto, Customer>()
         .ForMember(d => d.Id, o => o.Ignore())
+        .ForMember(d => d.FullName, o => o.MapFrom(s => s.Name))
+        .ForMember(d => d.CampanyName, o => o.MapFrom(s => s.CompanyName))
+        .ForMember(d => d.compaignId, o => o.MapFrom(s => s.CampaignId == 0 ? (int?)null : s.CampaignId))
         .ForMember(d => d.campaigns, o => o.Ignore())
         .ForMember(d => d.AssignedTo, o => o.Ignore())
         .ForMember(d => d.AssignedToId, o => o.Ignore())
         .ForMember(d => d.status, o => o.Ignore())
-        .ForMember(d => d.CreatedAt, o => o.Ignore());
+        .ForMember(d => d.CreatedAt, o => o.Ignore())
+        .ForMember(d => d.Notes, o => o.Ignore())
+        .ForMember(d => d.customerServices, o => o.Ignore());
 
             CreateMap<Customer, CustomerDropdownDto>()
                 .ForMember(d => d.Services,

@@ -7,7 +7,7 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
     public class SupportCustomersWithPaginationSpec : BaseSpecification<Customer>
     {
         public SupportCustomersWithPaginationSpec(CustomerPaginationParams p, string? currentUserId, bool isSupportOnly)
-            : base(SalesCustomerFilters.Build(p, currentUserId, isSupportOnly))
+            : base(SupportCustomerFilters.Build(p, currentUserId, isSupportOnly))
                   {
             AddInclude(c => c.campaigns.ChannelSource);
             //AddInclude(c => c.AssignedTo);

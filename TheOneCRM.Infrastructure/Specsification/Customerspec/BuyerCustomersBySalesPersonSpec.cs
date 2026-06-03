@@ -11,7 +11,8 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 {
     public class BuyerCustomersBySalesPersonSpec:BaseSpecification<Customer>
     {
-        public BuyerCustomersBySalesPersonSpec(string salesPersonId):base (c=>c.AssignedToId == salesPersonId && c.status==StatusOfCustomers.Buyer)
+        public BuyerCustomersBySalesPersonSpec(string? salesPersonId)
+            : base(c => (salesPersonId == null || c.AssignedToId == salesPersonId) && c.status == StatusOfCustomers.Buyer)
         {
 
         }

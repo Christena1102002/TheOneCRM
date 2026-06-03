@@ -10,8 +10,8 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 {
     public class UpcomingFollowUpsSpec : BaseSpecification<Customer>
     {
-        public UpcomingFollowUpsSpec(string salesPersonId, DateTime today)
-            : base(c => c.AssignedToId == salesPersonId
+        public UpcomingFollowUpsSpec(string? salesPersonId, DateTime today)
+            : base(c => (salesPersonId == null || c.AssignedToId == salesPersonId)
                      && c.NextFollowUpDate.HasValue
                      && c.NextFollowUpDate.Value >= today)
         {

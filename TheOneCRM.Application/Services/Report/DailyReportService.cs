@@ -51,7 +51,7 @@ namespace TheOneCRM.Application.Services.Report
             if (result <= 0)
                 throw new InvalidOperationException("فشل حفظ التقرير اليومي");
 
-            return await GetDailyReportByIdAsync(report.Id);
+            return MapToResponseDto(await LoadReportAsync(report.Id));
         }
 
         public async Task<DailyReportResponseDto> UpdateDailyReportAsync(int id, UpdateDailyReportDto dto, string userId)
@@ -88,7 +88,7 @@ namespace TheOneCRM.Application.Services.Report
             if (result <= 0)
                 throw new InvalidOperationException("فشل تحديث التقرير اليومي");
 
-            return await GetDailyReportByIdAsync(id);
+            return MapToResponseDto(await LoadReportAsync(id));
         }
 
         public async Task DeleteDailyReportAsync(int id, string userId, bool isAdmin)
@@ -108,7 +108,19 @@ namespace TheOneCRM.Application.Services.Report
                 throw new InvalidOperationException("فشل حذف التقرير اليومي");
         }
 
-        public async Task<DailyReportResponseDto> GetDailyReportByIdAsync(int id)
+        public async Task<DailyReportResponseDto> GetDailyReportByIdAsync(int id, string userId, bool isAdmin)
+        {
+            var report = await LoadReportAsync(id);
+
+            // الأدمن يشوف أي تقرير، غيره: تقريره هو بس
+            if (!isAdmin && report.UserId != userId)
+                throw new UnauthorizedAccessException("This report does not belong to you");
+
+            return MapToResponseDto(report);
+        }
+
+        // للاستخدام الداخلي بعد create/update (من غير فحص ملكية)
+        private async Task<DailyReport> LoadReportAsync(int id)
         {
             var spec = new DailyReportsWithUserSpec(id);
             var report = await _unitOfWork.Repository<DailyReport>().GetEntityWithSpec(spec);
@@ -116,7 +128,7 @@ namespace TheOneCRM.Application.Services.Report
             if (report == null)
                 throw new KeyNotFoundException($"التقرير اليومي رقم {id} غير موجود");
 
-            return MapToResponseDto(report);
+            return report;
         }
 
         public async Task<Pagination<DailyReportListItemDto>> GetDailyReportsAsync(DailyReportQueryParams p)

@@ -10,10 +10,10 @@ namespace TheOneCRM.Application.Interfaces
 {
     public interface IMarketingService
     {
-        Task<StatisticsMarketingDto> GetStatisticsAsync();
-        Task<MarketingDashboardDto> GetDashboardStats();
-        Task<List<DailyLeadsDto>> GetPotentialCustomersLast7DaysAsync();
+        Task<StatisticsMarketingDto> GetStatisticsAsync(string? ownerId);
+        Task<MarketingDashboardDto> GetDashboardStats(string? ownerId);
+        Task<List<DailyLeadsDto>> GetPotentialCustomersLast7DaysAsync(string? ownerId);
 
-        Task<List<SourcePerformanceDto>> GetSourcePerformanceAsync();
+        Task<List<SourcePerformanceDto>> GetSourcePerformanceAsync(string? ownerId);
     }
 }

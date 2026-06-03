@@ -12,11 +12,11 @@ namespace TheOneCRM.Application.Interfaces.IContracts
     {
         Task<CustomerLookupDto> GetCustomerLookupAsync(int customerId);
         Task CreateContractAsync(CreateContractDto dto, string userId);
-        Task<ContractResponseDto> GetContractByIdAsync(int id);
-        Task<Pagination<ContractResponseDto>> GetContractsAsync(ContractParams p);
-        Task UpdateContractAsync(int id, UpdateContractDto dto);
+        Task<ContractResponseDto> GetContractByIdAsync(int id, string? ownerId);
+        Task<Pagination<ContractResponseDto>> GetContractsAsync(ContractParams p, string? ownerId);
+        Task UpdateContractAsync(int id, UpdateContractDto dto, string? ownerId);
         Task DeleteContractAsync(int id);
         Task UpdateExpiredContractsAsync();
-        Task<ContractStatisticsDto> GetContractStatisticsAsync();
+        Task<ContractStatisticsDto> GetContractStatisticsAsync(string? ownerId);
     }
 }

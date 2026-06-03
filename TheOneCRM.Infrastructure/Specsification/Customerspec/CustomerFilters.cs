@@ -13,9 +13,14 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 {
     public static class CustomerFilters
     {
-        public static Expression<Func<Customer, bool>> Build(CustomerPaginationParams p)
+        public static Expression<Func<Customer, bool>> Build(CustomerPaginationParams p, string? ownerId)
         {
             return c =>
+
+                // الماركتينج يشوف اللي هو أنشأه بس (ownerId = userId)، الأدمن يشوف الكل (ownerId = null)
+                (ownerId == null || c.CreatedById == ownerId)
+
+                &&
 
                 //  Search (بالاسم أو الفون)
                 (string.IsNullOrWhiteSpace(p.Search) ||

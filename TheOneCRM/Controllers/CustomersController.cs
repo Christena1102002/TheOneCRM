@@ -75,7 +75,7 @@ namespace TheOneCRM.API.Controllers
             var role = User.GetPrimaryRole();
             if (string.IsNullOrEmpty(role))
                 return Forbid();
-            var result = await _customerService.GetAllCustomersAsync(paginationParams,userId);
+            var result = await _customerService.GetAllCustomersAsync(paginationParams, userId, User.IsAdmin());
             return StatusCode(200,
                   new ApiResponse(200, "get customers successfully", result));
         }
@@ -165,9 +165,14 @@ namespace TheOneCRM.API.Controllers
         [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await _customerService.GetCustomerByIdAsync(id);
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var role = User.GetPrimaryRole() ?? string.Empty;
+            var result = await _customerService.GetCustomerByIdAsync(id, userId, role, User.IsAdmin());
             return StatusCode(200,
-                   new ApiResponse(200, "Get Customer By Id successfully",result));
+                   new ApiResponse(200, "Get Customer By Id successfully", result));
         }
         [SwaggerOperation(Summary = "all customer already assigned by marketing to sales")]
         [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales}")]

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using TheOneCRM.API.Error;
+using TheOneCRM.API.Extensions;
 using TheOneCRM.Application.Interfaces.IPriceQuotation;
 using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.PriceQuotationsDtos;
@@ -21,11 +22,18 @@ namespace TheOneCRM.API.Controllers
             _priceQuotationService = priceQuotationService;
         }
 
+        // الأدمن يشوف الكل (null)، السيلز يشوف عروضه هو بس
+        private string? OwnerId() => User.IsAdmin() ? null : User.GetUserId();
+
         [SwaggerOperation(Summary = "POST: Create new Price Quotation")]
         [HttpPost]
         public async Task<IActionResult> CreatePriceQuotation([FromBody] CreatePriceQuotationDto dto)
         {
-            var result = await _priceQuotationService.CreatePriceQuotationAsync(dto);
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var result = await _priceQuotationService.CreatePriceQuotationAsync(dto, userId);
             return StatusCode(200,
                 new ApiResponse(200, "Create new Price Quotation successfully", result));
         }
@@ -33,7 +41,7 @@ namespace TheOneCRM.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllPriceQuotations([FromQuery] PriceQuotationParams p)
         {
-            var result = await _priceQuotationService.GetAllPriceQuotationsAsync(p);
+            var result = await _priceQuotationService.GetAllPriceQuotationsAsync(p, OwnerId());
             return StatusCode(200,
                 new ApiResponse(200, "تم جلب عروض الأسعار بنجاح", result));
         }
@@ -41,7 +49,7 @@ namespace TheOneCRM.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetPriceQuotationById(int id)
         {
-            var result = await _priceQuotationService.GetPriceQuotationByIdAsync(id);
+            var result = await _priceQuotationService.GetPriceQuotationByIdAsync(id, OwnerId());
             return StatusCode(200,
                 new ApiResponse(200, "تم جلب عرض السعر بنجاح", result));
         }
@@ -49,7 +57,7 @@ namespace TheOneCRM.API.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdatePriceQuotation(int id, [FromBody] UpdatePriceQuotationDto dto)
         {
-            var result = await _priceQuotationService.UpdatePriceQuotationAsync(id, dto);
+            var result = await _priceQuotationService.UpdatePriceQuotationAsync(id, dto, OwnerId());
             return StatusCode(200,
                 new ApiResponse(200, "تم تحديث عرض السعر بنجاح", result));
         }

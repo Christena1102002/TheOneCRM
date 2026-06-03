@@ -22,15 +22,17 @@ namespace TheOneCRM.API.Controllers
         [Authorize(Roles = "Sales,Admin,Support")]
         public async Task<IActionResult> GetSalesStats()
         {
-
             var CurrentUserId = User.GetUserId();
             if (string.IsNullOrEmpty(CurrentUserId))
                 return Unauthorized();
-            var stats = await _customerService.GetSalesDashboardStatsAsync(CurrentUserId);
+
+            // الأدمن يشوف إحصائيات الكل (null)، السيلز/السابورت يشوفوا إحصائياتهم
+            var salesPersonId = User.IsAdmin() ? null : CurrentUserId;
+            var stats = await _customerService.GetSalesDashboardStatsAsync(salesPersonId);
             return Ok(stats);
         }
         [HttpGet("SalesCustomerStatusCount")]
-        [Authorize(Roles = "Sales,Admin")]
+        [Authorize(Roles = "Sales,Admin,Marketing")]
         public async Task<ActionResult> GetCustomerStatusCount()
         {
             var currentUserId = User.GetUserId();
@@ -46,7 +48,7 @@ namespace TheOneCRM.API.Controllers
              ));
         }
         [HttpGet("NotBuyingReasons")]
-        [Authorize(Roles = "Admin,Sales")]
+        [Authorize(Roles = "Admin,Marketing,Sales")]
         public async Task<IActionResult> GetNotBuyingReasons()
         {
             var reasons = await _customerService.GetNotBuyingReasonsAsync();

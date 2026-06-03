@@ -21,7 +21,7 @@ namespace TheOneCRM.Application.Services.price
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<PriceQuotationResponseDto> CreatePriceQuotationAsync(CreatePriceQuotationDto dto)
+        public async Task<PriceQuotationResponseDto> CreatePriceQuotationAsync(CreatePriceQuotationDto dto, string userId)
         {
             var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(dto.CustomerId);
             if (customer is null)
@@ -61,6 +61,7 @@ namespace TheOneCRM.Application.Services.price
                 Discount = dto.Discount,
                 NetTotal = netTotal,
                 Notes = dto.Notes,
+                CreatedById = userId,
                 Items = items
             };
             await _unitOfWork.Repository<PriceQuotation>().AddAsync(priceQuotation);
@@ -86,14 +87,14 @@ namespace TheOneCRM.Application.Services.price
                 }).ToList()
             };
         }
-            public async Task<PaginatedPriceQuotationsDto> GetAllPriceQuotationsAsync(PriceQuotationParams p)
+            public async Task<PaginatedPriceQuotationsDto> GetAllPriceQuotationsAsync(PriceQuotationParams p, string? ownerId)
         {
             // 1) جلب البيانات مع الـ paging
-            var spec = new PriceQuotationsFilterSpec(p);
+            var spec = new PriceQuotationsFilterSpec(p, ownerId);
             var quotations = await _unitOfWork.Repository<PriceQuotation>().ListAsync(spec);
 
             // 2) جلب العدد الكلي (بدون paging)
-            var countSpec = new PriceQuotationsCountSpec(p);
+            var countSpec = new PriceQuotationsCountSpec(p, ownerId);
             var totalCount = await _unitOfWork.Repository<PriceQuotation>().CountAsync(countSpec);
 
             // 3) تحويل للـ DTO
@@ -120,7 +121,7 @@ namespace TheOneCRM.Application.Services.price
                 Data = data
             };
         }
-        public async Task<PriceQuotationResponseDto> GetPriceQuotationByIdAsync(int id)
+        public async Task<PriceQuotationResponseDto> GetPriceQuotationByIdAsync(int id, string? ownerId)
         {
             // 1) جلب عرض السعر مع التفاصيل
             var spec = new PriceQuotationByIdSpec(id);
@@ -129,6 +130,10 @@ namespace TheOneCRM.Application.Services.price
             // 2) التأكد من وجوده
             if (quotation is null)
                 throw new KeyNotFoundException($"عرض السعر برقم {id} غير موجود");
+
+            // السيلز يشوف عرض السعر اللي هو أنشأه بس، الأدمن يشوف أي عرض
+            if (ownerId != null && quotation.CreatedById != ownerId)
+                throw new UnauthorizedAccessException("This quotation does not belong to you");
 
             // 3) تحويل للـ Response DTO
             return new PriceQuotationResponseDto
@@ -152,7 +157,7 @@ namespace TheOneCRM.Application.Services.price
                 }).ToList()
             };
         }
-        public async Task<PriceQuotationResponseDto> UpdatePriceQuotationAsync(int id, UpdatePriceQuotationDto dto)
+        public async Task<PriceQuotationResponseDto> UpdatePriceQuotationAsync(int id, UpdatePriceQuotationDto dto, string? ownerId)
         {
             // 1) جلب عرض السعر مع التفاصيل
             var spec = new PriceQuotationByIdSpec(id);
@@ -160,6 +165,10 @@ namespace TheOneCRM.Application.Services.price
 
             if (quotation is null)
                 throw new KeyNotFoundException($"عرض السعر برقم {id} غير موجود");
+
+            // السيلز يعدّل اللي هو أنشأه بس، الأدمن يعدّل أي عرض
+            if (ownerId != null && quotation.CreatedById != ownerId)
+                throw new UnauthorizedAccessException("This quotation does not belong to you");
 
             // 2) التأكد من العميل
             var customer = await _unitOfWork.Repository<Customer>().GetByIdAsync(dto.CustomerId);

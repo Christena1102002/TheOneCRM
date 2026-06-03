@@ -54,7 +54,11 @@ namespace TheOneCRM.API.Controllers
         [HttpGet("GetAppointmentById/{id:int}")]
         public async Task<IActionResult> GetAppointmentById(int id)
         {
-            var result = await _appointmentService.GetAppointmentByIdAsync(id);
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var result = await _appointmentService.GetAppointmentByIdAsync(id, userId, User.IsAdmin());
             return Ok(new ApiResponse(200, "Get Appointment By Id successfully", result));
         }
         //[SwaggerOperation(Summary = "DELETE: حذف موعد بواسطة الـ Id")]

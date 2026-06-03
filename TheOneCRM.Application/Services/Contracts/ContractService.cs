@@ -54,22 +54,26 @@ namespace TheOneCRM.Application.Services.Contracts
        
 
         }
-        public async Task<ContractResponseDto> GetContractByIdAsync(int id)
+        public async Task<ContractResponseDto> GetContractByIdAsync(int id, string? ownerId)
         {
             var spec = new ContractByIdSpec(id);
             var contract = await _unitOfWork.Repository<Contract>().GetQueryableWithSpec(spec).ProjectTo<ContractResponseDto>(_mapper.ConfigurationProvider)
-        .FirstOrDefaultAsync(); ;
+        .FirstOrDefaultAsync();
 
             if (contract is null)
                 throw new KeyNotFoundException($"Contract {id} not found");
 
+            // السيلز يشوف العقد لو هو اللي أنشأه (ownerId != null)، الأدمن يشوف أي عقد (ownerId = null)
+            if (ownerId != null && contract.CreatedById != ownerId)
+                throw new UnauthorizedAccessException("This contract does not belong to you");
+
             return contract;
         }
 
-        public async Task<Pagination<ContractResponseDto>> GetContractsAsync(ContractParams p)
+        public async Task<Pagination<ContractResponseDto>> GetContractsAsync(ContractParams p, string? ownerId)
         {
-            var listSpec = new ContractsListSpec(p);
-            var countSpec = new ContractsCountSpec(p);
+            var listSpec = new ContractsListSpec(p, ownerId);
+            var countSpec = new ContractsCountSpec(p, ownerId);
 
             var items = await _unitOfWork.Repository<Contract>()
                 .GetQueryableWithSpec(listSpec)
@@ -80,21 +84,25 @@ namespace TheOneCRM.Application.Services.Contracts
 
             return new Pagination<ContractResponseDto>(p.PageIndex, p.PageSize, count, items);
         }
-        public async Task UpdateContractAsync(int id, UpdateContractDto dto)
+        public async Task UpdateContractAsync(int id, UpdateContractDto dto, string? ownerId)
         {
             // 1) جلب العقد
             var contract = await _unitOfWork.Repository<Contract>().GetByIdAsync(id);
             if (contract is null)
                 throw new KeyNotFoundException($"Contract {id} not found");
 
-            // 2) validation التواريخ
+            // 2) السيلز يعدّل عقده هو بس (ownerId != null)، الأدمن يعدّل أي عقد (ownerId = null)
+            if (ownerId != null && contract.CreatedById != ownerId)
+                throw new UnauthorizedAccessException("This contract does not belong to you");
+
+            // 3) validation التواريخ
             if (dto.EndDate.HasValue && dto.EndDate.Value < dto.StartDate)
                 throw new InvalidOperationException("End date cannot be before start date");
 
-            // 3) Map (بيحدّث الـ fields في الـ tracked entity)
+            // 4) Map (بيحدّث الـ fields في الـ tracked entity)
             _mapper.Map(dto, contract);
 
-            // 4) حفظ
+            // 5) حفظ
             _unitOfWork.Repository<Contract>().Update(contract);
             await _unitOfWork.SaveChangesAsync();
         }
@@ -124,7 +132,7 @@ namespace TheOneCRM.Application.Services.Contracts
             if (expiredContracts.Any())
                 await _unitOfWork.SaveChangesAsync();
         }
-        public async Task<ContractStatisticsDto> GetContractStatisticsAsync()
+        public async Task<ContractStatisticsDto> GetContractStatisticsAsync(string? ownerId)
         {
             // أولاً: تحديث العقود المنتهية
             await UpdateExpiredContractsAsync();
@@ -132,28 +140,23 @@ namespace TheOneCRM.Application.Services.Contracts
             var today = DateTime.UtcNow.Date;
             var after30Days = today.AddDays(30);
 
-            var contractRepository = _unitOfWork.Repository<Contract>();
+            // الأدمن: كل العقود. السيلز: عقوده هو بس (CreatedById)
+            var all = await _unitOfWork.Repository<Contract>().ListAllAsync();
+            var contracts = ownerId == null
+                ? all
+                : all.Where(c => c.CreatedById == ownerId).ToList();
 
-            var stats = new ContractStatisticsDto
+            return new ContractStatisticsDto
             {
-           
-                // إجمالي العقود
-                TotalContracts = await contractRepository.CountAsync(),
-
-                // العقود النشطة
-                ActiveContracts = await contractRepository.CountAsync(
-            new ActiveContractsSpecification()),
-
-                // العقود المنتهية
-                ExpiredContracts = await contractRepository.CountAsync(
-            new ExpiredContractsCountSpecification()),
-
-                // العقود التي ستنتهي خلال 30 يوم
-                ExpiringSoonContracts = await contractRepository.CountAsync(
-            new ExpiringSoonContractsSpecification(today, after30Days))
+                TotalContracts = contracts.Count,
+                ActiveContracts = contracts.Count(c => c.Status == ContractStatus.Active),
+                ExpiredContracts = contracts.Count(c => c.Status == ContractStatus.Expired),
+                ExpiringSoonContracts = contracts.Count(c =>
+                    c.Status == ContractStatus.Active &&
+                    c.EndDate.HasValue &&
+                    c.EndDate.Value.Date >= today &&
+                    c.EndDate.Value.Date <= after30Days)
             };
-
-            return stats;
         }
 
     }

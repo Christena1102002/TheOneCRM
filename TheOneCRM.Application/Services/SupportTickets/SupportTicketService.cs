@@ -157,21 +157,22 @@ namespace TheOneCRM.Application.Services.Tickets
             return ticket;
         }
 
-        public async Task<SupportTicketStatisticsDto> GetTicketStatisticsAsync()
+        public async Task<SupportTicketStatisticsDto> GetTicketStatisticsAsync(string userId, bool isAdmin)
         {
             var repo = _unitOfWork.Repository<SupportTickets>();
 
+            // الأدمن: كل التذاكر. السابورت: تذاكره هو بس (CreatedById)
+            var tickets = isAdmin
+                ? await repo.ListAllAsync()
+                : await repo.ListAsync(new SupportTicketsByCreatorSpec(userId));
+
             return new SupportTicketStatisticsDto
             {
-                TotalTickets = await repo.CountAsync(),
-                OpenTickets = await repo.CountAsync(
-                    new SupportTicketsByStatusSpec(StatusOfTickets.Open)),
-                InProgressTickets = await repo.CountAsync(
-                    new SupportTicketsByStatusSpec(StatusOfTickets.InProgress)),
-                ResolvedTickets = await repo.CountAsync(
-                    new SupportTicketsByStatusSpec(StatusOfTickets.Resolved)),
-                HighPriorityTickets = await repo.CountAsync(
-                    new SupportTicketsByPrioritySpec(PriorityStatus.High))
+                TotalTickets = tickets.Count,
+                OpenTickets = tickets.Count(t => t.Status == StatusOfTickets.Open),
+                InProgressTickets = tickets.Count(t => t.Status == StatusOfTickets.InProgress),
+                ResolvedTickets = tickets.Count(t => t.Status == StatusOfTickets.Resolved),
+                HighPriorityTickets = tickets.Count(t => t.priority == PriorityStatus.High)
             };
         }
 

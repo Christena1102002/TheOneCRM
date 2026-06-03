@@ -84,7 +84,11 @@ namespace TheOneCRM.API.Controllers
         [HttpGet("TicketStatistics")]
         public async Task<IActionResult> GetStatistics()
         {
-            var result = await _ticketService.GetTicketStatisticsAsync();
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var result = await _ticketService.GetTicketStatisticsAsync(userId, User.IsAdmin());
             return Ok(new ApiResponse(200, "Ticket statistics retrieved successfully", result));
         }
 

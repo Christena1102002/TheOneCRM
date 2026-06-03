@@ -20,6 +20,11 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
         {
             return c =>
 
+                // العميل لازم يكون متحوّل للدعم أصلاً (الأدمن يشوف بس المتحوّلين)
+                c.IsSalesToSupport
+
+                &&
+
                 // Search بالاسم أو الهاتف
                 (string.IsNullOrWhiteSpace(p.Search) ||
                     EF.Functions.Like(c.FullName, $"%{p.Search}%") ||

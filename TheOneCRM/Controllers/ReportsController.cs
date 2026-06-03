@@ -59,7 +59,7 @@ namespace TheOneCRM.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var result = await _service.GetDailyReportByIdAsync(id);
+            var result = await _service.GetDailyReportByIdAsync(id, GetUserId(), IsAdmin());
             return StatusCode(200,
                 new ApiResponse(200, "Get Daily Report successfully", result));
         }

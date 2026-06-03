@@ -16,7 +16,7 @@ namespace TheOneCRM.Application.Interfaces.ISupportTickets
         Task<Pagination<SupportTicketResponseDto>> GetTicketsAsync(SupportTicketParams p, string userId, bool isAdmin);
         Task<SupportTicketResponseDto> UpdateTicketAsync(int id, UpdateSupportTicketDto dto, string userId, bool isAdmin);
         Task DeleteTicketAsync(int id, string userId, bool isAdmin);
-        Task<SupportTicketStatisticsDto> GetTicketStatisticsAsync();
+        Task<SupportTicketStatisticsDto> GetTicketStatisticsAsync(string userId, bool isAdmin);
         List<StatusClientDto> GetTicketStatuses();
         List<StatusClientDto> GetTicketPriorities();
         Task<SupportDashboardDto> GetSupportDashboardAsync(string userId);
