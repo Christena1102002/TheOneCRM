@@ -4,3 +4,5 @@ obj/
 logs/
 *.user
 *.suo
+TheOneCRM/firebase-service-account.json
+firebase-service-account.json

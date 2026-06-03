@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
+using TheOneCRM.Application.Interfaces.INotifications;
 using TheOneCRM.Application.Interfaces.ISupportTickets;
 using TheOneCRM.Domain.Interfaces;
+using TheOneCRM.Domain.Models.DTOs.NotificationDtos;
 using TheOneCRM.Domain.Models.DTOs.Common;
 using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
 using TheOneCRM.Domain.Models.DTOs.SupportTickets;
@@ -22,11 +24,13 @@ namespace TheOneCRM.Application.Services.Tickets
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly INotificationService _notificationService;
 
-        public SupportTicketService(IUnitOfWork unitOfWork, IMapper mapper)
+        public SupportTicketService(IUnitOfWork unitOfWork, IMapper mapper, INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _notificationService = notificationService;
         }
 
         public async Task<SupportTicketResponseDto> CreateTicketAsync(CreateSupportTicketDto dto, string userId)
@@ -60,6 +64,20 @@ namespace TheOneCRM.Application.Services.Tickets
 
             await _unitOfWork.Repository<SupportTickets>().AddAsync(ticket);
             await _unitOfWork.SaveChangesAsync();
+
+            // إشعار لمندوب المبيعات المخصص للعميل (لو موجود) بوجود تذكرة دعم جديدة
+            if (!string.IsNullOrEmpty(customer.AssignedToId))
+            {
+                await _notificationService.CreateAsync(new CreateNotificationDto
+                {
+                    UserId = customer.AssignedToId,
+                    Title = "تذكرة دعم جديدة",
+                    Message = $"تم فتح تذكرة دعم رقم #{ticket.TicketNumber} للعميل '{customer.FullName}'",
+                    Type = NotificationType.NewSupportTicket,
+                    RelatedEntityType = "SupportTicket",
+                    RelatedEntityId = ticket.Id
+                });
+            }
 
             return await ProjectTicketAsync(ticket.Id);
         }

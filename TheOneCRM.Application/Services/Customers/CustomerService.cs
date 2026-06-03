@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TheOneCRM.Application.Interfaces;
 using TheOneCRM.Application.Interfaces.ICustomers;
+using TheOneCRM.Application.Interfaces.INotifications;
+using TheOneCRM.Domain.Models.DTOs.NotificationDtos;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs;
@@ -32,11 +34,13 @@ namespace TheOneCRM.Application.Services.Customers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
-        public CustomerService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager)
+        private readonly INotificationService _notificationService;
+        public CustomerService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager, INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _userManager = userManager;
+            _notificationService = notificationService;
         }
 
         public async Task<CustomerResponseDto> CreateCustomerAsync(CreateCustomerDto dto, string currentUserId, string currentUserRole)
@@ -400,7 +404,18 @@ namespace TheOneCRM.Application.Services.Customers
             _unitOfWork.Repository<Customer>().Update(customer);
             await _unitOfWork.SaveChangesAsync();
 
-            // 7) رجّع بيانات العميل المحدّثة
+            // 7) إشعار للمندوب
+            await _notificationService.CreateAsync(new CreateNotificationDto
+            {
+                UserId = salesPersonId,
+                Title = "عميل جديد",
+                Message = $"تم تعيين العميل '{customer.FullName}' إليك",
+                Type = NotificationType.NewCustomerAssigned,
+                RelatedEntityType = "Customer",
+                RelatedEntityId = customer.Id
+            });
+
+            // 8) رجّع بيانات العميل المحدّثة
             return _mapper.Map<CustomerListItemDto>(customer);
         }
         // الدعم يرجّع العميل لمندوب المبيعات اللي حوّله للدعم أصلاً (من الـ AssignmentHistory)

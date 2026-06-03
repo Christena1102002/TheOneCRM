@@ -16,6 +16,7 @@ using TheOneCRM.Application.Interfaces.IAdminDashboard;
 using TheOneCRM.Application.Interfaces.IArticles;
 using TheOneCRM.Application.Interfaces.ICompanySettings;
 using TheOneCRM.Application.Interfaces.ISourceService;
+using TheOneCRM.Application.Interfaces.INotifications;
 using TheOneCRM.Application.Interfaces.ISupportTickets;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services;
@@ -35,6 +36,7 @@ using TheOneCRM.Application.Services.Tasks;
 using TheOneCRM.Application.Services.Report;
 using TheOneCRM.Application.Services.Services;
 using TheOneCRM.Application.Services.Sources;
+using TheOneCRM.Application.Services.Notify;
 using TheOneCRM.Application.Services.Tickets;
 using TheOneCRM.Application.Services.Token;
 
@@ -73,6 +75,7 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<IArticleService, ArticleService>();
             Services.AddScoped<ICompanySettingsService, CompanySettingsService>();
             Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
+            Services.AddScoped<INotificationService, NotificationService>();
 
             return Services;
         }

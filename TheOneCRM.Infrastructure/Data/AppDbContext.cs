@@ -139,6 +139,16 @@ namespace TheOneCRM.Infrastructure.Data
                 .HasForeignKey(q => q.CreatedById)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            // Notifications: ربط بالمستخدم
+            modelBuilder.Entity<Notifications>()
+                .HasOne(n => n.User)
+                .WithMany()
+                .HasForeignKey(n => n.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Notifications>()
+                .HasIndex(n => new { n.UserId, n.IsRead });
+
         }
     }
 }
