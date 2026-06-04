@@ -8,7 +8,9 @@ using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TheOneCRM.Application.Interfaces.IAppointment;
+using TheOneCRM.Application.Interfaces.INotifications;
 using TheOneCRM.Domain.Interfaces;
+using TheOneCRM.Domain.Models.DTOs.NotificationDtos;
 using TheOneCRM.Domain.Models.DTOs.Appointments;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Domain.Models.Enums;
@@ -21,14 +23,16 @@ namespace TheOneCRM.Application.Services.AppointmentS
         private readonly IUnitOfWork _unitOfWork;
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
+        private readonly INotificationService _notificationService;
 
 
-        public AppointmentService(IUnitOfWork unitOfWork, UserManager<AppUser> userManager, IMapper mapper)
+        public AppointmentService(IUnitOfWork unitOfWork, UserManager<AppUser> userManager, IMapper mapper, INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _userManager = userManager;
             _mapper = mapper;
-        }   
+            _notificationService = notificationService;
+        }
         public async Task<AppointmentResponseDto> CreateAppointmentAsync(CreateAppointmentDto dto, string createdByUserId)
         {
             // 1. التحقق من التواريخ
@@ -55,6 +59,16 @@ namespace TheOneCRM.Application.Services.AppointmentS
                 appointment.AssignedTo = assignUser;
                 appointment.Customer = customer;
 
+                // إشعار للشخص المعيّن له الموعد
+                await _notificationService.CreateAsync(new CreateNotificationDto
+                {
+                    UserId = dto.AssignedToUserId,
+                    Title = "موعد جديد",
+                    Message = $"لديك موعد جديد: '{appointment.Title}' بتاريخ {appointment.StartDate:yyyy-MM-dd HH:mm}",
+                    Type = NotificationType.AppointmentScheduled,
+                    RelatedEntityType = "Appointment",
+                    RelatedEntityId = appointment.Id
+                });
 
                 return _mapper.Map<AppointmentResponseDto>(appointment);
             }

@@ -480,6 +480,17 @@ namespace TheOneCRM.Application.Services.Customers
             _unitOfWork.Repository<Customer>().Update(customer);
             await _unitOfWork.SaveChangesAsync();
 
+            // 9) إشعار لمندوب المبيعات إن العميل رجع له من الدعم
+            await _notificationService.CreateAsync(new CreateNotificationDto
+            {
+                UserId = salesPersonId,
+                Title = "رجوع عميل من الدعم",
+                Message = $"تم إرجاع العميل '{customer.FullName}' إليك من فريق الدعم",
+                Type = NotificationType.CustomerReturnedToSales,
+                RelatedEntityType = "Customer",
+                RelatedEntityId = customer.Id
+            });
+
             return _mapper.Map<CustomerListItemDto>(customer);
         }
         public async Task<CustomerDetailsDto> GetCustomerByIdAsync(int id, string userId, string role, bool isAdmin)
@@ -781,7 +792,18 @@ namespace TheOneCRM.Application.Services.Customers
             _unitOfWork.Repository<Customer>().Update(customer);
             await _unitOfWork.SaveChangesAsync();
 
-            // 7) رجّع بيانات العميل المحدّثة
+            // 7) إشعار لموظف الدعم
+            await _notificationService.CreateAsync(new CreateNotificationDto
+            {
+                UserId = SupportPersonId,
+                Title = "تحويل عميل للدعم",
+                Message = $"تم تحويل العميل '{customer.FullName}' إليك من المبيعات",
+                Type = NotificationType.CustomerTransferredToSupport,
+                RelatedEntityType = "Customer",
+                RelatedEntityId = customer.Id
+            });
+
+            // 8) رجّع بيانات العميل المحدّثة
             return _mapper.Map<CustomerListItemDto>(customer);
         }
 

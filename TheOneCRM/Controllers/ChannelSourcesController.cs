@@ -20,7 +20,7 @@ namespace TheOneCRM.API.Controllers
         {
             _service = service;
         }
-        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing}")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales},{UserRoles.Support}")]
         [HttpPost]
         public async Task<ActionResult> Create(CreateChannelSourceDto dto)
         {
@@ -30,7 +30,7 @@ namespace TheOneCRM.API.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing}")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Marketing},{UserRoles.Sales},{UserRoles.Support}")]
         public async Task<IActionResult> GetAll()
         {
             var sources = await _service.GetAllChannelSourcesAsync();

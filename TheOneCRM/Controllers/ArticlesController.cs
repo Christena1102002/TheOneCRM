@@ -101,7 +101,7 @@ namespace TheOneCRM.API.Controllers
         // GET: api/Articles/ProjectOptions
         // المشاريع: المطوّر يشوف مشاريعه، الأدمن يشوف الكل
         [HttpGet("ProjectOptions")]
-        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Developer}")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Developer},{UserRoles.Support}")]
         public async Task<IActionResult> GetProjectOptions()
         {
             var userId = User.GetUserId();

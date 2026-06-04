@@ -1,5 +1,7 @@
 ﻿//using Swashbuckle.AspNetCore.Swagger;
 using System.Text;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 using Hangfire;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -29,7 +31,16 @@ namespace TheOneCRM
         {
             var builder = WebApplication.CreateBuilder(args);
 
-           
+            // Initialize Firebase Admin (for FCM Web Push)
+            var firebaseCredPath = Path.Combine(builder.Environment.ContentRootPath, "firebase-service-account.json");
+            if (FirebaseApp.DefaultInstance == null && File.Exists(firebaseCredPath))
+            {
+                FirebaseApp.Create(new AppOptions
+                {
+                    Credential = GoogleCredential.FromFile(firebaseCredPath)
+                });
+            }
+
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
           
 

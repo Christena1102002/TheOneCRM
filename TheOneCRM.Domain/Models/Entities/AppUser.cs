@@ -17,6 +17,10 @@ namespace TheOneCRM.Domain.Models.Entities
         public string? Address { get; set; }
         // تخصّص المطوّر (Full Stack / Backend / ...) — nullable لأن باقي الأدوار مش محتاجاه
         public string? Specialty { get; set; }
+
+        // FCM Web Push token (مخصص لاستقبال الإشعارات على المتصفح)
+        public string? FcmToken { get; set; }
+        public DateTime? FcmTokenUpdatedAt { get; set; }
         //public Department? Department { get; set; }
         //public ICollection<Activities> Activities { get; set; }
     }

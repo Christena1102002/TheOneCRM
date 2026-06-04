@@ -3,8 +3,10 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TheOneCRM.Application.Interfaces.INotifications;
 using TheOneCRM.Application.Interfaces.ITasks;
 using TheOneCRM.Domain.Interfaces;
+using TheOneCRM.Domain.Models.DTOs.NotificationDtos;
 using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.Common;
 using TheOneCRM.Domain.Models.DTOs.Dashboard;
@@ -23,12 +25,14 @@ namespace TheOneCRM.Application.Services.Tasks
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
+        private readonly INotificationService _notificationService;
 
-        public TaskService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager)
+        public TaskService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager, INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _userManager = userManager;
+            _notificationService = notificationService;
         }
 
         public async Task<int> CreateTaskAsync(CreateTaskDto dto, string managerId)
@@ -47,6 +51,20 @@ namespace TheOneCRM.Application.Services.Tasks
 
             await _unitOfWork.Repository<TaskEntity>().AddAsync(task);
             await _unitOfWork.SaveChangesAsync();
+
+            // إشعار للمطوّر المعيّن
+            if (!string.IsNullOrEmpty(task.AssignedToId))
+            {
+                await _notificationService.CreateAsync(new CreateNotificationDto
+                {
+                    UserId = task.AssignedToId,
+                    Title = "مهمة جديدة",
+                    Message = $"تم تعيين مهمة جديدة لك: '{task.Title}'",
+                    Type = NotificationType.TaskAssigned,
+                    RelatedEntityType = "Task",
+                    RelatedEntityId = task.Id
+                });
+            }
 
             return task.Id;
         }

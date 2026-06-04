@@ -35,7 +35,11 @@ namespace TheOneCRM.Application.Services.Contracts
             if (customer is null)
                 throw new KeyNotFoundException($"Customer {dto.CustomerId} not found");
 
-            // 2) validation التواريخ
+            // 2) validation الحالة - لو الفرونت بعت قيمة غلط (0 أو غير معرّفة)، حطها Active
+            if (!Enum.IsDefined(typeof(ContractStatus), dto.Status))
+                dto.Status = ContractStatus.Active;
+
+            // 3) validation التواريخ
             if (dto.EndDate.HasValue && dto.EndDate.Value < dto.StartDate)
                 throw new InvalidOperationException("End date cannot be before start date");
             var contract = _mapper.Map<Contract>(dto);
@@ -95,14 +99,19 @@ namespace TheOneCRM.Application.Services.Contracts
             if (ownerId != null && contract.CreatedById != ownerId)
                 throw new UnauthorizedAccessException("This contract does not belong to you");
 
-            // 3) validation التواريخ
+            // 3) validation الحالة (لازم تكون قيمة معرّفة في الـ enum)
+            if (!Enum.IsDefined(typeof(ContractStatus), dto.Status))
+                throw new InvalidOperationException(
+                    $"Invalid contract status. Allowed values: Active, Expired, Cancelled");
+
+            // 4) validation التواريخ
             if (dto.EndDate.HasValue && dto.EndDate.Value < dto.StartDate)
                 throw new InvalidOperationException("End date cannot be before start date");
 
-            // 4) Map (بيحدّث الـ fields في الـ tracked entity)
+            // 5) Map (بيحدّث الـ fields في الـ tracked entity)
             _mapper.Map(dto, contract);
 
-            // 5) حفظ
+            // 6) حفظ
             _unitOfWork.Repository<Contract>().Update(contract);
             await _unitOfWork.SaveChangesAsync();
         }

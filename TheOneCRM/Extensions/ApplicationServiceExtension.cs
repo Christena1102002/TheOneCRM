@@ -76,6 +76,7 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<ICompanySettingsService, CompanySettingsService>();
             Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
             Services.AddScoped<INotificationService, NotificationService>();
+            Services.AddScoped<IFcmPushService, FcmPushService>();
 
             return Services;
         }

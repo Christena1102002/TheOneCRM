@@ -1,6 +1,9 @@
 using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using TheOneCRM.Application.Interfaces.INotifications;
 using TheOneCRM.Domain.Interfaces;
+using TheOneCRM.Domain.Models.DTOs.Common;
 using TheOneCRM.Domain.Models.DTOs.NotificationDtos;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Domain.Models.Enums;
@@ -12,11 +15,19 @@ namespace TheOneCRM.Application.Services.Notify
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IServiceScopeFactory _scopeFactory;
+        private readonly ILogger<NotificationService> _logger;
 
-        public NotificationService(IUnitOfWork unitOfWork, IMapper mapper)
+        public NotificationService(
+            IUnitOfWork unitOfWork,
+            IMapper mapper,
+            IServiceScopeFactory scopeFactory,
+            ILogger<NotificationService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _scopeFactory = scopeFactory;
+            _logger = logger;
         }
 
         public async Task CreateAsync(CreateNotificationDto dto)
@@ -34,13 +45,42 @@ namespace TheOneCRM.Application.Services.Notify
 
             await _unitOfWork.Repository<Notifications>().AddAsync(entity);
             await _unitOfWork.SaveChangesAsync();
+
+            // ابعت Push notification في الـ background (مايأخرش الـ response)
+            var data = new Dictionary<string, string>
+            {
+                ["notificationId"] = entity.Id.ToString(),
+                ["type"] = dto.Type.ToString(),
+                ["relatedEntityType"] = dto.RelatedEntityType ?? string.Empty,
+                ["relatedEntityId"] = dto.RelatedEntityId?.ToString() ?? string.Empty
+            };
+
+            // fire-and-forget: scope جديد عشان مايتأثرش بانتهاء الـ request
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    using var scope = _scopeFactory.CreateScope();
+                    var fcm = scope.ServiceProvider.GetRequiredService<IFcmPushService>();
+                    await fcm.SendToUserAsync(dto.UserId, dto.Title, dto.Message, data);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Background FCM push failed for user {UserId}", dto.UserId);
+                }
+            });
         }
 
-        public async Task<IReadOnlyList<NotificationResponseDto>> GetMyNotificationsAsync(string userId, bool unreadOnly = false)
+        public async Task<Pagination<NotificationResponseDto>> GetMyNotificationsAsync(string userId, NotificationParams p)
         {
-            var spec = new NotificationsByUserSpec(userId, unreadOnly);
-            var items = await _unitOfWork.Repository<Notifications>().ListAsync(spec);
-            return _mapper.Map<IReadOnlyList<NotificationResponseDto>>(items);
+            var listSpec = new NotificationsByUserSpec(userId, p);
+            var countSpec = new NotificationsByUserCountSpec(userId, p);
+
+            var items = await _unitOfWork.Repository<Notifications>().ListAsync(listSpec);
+            var totalCount = await _unitOfWork.Repository<Notifications>().CountAsync(countSpec);
+            var data = _mapper.Map<IReadOnlyList<NotificationResponseDto>>(items);
+
+            return new Pagination<NotificationResponseDto>(p.PageIndex, p.PageSize, totalCount, data);
         }
 
         public async Task<int> GetUnreadCountAsync(string userId)

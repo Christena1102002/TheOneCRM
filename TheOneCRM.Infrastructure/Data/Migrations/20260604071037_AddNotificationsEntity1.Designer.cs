@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheOneCRM.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using TheOneCRM.Infrastructure.Data;
 namespace TheOneCRM.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260604071037_AddNotificationsEntity1")]
+    partial class AddNotificationsEntity1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -211,12 +214,6 @@ namespace TheOneCRM.Infrastructure.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FcmToken")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("FcmTokenUpdatedAt")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("FullName")
                         .HasColumnType("nvarchar(max)");
