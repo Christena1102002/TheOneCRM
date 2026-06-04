@@ -8,11 +8,12 @@ using TheOneCRM.Domain.Specifications;
 
 namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 {
-    // العملاء المعيّنين لمستخدم معيّن
+    // العملاء المعيّنين لمستخدم معيّن، أو اللي تم استشارتهم منه قبل كده (حتى لو رجعوا للمبيعات)
     public class AssignedCustomersByUserSpec : BaseSpecification<Customer>
     {
         public AssignedCustomersByUserSpec(string userId)
-            : base(c => c.AssignedToId == userId)
+            : base(c => c.AssignedToId == userId
+                     || c.AssignmentHistory.Any(h => h.ToUserId == userId && h.ToRole == "Support"))
         {
         }
     }

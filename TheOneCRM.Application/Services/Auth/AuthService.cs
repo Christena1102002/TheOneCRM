@@ -82,7 +82,7 @@ namespace TheOneCRM.Application.Services.Auth
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
-                throw new InvalidOperationException("Email already in use");
+                throw new InvalidOperationException($"User creation failed: {errors}");
             }
 
             var addRole = await _userManager.AddToRoleAsync(user, dto.Role);
