@@ -11,7 +11,7 @@ namespace TheOneCRM.Infrastructure.Data
             : base(options) { }
 
         public DbSet<DailyReport> dailyReports { get; set; }
-        public DbSet<Activities> Activities { get; set; }
+        //public DbSet<Activities> Activities { get; set; }
         public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Projects> Project { get; set; }
         public DbSet<ProjectEngineer> ProjectEngineers { get; set; }
@@ -23,18 +23,22 @@ namespace TheOneCRM.Infrastructure.Data
         public DbSet<SupportTickets> supportTickets { set; get; }
         public DbSet<CustomerServices> customerServices { set; get; }
         public DbSet<Service> Services { set; get; }
-        public DbSet<Tasks> tasks { set; get; } 
+        public DbSet<Tasks> tasks { set; get; }
+        public DbSet<TaskAssignee> TaskAssignees { get; set; }
         public DbSet<ChannelSource> channelSources { set; get; }
         public DbSet<Campaigns> campaigns { set; get; }
         public DbSet<PriceQuotation> priceQuotations { set; get; }
         public DbSet<PriceQuotationDetails> priceQuotationDetails { set; get; }
         public DbSet<CustomerNote> CustomerNotes { get; set; }
         public DbSet<CustomerAssignmentHistory> CustomerAssignmentHistories { get; set; }
+        public DbSet<CustomerActivity> CustomerActivities { get; set; }
        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleAttachment> ArticleAttachments { get; set; }
         public DbSet<CompanySettings> CompanySettings { get; set; }
+        public DbSet<Goal> Goals { get; set; }
+        public DbSet<GoalCompletion> GoalCompletions { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

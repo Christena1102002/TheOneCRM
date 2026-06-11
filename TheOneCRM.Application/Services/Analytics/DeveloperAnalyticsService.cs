@@ -12,6 +12,7 @@ using TheOneCRM.Domain.Models.DTOs.CustomerDtos;
 using TheOneCRM.Domain.Models.Entities;
 using TheOneCRM.Domain.Models.Enums;
 using TheOneCRM.Infrastructure.Specsification.ProjectSpec;
+using TheOneCRM.Infrastructure.Specsification.TaskSpec;
 using TaskEntity = TheOneCRM.Domain.Models.Entities.Tasks;
 using ProjectEntity = TheOneCRM.Domain.Models.Entities.Projects;
 
@@ -37,186 +38,54 @@ namespace TheOneCRM.Application.Services.Analytics
 
         public async Task<DeveloperAnalyticsSummaryDto> GetSummaryAsync(DeveloperAnalyticsParams p)
         {
-            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: true);
+            var allTasks = await _unitOfWork.Repository<TaskEntity>().ListAsync(new AllTasksWithAssigneesSpec());
+            var tasks = ApplyFilters(allTasks, p, applyPeriod: true);
             var developers = await GetDevelopersAsync(p.DeveloperId);
-
-            var today = DateTime.UtcNow.Date;
-            var completed = tasks.Where(t => t.Status == StatusOfTask.Completed).ToList();
-            var totalTasks = tasks.Count;
-
-            // التغيّر شهريًا في المهام المكتملة
-            var thisMonth = tasks.Count(t =>
-                t.Status == StatusOfTask.Completed && SameMonth(CompletionDate(t), today));
-            var lastMonthRef = today.AddMonths(-1);
-            var lastMonth = tasks.Count(t =>
-                t.Status == StatusOfTask.Completed && SameMonth(CompletionDate(t), lastMonthRef));
-
-            // التغيّر أسبوعيًا (مؤشّر للإنتاجية)
-            var weekStart = StartOfWeek(today);
-            var prevWeekStart = weekStart.AddDays(-7);
-            var completedThisWeek = completed.Count(t => CompletionDate(t) >= weekStart);
-            var completedLastWeek = completed.Count(t =>
-                CompletionDate(t) >= prevWeekStart && CompletionDate(t) < weekStart);
-
-            var devStats = BuildDeveloperStats(developers, tasks);
-
-            var mostProductive = devStats
-                .OrderByDescending(d => d.ProductivityPercent)
-                .FirstOrDefault();
-
-            var fastest = devStats
-                .Where(d => d.CompletedTasks > 0)
-                .OrderBy(d => d.AvgCompletionTimeHours)
-                .FirstOrDefault();
-
-            var topPerformer = developers
-                .Select(d => new
-                {
-                    d,
-                    count = tasks.Count(t =>
-                        t.AssignedToId == d.Id &&
-                        t.Status == StatusOfTask.Completed &&
-                        SameMonth(CompletionDate(t), today))
-                })
-                .OrderByDescending(x => x.count)
-                .FirstOrDefault();
-
-            return new DeveloperAnalyticsSummaryDto
-            {
-                ProductivityRate = Percent(completed.Count, totalTasks),
-                ProductivityChangePercent = ChangePercent(completedThisWeek, completedLastWeek),
-
-                ResolvedBugs = tasks.Count(t => t.Category == TaskCategory.Bug && t.Status == StatusOfTask.Completed),
-                OpenBugs = tasks.Count(t => t.Category == TaskCategory.Bug && t.Status != StatusOfTask.Completed),
-
-                AvgCompletionTimeHours = completed.Any()
-                    ? Math.Round(completed.Average(t => t.ActualHours ?? t.EstimatedHours ?? 0), 1)
-                    : 0,
-
-                CompletedTasks = completed.Count,
-                CompletedTasksChangePercent = ChangePercent(thisMonth, lastMonth),
-
-                MostProductive = mostProductive is null ? null : new TopDeveloperDto
-                {
-                    DeveloperId = mostProductive.DeveloperId,
-                    FullName = mostProductive.FullName,
-                    Value = mostProductive.ProductivityPercent,
-                    Label = "معدل الإنتاجية"
-                },
-                Fastest = fastest is null ? null : new TopDeveloperDto
-                {
-                    DeveloperId = fastest.DeveloperId,
-                    FullName = fastest.FullName,
-                    Value = fastest.AvgCompletionTimeHours,
-                    Label = "ساعات متوسط وقت الإنجاز"
-                },
-                TopPerformer = topPerformer is null ? null : new TopDeveloperDto
-                {
-                    DeveloperId = topPerformer.d.Id,
-                    FullName = topPerformer.d.FullName,
-                    Value = topPerformer.count,
-                    Label = "مهمة مكتملة هذا الشهر"
-                }
-            };
+            return BuildSummary(tasks, developers, p.DeveloperId);
         }
 
         public async Task<List<DeveloperStatItemDto>> GetDeveloperStatsAsync(DeveloperAnalyticsParams p)
         {
-            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: true);
+            var allTasks = await _unitOfWork.Repository<TaskEntity>().ListAsync(new AllTasksWithAssigneesSpec());
+            var tasks = ApplyFilters(allTasks, p, applyPeriod: true);
             var developers = await GetDevelopersAsync(p.DeveloperId);
-
-            return BuildDeveloperStats(developers, tasks)
-                .OrderByDescending(d => d.CompletedTasks)
-                .ToList();
+            return BuildDeveloperStats(developers, tasks).OrderByDescending(d => d.CompletedTasks).ToList();
         }
 
         public async Task<AnalyticsChartsDto> GetChartsAsync(DeveloperAnalyticsParams p)
         {
-            // الشارت ليه محور زمني خاص بيه (أيام الأسبوع/شهور)، فمنطبّقش فلتر الفترة عليه
-            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: false);
-            var projects = await _unitOfWork.Repository<ProjectEntity>().ListAllAsync();
-
-            var today = DateTime.UtcNow.Date;
-            var weekStart = StartOfWeek(today);
-
-            var charts = new AnalyticsChartsDto();
-
-            // إنجاز المهام عبر الزمن (الأحد .. السبت)
-            string[] dayLabels = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
-            for (int i = 0; i < dayLabels.Length; i++)
-            {
-                var day = weekStart.AddDays(i);
-                charts.TaskCompletionOverTime.Add(new TaskCompletionPointDto
-                {
-                    Day = dayLabels[i],
-                    Completed = tasks.Count(t =>
-                        t.Status == StatusOfTask.Completed && CompletionDate(t) == day),
-                    Pending = tasks.Count(t =>
-                        t.Status != StatusOfTask.Completed && t.DueDate.Date == day)
-                });
-            }
-
-            // تقدّم المشاريع
-            foreach (var project in projects)
-            {
-                var projectTasks = tasks.Where(t => t.ProjectId == project.Id).ToList();
-                var completedCount = projectTasks.Count(t => t.Status == StatusOfTask.Completed);
-
-                charts.ProjectsProgress.Add(new ProjectProgressItemDto
-                {
-                    ProjectId = project.Id,
-                    ProjectName = project.Title,
-                    Progress = Percent(completedCount, projectTasks.Count)
-                });
-            }
-
-            return charts;
+            var allTasks = await _unitOfWork.Repository<TaskEntity>().ListAsync(new AllTasksWithAssigneesSpec());
+            var tasks = ApplyFilters(allTasks, p, applyPeriod: false);
+            var projects = await _unitOfWork.Repository<ProjectEntity>().ListAsync(new ProjectsForDropdownSpec(p.DeveloperId));
+            return BuildCharts(tasks, projects, p.DeveloperId);
         }
 
         public async Task<BugAnalyticsDto> GetBugAnalyticsAsync(DeveloperAnalyticsParams p)
         {
-            // التحليل الشهري ليه محوره الزمني الخاص (آخر 5 شهور)، فمنطبّقش فلتر الفترة هنا
-            var tasks = ApplyFilters(await _unitOfWork.Repository<TaskEntity>().ListAllAsync(), p, applyPeriod: false);
+            var allTasks = await _unitOfWork.Repository<TaskEntity>().ListAsync(new AllTasksWithAssigneesSpec());
+            var tasks = ApplyFilters(allTasks, p, applyPeriod: false);
             var projects = await _unitOfWork.Repository<ProjectEntity>().ListAllAsync();
+            return BuildBugAnalytics(tasks, projects);
+        }
 
-            var projectNames = projects
-                .GroupBy(p => p.Id)
-                .ToDictionary(g => g.Key, g => g.First().Title);
+        public async Task<FullDeveloperAnalyticsDto> GetFullAnalyticsAsync(DeveloperAnalyticsParams p)
+        {
+            // نحمّل الـ tasks مرة واحدة ونستخدمها في الكل
+            var allTasks = await _unitOfWork.Repository<TaskEntity>().ListAsync(new AllTasksWithAssigneesSpec());
+            var developers = await GetDevelopersAsync(p.DeveloperId);
+            var projects = await _unitOfWork.Repository<ProjectEntity>().ListAsync(new ProjectsForDropdownSpec(p.DeveloperId));
 
-            var bugs = tasks.Where(t => t.Category == TaskCategory.Bug).ToList();
-            var totalBugs = bugs.Count;
+            var filteredByPeriod = ApplyFilters(allTasks, p, applyPeriod: true);
+            var filteredNoPeriod = ApplyFilters(allTasks, p, applyPeriod: false);
 
-            var result = new BugAnalyticsDto();
-
-            // توزيع الأخطاء حسب المشروع
-            result.DistributionByProject = bugs
-                .GroupBy(b => b.ProjectId)
-                .Select(g => new BugByProjectDto
-                {
-                    ProjectId = g.Key,
-                    ProjectName = projectNames.TryGetValue(g.Key, out var name) ? name : $"#{g.Key}",
-                    Count = g.Count(),
-                    Percent = Percent(g.Count(), totalBugs)
-                })
-                .OrderByDescending(x => x.Count)
-                .ToList();
-
-            // مفتوحة vs محلولة (آخر 5 شهور)
-            var today = DateTime.UtcNow.Date;
-            for (int i = 4; i >= 0; i--)
+            return new FullDeveloperAnalyticsDto
             {
-                var monthRef = today.AddMonths(-i);
-                result.MonthlyOpenVsResolved.Add(new MonthlyBugDto
-                {
-                    Month = monthRef.ToString("MMM", CultureInfo.InvariantCulture),
-                    Open = bugs.Count(b =>
-                        b.Status != StatusOfTask.Completed && SameMonth(b.CreatedAt, monthRef)),
-                    Resolved = bugs.Count(b =>
-                        b.Status == StatusOfTask.Completed && SameMonth(CompletionDate(b), monthRef))
-                });
-            }
-
-            return result;
+                Summary = BuildSummary(filteredByPeriod, developers, p.DeveloperId),
+                DeveloperStats = BuildDeveloperStats(developers, filteredByPeriod)
+                    .OrderByDescending(d => d.CompletedTasks).ToList(),
+                Charts = BuildCharts(filteredNoPeriod, projects, p.DeveloperId),
+                BugAnalytics = BuildBugAnalytics(filteredNoPeriod, projects)
+            };
         }
 
         // قائمة المشاريع للـ dropdown — مشاريع المطوّر المختار (أو الكل لو developerId = null)
@@ -231,14 +100,14 @@ namespace TheOneCRM.Application.Services.Analytics
 
         // ===== Helpers =====
 
-        // فلترة المهام بالمطوّر + المشروع + (اختياري) الفترة الزمنية
         private static IReadOnlyList<TaskEntity> ApplyFilters(
             IReadOnlyList<TaskEntity> tasks, DeveloperAnalyticsParams p, bool applyPeriod)
         {
             IEnumerable<TaskEntity> q = tasks;
 
             if (!string.IsNullOrEmpty(p.DeveloperId))
-                q = q.Where(t => t.AssignedToId == p.DeveloperId);
+                q = q.Where(t => t.AssignedToId == p.DeveloperId ||
+                                 t.Assignees.Any(a => a.UserId == p.DeveloperId));
 
             if (p.ProjectId.HasValue)
                 q = q.Where(t => t.ProjectId == p.ProjectId.Value);
@@ -265,9 +134,15 @@ namespace TheOneCRM.Application.Services.Analytics
                     return (weekStart, weekStart.AddDays(7));
 
                 case AnalyticsPeriod.CurrentQuarter:
-                    var quarter = (today.Month - 1) / 3;          // 0..3
+                    var quarter = (today.Month - 1) / 3;
                     var qStart = new DateTime(today.Year, quarter * 3 + 1, 1);
                     return (qStart, qStart.AddMonths(3));
+
+                case AnalyticsPeriod.HalfYear:
+                    var halfStart = today.Month <= 6
+                        ? new DateTime(today.Year, 1, 1)
+                        : new DateTime(today.Year, 7, 1);
+                    return (halfStart, halfStart.AddMonths(6));
 
                 case AnalyticsPeriod.CurrentYear:
                     var yStart = new DateTime(today.Year, 1, 1);
@@ -295,26 +170,235 @@ namespace TheOneCRM.Application.Services.Analytics
         {
             return developers.Select(dev =>
             {
-                var devTasks = tasks.Where(t => t.AssignedToId == dev.Id).ToList();
-                var completed = devTasks.Where(t => t.Status == StatusOfTask.Completed).ToList();
-                var activeHours = devTasks
-                    .Where(t => t.Status != StatusOfTask.Completed)
-                    .Sum(t => t.EstimatedHours ?? 0);
+                // استخدم نفس GetAssigneeRecords للـ fallback التلقائي
+                var devTasks = tasks
+                    .Where(t => t.AssignedToId == dev.Id || t.Assignees.Any(a => a.UserId == dev.Id))
+                    .ToList();
+
+                var devAssignees = GetAssigneeRecords(devTasks, dev.Id);
+                var completedAssignees = devAssignees.Where(a => a.Status == StatusOfTask.Completed).ToList();
+                var activeHours = devAssignees
+                    .Where(a => a.Status != StatusOfTask.Completed)
+                    .Sum(a =>
+                    {
+                        var t = tasks.FirstOrDefault(x => x.Id == a.TaskId);
+                        return t?.EstimatedHours ?? 0;
+                    });
 
                 return new DeveloperStatItemDto
                 {
                     DeveloperId = dev.Id,
                     FullName = dev.FullName,
-                    CompletedTasks = completed.Count,
-                    AvgCompletionTimeHours = completed.Any()
-                        ? Math.Round(completed.Average(t => t.ActualHours ?? t.EstimatedHours ?? 0), 1)
+                    CompletedTasks = completedAssignees.Count,
+                    AvgCompletionTimeHours = completedAssignees.Any()
+                        ? Math.Round(completedAssignees.Average(a =>
+                        {
+                            var t = tasks.FirstOrDefault(x => x.Id == a.TaskId);
+                            return (double)(a.ActualHours ?? t?.EstimatedHours ?? 0);
+                        }), 1)
                         : 0,
-                    ResolvedBugs = devTasks.Count(t =>
-                        t.Category == TaskCategory.Bug && t.Status == StatusOfTask.Completed),
+                    ResolvedBugs = devAssignees.Count(a =>
+                        a.Status == StatusOfTask.Completed &&
+                        tasks.FirstOrDefault(t => t.Id == a.TaskId)?.Category == TaskCategory.Bug),
                     CurrentWorkloadPercent = Percent(activeHours, CapacityHours),
-                    ProductivityPercent = Percent(completed.Count, devTasks.Count)
+                    ProductivityPercent = Percent(completedAssignees.Count, devAssignees.Count)
                 };
             }).ToList();
+        }
+
+        private static DeveloperAnalyticsSummaryDto BuildSummary(
+            IReadOnlyList<TaskEntity> tasks,
+            IList<AppUser> developers,
+            string? developerId)
+        {
+            var today = DateTime.UtcNow.Date;
+            var assigneeRecords = GetAssigneeRecords(tasks, developerId);
+            var completedRecords = assigneeRecords.Where(a => a.Status == StatusOfTask.Completed).ToList();
+
+            var thisMonth = completedRecords.Count(a => SameMonth(AssigneeCompletionDate(a, tasks), today));
+            var lastMonthRef = today.AddMonths(-1);
+            var lastMonth = completedRecords.Count(a => SameMonth(AssigneeCompletionDate(a, tasks), lastMonthRef));
+
+            var weekStart = StartOfWeek(today);
+            var prevWeekStart = weekStart.AddDays(-7);
+            var completedThisWeek = completedRecords.Count(a => AssigneeCompletionDate(a, tasks) >= weekStart);
+            var completedLastWeek = completedRecords.Count(a =>
+                AssigneeCompletionDate(a, tasks) >= prevWeekStart && AssigneeCompletionDate(a, tasks) < weekStart);
+
+            var devStats = BuildDeveloperStats(developers, tasks);
+            var mostProductive = devStats.OrderByDescending(d => d.ProductivityPercent).FirstOrDefault();
+            var fastest = devStats.Where(d => d.CompletedTasks > 0).OrderBy(d => d.AvgCompletionTimeHours).FirstOrDefault();
+
+            var topPerformer = developers
+                .Select(d => new
+                {
+                    d,
+                    count = GetAssigneeRecords(tasks, d.Id)
+                        .Count(a => a.Status == StatusOfTask.Completed &&
+                                    SameMonth(AssigneeCompletionDate(a, tasks), today))
+                })
+                .OrderByDescending(x => x.count)
+                .FirstOrDefault();
+
+            return new DeveloperAnalyticsSummaryDto
+            {
+                ProductivityRate = Percent(completedRecords.Count, assigneeRecords.Count),
+                ProductivityChangePercent = ChangePercent(completedThisWeek, completedLastWeek),
+                ResolvedBugs = assigneeRecords.Count(a =>
+                    a.Status == StatusOfTask.Completed &&
+                    tasks.FirstOrDefault(t => t.Id == a.TaskId)?.Category == TaskCategory.Bug),
+                OpenBugs = assigneeRecords.Count(a =>
+                    a.Status != StatusOfTask.Completed &&
+                    tasks.FirstOrDefault(t => t.Id == a.TaskId)?.Category == TaskCategory.Bug),
+                AvgCompletionTimeHours = completedRecords.Any()
+                    ? Math.Round(completedRecords.Average(a =>
+                    {
+                        var t = tasks.FirstOrDefault(x => x.Id == a.TaskId);
+                        return (double)(a.ActualHours ?? t?.EstimatedHours ?? 0);
+                    }), 1)
+                    : 0,
+                CompletedTasks = completedRecords.Count,
+                CompletedTasksChangePercent = ChangePercent(thisMonth, lastMonth),
+                MostProductive = mostProductive is null ? null : new TopDeveloperDto
+                {
+                    DeveloperId = mostProductive.DeveloperId,
+                    FullName = mostProductive.FullName,
+                    Value = mostProductive.ProductivityPercent,
+                    Label = "معدل الإنتاجية"
+                },
+                Fastest = fastest is null ? null : new TopDeveloperDto
+                {
+                    DeveloperId = fastest.DeveloperId,
+                    FullName = fastest.FullName,
+                    Value = fastest.AvgCompletionTimeHours,
+                    Label = "ساعات متوسط وقت الإنجاز"
+                },
+                TopPerformer = topPerformer is null ? null : new TopDeveloperDto
+                {
+                    DeveloperId = topPerformer.d.Id,
+                    FullName = topPerformer.d.FullName,
+                    Value = topPerformer.count,
+                    Label = "مهمة مكتملة هذا الشهر"
+                }
+            };
+        }
+
+        private static AnalyticsChartsDto BuildCharts(
+            IReadOnlyList<TaskEntity> tasks,
+            IReadOnlyList<ProjectEntity> projects,
+            string? developerId)
+        {
+            var today = DateTime.UtcNow.Date;
+            var weekStart = StartOfWeek(today);
+            var charts = new AnalyticsChartsDto();
+
+            string[] dayLabels = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+            var assigneeRecords = GetAssigneeRecords(tasks, developerId);
+
+            for (int i = 0; i < dayLabels.Length; i++)
+            {
+                var day = weekStart.AddDays(i);
+                charts.TaskCompletionOverTime.Add(new TaskCompletionPointDto
+                {
+                    Day = dayLabels[i],
+                    Completed = assigneeRecords.Count(a =>
+                        a.Status == StatusOfTask.Completed && a.CompletedAt?.Date == day),
+                    Pending = tasks.Count(t =>
+                        (developerId == null ||
+                         t.AssignedToId == developerId ||
+                         t.Assignees.Any(a => a.UserId == developerId)) &&
+                        t.Status != StatusOfTask.Completed &&
+                        t.DueDate.Date == day)
+                });
+            }
+
+            foreach (var project in projects)
+            {
+                var projectTasks = tasks.Where(t => t.ProjectId == project.Id).ToList();
+                var projectAssignees = GetAssigneeRecords(projectTasks, developerId);
+                var completedCount = projectAssignees.Count(a => a.Status == StatusOfTask.Completed);
+
+                charts.ProjectsProgress.Add(new ProjectProgressItemDto
+                {
+                    ProjectId = project.Id,
+                    ProjectName = project.Title,
+                    Progress = Percent(completedCount, projectAssignees.Count > 0 ? projectAssignees.Count : projectTasks.Count)
+                });
+            }
+
+            return charts;
+        }
+
+        private static BugAnalyticsDto BuildBugAnalytics(
+            IReadOnlyList<TaskEntity> tasks,
+            IReadOnlyList<ProjectEntity> projects)
+        {
+            var projectNames = projects.ToDictionary(p => p.Id, p => p.Title);
+            var bugs = tasks.Where(t => t.Category == TaskCategory.Bug).ToList();
+            var totalBugs = bugs.Count;
+            var today = DateTime.UtcNow.Date;
+            var result = new BugAnalyticsDto();
+
+            result.DistributionByProject = bugs
+                .GroupBy(b => b.ProjectId)
+                .Select(g => new BugByProjectDto
+                {
+                    ProjectId = g.Key,
+                    ProjectName = projectNames.TryGetValue(g.Key, out var name) ? name : $"#{g.Key}",
+                    Count = g.Count(),
+                    Percent = Percent(g.Count(), totalBugs)
+                })
+                .OrderByDescending(x => x.Count)
+                .ToList();
+
+            for (int i = 4; i >= 0; i--)
+            {
+                var monthRef = today.AddMonths(-i);
+                result.MonthlyOpenVsResolved.Add(new MonthlyBugDto
+                {
+                    Month = monthRef.ToString("MMM", CultureInfo.InvariantCulture),
+                    Open = bugs.Count(b => b.Status != StatusOfTask.Completed && SameMonth(b.CreatedAt, monthRef)),
+                    Resolved = bugs.Count(b => b.Status == StatusOfTask.Completed && SameMonth(CompletionDate(b), monthRef))
+                });
+            }
+
+            return result;
+        }
+
+        // سجلات TaskAssignee الفعلية — مع fallback للمهام القديمة اللي ملهاش TaskAssignee
+        private static List<TaskAssignee> GetAssigneeRecords(IReadOnlyList<TaskEntity> tasks, string? developerId)
+        {
+            var result = new List<TaskAssignee>();
+            foreach (var task in tasks)
+            {
+                if (task.Assignees.Any())
+                {
+                    result.AddRange(task.Assignees
+                        .Where(a => developerId == null || a.UserId == developerId));
+                }
+                else if (!string.IsNullOrEmpty(task.AssignedToId) &&
+                         (developerId == null || task.AssignedToId == developerId))
+                {
+                    // مهمة قديمة بدون TaskAssignee — نعمل record وهمي من حالة المهمة
+                    result.Add(new TaskAssignee
+                    {
+                        TaskId = task.Id,
+                        UserId = task.AssignedToId,
+                        Status = task.Status,
+                        ActualHours = task.ActualHours,
+                        CompletedAt = task.CompletedAt
+                    });
+                }
+            }
+            return result;
+        }
+
+        // تاريخ إكمال TaskAssignee: CompletedAt الحقيقي، وإلا تاريخ إكمال المهمة الرئيسية
+        private static DateTime AssigneeCompletionDate(TaskAssignee a, IReadOnlyList<TaskEntity> tasks)
+        {
+            if (a.CompletedAt.HasValue) return a.CompletedAt.Value.Date;
+            var t = tasks.FirstOrDefault(x => x.Id == a.TaskId);
+            return CompletionDate(t!);
         }
 
         // تاريخ إكمال المهمة: CompletedAt الحقيقي، وإلا UpdatedAt/CreatedAt للبيانات القديمة

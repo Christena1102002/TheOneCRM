@@ -98,6 +98,32 @@ namespace TheOneCRM.API.Controllers
         //public IActionResult GetStatuses()
         //    => Ok(new ApiResponse(200, "Article statuses retrieved successfully", _articleService.GetStatusOptions()));
 
+        // DELETE: api/Articles/DeleteArticle/5  (المنشئ أو الأدمن)
+        [HttpDelete("DeleteArticle/{id:int}")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Developer},{UserRoles.Support},{UserRoles.Sales}")]
+        public async Task<IActionResult> DeleteArticle(int id)
+        {
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            await _articleService.DeleteArticleAsync(id, userId, User.IsAdmin());
+            return Ok(new ApiResponse(200, "Article deleted successfully"));
+        }
+
+        // DELETE: api/Articles/DeleteAttachment/5  (المنشئ بتاع المقالة أو الأدمن)
+        [HttpDelete("DeleteAttachment/{attachmentId:int}")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Developer},{UserRoles.Support},{UserRoles.Sales}")]
+        public async Task<IActionResult> DeleteAttachment(int attachmentId)
+        {
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            await _articleService.DeleteAttachmentAsync(attachmentId, userId, User.IsAdmin());
+            return Ok(new ApiResponse(200, "Attachment deleted successfully"));
+        }
+
         // GET: api/Articles/ProjectOptions
         // المشاريع: المطوّر يشوف مشاريعه، الأدمن يشوف الكل
         [HttpGet("ProjectOptions")]

@@ -13,7 +13,7 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
     {
         public NotBuyingReasonsSpecification()
             : base(c =>
-                c.status == StatusOfCustomers.NotBuyer &&
+                c.status == CustomerStatus.NotBuyer &&
                 !string.IsNullOrWhiteSpace(c.NotBuyingReason))
         {
             // ترتيب البيانات من قاعدة البيانات

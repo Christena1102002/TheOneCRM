@@ -231,9 +231,13 @@ namespace TheOneCRM.Application.Services.Tickets
             var tickets = await _unitOfWork.Repository<SupportTickets>()
                 .ListAsync(new SupportTicketsByCreatorSpec(userId));
 
-            // العملاء المعينين له
-            var assignedCustomers = await _unitOfWork.Repository<Customer>()
-                .CountAsync(new AssignedCustomersByUserSpec(userId));
+            // العملاء الحاليين (بانتظار الاستشارة) مع ملاحظاتهم
+            var waitingList = await _unitOfWork.Repository<Customer>()
+                .ListAsync(new AssignedCustomersWithNotesSpec(userId));
+
+            // العملاء اللي تمت استشارتهم ورجعوا للمبيعات
+            var consultedCount = await _unitOfWork.Repository<Customer>()
+                .CountAsync(new ConsultedBySupportSpec(userId));
 
             var dto = new SupportDashboardDto
             {
@@ -248,7 +252,10 @@ namespace TheOneCRM.Application.Services.Tickets
 
                 CriticalTickets = tickets.Count(t => t.priority == PriorityStatus.High),
 
-                AssignedCustomers = assignedCustomers,
+                WaitingConsultation  = waitingList.Count,
+                ConsultedCustomers   = consultedCount,
+                AssignedCustomers    = waitingList.Count + consultedCount,
+                CustomersWithNotes   = waitingList.Count(c => c.Notes.Any()),
 
                 // التذاكر حسب الحالة (لكل الحالات، حتى لو 0)
                 TicketsByStatus = Enum.GetValues<StatusOfTickets>()
@@ -275,6 +282,62 @@ namespace TheOneCRM.Application.Services.Tickets
             };
 
             return dto;
+        }
+
+        public async Task<SupportCustomerStatsDto> GetCustomerStatsAsync(string userId, bool isAdmin)
+        {
+            if (isAdmin)
+            {
+                // الأدمن يشوف إجمالي كل العملاء اللي مروا على الدعم
+                var allWaiting = await _unitOfWork.Repository<Customer>()
+                    .ListAsync(new AllSupportCustomersWithNotesSpec());
+
+                var allConsulted = await _unitOfWork.Repository<Customer>()
+                    .CountAsync(new AllConsultedBySupportSpec());
+
+                return new SupportCustomerStatsDto
+                {
+                    TotalCustomers      = allWaiting.Count + allConsulted,
+                    ConsultedCustomers  = allConsulted,
+                    WaitingConsultation = allWaiting.Count,
+                    CustomersWithNotes  = allWaiting.Count(c => c.Notes.Any())
+                };
+            }
+
+            if (string.IsNullOrWhiteSpace(userId))
+                throw new InvalidOperationException("User id is required");
+
+            var waitingList = await _unitOfWork.Repository<Customer>()
+                .ListAsync(new AssignedCustomersWithNotesSpec(userId));
+
+            var consultedCount = await _unitOfWork.Repository<Customer>()
+                .CountAsync(new ConsultedBySupportSpec(userId));
+
+            return new SupportCustomerStatsDto
+            {
+                TotalCustomers      = waitingList.Count + consultedCount,
+                ConsultedCustomers  = consultedCount,
+                WaitingConsultation = waitingList.Count,
+                CustomersWithNotes  = waitingList.Count(c => c.Notes.Any())
+            };
+        }
+
+        public async Task<List<StatusClientDto>> GetServicesByCustomerAsync(int customerId)
+        {
+            var customer = await _unitOfWork.Repository<Customer>()
+                .GetEntityWithSpec(new CustomerByIdSpec(customerId));
+
+            if (customer is null)
+                throw new KeyNotFoundException($"Customer {customerId} not found");
+
+            return customer.customerServices
+                .Where(cs => cs.Service != null)
+                .Select(cs => new StatusClientDto
+                {
+                    Id = cs.Service.Id,
+                    Name = cs.Service.NameAr
+                })
+                .ToList();
         }
 
         private static string GetStatusArabicName(StatusOfTickets status)

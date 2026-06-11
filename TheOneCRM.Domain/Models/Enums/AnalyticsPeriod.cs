@@ -10,6 +10,7 @@ namespace TheOneCRM.Domain.Models.Enums
         [Description("الأسبوع الحالي")] CurrentWeek = 0,
         [Description("الشهر الحالي")] CurrentMonth = 1,
         [Description("الربع الحالي")] CurrentQuarter = 2,
-        [Description("السنة الحالية")] CurrentYear = 3
+        [Description("نصف السنة")] HalfYear = 3,
+        [Description("السنة الحالية")] CurrentYear = 4
     }
 }

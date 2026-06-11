@@ -155,38 +155,6 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Activities", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Activities");
-                });
-
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -754,6 +722,53 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.ToTable("customers");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerActivity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ActivityType")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ContactResult")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("FromStatus")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RelatedEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ToStatus")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedAt");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("CustomerId", "ActivityType");
+
+                    b.ToTable("CustomerActivities");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerAssignmentHistory", b =>
                 {
                     b.Property<int>("Id")
@@ -975,6 +990,112 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.HasIndex("customerId");
 
                     b.ToTable("deals");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Goal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("AchievedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AssignedToId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedById")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("CurrentProgress")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal?>("FinancialReward")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<bool>("IsAchieved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Period")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Points")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TargetValue")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AssignedToId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.ToTable("Goals");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.GoalCompletion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("AchievedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GoalId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PointsEarned")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("RewardEarned")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GoalId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("GoalCompletions");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Notifications", b =>
@@ -1334,6 +1455,30 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.ToTable("supportTickets");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.TaskAssignee", b =>
+                {
+                    b.Property<int>("TaskId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("ActualHours")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CompletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("TaskId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("TaskAssignees");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Tasks", b =>
                 {
                     b.Property<int>("Id")
@@ -1453,17 +1598,6 @@ namespace TheOneCRM.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Activities", b =>
-                {
-                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Appointment", b =>
                 {
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "AssignedTo")
@@ -1579,6 +1713,25 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("campaigns");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerActivity", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "Customer")
+                        .WithMany("Activities")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("Customer");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.CustomerAssignmentHistory", b =>
                 {
                     b.HasOne("TheOneCRM.Domain.Models.Entities.Customer", "Customer")
@@ -1686,6 +1839,43 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("CreatedBy");
 
                     b.Navigation("customer");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Goal", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "AssignedTo")
+                        .WithMany()
+                        .HasForeignKey("AssignedToId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("AssignedTo");
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.GoalCompletion", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Goal", "Goal")
+                        .WithMany("Completions")
+                        .HasForeignKey("GoalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Goal");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Notifications", b =>
@@ -1798,6 +1988,25 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("Service");
                 });
 
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.TaskAssignee", b =>
+                {
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.Tasks", "Task")
+                        .WithMany("Assignees")
+                        .HasForeignKey("TaskId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Task");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Tasks", b =>
                 {
                     b.HasOne("TheOneCRM.Domain.Models.Entities.AppUser", "AssignedTo")
@@ -1837,6 +2046,8 @@ namespace TheOneCRM.Infrastructure.Migrations
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Customer", b =>
                 {
+                    b.Navigation("Activities");
+
                     b.Navigation("AssignmentHistory");
 
                     b.Navigation("Contracts");
@@ -1846,6 +2057,11 @@ namespace TheOneCRM.Infrastructure.Migrations
                     b.Navigation("PriceQuotations");
 
                     b.Navigation("customerServices");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Goal", b =>
+                {
+                    b.Navigation("Completions");
                 });
 
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.PipelineStages", b =>
@@ -1868,6 +2084,11 @@ namespace TheOneCRM.Infrastructure.Migrations
             modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Service", b =>
                 {
                     b.Navigation("customerServices");
+                });
+
+            modelBuilder.Entity("TheOneCRM.Domain.Models.Entities.Tasks", b =>
+                {
+                    b.Navigation("Assignees");
                 });
 #pragma warning restore 612, 618
         }

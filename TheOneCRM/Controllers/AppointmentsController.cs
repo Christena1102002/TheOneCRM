@@ -50,6 +50,13 @@ namespace TheOneCRM.API.Controllers
                 id, dto, userId, role);
             return Ok(new ApiResponse(200, "Appointment updated successfully", result));
         }
+        [HttpPut("{id:int}/status")]
+        public async Task<IActionResult> UpdateAppointmentStatus(int id, [FromBody] UpdateAppointmentStatusDto dto)
+        {
+            var result = await _appointmentService.UpdateAppointmentStatusAsync(id, dto);
+            return Ok(new ApiResponse(200, "Appointment status updated successfully", result));
+        }
+
         // GET: api/Appointments/GetAppointmentById/{id}
         [HttpGet("GetAppointmentById/{id:int}")]
         public async Task<IActionResult> GetAppointmentById(int id)

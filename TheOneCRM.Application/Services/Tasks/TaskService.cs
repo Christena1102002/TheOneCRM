@@ -37,27 +37,38 @@ namespace TheOneCRM.Application.Services.Tasks
 
         public async Task<int> CreateTaskAsync(CreateTaskDto dto, string managerId)
         {
+            if (dto.AssignedToIds == null || dto.AssignedToIds.Count == 0)
+                throw new InvalidOperationException("At least one developer must be assigned to the task");
+
             // 1) المشروع موجود؟
             var project = await _unitOfWork.Repository<ProjectEntity>().GetByIdAsync(dto.ProjectId);
             if (project is null)
                 throw new KeyNotFoundException($"Project {dto.ProjectId} not found");
 
-            // 2) المطوّر المعيّن لازم يكون موجود و Developer
-            await EnsureDeveloperAsync(dto.AssignedToId);
+            // 2) تأكد إن كل المطورين موجودين و Developer
+            foreach (var devId in dto.AssignedToIds)
+                await EnsureDeveloperAsync(devId);
 
             var task = _mapper.Map<TaskEntity>(dto);
             task.CreatedById = managerId;
+            task.AssignedToId = dto.AssignedToIds[0]; // الأول كـ primary
             SyncCompletion(task);
 
             await _unitOfWork.Repository<TaskEntity>().AddAsync(task);
             await _unitOfWork.SaveChangesAsync();
 
-            // إشعار للمطوّر المعيّن
-            if (!string.IsNullOrEmpty(task.AssignedToId))
+            // أضف كل المطورين في جدول TaskAssignees
+            foreach (var devId in dto.AssignedToIds)
             {
+                await _unitOfWork.Repository<TaskAssignee>().AddAsync(new TaskAssignee
+                {
+                    TaskId = task.Id,
+                    UserId = devId
+                });
+
                 await _notificationService.CreateAsync(new CreateNotificationDto
                 {
-                    UserId = task.AssignedToId,
+                    UserId = devId,
                     Title = "مهمة جديدة",
                     Message = $"تم تعيين مهمة جديدة لك: '{task.Title}'",
                     Type = NotificationType.TaskAssigned,
@@ -66,6 +77,7 @@ namespace TheOneCRM.Application.Services.Tasks
                 });
             }
 
+            await _unitOfWork.SaveChangesAsync();
             return task.Id;
         }
 
@@ -100,16 +112,35 @@ namespace TheOneCRM.Application.Services.Tasks
 
         public async Task UpdateTaskAsync(int id, UpdateTaskDto dto)
         {
-            var task = await _unitOfWork.Repository<TaskEntity>().GetByIdAsync(id);
+            if (dto.AssignedToIds == null || dto.AssignedToIds.Count == 0)
+                throw new InvalidOperationException("At least one developer must be assigned to the task");
+
+            var task = await _unitOfWork.Repository<TaskEntity>()
+                .GetEntityWithSpec(new TaskByIdSpec(id));
             if (task is null)
                 throw new KeyNotFoundException($"Task {id} not found");
 
-            await EnsureDeveloperAsync(dto.AssignedToId);
+            foreach (var devId in dto.AssignedToIds)
+                await EnsureDeveloperAsync(devId);
+
+            // امسح القديم وضيف الجديد
+            var oldAssignees = task.Assignees.ToList();
+            foreach (var old in oldAssignees)
+                _unitOfWork.Repository<TaskAssignee>().Delete(old);
 
             _mapper.Map(dto, task);
+            task.AssignedToId = dto.AssignedToIds[0];
             SyncCompletion(task);
 
             _unitOfWork.Repository<TaskEntity>().Update(task);
+
+            foreach (var devId in dto.AssignedToIds)
+                await _unitOfWork.Repository<TaskAssignee>().AddAsync(new TaskAssignee
+                {
+                    TaskId = task.Id,
+                    UserId = devId
+                });
+
             await _unitOfWork.SaveChangesAsync();
         }
 
@@ -154,21 +185,62 @@ namespace TheOneCRM.Application.Services.Tasks
 
         public async Task UpdateMyTaskStatusAsync(int id, UpdateTaskStatusDto dto, string developerId)
         {
-            var task = await _unitOfWork.Repository<TaskEntity>().GetByIdAsync(id);
+            var task = await _unitOfWork.Repository<TaskEntity>()
+                .GetEntityWithSpec(new TaskByIdSpec(id));
             if (task is null)
                 throw new KeyNotFoundException($"Task {id} not found");
 
             // المطوّر يقدر يعدّل حالة مهامه هو بس
-            if (task.AssignedToId != developerId)
+            var isAssigned = task.Assignees.Any(a => a.UserId == developerId)
+                             || task.AssignedToId == developerId;
+            if (!isAssigned)
                 throw new UnauthorizedAccessException("You can only update your own tasks");
 
-            task.Status = dto.Status;
-            if (dto.ActualHours.HasValue)
-                task.ActualHours = dto.ActualHours;
-            SyncCompletion(task);
+            // حدّث حالة المطور في TaskAssignee بس (مش الـ task الكلي)
+            var assignee = task.Assignees.FirstOrDefault(a => a.UserId == developerId);
+            if (assignee != null)
+            {
+                var wasCompleted = assignee.Status == StatusOfTask.Completed;
+                assignee.Status = dto.Status;
+                if (dto.ActualHours.HasValue)
+                    assignee.ActualHours = dto.ActualHours;
+                if (dto.Status == StatusOfTask.Completed && assignee.CompletedAt == null)
+                    assignee.CompletedAt = DateTime.UtcNow;
+                else if (dto.Status != StatusOfTask.Completed)
+                    assignee.CompletedAt = null;
 
-            _unitOfWork.Repository<TaskEntity>().Update(task);
-            await _unitOfWork.SaveChangesAsync();
+                _unitOfWork.Repository<TaskAssignee>().Update(assignee);
+
+                // لو كل الأعضاء خلصوا → حدّث الـ task الأساسي كمان
+                if (task.Assignees.All(a => a.Status == StatusOfTask.Completed))
+                {
+                    task.Status = StatusOfTask.Completed;
+                    task.CompletedAt ??= DateTime.UtcNow;
+                    _unitOfWork.Repository<TaskEntity>().Update(task);
+                }
+
+                await _unitOfWork.SaveChangesAsync();
+
+                if (dto.Status == StatusOfTask.Completed && !wasCompleted)
+                {
+                    var developer = await _userManager.FindByIdAsync(developerId);
+                    var developerName = developer?.FullName ?? "مطور";
+
+                    var admins = await _userManager.GetUsersInRoleAsync(UserRoles.Admin);
+                    foreach (var admin in admins.Where(a => a.IsActive != false))
+                    {
+                        await _notificationService.CreateAsync(new CreateNotificationDto
+                        {
+                            UserId = admin.Id,
+                            Title = "مهمة مكتملة",
+                            Message = $"أكمل {developerName} المهمة: '{task.Title}'",
+                            Type = NotificationType.TaskAssigned,
+                            RelatedEntityType = "Task",
+                            RelatedEntityId = task.Id
+                        });
+                    }
+                }
+            }
         }
 
         public async Task<DashboardStatsDto> GetDeveloperStatisticsAsync(string developerId)
@@ -207,6 +279,13 @@ namespace TheOneCRM.Application.Services.Tasks
 
             var stats = new DashboardStatsDto
             {
+                TotalTasks         = tasks.Count,
+                TodoTasks          = tasks.Count(t => t.Status == StatusOfTask.ToDo),
+                InProgressTasks    = tasks.Count(t => t.Status == StatusOfTask.InProgress),
+                ReviewTasks        = tasks.Count(t => t.Status == StatusOfTask.Review),
+                CompletedTasks     = tasks.Count(t => t.Status == StatusOfTask.Completed),
+                OverdueTasks       = tasks.Count(t => t.DueDate.Date < today && t.Status != StatusOfTask.Completed),
+
                 TasksDueToday = dueToday.Count,
                 HighPriorityTasksDueToday = dueToday.Count(t => t.Priority == PriorityStatus.High),
 

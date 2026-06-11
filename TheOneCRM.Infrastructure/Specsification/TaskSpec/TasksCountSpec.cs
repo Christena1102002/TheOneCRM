@@ -7,7 +7,9 @@ namespace TheOneCRM.Infrastructure.Specsification.TaskSpec
     public class TasksCountSpec : BaseSpecification<Tasks>
     {
         public TasksCountSpec(TaskParams p, string? assignedToId = null) : base(x =>
-            (assignedToId == null || x.AssignedToId == assignedToId) &&
+            (assignedToId == null
+                || x.AssignedToId == assignedToId
+                || x.Assignees.Any(a => a.UserId == assignedToId)) &&
             (!p.ProjectId.HasValue || x.ProjectId == p.ProjectId.Value) &&
             (!p.Status.HasValue || x.Status == p.Status.Value) &&
             (!p.Priority.HasValue || x.Priority == p.Priority.Value) &&

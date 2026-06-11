@@ -13,10 +13,10 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
         public CustomerByIdSpec(int id) : base(c => c.Id == id)
         {
             AddInclude(c => c.campaigns.ChannelSource);
-            //AddInclude(c => c.AssignedTo);
             AddInclude("AssignmentHistory.ToUser");
             AddInclude("customerServices.Service");
             Includes.Add(c => c.Notes);
+            AddInclude("Activities.CreatedBy");
         }
     }
 }

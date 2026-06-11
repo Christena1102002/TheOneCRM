@@ -29,6 +29,15 @@ namespace TheOneCRM.API.Controllers
             return p;
         }
 
+        // GET: api/DeveloperAnalytics — كل التحليلات في رد واحد
+        // الأدمن: يشوف الكل (أو يفلتر بـ developerId). المطوّر: بياناته هو بس.
+        [HttpGet]
+        public async Task<IActionResult> GetFullAnalytics([FromQuery] DeveloperAnalyticsParams p)
+        {
+            var result = await _analyticsService.GetFullAnalyticsAsync(Resolve(p));
+            return Ok(new ApiResponse(200, "Analytics retrieved successfully", result));
+        }
+
         // GET: api/DeveloperAnalytics/Summary — الكروت + المميّزون
         [HttpGet("Summary")]
         public async Task<IActionResult> GetSummary([FromQuery] DeveloperAnalyticsParams p)

@@ -8,7 +8,7 @@ namespace TheOneCRM.Domain.Models.DTOs.Tasks
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
 
-        public string AssignedToId { get; set; } = null!;
+        public List<string> AssignedToIds { get; set; } = new();
 
         public StatusOfTask Status { get; set; }
         public PriorityStatus Priority { get; set; }

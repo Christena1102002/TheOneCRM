@@ -19,6 +19,7 @@ namespace TheOneCRM.Application.Interfaces.IAppointment
         // ⭐ الجديدين
         Task<(IReadOnlyList<AppointmentResponseDto> Items, int TotalCount)> GetAppointmentsAsync(AppointmentSpecParams specParams, string currentUserId);
         Task<AppointmentStatsDto> GetStatsAsync(string currentUserId);
+        Task<AppointmentResponseDto> UpdateAppointmentStatusAsync(int id, UpdateAppointmentStatusDto dto);
     }
 }
 

@@ -23,6 +23,9 @@ namespace TheOneCRM.Application.Interfaces.IArticles
         Task<ArticleResponseDto> UpdateArticleAsync(
             int id, UpdateArticleDto dto, string userId, bool isAdmin, IList<string> roles);
 
+        Task DeleteArticleAsync(int id, string userId, bool isAdmin);
+        Task DeleteAttachmentAsync(int attachmentId, string userId, bool isAdmin);
+
         // قوائم بالعربي للـ dropdowns
         List<StatusClientDto> GetTypeOptions();
         List<StatusClientDto> GetAccessLevelOptions();

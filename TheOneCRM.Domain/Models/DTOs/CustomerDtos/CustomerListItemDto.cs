@@ -34,5 +34,8 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
 
 
         public string? NotBuyerReason { get; set; }
+
+        // تاريخ العميل الكامل
+        public List<CustomerActivityDto> Activities { get; set; } = new();
     }
 }

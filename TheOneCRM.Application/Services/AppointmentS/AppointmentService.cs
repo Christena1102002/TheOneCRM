@@ -115,6 +115,26 @@ namespace TheOneCRM.Application.Services.AppointmentS
             return response!;
 
         }
+        public async Task<AppointmentResponseDto> UpdateAppointmentStatusAsync(int id, UpdateAppointmentStatusDto dto)
+        {
+            var appointment = await _unitOfWork.Repository<Appointment>().GetByIdAsync(id);
+            if (appointment == null)
+                throw new KeyNotFoundException($"الموعد برقم {id} مش موجود");
+
+            appointment.Status = dto.Status;
+            appointment.UpdatedAt = DateTime.UtcNow;
+
+            _unitOfWork.Repository<Appointment>().Update(appointment);
+            await _unitOfWork.SaveChangesAsync();
+
+            var response = await _unitOfWork.Repository<Appointment>()
+                .ApplySpecification(new AppointmentSpecification(id))
+                .ProjectTo<AppointmentResponseDto>(_mapper.ConfigurationProvider)
+                .FirstOrDefaultAsync();
+
+            return response!;
+        }
+
         public async Task<AppointmentResponseDto> GetAppointmentByIdAsync(int id, string userId, bool isAdmin)
         {
             var spec = new AppointmentSpecification(id);

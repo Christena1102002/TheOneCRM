@@ -14,7 +14,7 @@ namespace TheOneCRM.Domain.Models.Entities
 
         public int Probability { get; set; }
 
-        public StatusOfCustomers status { get; set; } //active
+        public CustomerStatus status { get; set; } //active
         // Relation مع Deals
         public List<Deal> Deals { get; set; } 
     }

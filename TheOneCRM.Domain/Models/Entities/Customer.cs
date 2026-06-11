@@ -16,7 +16,7 @@ namespace TheOneCRM.Domain.Models.Entities
         public string? Phone { set; get; }
         public string CampanyName { set; get; }
         public PriorityStatus Priority { set; get; }
-        public StatusOfCustomers status { set; get; } = StatusOfCustomers.New;
+        public CustomerStatus status { set; get; } = CustomerStatus.New;
        //public bool IsActiveCustomer { set; get; }
        //public string Notes {  set; get; }
 
@@ -49,5 +49,6 @@ namespace TheOneCRM.Domain.Models.Entities
         public ICollection<CustomerAssignmentHistory> AssignmentHistory { get; set; }
            = new List<CustomerAssignmentHistory>();
         public ICollection<Contract> Contracts { get; set; } = new List<Contract>();
+        public ICollection<CustomerActivity> Activities { get; set; } = new List<CustomerActivity>();
     }
 }

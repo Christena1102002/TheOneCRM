@@ -36,7 +36,8 @@ namespace TheOneCRM.Application.Mapping
     .ForMember(d => d.CustomerId, opt => opt.Ignore())
     .ForMember(d => d.CreatedById, opt => opt.Ignore())
     .ForMember(d => d.Customer, opt => opt.Ignore())
-    .ForMember(d => d.CreatedBy, opt => opt.Ignore()) ;
+    .ForMember(d => d.CreatedBy, opt => opt.Ignore())
+    .ForMember(d => d.Status, opt => opt.Ignore());
         }
     }
 }

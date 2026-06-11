@@ -99,16 +99,21 @@ namespace TheOneCRM.Application.Services.Contracts
             if (ownerId != null && contract.CreatedById != ownerId)
                 throw new UnauthorizedAccessException("This contract does not belong to you");
 
-            // 3) validation الحالة (لازم تكون قيمة معرّفة في الـ enum)
-            if (!Enum.IsDefined(typeof(ContractStatus), dto.Status))
-                throw new InvalidOperationException(
-                    $"Invalid contract status. Allowed values: Active, Expired, Cancelled");
+            // 3) validation الحالة - بس لو بعتها صراحةً
+            if (dto.Status.HasValue)
+            {
+                if (!Enum.IsDefined(typeof(ContractStatus), dto.Status.Value))
+                    throw new InvalidOperationException(
+                        $"Invalid contract status. Allowed values: Active, Expired, Cancelled");
+
+                contract.Status = dto.Status.Value;
+            }
 
             // 4) validation التواريخ
             if (dto.EndDate.HasValue && dto.EndDate.Value < dto.StartDate)
                 throw new InvalidOperationException("End date cannot be before start date");
 
-            // 5) Map (بيحدّث الـ fields في الـ tracked entity)
+            // 5) Map (Status متجاهل في الـ mapping - اتعمل فوق يدوياً)
             _mapper.Map(dto, contract);
 
             // 6) حفظ

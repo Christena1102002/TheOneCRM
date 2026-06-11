@@ -11,7 +11,7 @@ namespace TheOneCRM.Domain.Models.DTOs.Contracts
     {
         public string Title { get; set; } = null!;
         public string? Description { get; set; }
-        public ContractStatus Status { get; set; }
+        public ContractStatus? Status { get; set; }
         public decimal Price { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }

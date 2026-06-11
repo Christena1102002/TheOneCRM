@@ -4,6 +4,14 @@ namespace TheOneCRM.Domain.Models.DTOs.Dashboard
 {
     public class DashboardStatsDto
     {
+        // ===== إحصائيات التاسكات =====
+        public int TotalTasks { get; set; }
+        public int TodoTasks { get; set; }
+        public int InProgressTasks { get; set; }
+        public int ReviewTasks { get; set; }
+        public int CompletedTasks { get; set; }
+        public int OverdueTasks { get; set; }
+
         // ===== الكروت =====
         // مهام مستحقة اليوم
         public int TasksDueToday { get; set; }

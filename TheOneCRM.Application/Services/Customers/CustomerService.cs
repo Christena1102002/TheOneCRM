@@ -45,6 +45,14 @@ namespace TheOneCRM.Application.Services.Customers
 
         public async Task<CustomerResponseDto> CreateCustomerAsync(CreateCustomerDto dto, string currentUserId, string currentUserRole)
         {
+            // اسم الشركة unique (لو موجود)
+            if (!string.IsNullOrWhiteSpace(dto.CompanyName))
+            {
+                var exists = await _unitOfWork.Repository<Customer>()
+                    .AnyAsync(c => c.CampanyName == dto.CompanyName.Trim());
+                if (exists)
+                    throw new InvalidOperationException($"اسم الشركة '{dto.CompanyName}' مسجل بالفعل");
+            }
 
             if (dto.CampaignId > 0)
             {
@@ -122,17 +130,19 @@ namespace TheOneCRM.Application.Services.Customers
                 //    AssignedAt = DateTime.UtcNow
                 //};
 
-                customer.IsMarketingToSales=true;   // ✅ بيحدد IsMarketingToSales تلقائياً
-
-                //customer.AssignmentHistory.Add(history);
+                customer.IsMarketingToSales = true;
                 customer.AssignedToId = dto.SalesPersonId;
                 customer.CreatedById = currentUserId;
-                customer.status = StatusOfCustomers.AssignedToSalesTeam;
 
-
+                customer.Activities.Add(new CustomerActivity
+                {
+                    ActivityType = CustomerActivityType.AssignedToSalesTeam,
+                    CreatedById = currentUserId,
+                    CreatedAt = DateTime.UtcNow
+                });
             }
-            // 4) ✅ ضيف الملاحظة الأولية لو موجودة
-            if (!string.IsNullOrWhiteSpace(dto.Notes))
+            // 4) ✅ ضيف الملاحظة الأولية — Marketing والأدمن بس يقدروا يضيفوا NoteMarketing
+            if (!string.IsNullOrWhiteSpace(dto.Notes) && currentUserRole != UserRoles.Sales)
             {
                 customer.Notes.Add(new CustomerNote
                 {
@@ -147,6 +157,14 @@ namespace TheOneCRM.Application.Services.Customers
                 customer.AssignedToId = currentUserId;
 
             customer.CreatedById = currentUserId;
+
+            customer.Activities.Add(new CustomerActivity
+            {
+                ActivityType = CustomerActivityType.CustomerCreated,
+                CreatedById = currentUserId,
+                CreatedAt = DateTime.UtcNow
+            });
+
             await _unitOfWork.Repository<Customer>().AddAsync(customer);
             await _unitOfWork.SaveChangesAsync();
 
@@ -166,7 +184,7 @@ namespace TheOneCRM.Application.Services.Customers
         }
         public List<StatusClientDto> GetCustomerStatuses()
         {
-            return Enum.GetValues<StatusOfCustomers>()
+            return Enum.GetValues<CustomerStatus>()
                 .Select(s => new StatusClientDto
                 {
                     Id = (int)s,
@@ -175,20 +193,14 @@ namespace TheOneCRM.Application.Services.Customers
                 .ToList();
         }
 
-        private string GetStatusArabicName(StatusOfCustomers status)
+        private string GetStatusArabicName(CustomerStatus status)
         {
             return status switch
             {
-                StatusOfCustomers.New => "جديد",
-                StatusOfCustomers.None => "بدون حالة",
-                StatusOfCustomers.Negotiating => "تفاوض",
-                StatusOfCustomers.Buyer => "مشتري",
-                StatusOfCustomers.NotBuyer => "غير مشتري",
-                StatusOfCustomers.AssignedToSalesTeam => "محول لفريق المبيعات",
-                StatusOfCustomers.Contacted => "تم التواصل",
-                StatusOfCustomers.NoResponse => "لا يرد",
-                StatusOfCustomers.SentQuote => "تم إرسال عرض سعر",
-                StatusOfCustomers.TransferredToSupport => "محول للدعم",
+                CustomerStatus.New => "جديد",
+                CustomerStatus.Negotiating => "تفاوض",
+                CustomerStatus.Buyer => "مشتري",
+                CustomerStatus.NotBuyer => "غير مشتري",
                 _ => "غير معروف"
             };
         }
@@ -390,15 +402,15 @@ namespace TheOneCRM.Application.Services.Customers
             });
 
 
-            customer.IsMarketingToSales=true;   
-
-
-
-
-            // 5) عيّن العميل للمندوب
+            customer.IsMarketingToSales = true;
             customer.AssignedToId = salesPersonId;
 
-            customer.status = StatusOfCustomers.AssignedToSalesTeam;  // ⚠️ غيري للحالة المناسبة عندك (مثلاً "معين لفريق المبيعات")
+            customer.Activities.Add(new CustomerActivity
+            {
+                ActivityType = CustomerActivityType.AssignedToSalesTeam,
+                CreatedById = currentUserId,
+                CreatedAt = DateTime.UtcNow
+            });
 
             // 6) احفظ
             _unitOfWork.Repository<Customer>().Update(customer);
@@ -471,10 +483,14 @@ namespace TheOneCRM.Application.Services.Customers
             // 6) سيب الفلاج زي ما هو
             customer.IsSupportToSales = true;
             customer.IsConsulted = true;
-
-            // 7) رجّع العميل للمندوب وحدّث الـ AssignedToId والحالة
             customer.AssignedToId = salesPersonId;
-            customer.status = StatusOfCustomers.AssignedToSalesTeam;
+
+            customer.Activities.Add(new CustomerActivity
+            {
+                ActivityType = CustomerActivityType.ReturnedToSales,
+                CreatedById = currentUserId,
+                CreatedAt = DateTime.UtcNow
+            });
 
             // 8) احفظ
             _unitOfWork.Repository<Customer>().Update(customer);
@@ -780,13 +796,15 @@ namespace TheOneCRM.Application.Services.Customers
             //    AssignedAt = DateTime.UtcNow
             //};
 
-            customer.IsSalesToSupport=true;   // ✅ بيحدد IsSalesToSupport تلقائياً
-
-            //customer.AssignmentHistory.Add(history);
-
-            // 7) عيّن العميل لموظف الدعم
+            customer.IsSalesToSupport = true;
             customer.AssignedToId = SupportPersonId;
-            customer.status = StatusOfCustomers.TransferredToSupport;
+
+            customer.Activities.Add(new CustomerActivity
+            {
+                ActivityType = CustomerActivityType.TransferredToSupport,
+                CreatedById = currentUserId,
+                CreatedAt = DateTime.UtcNow
+            });
 
             // 6) احفظ
             _unitOfWork.Repository<Customer>().Update(customer);
@@ -807,7 +825,7 @@ namespace TheOneCRM.Application.Services.Customers
             return _mapper.Map<CustomerListItemDto>(customer);
         }
 
-        public async Task<CustomerResponseDto> UpdateCustomerStatusAsync(int id, UpdateCustomerStatusDto dto)
+        public async Task<CustomerResponseDto> UpdateCustomerStatusAsync(int id, UpdateCustomerStatusDto dto, string changedById)
         {
             var spec = new CustomerWithNotesSpecification(id);
             var customer = await _unitOfWork.Repository<Customer>()
@@ -816,46 +834,62 @@ namespace TheOneCRM.Application.Services.Customers
             if (customer == null)
                 throw new KeyNotFoundException($"Customer with id {id} not found.");
 
-            // 2) تحقق إن الـ Status قيمة صحيحة في الـ Enum
-            if (!Enum.IsDefined(typeof(StatusOfCustomers), dto.Status))
+            if (!Enum.IsDefined(typeof(CustomerStatus), dto.Status))
                 throw new InvalidOperationException("Invalid customer status value.");
-            // 3) لو الحالة الجديدة هي NotBuyer لازم سبب عدم الشراء يكون موجود
-            if (dto.Status == StatusOfCustomers.NotBuyer)
-            {
-                if (string.IsNullOrWhiteSpace(dto.NotBuyingReason))
-                    throw new InvalidOperationException(
-                        "Reason for not buying is required.");
-            }
-            // 3) لو نفس الحالة الحالية، مفيش داعي للتحديث
+
+            if (dto.Status == CustomerStatus.NotBuyer && string.IsNullOrWhiteSpace(dto.NotBuyingReason))
+                throw new InvalidOperationException("Reason for not buying is required.");
+
             if (customer.status == dto.Status)
                 throw new InvalidOperationException("Customer already has this status.");
 
-            // 4) حدّث الحالة
+            var fromStatus = customer.status;
             customer.status = dto.Status;
 
-            // ✅ لو الحالة بقت Contacted، سجّل تاريخ المكالمة تلقائي
-            // كده "مكالمات اليوم" في الداشبورد تتعد صح حتى لو العميل لسه جديد
-            if (dto.Status == StatusOfCustomers.Contacted)
-            {
-                customer.LastFollowUpDate = DateTime.UtcNow;
-            }
-
-            if (dto.Status == StatusOfCustomers.NotBuyer)
-            {
-                customer.NotBuyingReason= dto.NotBuyingReason!.Trim();
-            }
+            if (dto.Status == CustomerStatus.NotBuyer)
+                customer.NotBuyingReason = dto.NotBuyingReason!.Trim();
             else
-            {
-                // لو غير الحالة إلى أي حالة أخرى، امسح السبب
                 customer.NotBuyingReason = null;
-            }
+
+            customer.Activities.Add(new CustomerActivity
+            {
+                ActivityType = CustomerActivityType.StatusChanged,
+                FromStatus = fromStatus,
+                ToStatus = dto.Status,
+                CreatedById = changedById,
+                CreatedAt = DateTime.UtcNow
+            });
 
             _unitOfWork.Repository<Customer>().Update(customer);
             await _unitOfWork.SaveChangesAsync();
 
-            //// 5) رجّع العميل بعد التحديث (بالـ Spec علشان تجيب الـ Includes زي AssignedTo و Campaign)
-            //var spec = new CustomerWithDetailsSpecification(id);
-            //var updatedCustomer = await _unitOfWork.Repository<Customer>().GetEntityWithSpec(spec);
+            return _mapper.Map<CustomerResponseDto>(customer);
+        }
+
+        public async Task<CustomerResponseDto> LogContactAttemptAsync(int id, LogContactAttemptDto dto, string createdById)
+        {
+            var customer = await _unitOfWork.Repository<Customer>()
+                .GetByIdAsync(id);
+
+            if (customer == null)
+                throw new KeyNotFoundException($"Customer with id {id} not found.");
+
+            if (dto.Result == ContactResult.Answered)
+            {
+                customer.LastFollowUpDate = DateTime.UtcNow;
+                customer.NextFollowUpDate = null;
+            }
+
+            customer.Activities.Add(new CustomerActivity
+            {
+                ActivityType = CustomerActivityType.ContactAttempted,
+                ContactResult = dto.Result,
+                CreatedById = createdById,
+                CreatedAt = DateTime.UtcNow
+            });
+
+            _unitOfWork.Repository<Customer>().Update(customer);
+            await _unitOfWork.SaveChangesAsync();
 
             return _mapper.Map<CustomerResponseDto>(customer);
         }
@@ -986,9 +1020,10 @@ namespace TheOneCRM.Application.Services.Customers
             var BuyerCustomers = await _unitOfWork.Repository<Customer>()
              .CountAsync(new BuyerCustomersBySalesPersonSpec(salesPersonId));
 
-            // 2) مكالمات النهاردة (متابعة آخر تاريخها = النهاردة)
-            var callsToday = await _unitOfWork.Repository<Customer>()
-           .CountAsync(new CallsTodayBySalesPersonSpec(salesPersonId, today, tomorrow));
+            // 2) مكالمات النهاردة — كل عميل بيتحسب مرة واحدة بغض النظر عن عدد المكالمات
+            var callsTodayActivities = await _unitOfWork.Repository<CustomerActivity>()
+                .ListAsync(new CallsTodayBySalesPersonSpec(salesPersonId, today, tomorrow));
+            var callsToday = callsTodayActivities.DistinctBy(a => a.CustomerId).Count();
 
             // 3) متابعات قادمة (موعدها من النهاردة وللأمام)
             var upcomingFollowUps = await _unitOfWork.Repository<Customer>()

@@ -28,7 +28,7 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
         Task UpdateCustomerNoteAsync(int customerId, string note, string userId,string role);
         Task<IReadOnlyList<CustomerDropdownDto>> GetCustomersForDropdownAsync();
         Task<CustomerListItemDto> AssignToSupportPersonAsync(int id, string SupportPersonId, string currentUserId, string currentUserRole);
-        Task<CustomerResponseDto> UpdateCustomerStatusAsync(int id, UpdateCustomerStatusDto dto);
+        Task<CustomerResponseDto> UpdateCustomerStatusAsync(int id, UpdateCustomerStatusDto dto, string changedById);
         Task<CustomerResponseDto> UpdateCustomerFollowUpAsync(int id, UpdateCustomerFollowUpDto dto);
         // ✅ Upsert: لو المستخدم عنده ملاحظة على العميل ده، عدّلها. لو لأ، ضيف جديدة
       Task<CustomerNoteResponseDto> UpsertMyNoteAsync(
@@ -40,5 +40,6 @@ namespace TheOneCRM.Application.Interfaces.ICustomers
         Task<SalesDashboardStatsDto> GetSalesDashboardStatsAsync(string? salesPersonId);
         Task<List<string>> GetNotBuyingReasonsAsync();
         Task<List<CustomerStatusCountDto>> GetCustomerCountByStatusAsync(string currentUserId, bool isAdmin);
+        Task<CustomerResponseDto> LogContactAttemptAsync(int id, LogContactAttemptDto dto, string createdById);
     }
 }

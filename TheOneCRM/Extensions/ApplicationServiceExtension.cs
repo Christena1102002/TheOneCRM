@@ -18,6 +18,8 @@ using TheOneCRM.Application.Interfaces.ICompanySettings;
 using TheOneCRM.Application.Interfaces.ISourceService;
 using TheOneCRM.Application.Interfaces.INotifications;
 using TheOneCRM.Application.Interfaces.ISupportTickets;
+using TheOneCRM.Application.Interfaces.IGoals;
+using TheOneCRM.Application.Services.Goals;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services;
 using TheOneCRM.Application.Services.AppointmentS;
@@ -77,6 +79,7 @@ namespace TheOneCRM.API.Extensions
             Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
             Services.AddScoped<INotificationService, NotificationService>();
             Services.AddScoped<IFcmPushService, FcmPushService>();
+            Services.AddScoped<IGoalService, GoalService>();
 
             return Services;
         }

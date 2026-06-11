@@ -92,6 +92,14 @@ namespace TheOneCRM.API.Controllers
             return Ok(new ApiResponse(200, "Ticket statistics retrieved successfully", result));
         }
 
+        // GET: api/SupportTickets/CustomerServices/5 — خدمات عميل معين للـ dropdown عند إنشاء تذكرة
+        [HttpGet("CustomerServices/{customerId:int}")]
+        public async Task<IActionResult> GetServicesByCustomer(int customerId)
+        {
+            var result = await _ticketService.GetServicesByCustomerAsync(customerId);
+            return Ok(new ApiResponse(200, "Customer services retrieved successfully", result));
+        }
+
         // GET: api/SupportTickets/TicketStatuses  (للـ dropdown: id + اسم)
         [HttpGet("TicketStatuses")]
         public IActionResult GetTicketStatuses()

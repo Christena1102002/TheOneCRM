@@ -193,6 +193,38 @@ namespace TheOneCRM.Application.Services.Articles
                 .Select(a => new StatusClientDto { Id = (int)a, Name = ArticleEnumArabic.AccessLevel(a) })
                 .ToList();
 
+        public async Task DeleteArticleAsync(int id, string userId, bool isAdmin)
+        {
+            var article = await _unitOfWork.Repository<Article>()
+                .GetEntityWithSpec(new ArticleByIdSpec(id));
+            if (article is null)
+                throw new KeyNotFoundException($"Article {id} not found");
+
+            if (!isAdmin && article.CreatedById != userId)
+                throw new UnauthorizedAccessException("You are not allowed to delete this article");
+
+            // احذف المرفقات بالكود قبل حذف المقالة
+            foreach (var attachment in article.Attachments.ToList())
+                _unitOfWork.Repository<ArticleAttachment>().Delete(attachment);
+
+            _unitOfWork.Repository<Article>().Delete(article);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
+        public async Task DeleteAttachmentAsync(int attachmentId, string userId, bool isAdmin)
+        {
+            var attachment = await _unitOfWork.Repository<ArticleAttachment>().GetByIdAsync(attachmentId);
+            if (attachment is null)
+                throw new KeyNotFoundException($"Attachment {attachmentId} not found");
+
+            var article = await _unitOfWork.Repository<Article>().GetByIdAsync(attachment.ArticleId);
+            if (!isAdmin && article?.CreatedById != userId)
+                throw new UnauthorizedAccessException("You are not allowed to delete this attachment");
+
+            _unitOfWork.Repository<ArticleAttachment>().Delete(attachment);
+            await _unitOfWork.SaveChangesAsync();
+        }
+
         public List<StatusClientDto> GetStatusOptions()
             => System.Enum.GetValues<ArticleStatus>()
                 .Select(s => new StatusClientDto { Id = (int)s, Name = ArticleEnumArabic.Status(s) })

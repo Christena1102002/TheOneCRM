@@ -41,6 +41,9 @@ namespace TheOneCRM.Application.Services.Auth
             if (User == null)
                 throw new UnauthorizedAccessException("Invalid email or password");
 
+            if (User.IsActive == false)
+                throw new UnauthorizedAccessException("Invalid email or password");
+
             if (await _userManager.IsLockedOutAsync(User))
                 throw new InvalidOperationException("Account is locked. Please try again later.");
 
@@ -73,7 +76,42 @@ namespace TheOneCRM.Application.Services.Auth
             var existing = await _userManager.FindByEmailAsync(dto.Email);
             if (existing != null)
             {
-                throw new InvalidOperationException("Email already in use");
+                if (existing.IsActive != false)
+                    throw new InvalidOperationException("Email already in use");
+
+                // إعادة تفعيل اليوزر المحذوف بدل إنشاء واحد جديد
+                existing.IsActive = true;
+                existing.FullName = dto.FullName;
+                existing.PhoneNumber = dto.PhoneNumber;
+                existing.Address = dto.Address;
+                existing.Specialty = dto.Specialty;
+
+                var resetToken = await _userManager.GeneratePasswordResetTokenAsync(existing);
+                var resetResult = await _userManager.ResetPasswordAsync(existing, resetToken, dto.Password);
+                if (!resetResult.Succeeded)
+                    throw new InvalidOperationException(string.Join(", ", resetResult.Errors.Select(e => e.Description)));
+
+                var updateResult = await _userManager.UpdateAsync(existing);
+                if (!updateResult.Succeeded)
+                    throw new InvalidOperationException(string.Join(", ", updateResult.Errors.Select(e => e.Description)));
+
+                var currentRoles = await _userManager.GetRolesAsync(existing);
+                if (currentRoles.Any())
+                    await _userManager.RemoveFromRolesAsync(existing, currentRoles);
+                await _userManager.AddToRoleAsync(existing, dto.Role);
+
+                var (at, rt) = await _tokenService.CreateTokenAsync(existing);
+                var roles2 = await _userManager.GetRolesAsync(existing);
+                return new AuthResultDto
+                {
+                    IsSuccess = true,
+                    UserId = existing.Id,
+                    Email = existing.Email,
+                    Role = roles2.FirstOrDefault(),
+                    FullName = existing.FullName,
+                    AccessToken = at,
+                    RefreshToken = rt,
+                };
             }
 
             var user = _mapper.Map<AppUser>(dto);
@@ -108,7 +146,9 @@ namespace TheOneCRM.Application.Services.Auth
 
         public async Task<List<UsersDto>> GetAllUsers()
         {
-            var users = await _unitOfWork.Repository<AppUser>().ListAllAsync();
+            var users = (await _unitOfWork.Repository<AppUser>().ListAllAsync())
+                .Where(u => u.IsActive != false)
+                .ToList();
                 if (users == null || !users.Any())
                     throw new KeyNotFoundException("No users found");
             var result = new List<UsersDto>();
@@ -136,7 +176,7 @@ namespace TheOneCRM.Application.Services.Auth
         {
             //var user= await _unitOfWork.Users.GetByIdAsync(userID);
             var user = await _userManager.FindByIdAsync(userID);
-            if (user == null)
+            if (user == null || user.IsActive == false)
                 throw new KeyNotFoundException($"User with id '{userID}' not found");
             var role = await _userManager.GetRolesAsync(user);
             return new UsersDto
@@ -156,7 +196,7 @@ namespace TheOneCRM.Application.Services.Auth
         public async Task<UsersDto> UpdateUser(string userId, UpdateUserDto dto)
         {
             var user = await _userManager.FindByIdAsync(userId);
-            if (user == null)
+            if (user == null || user.IsActive == false)
                 throw new KeyNotFoundException($"User with id '{userId}' not found");
 
 
@@ -225,15 +265,17 @@ namespace TheOneCRM.Application.Services.Auth
             if (user == null)
                 throw new KeyNotFoundException($"User with id '{userId}' not found");
 
-            var result = await _userManager.DeleteAsync(user);
+            if (user.IsActive == false)
+                throw new InvalidOperationException("User is already deleted.");
 
+            user.IsActive = false;
+
+            var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
                 throw new InvalidOperationException($"Failed to delete user: {errors}");
             }
-            await _unitOfWork.SaveChangesAsync();
-           
         }
         public async Task<AuthResultDto> RefreshTokenAsync(string refreshToken)
         {
@@ -242,6 +284,10 @@ namespace TheOneCRM.Application.Services.Auth
 
             var (newAccessToken, newRefreshTokenPlain,user) = await _tokenService
                 .RefreshTokenAsync(refreshToken);
+
+            if (user.IsActive == false)
+                throw new UnauthorizedAccessException("Invalid email or password");
+
             var roles = await _userManager.GetRolesAsync(user);
             return new AuthResultDto
             {
@@ -290,7 +336,7 @@ namespace TheOneCRM.Application.Services.Auth
 
             var result = new List<UsersDto>();
 
-            foreach (var user in users)
+            foreach (var user in users.Where(u => u.IsActive != false))
             {
                 var roles = await _userManager.GetRolesAsync(user);
 

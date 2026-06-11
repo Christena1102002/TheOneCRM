@@ -12,7 +12,7 @@ namespace TheOneCRM.Infrastructure.Specsification
     public class BuyerCustomersSpecification : BaseSpecification<Customer>
     {
         public BuyerCustomersSpecification()
-            : base(c => c.status== StatusOfCustomers.Buyer) { }
+            : base(c => c.status == CustomerStatus.Buyer) { }
        
     }
 }

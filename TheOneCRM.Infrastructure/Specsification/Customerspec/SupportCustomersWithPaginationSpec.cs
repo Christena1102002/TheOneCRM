@@ -10,10 +10,9 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
             : base(SupportCustomerFilters.Build(p, currentUserId, isSupportOnly))
                   {
             AddInclude(c => c.campaigns.ChannelSource);
-            //AddInclude(c => c.AssignedTo);
             AddInclude("AssignmentHistory.ToUser");
             AddInclude("customerServices.Service");
-
+            AddInclude("Activities.CreatedBy");
             ApplyOrderByDescending(c => c.CreatedAt);
             ApplyPaging(p.PageSize * (p.PageIndex - 1), p.PageSize);
         }

@@ -13,7 +13,7 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
     {
         public TodayCustomersSpecification()
        : base(c => c.CreatedAt >= DateTime.UtcNow.Date
-                   && c.CreatedAt < DateTime.UtcNow.Date.AddDays(1)&&c.status ==StatusOfCustomers.New)
+                   && c.CreatedAt < DateTime.UtcNow.Date.AddDays(1) && c.status == CustomerStatus.New)
         {
         }
     }

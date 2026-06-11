@@ -42,8 +42,8 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
 
                 // Filter by Status
                 (!p.CustomerStatusId.HasValue ||
-                    (Enum.IsDefined(typeof(StatusOfCustomers), p.CustomerStatusId.Value) &&
-                     c.status == (StatusOfCustomers)p.CustomerStatusId.Value))
+                    (Enum.IsDefined(typeof(CustomerStatus), p.CustomerStatusId.Value) &&
+                     c.status == (CustomerStatus)p.CustomerStatusId.Value))
 
                 &&
 

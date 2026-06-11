@@ -146,9 +146,28 @@ namespace TheOneCRM.API.Controllers
     int id,
     [FromBody] UpdateCustomerStatusDto dto)
         {
-            var result = await _customerService.UpdateCustomerStatusAsync(id, dto);
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var result = await _customerService.UpdateCustomerStatusAsync(id, dto, userId);
             return StatusCode(200,
                   new ApiResponse(200, "Update Customer Status successfully", result));
+        }
+
+        [HttpPost("{id}/contact")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales}")]
+        public async Task<IActionResult> LogContactAttempt(
+    int id,
+    [FromBody] LogContactAttemptDto dto)
+        {
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var result = await _customerService.LogContactAttemptAsync(id, dto, userId);
+            return StatusCode(200,
+                  new ApiResponse(200, "Contact attempt logged successfully", result));
         }
         [HttpPut("{id}/followUp")]
         [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Sales},{UserRoles.Support}")]

@@ -21,6 +21,9 @@ namespace TheOneCRM.Application.Interfaces.IAnalytics
         // تحليلات الأخطاء (توزيع حسب المشروع + مفتوحة vs محلولة شهريًا)
         Task<BugAnalyticsDto> GetBugAnalyticsAsync(DeveloperAnalyticsParams p);
 
+        // كل التحليلات في استدعاء واحد
+        Task<FullDeveloperAnalyticsDto> GetFullAnalyticsAsync(DeveloperAnalyticsParams p);
+
         // قائمة المشاريع للـ dropdown (مشاريع المطوّر المختار أو الكل)
         Task<List<StatusClientDto>> GetProjectOptionsAsync(string? developerId);
     }

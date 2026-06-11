@@ -50,10 +50,13 @@ namespace TheOneCRM.Domain.Models.Entities
         [ForeignKey("CreatedById")]
         public AppUser? CreatedBy { get; set; }
 
-        // المطور المعيّن إليه المهمة
+        // المطور المعيّن إليه المهمة (الأساسي — للتوافق مع الكود القديم)
         public string? AssignedToId { get; set; }
 
         [ForeignKey("AssignedToId")]
         public AppUser? AssignedTo { get; set; }
+
+        // قائمة المطورين المعينين (many-to-many)
+        public ICollection<TaskAssignee> Assignees { get; set; } = new List<TaskAssignee>();
     }
 }

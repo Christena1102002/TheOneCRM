@@ -79,8 +79,17 @@ namespace TheOneCRM.Domain.Models.DTOs.Analytics
 
     public class MonthlyBugDto
     {
-        public string Month { get; set; } = null!; // Sep, Oct, ...
-        public int Open { get; set; }              // مفتوحة
-        public int Resolved { get; set; }          // محلولة
+        public string Month { get; set; } = null!;
+        public int Open { get; set; }
+        public int Resolved { get; set; }
+    }
+
+    // ===== كل التحليلات في رد واحد =====
+    public class FullDeveloperAnalyticsDto
+    {
+        public DeveloperAnalyticsSummaryDto Summary { get; set; } = null!;
+        public List<DeveloperStatItemDto> DeveloperStats { get; set; } = new();
+        public AnalyticsChartsDto Charts { get; set; } = null!;
+        public BugAnalyticsDto BugAnalytics { get; set; } = null!;
     }
 }

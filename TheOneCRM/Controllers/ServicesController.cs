@@ -33,6 +33,7 @@ namespace TheOneCRM.API.Controllers
         }
 
         [HttpGet("{id:int}", Name = "GetServiceById")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _servicesService.GetServiceByIdAsync(id);
@@ -57,6 +58,7 @@ namespace TheOneCRM.API.Controllers
              new ApiResponse(200, "Delete Service successfully"));
         }
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll(
     [FromQuery] ServiceQueryParams queryParams)
         {

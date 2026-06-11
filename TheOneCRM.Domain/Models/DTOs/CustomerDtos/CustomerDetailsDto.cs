@@ -50,6 +50,9 @@ namespace TheOneCRM.Domain.Models.DTOs.CustomerDtos
         public string? NoteMarketing { get; set; }
         public string? NoteSales { get; set; }
         public string? NoteSupport { get; set; }
+
+        // تاريخ العميل الكامل
+        public List<CustomerActivityDto> Activities { get; set; } = new();
     }
 
     public class ServiceItemDto

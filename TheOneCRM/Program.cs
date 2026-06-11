@@ -20,6 +20,7 @@ using TheOneCRM.Application.Interfaces;
 using TheOneCRM.Application.Mapping;
 using TheOneCRM.Application.Services.Auth;
 //using TheOneCRM.Application.Services.Auth;
+
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Infrastructure.Data;
 using TheOneCRM.Infrastructure.Migrations;
@@ -109,6 +110,7 @@ namespace TheOneCRM
                     // 2) Run seeder
                     var seeder = services.GetRequiredService<DataSeader>();
                     await seeder.SeedAsync();
+
                 }
                 catch (Exception ex)
                 {

@@ -125,7 +125,20 @@ namespace TheOneCRM.Application.Mapping
                 opt => opt.MapFrom(src => src.campaigns.ChannelSource.Name))
       .ForMember(dest => dest.NotBuyerReason,
         opt => opt.MapFrom(src =>
-            src.status== StatusOfCustomers.NotBuyer ? src.NotBuyingReason : null));
+            src.status == CustomerStatus.NotBuyer ? src.NotBuyingReason : null))
+      .ForMember(dest => dest.Activities,
+        opt => opt.MapFrom(src => src.Activities
+            .OrderByDescending(a => a.CreatedAt)
+            .Select(a => new CustomerActivityDto
+            {
+                Id = a.Id,
+                ActivityType = a.ActivityType.ToString(),
+                ContactResult = a.ContactResult.HasValue ? a.ContactResult.Value.ToString() : null,
+                FromStatus = a.FromStatus.HasValue ? a.FromStatus.Value.ToString() : null,
+                ToStatus = a.ToStatus.HasValue ? a.ToStatus.Value.ToString() : null,
+                CreatedByName = a.CreatedBy != null ? a.CreatedBy.FullName : null,
+                CreatedAt = a.CreatedAt
+            }).ToList()));
       
 
 
@@ -189,7 +202,19 @@ namespace TheOneCRM.Application.Mapping
               .OrderByDescending(n => n.Id)
               .Select(n => n.NoteSupport)
               .FirstOrDefault(n => !string.IsNullOrWhiteSpace(n))))
-      ;
+      .ForMember(dest => dest.Activities,
+        opt => opt.MapFrom(src => src.Activities
+            .OrderByDescending(a => a.CreatedAt)
+            .Select(a => new CustomerActivityDto
+            {
+                Id = a.Id,
+                ActivityType = a.ActivityType.ToString(),
+                ContactResult = a.ContactResult.HasValue ? a.ContactResult.Value.ToString() : null,
+                FromStatus = a.FromStatus.HasValue ? a.FromStatus.Value.ToString() : null,
+                ToStatus = a.ToStatus.HasValue ? a.ToStatus.Value.ToString() : null,
+                CreatedByName = a.CreatedBy != null ? a.CreatedBy.FullName : null,
+                CreatedAt = a.CreatedAt
+            }).ToList()));
 
    
 

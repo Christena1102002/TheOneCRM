@@ -36,6 +36,19 @@ namespace TheOneCRM.API.Controllers
             return Ok(new ApiResponse(200, "Support dashboard retrieved successfully", result));
         }
 
+        // GET: api/Support/CustomerStats — إحصائيات عملاء موظف الدعم
+        [HttpGet("CustomerStats")]
+        [Authorize(Roles = $"{UserRoles.Admin},{UserRoles.Support}")]
+        public async Task<IActionResult> GetCustomerStats()
+        {
+            var userId = User.GetUserId();
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+
+            var result = await _ticketService.GetCustomerStatsAsync(userId, User.IsAdmin());
+            return Ok(new ApiResponse(200, "Customer stats retrieved successfully", result));
+        }
+
         // POST: api/Support/{id}/ReturnToSalesPerson
         // الدعم يرجّع العميل لمندوب المبيعات اللي حوّله للدعم أصلاً (من الـ AssignmentHistory)
         [HttpPost("{id}/ReturnToSalesPerson")]

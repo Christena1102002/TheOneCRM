@@ -13,9 +13,8 @@ namespace TheOneCRM.Domain.Models.DTOs.Tasks
         public int ProjectId { get; set; }
         public string? ProjectName { get; set; }
 
-        // المطور المعيّن
-        public string? AssignedToId { get; set; }
-        public string? AssignedToName { get; set; }
+        // المطورون المعيّنون
+        public List<TaskAssigneeDto> Assignees { get; set; } = new();
 
         // المدير اللي أنشأ
         public string? CreatedById { get; set; }

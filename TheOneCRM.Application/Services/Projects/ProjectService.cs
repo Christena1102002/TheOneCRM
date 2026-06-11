@@ -5,12 +5,15 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TheOneCRM.Application.Interfaces.INotifications;
 using TheOneCRM.Application.Interfaces.IProjects;
 using TheOneCRM.Domain.Interfaces;
 using TheOneCRM.Domain.Models.Constants;
 using TheOneCRM.Domain.Models.DTOs.Common;
+using TheOneCRM.Domain.Models.DTOs.NotificationDtos;
 using TheOneCRM.Domain.Models.DTOs.Projects;
 using TheOneCRM.Domain.Models.Entities;
+using TheOneCRM.Domain.Models.Enums;
 using TheOneCRM.Infrastructure.Specsification.ProjectSpec;
 using Project = TheOneCRM.Domain.Models.Entities.Projects;
 
@@ -21,12 +24,14 @@ namespace TheOneCRM.Application.Services.Projects
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         private readonly UserManager<AppUser> _userManager;
+        private readonly INotificationService _notificationService;
 
-        public ProjectService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager)
+        public ProjectService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager, INotificationService notificationService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _userManager = userManager;
+            _notificationService = notificationService;
         }
 
         public async Task<ProjectCustomerLookupDto> GetCustomerLookupAsync(int customerId)
@@ -61,6 +66,20 @@ namespace TheOneCRM.Application.Services.Projects
 
             await _unitOfWork.Repository<Project>().AddAsync(project);
             await _unitOfWork.SaveChangesAsync();
+
+            // إشعار لكل مهندس معيّن على المشروع
+            foreach (var engId in engineerIds)
+            {
+                await _notificationService.CreateAsync(new CreateNotificationDto
+                {
+                    UserId = engId,
+                    Title = "مشروع جديد",
+                    Message = $"تم تعيينك على مشروع جديد: '{project.Title}'",
+                    Type = NotificationType.General,
+                    RelatedEntityType = "Project",
+                    RelatedEntityId = project.Id
+                });
+            }
 
             return project.Id;
         }

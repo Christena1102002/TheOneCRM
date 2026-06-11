@@ -16,8 +16,11 @@ namespace TheOneCRM.Domain.Models.DTOs.SupportTickets
         public int OpenTickets { get; set; }
         public int OpenHighPriority { get; set; }
 
-        // كارت: العملاء المعينون
+        // كارت: العملاء المعينون وتفاصيلهم
         public int AssignedCustomers { get; set; }
+        public int ConsultedCustomers { get; set; }
+        public int WaitingConsultation { get; set; }
+        public int CustomersWithNotes { get; set; }
 
         // كارت: تذاكر حرجة (أولوية عالية)
         public int CriticalTickets { get; set; }

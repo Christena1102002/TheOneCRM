@@ -7,7 +7,7 @@ namespace TheOneCRM.Infrastructure.Specsification.TaskSpec
     {
         public TaskByIdSpec(int id) : base(x => x.Id == id)
         {
-            // ProjectTo هيتولّى الـ projection
+            AddInclude(x => x.Assignees);
         }
     }
 }

@@ -26,10 +26,10 @@ namespace TheOneCRM.Application.Services.AdminDashboard
 
             // العملاء
             var customers = await _unitOfWork.Repository<Customer>().ListAllAsync();
-            var buyersNow = customers.Count(c => c.status == StatusOfCustomers.Buyer);
-            var buyersBefore = customers.Count(c => c.status == StatusOfCustomers.Buyer && c.CreatedAt < startOfThisMonth);
-            var nonBuyersNow = customers.Count(c => c.status == StatusOfCustomers.NotBuyer);
-            var nonBuyersBefore = customers.Count(c => c.status == StatusOfCustomers.NotBuyer && c.CreatedAt < startOfThisMonth);
+            var buyersNow = customers.Count(c => c.status == CustomerStatus.Buyer);
+            var buyersBefore = customers.Count(c => c.status == CustomerStatus.Buyer && c.CreatedAt < startOfThisMonth);
+            var nonBuyersNow = customers.Count(c => c.status == CustomerStatus.NotBuyer);
+            var nonBuyersBefore = customers.Count(c => c.status == CustomerStatus.NotBuyer && c.CreatedAt < startOfThisMonth);
 
             // المشاريع
             var projects = await _unitOfWork.Repository<ProjectEntity>().ListAllAsync();
@@ -102,7 +102,7 @@ namespace TheOneCRM.Application.Services.AdminDashboard
             for (int month = 1; month <= now.Month; month++)
             {
                 var count = customers.Count(c =>
-                    c.status == StatusOfCustomers.Buyer &&
+                    c.status == CustomerStatus.Buyer &&
                     EffectiveDate(c).Year == now.Year &&
                     EffectiveDate(c).Month == month);
 

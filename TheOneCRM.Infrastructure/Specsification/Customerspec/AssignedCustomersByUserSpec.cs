@@ -12,8 +12,7 @@ namespace TheOneCRM.Infrastructure.Specsification.Customerspec
     public class AssignedCustomersByUserSpec : BaseSpecification<Customer>
     {
         public AssignedCustomersByUserSpec(string userId)
-            : base(c => c.AssignedToId == userId
-                     || c.AssignmentHistory.Any(h => h.ToUserId == userId && h.ToRole == "Support"))
+            : base(c => c.AssignedToId == userId)
         {
         }
     }

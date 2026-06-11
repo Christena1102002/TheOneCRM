@@ -28,8 +28,8 @@ namespace TheOneCRM.Application.Services
                 : all.Where(c => c.CreatedById == ownerId).ToList();
 
             var totalCustomers = customers.Count;
-            var buyerCustomers = customers.Count(c => c.status == StatusOfCustomers.Buyer);
-            var notBuyerCustomers = customers.Count(c => c.status == StatusOfCustomers.NotBuyer);
+            var buyerCustomers = customers.Count(c => c.status == CustomerStatus.Buyer);
+            var notBuyerCustomers = customers.Count(c => c.status == CustomerStatus.NotBuyer);
 
             var conversionRate = totalCustomers == 0
                ? 0

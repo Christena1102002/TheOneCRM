@@ -7,8 +7,10 @@ namespace TheOneCRM.Infrastructure.Specsification.TaskSpec
     public class TaskByIdForDeveloperSpec : BaseSpecification<Tasks>
     {
         public TaskByIdForDeveloperSpec(int id, string developerId)
-            : base(x => x.Id == id && x.AssignedToId == developerId)
+            : base(x => x.Id == id &&
+                        (x.AssignedToId == developerId || x.Assignees.Any(a => a.UserId == developerId)))
         {
+            AddInclude(x => x.Assignees);
         }
     }
 }
